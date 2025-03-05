@@ -27,11 +27,3 @@ else
     echo "[INFO] tensorflow is already installed, skipping ..."
 fi
 
-########## Build LiteRT_LLM_Inference_app ##########
-echo "[INFO] Build ${BINARY_NAME}"
-echo "========================"
-cd ${ROOT_PATH}
-${ROOT_PATH}/build.sh
-cd ${ROOT_PATH}
-echo "========================"
-

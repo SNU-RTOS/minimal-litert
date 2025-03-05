@@ -34,23 +34,40 @@ Bazelisk automatically downloads the Bazel version specified in the `.bazelversi
 - If the `.bazelversion` file is absent, Bazelisk downloads the latest stable version of Bazel.
 - If the file is present, Bazelisk downloads and runs the specified version.
 
-### 2. Build Minimal with Bazel
+### 2. Setup repository
+(Only needs to be done once)   
+Run the following command to setup the repository to build the minimal example:
+
+```sh
+./setup
+```
+
+
+### 3. Build binary with Bazel
 
 Run the following command to build the minimal example:
 
 ```sh
 bazel build -c opt //minimal-tflite/minimal:minimal
+ln -s ./bazel/bin/minimal-tflite/minimal/minimal
+```
+or just 
+```sh
+./build
+
 ```
 
-### 3. Run Minimal Binary
+### 4. Run Minimal Binary
 
 Execute the binary file located at `./bazel-bin/minimal-tflite/minimal/minimal`:
 
 ```sh
-ln -s ./bazel-bin/minimal-tflite/minimal/
-./minimal yolov5n_float32.tflite
+./minimal ./model/yolov5n_float32.tflite
+```
 
-### minimal <tflite model>
+or just 
+```sh
+./run
 ```
 
 ## Build With CMAKE

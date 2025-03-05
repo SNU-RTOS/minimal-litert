@@ -1,8 +1,8 @@
 # Manually added / excluded
 
-!.env
 external
-
+minimal
+!minimal-tflite/minimal-tflite/minimal
 
 # ================
 # Byte-compiled / optimized / DLL files
@@ -127,7 +127,6 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
 .venv
 env/
 venv/
