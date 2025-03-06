@@ -2,6 +2,7 @@
 
 source .env
 
+TENSORFLOW_COMMIT_HASH=117a62ac439ed87eb26f67208be60e01c21960de
 ########## Setup env ##########
 BINARY_NAME=minimal
 BINARY_PATH=${ROOT_PATH}/bazel-bin/minimal-tflite/minimal/${BINARY_NAME}
@@ -21,7 +22,9 @@ cd ${EXTERNAL_PATH}
 echo "[INFO] Installing tensorflow"
 if [ ! -d "./tensorflow" ]; then
     git clone https://github.com/tensorflow/tensorflow.git
-    
+    cd tensorflow
+    git switch --detach ${TENSORFLOW_COMMIT_HASH}
+    patch -p1 <${ROOT_PATH}/bazel/tensorflow_system_python.diff
 else
     echo "[INFO] tensorflow is already installed, skipping ..."
 fi
