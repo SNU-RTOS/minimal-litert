@@ -26,6 +26,9 @@ else
     echo "[INFO] tensorflow is already installed, skipping ..."
 fi
 
+########## Update Path of tensorflow ##########
 WORKSPACE_FILE="${ROOT_PATH}/WORKSPACE"
-    sed -i "s|path = \".*\"|path = \"${TENSORFLOW_PATH}\"|" "$WORKSPACE_FILE"
-    echo "[INFO] Updated tensorflow local_repository path in ${TENSORFLOW_PATH}/WORKSPACE to: ${TENSORFLOW_PATH}"
+echo "[INFO] Updating tensorflow local_repository path in ${TENSORFLOW_PATH}/WORKSPACE"
+echo "[INFO] BEFOR: $(grep -oE "path = \".*\"" $WORKSPACE_FILE)"
+sed -i "s|path = \".*\"|path = \"${TENSORFLOW_PATH}\"|" "$WORKSPACE_FILE"
+echo "[INFO] AFTER: $(grep -oE "path = \".*\"" $WORKSPACE_FILE)"
