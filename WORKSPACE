@@ -45,10 +45,12 @@ http_archive(
 
 local_repository(
     name = "org_tensorflow",
-    path = "/root/workspace/DNNPipe/tensorflow",  # 실제 로컬 TensorFlow 소스 경로로 수정하세요.
+    path = "[YOUR-TENSORFLOW-PATH]", # Automatically modified to path to current directory when running setup.sh
 )
 
 load("@org_tensorflow//tensorflow:workspace3.bzl", "tf_workspace3")
 tf_workspace3()
 load("@org_tensorflow//tensorflow:workspace2.bzl", "tf_workspace2")
 tf_workspace2()
+
+수정하다
