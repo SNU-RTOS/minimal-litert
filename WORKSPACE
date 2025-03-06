@@ -44,13 +44,12 @@ http_archive(
 )
 
 local_repository(
-    name = "org_tensorflow",
+    name = "tensorflow",
     path = "[YOUR-TENSORFLOW-PATH]", # Automatically modified to path to current directory when running setup.sh
 )
 
-load("@org_tensorflow//tensorflow:workspace3.bzl", "tf_workspace3")
+load("@tensorflow//tensorflow:workspace3.bzl", "tf_workspace3")
 tf_workspace3()
-load("@org_tensorflow//tensorflow:workspace2.bzl", "tf_workspace2")
+load("@tensorflow//tensorflow:workspace2.bzl", "tf_workspace2")
 tf_workspace2()
 
-수정하다
