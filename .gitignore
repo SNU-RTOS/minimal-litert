@@ -1,5 +1,5 @@
 # Manually added / excluded
-
+.vscode
 external
 minimal
 !minimal-tflite/minimal-tflite/minimal

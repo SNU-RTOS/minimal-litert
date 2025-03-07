@@ -44,12 +44,12 @@ http_archive(
 )
 
 local_repository(
-    name = "tensorflow",
+    name = "org_tensorflow",
     path = "/home/rtos/workspace/minimal-litert/external/tensorflow", # Automatically modified to path to current directory when running setup.sh
 )
 
-load("@tensorflow//tensorflow:workspace3.bzl", "tf_workspace3")
+load("@org_tensorflow//tensorflow:workspace3.bzl", "tf_workspace3")
 tf_workspace3()
-load("@tensorflow//tensorflow:workspace2.bzl", "tf_workspace2")
+load("@org_tensorflow//tensorflow:workspace2.bzl", "tf_workspace2")
 tf_workspace2()
 
