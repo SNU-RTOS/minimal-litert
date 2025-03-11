@@ -2,6 +2,7 @@
 .vscode
 external
 minimal
+WORKSPACE
 !minimal-tflite/minimal-tflite/minimal
 
 # ================
