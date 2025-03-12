@@ -1,9 +1,8 @@
 # Manually added / excluded
 .vscode
 external
-minimal
+
 WORKSPACE
-!minimal-tflite/minimal-tflite/minimal
 
 # ================
 # Byte-compiled / optimized / DLL files
@@ -169,3 +168,4 @@ cython_debug/
 # Bazel
 /bazel-*
 MODULE.bazel.lock
+minimal

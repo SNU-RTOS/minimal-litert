@@ -1,6 +1,19 @@
 workspace(name = "minimal-tflite")
 
+
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+local_repository(
+    name = "org_tensorflow",
+    path = "/root/ghpark/minimal-litert/external/tensorflow", # Automatically modified to path to current directory when running setup.sh
+)
+
+new_local_repository(
+    name = "tensorflowlite_gpu",
+    path = "/root/ghpark/minimal-litert/external/tensorflow/bazel-bin/tensorflow/lite/delegates/gpu",  
+    build_file = "@//bazel:tensorflowlite_gpu.BUILD",
+)
+
 
 http_archive(
     name = "bazel_skylib",
@@ -14,6 +27,21 @@ load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
 bazel_skylib_workspace()
 load("@bazel_skylib//lib:versions.bzl", "versions")
 versions.check(minimum_bazel_version = "3.7.2")
+
+#### Python
+
+# http_archive(
+#     name = "rules_python",
+#     sha256 = "2ef40fdcd797e07f0b6abda446d1d84e2d9570d234fddf8fcd2aa262da852d1c",
+#     strip_prefix = "rules_python-1.2.0",
+#     url = "https://github.com/bazelbuild/rules_python/releases/download/1.2.0/rules_python-1.2.0.tar.gz",
+# )
+
+# load("@rules_python//python:repositories.bzl", "py_repositories")
+
+# py_repositories()
+
+####
 
 # ABSL on 2023-10-18
 http_archive(
@@ -43,13 +71,67 @@ http_archive(
     ],
 )
 
-local_repository(
-    name = "org_tensorflow",
-    path = "/home/rtos/workspace/minimal-litert/external/tensorflow", # Automatically modified to path to current directory when running setup.sh
-)
 
 load("@org_tensorflow//tensorflow:workspace3.bzl", "tf_workspace3")
 tf_workspace3()
+
+
+#### APPLE 
+
+# http_archive(
+#     name = "build_bazel_apple_support",
+#     sha256 = "dca96682317cc7112e6fae87332e13a8fefbc232354c2939b11b3e06c09e5949",
+#     url = "https://github.com/bazelbuild/apple_support/releases/download/1.19.0/apple_support.1.19.0.tar.gz",
+# )
+
+# http_archive(
+#     name = "build_bazel_rules_swift",
+#     sha256 = "15f7096b41154393da81594909e2db3f5828a5e671b8d873c35788d82f9c97d2",
+#     url = "https://github.com/bazelbuild/rules_swift/releases/download/2.7.0/rules_swift.2.7.0.tar.gz",
+# )
+
+
+# http_archive(
+#     name = "build_bazel_rules_apple",
+#     sha256 = "7d10bbf8ec7bf5d6542122babbb3464e643e981d01967b4d600af392b868d817",
+#     url = "https://github.com/bazelbuild/rules_apple/releases/download/3.19.1/rules_apple.3.19.1.tar.gz",
+# )
+
+# load(
+#     "@build_bazel_rules_apple//apple:repositories.bzl",
+#     "apple_rules_dependencies",
+# )
+
+# apple_rules_dependencies()
+
+# load(
+#     "@build_bazel_rules_swift//swift:repositories.bzl",
+#     "swift_rules_dependencies",
+# )
+
+# swift_rules_dependencies()
+
+# load(
+#     "@build_bazel_rules_swift//swift:extras.bzl",
+#     "swift_rules_extra_dependencies",
+# )
+
+# swift_rules_extra_dependencies()
+
+# load(
+#     "@build_bazel_apple_support//lib:repositories.bzl",
+#     "apple_support_dependencies",
+# )
+
+# apple_support_dependencies()
+
+
+####
 load("@org_tensorflow//tensorflow:workspace2.bzl", "tf_workspace2")
 tf_workspace2()
+# load("@org_tensorflow//tensorflow:workspace1.bzl", "tf_workspace1")
+# tf_workspace1()
+# load("@org_tensorflow//tensorflow:workspace0.bzl", "tf_workspace0")
+# tf_workspace0()
+
 

@@ -25,3 +25,24 @@ cc_binary(
         "@org_tensorflow//tensorflow/lite/kernels:builtin_ops",
     ],
 )
+
+
+cc_binary(
+    name = "minimal-with-xnn",
+    srcs = [
+        "minimal-with-xnn.cc",
+    ],
+    linkopts = tflite_linkopts() + select({
+        "@org_tensorflow//tensorflow:android": [
+            "-pie",  # Android 5.0 and later supports only PIE
+            "-lm",  # some builtin ops, e.g., tanh, need -lm
+        ],
+        "//conditions:default": [],
+    }),
+    deps = [
+        "@org_tensorflow//tensorflow/lite:framework",
+        "@org_tensorflow//tensorflow/lite/core:cc_api_stable",
+        "@org_tensorflow//tensorflow/lite/kernels:builtin_ops",
+        "@org_tensorflow//tensorflow/lite/delegates/xnnpack:xnnpack_delegate",
+    ],
+)
