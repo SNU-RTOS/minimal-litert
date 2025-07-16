@@ -1,0 +1,229 @@
+[INFO] Run main_profile
+Running main profile with model ./models/mobilenetv3_small.tflite and image ./images/dog.jpg (threads: 4, delegate: gpu)
+====== main_cpu with profiling ====
+[INFO] Model type detected: FP32
+[INFO] Profiling enabled: YES
+[INFO] Number of threads: 4
+[INFO] Delegate type: gpu
+[INFO] Profiler created (will start after warmup)
+INFO: Created TensorFlow Lite delegate for GPU.
+INFO: Loaded OpenCL library with dlopen.
+INFO: Initialized OpenCL-based API.
+INFO: Created 1 GPU delegate kernels.
+[INFO] GPU delegate applied successfully
+
+[INFO] Model Summary 
+📥 Input tensor count  : 1
+📤 Output tensor count : 1
+📦 Total tensor count  : 344
+🔧 Node (op) count     : 133
+🧩 Delegate applied    : Yes ✅
+
+[INFO] Input shape  : [1, 224, 224, 3]
+[DEBUG] Input tensor type: 1
+[INFO] Processing FP32 input path
+[INFO] Running 5 warmup iterations...
+[INFO] Warmup completed
+[INFO] Profiler started after warmup
+[INFO] Running 1 profiling iterations...
+[INFO] Ran 1 profiling iterations
+[INFO] Profiler stopped
+[INFO] Output shape : [1, 1000]
+[DEBUG] Output tensor type: 1
+[INFO] Processing FP32 output path
+
+[INFO] Top 5 predictions:
+- Class 260 (chow): 0.165795
+- Class 154 (Pekinese): 0.146997
+- Class 249 (malamute): 0.0815903
+- Class 257 (Great_Pyrenees): 0.0594749
+- Class 207 (golden_retriever): 0.0579766
+
+[INFO] Elapsed time summary
+- Load Model took 0.051 ms (51 us)
+- Build Interpreter took 1.05 ms (1050 us)
+- Apply Delegate took 122.155 ms (122155 us)
+- Allocate Tensor took 0 ms (0 us)
+- Load Input Image took 7.941 ms (7941 us)
+- Preprocessing took 0.672 ms (672 us)
+- Inference took 1.727 ms (1727 us)
+- Postprocessing took 0.033 ms (33 us)
+- E2E Total(Pre+Inf+Post) took 13.709 ms (13709 us)
+
+[INFO] ===== Detailed Profiling Results =====
+[INFO] Total profile events captured: 74
+============================== Run Order ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	        convolution_2d 1 -> hard_swish 2	    0.009	    0.009	  1.301%	  1.301%	     0.000	        1	Delegate/convolution_2d 1 -> hard_swish 2:0
+	       depthwise_convolution 4 -> relu 5	    0.011	    0.011	  1.590%	  2.890%	     0.000	        1	Delegate/depthwise_convolution 4 -> relu 5:1
+	                            reduce_sum 6	    0.009	    0.009	  1.301%	  4.191%	     0.000	        1	Delegate/reduce_sum 6:2
+	           fully_connected 10 -> relu 11	    0.008	    0.008	  1.156%	  5.347%	     0.000	        1	Delegate/fully_connected 10 -> relu 11:3
+	 fully_connected 12 -> relu 13 -> mul 14	    0.009	    0.009	  1.301%	  6.647%	     0.000	        1	Delegate/fully_connected 12 -> relu 13 -> mul 14:4
+	                                  mul 15	    0.012	    0.012	  1.734%	  8.382%	     0.000	        1	Delegate/mul 15:5
+	                       convolution_2d 16	    0.006	    0.006	  0.867%	  9.249%	     0.000	        1	Delegate/convolution_2d 16:6
+	            convolution_2d 17 -> relu 18	    0.006	    0.006	  0.867%	 10.116%	     0.000	        1	Delegate/convolution_2d 17 -> relu 18:7
+	     depthwise_convolution 20 -> relu 21	    0.013	    0.013	  1.879%	 11.994%	     0.000	        1	Delegate/depthwise_convolution 20 -> relu 21:8
+	                       convolution_2d 22	    0.016	    0.016	  2.312%	 14.306%	     0.000	        1	Delegate/convolution_2d 22:9
+	            convolution_2d 23 -> relu 24	    0.011	    0.011	  1.590%	 15.896%	     0.000	        1	Delegate/convolution_2d 23 -> relu 24:10
+	     depthwise_convolution 25 -> relu 26	    0.009	    0.009	  1.301%	 17.197%	     0.000	        1	Delegate/depthwise_convolution 25 -> relu 26:11
+	             convolution_2d 27 -> add 28	    0.006	    0.006	  0.867%	 18.064%	     0.000	        1	Delegate/convolution_2d 27 -> add 28:12
+	      convolution_2d 29 -> hard_swish 30	    0.005	    0.005	  0.723%	 18.786%	     0.000	        1	Delegate/convolution_2d 29 -> hard_swish 30:13
+	depthwise_convolution 32 -> hard_swish 33	    0.007	    0.007	  1.012%	 19.798%	     0.000	        1	Delegate/depthwise_convolution 32 -> hard_swish 33:14
+	                           reduce_sum 34	    0.015	    0.015	  2.168%	 21.965%	     0.000	        1	Delegate/reduce_sum 34:15
+	           fully_connected 38 -> relu 39	    0.005	    0.005	  0.723%	 22.688%	     0.000	        1	Delegate/fully_connected 38 -> relu 39:16
+	 fully_connected 40 -> relu 41 -> mul 42	    0.005	    0.005	  0.723%	 23.410%	     0.000	        1	Delegate/fully_connected 40 -> relu 41 -> mul 42:17
+	                                  mul 43	    0.008	    0.008	  1.156%	 24.566%	     0.000	        1	Delegate/mul 43:18
+	                       convolution_2d 44	    0.006	    0.006	  0.867%	 25.434%	     0.000	        1	Delegate/convolution_2d 44:19
+	      convolution_2d 45 -> hard_swish 46	    0.006	    0.006	  0.867%	 26.301%	     0.000	        1	Delegate/convolution_2d 45 -> hard_swish 46:20
+	depthwise_convolution 47 -> hard_swish 48	    0.014	    0.014	  2.023%	 28.324%	     0.000	        1	Delegate/depthwise_convolution 47 -> hard_swish 48:21
+	                           reduce_sum 49	    0.018	    0.018	  2.601%	 30.925%	     0.000	        1	Delegate/reduce_sum 49:22
+	           fully_connected 53 -> relu 54	    0.007	    0.007	  1.012%	 31.936%	     0.000	        1	Delegate/fully_connected 53 -> relu 54:23
+	 fully_connected 55 -> relu 56 -> mul 57	    0.008	    0.008	  1.156%	 33.092%	     0.000	        1	Delegate/fully_connected 55 -> relu 56 -> mul 57:24
+	                                  mul 58	    0.006	    0.006	  0.867%	 33.960%	     0.000	        1	Delegate/mul 58:25
+	             convolution_2d 59 -> add 60	    0.011	    0.011	  1.590%	 35.549%	     0.000	        1	Delegate/convolution_2d 59 -> add 60:26
+	      convolution_2d 61 -> hard_swish 62	    0.007	    0.007	  1.012%	 36.561%	     0.000	        1	Delegate/convolution_2d 61 -> hard_swish 62:27
+	depthwise_convolution 63 -> hard_swish 64	    0.011	    0.011	  1.590%	 38.150%	     0.000	        1	Delegate/depthwise_convolution 63 -> hard_swish 64:28
+	                           reduce_sum 65	    0.016	    0.016	  2.312%	 40.462%	     0.000	        1	Delegate/reduce_sum 65:29
+	           fully_connected 69 -> relu 70	    0.009	    0.009	  1.301%	 41.763%	     0.000	        1	Delegate/fully_connected 69 -> relu 70:30
+	 fully_connected 71 -> relu 72 -> mul 73	    0.009	    0.009	  1.301%	 43.064%	     0.000	        1	Delegate/fully_connected 71 -> relu 72 -> mul 73:31
+	                                  mul 74	    0.005	    0.005	  0.723%	 43.786%	     0.000	        1	Delegate/mul 74:32
+	             convolution_2d 75 -> add 76	    0.012	    0.012	  1.734%	 45.520%	     0.000	        1	Delegate/convolution_2d 75 -> add 76:33
+	      convolution_2d 77 -> hard_swish 78	    0.007	    0.007	  1.012%	 46.532%	     0.000	        1	Delegate/convolution_2d 77 -> hard_swish 78:34
+	depthwise_convolution 79 -> hard_swish 80	    0.011	    0.011	  1.590%	 48.121%	     0.000	        1	Delegate/depthwise_convolution 79 -> hard_swish 80:35
+	                           reduce_sum 81	    0.016	    0.016	  2.312%	 50.434%	     0.000	        1	Delegate/reduce_sum 81:36
+	           fully_connected 85 -> relu 86	    0.007	    0.007	  1.012%	 51.445%	     0.000	        1	Delegate/fully_connected 85 -> relu 86:37
+	 fully_connected 87 -> relu 88 -> mul 89	    0.008	    0.008	  1.156%	 52.601%	     0.000	        1	Delegate/fully_connected 87 -> relu 88 -> mul 89:38
+	                                  mul 90	    0.006	    0.006	  0.867%	 53.468%	     0.000	        1	Delegate/mul 90:39
+	                       convolution_2d 91	    0.008	    0.008	  1.156%	 54.624%	     0.000	        1	Delegate/convolution_2d 91:40
+	      convolution_2d 92 -> hard_swish 93	    0.006	    0.006	  0.867%	 55.491%	     0.000	        1	Delegate/convolution_2d 92 -> hard_swish 93:41
+	depthwise_convolution 94 -> hard_swish 95	    0.016	    0.016	  2.312%	 57.803%	     0.000	        1	Delegate/depthwise_convolution 94 -> hard_swish 95:42
+	                           reduce_sum 96	    0.016	    0.016	  2.312%	 60.116%	     0.000	        1	Delegate/reduce_sum 96:43
+	         fully_connected 100 -> relu 101	    0.005	    0.005	  0.723%	 60.838%	     0.000	        1	Delegate/fully_connected 100 -> relu 101:44
+	fully_connected 102 -> relu 103 -> mul 104	    0.006	    0.006	  0.867%	 61.705%	     0.000	        1	Delegate/fully_connected 102 -> relu 103 -> mul 104:45
+	                                 mul 105	    0.006	    0.006	  0.867%	 62.572%	     0.000	        1	Delegate/mul 105:46
+	           convolution_2d 106 -> add 107	    0.008	    0.008	  1.156%	 63.728%	     0.000	        1	Delegate/convolution_2d 106 -> add 107:47
+	    convolution_2d 108 -> hard_swish 109	    0.006	    0.006	  0.867%	 64.595%	     0.000	        1	Delegate/convolution_2d 108 -> hard_swish 109:48
+	depthwise_convolution 111 -> hard_swish 112	    0.018	    0.018	  2.601%	 67.197%	     0.000	        1	Delegate/depthwise_convolution 111 -> hard_swish 112:49
+	                          reduce_sum 113	    0.008	    0.008	  1.156%	 68.353%	     0.000	        1	Delegate/reduce_sum 113:50
+	         fully_connected 117 -> relu 118	    0.012	    0.012	  1.734%	 70.087%	     0.000	        1	Delegate/fully_connected 117 -> relu 118:51
+	fully_connected 119 -> relu 120 -> mul 121	    0.009	    0.009	  1.301%	 71.387%	     0.000	        1	Delegate/fully_connected 119 -> relu 120 -> mul 121:52
+	                                 mul 122	    0.006	    0.006	  0.867%	 72.254%	     0.000	        1	Delegate/mul 122:53
+	                      convolution_2d 123	    0.010	    0.010	  1.445%	 73.699%	     0.000	        1	Delegate/convolution_2d 123:54
+	    convolution_2d 124 -> hard_swish 125	    0.007	    0.007	  1.012%	 74.711%	     0.000	        1	Delegate/convolution_2d 124 -> hard_swish 125:55
+	depthwise_convolution 126 -> hard_swish 127	    0.010	    0.010	  1.445%	 76.156%	     0.000	        1	Delegate/depthwise_convolution 126 -> hard_swish 127:56
+	                          reduce_sum 128	    0.009	    0.009	  1.301%	 77.457%	     0.000	        1	Delegate/reduce_sum 128:57
+	         fully_connected 132 -> relu 133	    0.016	    0.016	  2.312%	 79.769%	     0.000	        1	Delegate/fully_connected 132 -> relu 133:58
+	fully_connected 134 -> relu 135 -> mul 136	    0.007	    0.007	  1.012%	 80.780%	     0.000	        1	Delegate/fully_connected 134 -> relu 135 -> mul 136:59
+	                                 mul 137	    0.006	    0.006	  0.867%	 81.647%	     0.000	        1	Delegate/mul 137:60
+	           convolution_2d 138 -> add 139	    0.015	    0.015	  2.168%	 83.815%	     0.000	        1	Delegate/convolution_2d 138 -> add 139:61
+	    convolution_2d 140 -> hard_swish 141	    0.006	    0.006	  0.867%	 84.682%	     0.000	        1	Delegate/convolution_2d 140 -> hard_swish 141:62
+	depthwise_convolution 142 -> hard_swish 143	    0.009	    0.009	  1.301%	 85.983%	     0.000	        1	Delegate/depthwise_convolution 142 -> hard_swish 143:63
+	                          reduce_sum 144	    0.007	    0.007	  1.012%	 86.994%	     0.000	        1	Delegate/reduce_sum 144:64
+	         fully_connected 148 -> relu 149	    0.015	    0.015	  2.168%	 89.162%	     0.000	        1	Delegate/fully_connected 148 -> relu 149:65
+	fully_connected 150 -> relu 151 -> mul 152	    0.007	    0.007	  1.012%	 90.173%	     0.000	        1	Delegate/fully_connected 150 -> relu 151 -> mul 152:66
+	                                 mul 153	    0.005	    0.005	  0.723%	 90.896%	     0.000	        1	Delegate/mul 153:67
+	           convolution_2d 154 -> add 155	    0.017	    0.017	  2.457%	 93.353%	     0.000	        1	Delegate/convolution_2d 154 -> add 155:68
+	    convolution_2d 156 -> hard_swish 157	    0.010	    0.010	  1.445%	 94.798%	     0.000	        1	Delegate/convolution_2d 156 -> hard_swish 157:69
+	                          reduce_sum 158	    0.008	    0.008	  1.156%	 95.954%	     0.000	        1	Delegate/reduce_sum 158:70
+	   fully_connected 162 -> hard_swish 163	    0.011	    0.011	  1.590%	 97.543%	     0.000	        1	Delegate/fully_connected 162 -> hard_swish 163:71
+	                     fully_connected 164	    0.017	    0.017	  2.457%	100.000%	     0.000	        1	Delegate/fully_connected 164:72
+
+============================== Top by Computation Time ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	                           reduce_sum 49	    0.018	    0.018	  2.601%	  2.601%	     0.000	        1	Delegate/reduce_sum 49:22
+	depthwise_convolution 111 -> hard_swish 112	    0.018	    0.018	  2.601%	  5.202%	     0.000	        1	Delegate/depthwise_convolution 111 -> hard_swish 112:49
+	                     fully_connected 164	    0.017	    0.017	  2.457%	  7.659%	     0.000	        1	Delegate/fully_connected 164:72
+	           convolution_2d 154 -> add 155	    0.017	    0.017	  2.457%	 10.116%	     0.000	        1	Delegate/convolution_2d 154 -> add 155:68
+	                       convolution_2d 22	    0.016	    0.016	  2.312%	 12.428%	     0.000	        1	Delegate/convolution_2d 22:9
+	         fully_connected 132 -> relu 133	    0.016	    0.016	  2.312%	 14.740%	     0.000	        1	Delegate/fully_connected 132 -> relu 133:58
+	                           reduce_sum 96	    0.016	    0.016	  2.312%	 17.052%	     0.000	        1	Delegate/reduce_sum 96:43
+	depthwise_convolution 94 -> hard_swish 95	    0.016	    0.016	  2.312%	 19.364%	     0.000	        1	Delegate/depthwise_convolution 94 -> hard_swish 95:42
+	                           reduce_sum 81	    0.016	    0.016	  2.312%	 21.676%	     0.000	        1	Delegate/reduce_sum 81:36
+	                           reduce_sum 65	    0.016	    0.016	  2.312%	 23.988%	     0.000	        1	Delegate/reduce_sum 65:29
+
+Number of nodes executed: 73
+============================== Summary by node type ==============================
+	                             [Node type]	  [count]	  [avg ms]	    [avg %]	    [cdf %]	  [mem KB]	[times called]
+	                           reduce_sum 49	        1	     0.018	     2.601%	     2.601%	     0.000	        1
+	depthwise_convolution 111 -> hard_swish 112	        1	     0.018	     2.601%	     5.202%	     0.000	        1
+	                     fully_connected 164	        1	     0.017	     2.457%	     7.659%	     0.000	        1
+	           convolution_2d 154 -> add 155	        1	     0.017	     2.457%	    10.116%	     0.000	        1
+	                           reduce_sum 96	        1	     0.016	     2.312%	    12.428%	     0.000	        1
+	                           reduce_sum 81	        1	     0.016	     2.312%	    14.740%	     0.000	        1
+	                           reduce_sum 65	        1	     0.016	     2.312%	    17.052%	     0.000	        1
+	         fully_connected 132 -> relu 133	        1	     0.016	     2.312%	    19.364%	     0.000	        1
+	depthwise_convolution 94 -> hard_swish 95	        1	     0.016	     2.312%	    21.676%	     0.000	        1
+	                       convolution_2d 22	        1	     0.016	     2.312%	    23.988%	     0.000	        1
+	                           reduce_sum 34	        1	     0.015	     2.168%	    26.156%	     0.000	        1
+	         fully_connected 148 -> relu 149	        1	     0.015	     2.168%	    28.324%	     0.000	        1
+	           convolution_2d 138 -> add 139	        1	     0.015	     2.168%	    30.491%	     0.000	        1
+	depthwise_convolution 47 -> hard_swish 48	        1	     0.014	     2.023%	    32.514%	     0.000	        1
+	     depthwise_convolution 20 -> relu 21	        1	     0.013	     1.879%	    34.393%	     0.000	        1
+	                                  mul 15	        1	     0.012	     1.734%	    36.127%	     0.000	        1
+	         fully_connected 117 -> relu 118	        1	     0.012	     1.734%	    37.861%	     0.000	        1
+	             convolution_2d 75 -> add 76	        1	     0.012	     1.734%	    39.595%	     0.000	        1
+	   fully_connected 162 -> hard_swish 163	        1	     0.011	     1.590%	    41.185%	     0.000	        1
+	depthwise_convolution 79 -> hard_swish 80	        1	     0.011	     1.590%	    42.775%	     0.000	        1
+	depthwise_convolution 63 -> hard_swish 64	        1	     0.011	     1.590%	    44.364%	     0.000	        1
+	       depthwise_convolution 4 -> relu 5	        1	     0.011	     1.590%	    45.954%	     0.000	        1
+	             convolution_2d 59 -> add 60	        1	     0.011	     1.590%	    47.543%	     0.000	        1
+	            convolution_2d 23 -> relu 24	        1	     0.011	     1.590%	    49.133%	     0.000	        1
+	depthwise_convolution 126 -> hard_swish 127	        1	     0.010	     1.445%	    50.578%	     0.000	        1
+	    convolution_2d 156 -> hard_swish 157	        1	     0.010	     1.445%	    52.023%	     0.000	        1
+	                      convolution_2d 123	        1	     0.010	     1.445%	    53.468%	     0.000	        1
+	                            reduce_sum 6	        1	     0.009	     1.301%	    54.769%	     0.000	        1
+	                          reduce_sum 128	        1	     0.009	     1.301%	    56.069%	     0.000	        1
+	 fully_connected 71 -> relu 72 -> mul 73	        1	     0.009	     1.301%	    57.370%	     0.000	        1
+	           fully_connected 69 -> relu 70	        1	     0.009	     1.301%	    58.671%	     0.000	        1
+	 fully_connected 12 -> relu 13 -> mul 14	        1	     0.009	     1.301%	    59.971%	     0.000	        1
+	fully_connected 119 -> relu 120 -> mul 121	        1	     0.009	     1.301%	    61.272%	     0.000	        1
+	     depthwise_convolution 25 -> relu 26	        1	     0.009	     1.301%	    62.572%	     0.000	        1
+	depthwise_convolution 142 -> hard_swish 143	        1	     0.009	     1.301%	    63.873%	     0.000	        1
+	        convolution_2d 1 -> hard_swish 2	        1	     0.009	     1.301%	    65.173%	     0.000	        1
+	                          reduce_sum 158	        1	     0.008	     1.156%	    66.329%	     0.000	        1
+	                          reduce_sum 113	        1	     0.008	     1.156%	    67.486%	     0.000	        1
+	                                  mul 43	        1	     0.008	     1.156%	    68.642%	     0.000	        1
+	 fully_connected 87 -> relu 88 -> mul 89	        1	     0.008	     1.156%	    69.798%	     0.000	        1
+	 fully_connected 55 -> relu 56 -> mul 57	        1	     0.008	     1.156%	    70.954%	     0.000	        1
+	           fully_connected 10 -> relu 11	        1	     0.008	     1.156%	    72.110%	     0.000	        1
+	                       convolution_2d 91	        1	     0.008	     1.156%	    73.266%	     0.000	        1
+	           convolution_2d 106 -> add 107	        1	     0.008	     1.156%	    74.422%	     0.000	        1
+	                          reduce_sum 144	        1	     0.007	     1.012%	    75.434%	     0.000	        1
+	           fully_connected 85 -> relu 86	        1	     0.007	     1.012%	    76.445%	     0.000	        1
+	           fully_connected 53 -> relu 54	        1	     0.007	     1.012%	    77.457%	     0.000	        1
+	fully_connected 150 -> relu 151 -> mul 152	        1	     0.007	     1.012%	    78.468%	     0.000	        1
+	fully_connected 134 -> relu 135 -> mul 136	        1	     0.007	     1.012%	    79.480%	     0.000	        1
+	depthwise_convolution 32 -> hard_swish 33	        1	     0.007	     1.012%	    80.491%	     0.000	        1
+	      convolution_2d 77 -> hard_swish 78	        1	     0.007	     1.012%	    81.503%	     0.000	        1
+	      convolution_2d 61 -> hard_swish 62	        1	     0.007	     1.012%	    82.514%	     0.000	        1
+	    convolution_2d 124 -> hard_swish 125	        1	     0.007	     1.012%	    83.526%	     0.000	        1
+	                                  mul 90	        1	     0.006	     0.867%	    84.393%	     0.000	        1
+	                                  mul 58	        1	     0.006	     0.867%	    85.260%	     0.000	        1
+	                                 mul 137	        1	     0.006	     0.867%	    86.127%	     0.000	        1
+	                                 mul 122	        1	     0.006	     0.867%	    86.994%	     0.000	        1
+	                                 mul 105	        1	     0.006	     0.867%	    87.861%	     0.000	        1
+	fully_connected 102 -> relu 103 -> mul 104	        1	     0.006	     0.867%	    88.728%	     0.000	        1
+	      convolution_2d 92 -> hard_swish 93	        1	     0.006	     0.867%	    89.595%	     0.000	        1
+	      convolution_2d 45 -> hard_swish 46	        1	     0.006	     0.867%	    90.462%	     0.000	        1
+	                       convolution_2d 44	        1	     0.006	     0.867%	    91.329%	     0.000	        1
+	             convolution_2d 27 -> add 28	        1	     0.006	     0.867%	    92.196%	     0.000	        1
+	            convolution_2d 17 -> relu 18	        1	     0.006	     0.867%	    93.064%	     0.000	        1
+	                       convolution_2d 16	        1	     0.006	     0.867%	    93.931%	     0.000	        1
+	    convolution_2d 140 -> hard_swish 141	        1	     0.006	     0.867%	    94.798%	     0.000	        1
+	    convolution_2d 108 -> hard_swish 109	        1	     0.006	     0.867%	    95.665%	     0.000	        1
+	                                  mul 74	        1	     0.005	     0.723%	    96.387%	     0.000	        1
+	                                 mul 153	        1	     0.005	     0.723%	    97.110%	     0.000	        1
+	 fully_connected 40 -> relu 41 -> mul 42	        1	     0.005	     0.723%	    97.832%	     0.000	        1
+	           fully_connected 38 -> relu 39	        1	     0.005	     0.723%	    98.555%	     0.000	        1
+	         fully_connected 100 -> relu 101	        1	     0.005	     0.723%	    99.277%	     0.000	        1
+	      convolution_2d 29 -> hard_swish 30	        1	     0.005	     0.723%	   100.000%	     0.000	        1
+
+Timings (microseconds): count=1 curr=692
+Memory (bytes): count=0
+73 nodes observed
+
+
+========================
+[INFO] Run main_profile finished
+Results saved to ./log/output_main_profile_mobilenetv3_small_gpu_threads4.log
+

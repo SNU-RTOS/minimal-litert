@@ -55,13 +55,16 @@ cc_binary(
 
 # Main CPU inference with profiling binary
 cc_binary(
-    name = "main_cpu_profile",
-    srcs = ["main_cpu_profile.cpp"],
+    name = "main_profile",
+    srcs = ["main_profile.cpp"],
     copts = [
         "-I/usr/include/opencv4",
         "-I/usr/include/jsoncpp",
     ],
     linkopts = tflite_linkopts() + [
+        "-Wl,-rpath,$$ORIGIN/external/litert/bazel-bin/tflite/delegates/gpu",
+        "-lEGL",  # EGL 
+        "-lGLESv2", # OpenGL ES 2.0 
         "-lm",  # math library
         "-ljsoncpp",
         "-lopencv_core",
@@ -75,6 +78,7 @@ cc_binary(
         "@litert//tflite/core:cc_api_stable",
         "@litert//tflite/kernels:builtin_ops",
         "@litert//tflite/delegates/xnnpack:xnnpack_delegate",
+        "@litert//tflite/delegates/gpu:delegate",
         "@litert//tflite/profiling:profile_summarizer",
         "@litert//tflite/profiling:profiler",
         "@litert//tflite/tools/benchmark:benchmark_model_lib",

@@ -99,8 +99,9 @@ void util::print_all_timers()
     {
         if (record.end != util::TimePoint{})
         {
-            auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(record.end - record.start).count();
-            std::cout << "- " << label << " took " << ms << " ms" << std::endl;
+            auto us = std::chrono::duration_cast<std::chrono::microseconds>(record.end - record.start).count();
+            auto ms = us / 1000.0;
+            std::cout << "- " << label << " took " << ms << " ms (" << us << " us)" << std::endl;
         }
     }
 }
