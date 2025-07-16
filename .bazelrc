@@ -1,40 +1,137 @@
-# Tensorflow needs remote repo
-common --experimental_repo_remote_exec
+# Minimal LiteRT Bazel configuration file.
+# This file is based on LiteRT official repo with Linux only and aarch64/x64 support.
+#
+# ----CONFIG OPTIONS----
+# Compiler options:
+#     avx_linux:      Build with avx instruction set on linux.
+#     short_logs:     Only log errors during build, skip warnings.
+#     verbose_logs:   Show all compiler warnings during build.
+#     dbg:            Build with debug info
+#
+# Linux ARM64 options:
+#     linux_arm64:    Build for ARM64 architecture
+#
+
+# Default build options. These are applied first and unconditionally.
+build --repo_env=USE_PYWRAP_RULES=True
+build --copt=-DGRPC_BAZEL_BUILD
+build --host_copt=-DGRPC_BAZEL_BUILD
+build --action_env=GRPC_BAZEL_RUNTIME=1
+build --repo_env=PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=upb
+build --action_env=PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=upb
+build --repo_env=RULES_PYTHON_ENABLE_PYSTAR=0
+
+# For projects which use TensorFlow as part of a Bazel build process
+build --define framework_shared_object=true
+build --define tsl_protobuf_header_only=true
+build --define=allow_oversize_protos=true
 
 # Basic build settings
 build --jobs 128
 build --enable_platform_specific_config
+build --spawn_strategy=standalone
+build -c opt
 
+# Make Bazel print out all options from rc files.
+build --announce_rc
+
+# Tensorflow needs remote repo
+common --experimental_repo_remote_exec
+
+# Enable XLA support by default.
+build --define=with_xla_support=true
+
+# TF now has `cc_shared_library` targets, so it needs the experimental flag
+build --experimental_cc_shared_library
+
+# cc_shared_library ensures no library is linked statically more than once.
+build --experimental_link_static_libraries_once=false
+
+# XNNPACK settings
 build --define xnnpack_use_latest_ops=true
 build --define=xnn_enable_avx512amx=false
 build --define=xnn_enable_avx512fp16=false
 build --define xnn_enable_kleidiai=false
+build --define=xnn_enable_avxvnniint8=false
 build --nocheck_visibility
 build --enable_bzlmod=false
 
-# Linux
+# Prevent regressions on incompatible changes
+build --incompatible_enforce_config_setting_visibility
+
+# Do not risk cache corruption
+build --experimental_guard_against_concurrent_changes
+
+# Configure short or long logs
+build:short_logs --output_filter=DONT_MATCH_ANYTHING
+build:verbose_logs --output_filter=
+
+# Linux-specific configurations
 build:linux --cxxopt=-std=c++17
 build:linux --host_cxxopt=-std=c++17
-build:linux --copt=-w
+build:linux --host_copt=-w
 
-# Android configs.
-build:android --crosstool_top=//external:android/crosstool
-build:android --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
-build:android --copt=-DABSL_FLAGS_STRIP_NAMES=0
-build:android --linkopt=-landroid
-build:android --linkopt=-ldl
-build:android --linkopt=-llog
-build:android --linkopt=-lm
-build:android --linkopt=-Wl,--gc-sections
-# TODO: Remove this flag once we updated to NDK 25
-build:android --define=xnn_enable_arm_i8mm=false
+# Suppress most C++ compiler warnings to reduce log size
+build:linux --copt="-Wno-all"
+build:linux --copt="-Wno-extra"
+build:linux --copt="-Wno-deprecated"
+build:linux --copt="-Wno-deprecated-declarations"
+build:linux --copt="-Wno-ignored-attributes"
+build:linux --copt="-Wno-array-bounds"
 
-build:android_arm --config=android
-build:android_arm --cpu=armeabi-v7a
-build:android_arm --fat_apk_cpu=armeabi-v7a
-build:android_arm --platforms=//build_config:android_arm
+# Add unused-result and switch as errors on Linux
+build:linux --copt="-Wunused-result"
+build:linux --copt="-Werror=unused-result"
+build:linux --copt="-Wswitch"
+build:linux --copt="-Werror=switch"
 
-build:android_arm64 --config=android
-build:android_arm64 --cpu=arm64-v8a
-build:android_arm64 --fat_apk_cpu=arm64-v8a
-build:android_arm64 --platforms=//build_config:android_arm64
+# This was added in clang-16. Can be removed once upb is updated.
+build:linux --copt=-Wno-gnu-offsetof-extensions
+
+# Linux ARM64 specific options (for native ARM64 systems)
+# Note: Cross-compilation requires additional toolchain setup
+build:linux_arm64 --copt="-mtune=generic" 
+build:linux_arm64 --copt="-march=armv8-a" 
+build:linux_arm64 --copt="-O3"
+
+# Linux x86_64 optimizations
+build:linux_x64 --copt="-mtune=generic"
+build:linux_x64 --copt="-march=x86-64"
+build:linux_x64 --copt="-O3"
+
+# Instruction set optimizations for x64
+build:avx_linux --copt=-mavx
+build:avx_linux --host_copt=-mavx
+
+# AVX2 optimizations for modern CPUs
+build:avx2_linux --copt=-mavx2
+build:avx2_linux --host_copt=-mavx2
+build:avx2_linux --copt=-mfma
+
+# Debug config
+build:dbg -c dbg
+# Only include debug info for files under tensorflow/, excluding kernels
+build:dbg --per_file_copt=+.*,-tensorflow.*,-xla.*@-g0
+build:dbg --per_file_copt=+tensorflow/core/kernels.*@-g0
+build:dbg --cxxopt -DTF_LITE_DISABLE_X86_NEON
+build:dbg --copt -DDEBUG_BUILD
+
+# Default paths for TF_SYSTEM_LIBS on Linux
+build:linux --define=PREFIX=/usr
+build:linux --define=LIBDIR=$(PREFIX)/lib
+build:linux --define=INCLUDEDIR=$(PREFIX)/include
+build:linux --define=PROTOBUF_INCLUDE_PATH=$(PREFIX)/include
+
+# Dynamic kernels for Linux
+build:linux --config=dynamic_kernels
+build:dynamic_kernels --define=dynamic_loaded_kernels=true
+build:dynamic_kernels --copt=-DAUTOLOAD_DYNAMIC_KERNELS
+
+# Use short logs by default
+build --config=short_logs
+
+# Load rc file written by ./configure if exists
+try-import %workspace%/.tf_configure.bazelrc
+
+# Load rc file with user-specific options if exists
+try-import %workspace%/.bazelrc.user
