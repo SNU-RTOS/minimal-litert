@@ -25,62 +25,108 @@
 #include "util.hpp"
 
 // Configuration constants
-static const int WARMUP_RUNS = 5;
-static const int PROFILING_RUNS = 1;
+static const int WARMUP_RUNS = 50;    // Number of warmup runs
+static const int PROFILING_RUNS = 10; // Number of profiling runs
+
+// Inference mode enum
+enum class InferenceMode
+{
+    WARMUP,
+    PROFILING_RUN
+};
+
+struct BenchmarkConfig
+{
+    std::string model_path;
+    std::string image_path;
+    std::string label_path;
+    std::string profiling_result_path;
+    bool enable_profiling = false;
+    int num_threads = 4;
+    std::string delegate_type = "xnnpack";
+};
+
+// Vector of formatter/summarizer pairs for profiling output
+struct ProfilerOutput
+{
+    std::shared_ptr<tflite::profiling::ProfileSummaryFormatter> formatter;
+    std::shared_ptr<tflite::profiling::ProfileSummarizer> init_summarizer;
+    std::shared_ptr<tflite::profiling::ProfileSummarizer> run_summarizer;
+    std::string output_type; // "log" or "csv"
+    std::string output_path; // empty for log, file path for csv
+};
 
 // Function declarations
-void apply_xnnpack_delegate(std::unique_ptr<tflite::Interpreter> &interpreter,
-                            TfLiteDelegate *&delegate, bool &delegate_applied, int num_threads);
-void apply_gpu_delegate(std::unique_ptr<tflite::Interpreter> &interpreter,
-                        TfLiteDelegate *&delegate, bool &delegate_applied);
+void apply_delegate(std::unique_ptr<tflite::Interpreter> &interpreter,
+                    TfLiteDelegate *&delegate, bool &delegate_applied,
+                    const std::string &delegate_type, int num_threads);
 void process_input_tensor(std::unique_ptr<tflite::Interpreter> &interpreter,
                           const cv::Mat &preprocessed_image);
 void process_output_tensor(std::unique_ptr<tflite::Interpreter> &interpreter,
                            std::vector<float> &probs);
-void run_warmup(std::unique_ptr<tflite::Interpreter> &interpreter, TfLiteDelegate *delegate);
-void run_inference(std::unique_ptr<tflite::Interpreter> &interpreter, TfLiteDelegate *delegate,
-                   std::unique_ptr<tflite::profiling::BufferedProfiler> &profiler, bool enable_profiling);
-void print_profiling_results(std::unique_ptr<tflite::profiling::BufferedProfiler> &profiler,
-                             std::unique_ptr<tflite::Interpreter> &interpreter, bool enable_profiling);
+void run_model(std::unique_ptr<tflite::Interpreter> &interpreter,
+               TfLiteDelegate *delegate, const std::string &delegate_type,
+               std::unique_ptr<tflite::profiling::BufferedProfiler> &profiler,
+               bool enable_profiling, InferenceMode mode,
+               std::vector<ProfilerOutput> &profiler_outputs);
+void cleanup_delegate(TfLiteDelegate *&delegate, const std::string &delegate_type);
+
+BenchmarkConfig parse_arguments(int argc, char *argv[])
+{
+    BenchmarkConfig config;
+    if (argc < 6 || argc > 7)
+    {
+        std::cerr << "[ERROR] Usage: " << argv[0] << " <model_path> <image_path> <label_json_path> <num_thread> <delegate_type> [csv_file_path]" << std::endl;
+        std::cerr << "[ERROR]   delegate_type: xnnpack or gpu" << std::endl;
+        exit(1);
+    }
+    config.model_path = argv[1];
+    config.image_path = argv[2];
+    config.label_path = argv[3];
+    config.num_threads = (argc >= 5) ? std::atoi(argv[4]) : 4;
+    config.delegate_type = (argc >= 6) ? std::string(argv[5]) : "xnnpack";
+    config.profiling_result_path = (argc >= 6) ? argv[6] : "";
+    config.enable_profiling = !config.profiling_result_path.empty();
+
+    std::cout << "[INFO] Model path: " << config.model_path << std::endl;
+    std::cout << "[INFO] Image path: " << config.image_path << std::endl;
+    std::cout << "[INFO] Label path: " << config.label_path << std::endl;
+    std::cout << "[INFO] Profiling result path: " << config.profiling_result_path << std::endl;
+    std::cout << "[INFO] Profiling enabled: " << (config.enable_profiling ? "YES" : "NO (CSV path not provided)") << std::endl;
+    std::cout << "[INFO] Number of threads: " << config.num_threads << std::endl;
+    std::cout << "[INFO] Delegate type: " << config.delegate_type << std::endl;
+
+    return config;
+}
 
 int main(int argc, char *argv[])
 {
-    std::cout << "====== main_cpu with profiling ====" << std::endl;
+    std::cout << "\n====== main_cpu with profiling ====" << std::endl;
 
+    /* 0. Parse Argument */
     // Parse command line arguments
-    if (argc < 4 || argc > 7)
-    {
-        std::cerr << "Usage: " << argv[0] << " <model_path> <image_path> <label_json_path> [enable_profiling=1] [num_threads=4] [delegate_type=xnnpack]" << std::endl;
-        std::cerr << "  delegate_type: xnnpack or gpu" << std::endl;
-        return 1;
-    }
-
-    const std::string model_path = argv[1];
-    const std::string image_path = argv[2];
-    const std::string label_path = argv[3];
-    bool enable_profiling = (argc >= 5 && std::string(argv[4]) == "1");
-    int num_threads = (argc >= 6) ? std::atoi(argv[5]) : 4;
-    std::string delegate_type = (argc == 7) ? std::string(argv[6]) : "xnnpack";
+    BenchmarkConfig config = parse_arguments(argc, argv);
 
     // Determine model type from filename
-    bool is_int8_model = (model_path.find("int8") != std::string::npos);
-    std::cout << "[INFO] Model type detected: " << (is_int8_model ? "INT8" : "FP32") << std::endl;
-    std::cout << "[INFO] Profiling enabled: " << (enable_profiling ? "YES" : "NO") << std::endl;
-    std::cout << "[INFO] Number of threads: " << num_threads << std::endl;
-    std::cout << "[INFO] Delegate type: " << delegate_type << std::endl;
+    bool is_int8_model = (config.model_path.find("int8") != std::string::npos);
 
-    /* Load model */
+    std::cout << "[INFO] Model type detected: " << (is_int8_model ? "INT8" : "FP32") << std::endl;
+    std::cout << "[INFO] Initializing profiler..." << std::endl;
+
+    //======================================================
+    /* 1. Load model */
     util::timer_start("Load Model");
+    std::cout << "[INFO] Loading model from: " << config.model_path << std::endl;
     std::unique_ptr<tflite::FlatBufferModel> model =
-        tflite::FlatBufferModel::BuildFromFile(model_path.c_str());
+        tflite::FlatBufferModel::BuildFromFile(config.model_path.c_str());
     if (!model)
     {
-        std::cerr << "Failed to load model" << std::endl;
+        std::cerr << "[ERROR] Failed to load model" << std::endl;
         return 1;
     }
     util::timer_stop("Load Model");
 
-    /* Build interpreter */
+    /* 2. Build interpreter */
     util::timer_start("Build Interpreter");
     tflite::ops::builtin::BuiltinOpResolver resolver;
     tflite::InterpreterBuilder builder(*model, resolver);
@@ -88,169 +134,207 @@ int main(int argc, char *argv[])
     builder(&interpreter);
     util::timer_stop("Build Interpreter");
 
-    // Setup profiler
-    std::unique_ptr<tflite::profiling::BufferedProfiler> profiler;
-    if (enable_profiling)
+    util::print_model_signature(interpreter.get());
+
+    // Setup Profiler
+    constexpr int kProfilingBufferHeadrooms = 512;
+    int total_nodes = util::count_total_nodes(interpreter.get());
+    if (total_nodes > kProfilingBufferHeadrooms)
+        total_nodes += kProfilingBufferHeadrooms;
+    auto profiler = std::make_unique<tflite::profiling::BufferedProfiler>(total_nodes, true);
+    interpreter->SetProfiler(profiler.get());
+
+    // Initialize profiler outputs
+    std::vector<ProfilerOutput> profiler_outputs;
+
+    // Always add log output
+    ProfilerOutput pf_out_default;
+    pf_out_default.formatter = std::make_shared<tflite::profiling::ProfileSummaryDefaultFormatter>();
+    pf_out_default.init_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(pf_out_default.formatter);
+    pf_out_default.run_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(pf_out_default.formatter);
+    pf_out_default.output_type = "log";
+    pf_out_default.output_path = "";
+    profiler_outputs.push_back(pf_out_default);
+
+    // Add CSV output if requested
+    if (!config.profiling_result_path.empty())
     {
-        profiler = std::make_unique<tflite::profiling::BufferedProfiler>(1024);
-        interpreter->SetProfiler(profiler.get());
-        std::cout << "[INFO] Profiler created (will start after warmup)" << std::endl;
+        ProfilerOutput pf_out_csv;
+        pf_out_csv.formatter = std::make_shared<tflite::profiling::ProfileSummaryCSVFormatter>();
+        pf_out_csv.init_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(pf_out_csv.formatter);
+        pf_out_csv.run_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(pf_out_csv.formatter);
+        pf_out_csv.output_type = "csv";
+        pf_out_csv.output_path = config.profiling_result_path;
+        profiler_outputs.push_back(pf_out_csv);
     }
 
-    /* Apply delegate */
+    /* 3. Apply delegate */
+    // Start Initialization Profiling
+    profiler->Reset();
+    profiler->StartProfiling();
+
     util::timer_start("Apply Delegate");
     TfLiteDelegate *delegate = nullptr;
     bool delegate_applied = false;
-    if (delegate_type == "xnnpack")
+    apply_delegate(interpreter, delegate, delegate_applied, config.delegate_type, config.num_threads);
+    if (!delegate_applied && config.delegate_type != "none")
     {
-        apply_xnnpack_delegate(interpreter, delegate, delegate_applied, num_threads);
-    }
-    else if (delegate_type == "gpu")
-    {
-        apply_gpu_delegate(interpreter, delegate, delegate_applied);
-    }
-    else
-    {
-        std::cerr << "[ERROR] Unknown delegate type: " << delegate_type << std::endl;
-        return 1;
+        std::cerr << "[ERROR] Failed to apply delegate: " << config.delegate_type << std::endl;
     }
     util::timer_stop("Apply Delegate");
 
-    /* Allocate Tensor */
+    /* [PROFILE] Setup Profilers */
+
+    // Default formatter/summarizer for log output
+    auto log_formatter = std::make_shared<tflite::profiling::ProfileSummaryDefaultFormatter>();
+    auto init_log_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(log_formatter);
+    auto run_log_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(log_formatter);
+
+    // CSV formatter/summarizer for CSV output
+    auto csv_formatter = std::make_shared<tflite::profiling::ProfileSummaryCSVFormatter>();
+    auto init_csv_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(csv_formatter);
+    auto run_csv_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(csv_formatter);
+
+    /* 4. Allocate Tensor */
     util::timer_start("Allocate Tensor");
     if (!interpreter || interpreter->AllocateTensors() != kTfLiteOk)
     {
-        std::cerr << "Failed to initialize interpreter" << std::endl;
+        std::cerr << "[ERROR] Failed to initialize interpreter" << std::endl;
         return 1;
     }
     util::timer_stop("Allocate Tensor");
 
     util::print_model_summary(interpreter.get(), delegate_applied);
 
-    /* Load input image */
+    // Finish Init Profiling
+    profiler->StopProfiling();
+    for (auto &out : profiler_outputs)
+    {
+        out.init_summarizer->ProcessProfiles(profiler->GetProfileEvents(), *interpreter);
+    }
+    //======================================================
+
+    /* 5. Load input image */
     util::timer_start("Load Input Image");
-    cv::Mat origin_image = cv::imread(image_path);
+    cv::Mat origin_image = cv::imread(config.image_path);
     if (origin_image.empty())
     {
-        throw std::runtime_error("Failed to load image: " + image_path);
+        throw std::runtime_error("Failed to load image: " + config.image_path);
     }
     util::timer_stop("Load Input Image");
 
-    /* Preprocessing */
-    util::timer_start("E2E Total(Pre+Inf+Post)");
+    /* 6. Preprocessing */
     util::timer_start("Preprocessing");
 
-    // Get input tensor info
+    init_log_summarizer->ProcessProfiles(profiler->GetProfileEvents(), *interpreter);
     TfLiteTensor *input_tensor = interpreter->input_tensor(0);
-    int input_height = input_tensor->dims->data[1];
-    int input_width = input_tensor->dims->data[2];
-
-    std::cout << "\n[INFO] Input shape  : ";
-    util::print_tensor_shape(input_tensor);
-    std::cout << std::endl;
-    std::cout << "[DEBUG] Input tensor type: " << input_tensor->type << std::endl;
+    util::print_tensor_shape(input_tensor, "input_tensor");
 
     // Preprocess input data
+    int input_height = input_tensor->dims->data[1];
+    int input_width = input_tensor->dims->data[2];
     cv::Mat preprocessed_image = util::preprocess_image(origin_image, input_height, input_width);
     process_input_tensor(interpreter, preprocessed_image);
 
     util::timer_stop("Preprocessing");
 
-    /* Warmup and Inference */
-    run_warmup(interpreter, delegate);
-    run_inference(interpreter, delegate, profiler, enable_profiling);
+    /* 7. Warmup and Inference */
+    // Run warmup and profiling for all outputs
 
-    /* PostProcessing */
+    run_model(interpreter, delegate, config.delegate_type, profiler, config.enable_profiling,
+              InferenceMode::WARMUP, profiler_outputs);
+    run_model(interpreter, delegate, config.delegate_type, profiler, config.enable_profiling,
+              InferenceMode::PROFILING_RUN, profiler_outputs);
+
+    /* 8. PostProcessing */
+
     util::timer_start("Postprocessing");
-
     // Get output tensor
     TfLiteTensor *output_tensor = interpreter->output_tensor(0);
-    std::cout << "[INFO] Output shape : ";
-    util::print_tensor_shape(output_tensor);
-    std::cout << std::endl;
-    std::cout << "[DEBUG] Output tensor type: " << output_tensor->type << std::endl;
+    util::print_tensor_shape(output_tensor, "output_tensor");
 
+    // Process output tensor to get probabilities
     int num_classes = output_tensor->dims->data[1];
     std::vector<float> probs(num_classes);
     process_output_tensor(interpreter, probs);
 
     util::timer_stop("Postprocessing");
-    util::timer_stop("E2E Total(Pre+Inf+Post)");
 
-    /* Print Results */
-    // Load class label mapping
-    auto label_map = util::load_class_labels(label_path);
+    /* 9. Print Results */
+    // Load class label mapping and print Top-5 results
+    util::print_topk_results(probs, util::load_class_labels(config.label_path));
 
-    // Print Top-5 results
-    std::cout << "\n[INFO] Top 5 predictions:" << std::endl;
-    auto top_k_indices = util::get_topK_indices(probs, 5);
-    for (int idx : top_k_indices)
-    {
-        std::string label = label_map.count(idx) ? label_map[idx] : "unknown";
-        std::cout << "- Class " << idx << " (" << label << "): " << probs[idx] << std::endl;
-    }
-
-    /* Print Timers */
+    // Print all timers
     util::print_all_timers();
 
-    /* Print Profiling Results */
-    print_profiling_results(profiler, interpreter, enable_profiling);
-
-    std::cout << "========================" << std::endl;
-
-    /* Deallocate delegate */
-    if (delegate)
+    // Print Ops-level profiling time (log)
+    // Print all profiler outputs
+    std::cout << "\n[INFO] Generating Ops-level profiling (log)\n"
+              << std::endl;
+    for (auto &out : profiler_outputs)
     {
-        if (delegate_type == "xnnpack")
-        {
-            TfLiteXNNPackDelegateDelete(delegate);
-        }
-        else if (delegate_type == "gpu")
-        {
-            TfLiteGpuDelegateV2Delete(delegate);
-        }
+        out.formatter->HandleOutput(out.init_summarizer->GetOutputString(),
+                                    out.run_summarizer->GetOutputString(), out.output_path);
     }
+
+    /* 10. Deallocate delegate */
+    cleanup_delegate(delegate, config.delegate_type);
     return 0;
 }
 
-// Function implementations
-void apply_xnnpack_delegate(std::unique_ptr<tflite::Interpreter> &interpreter,
-                            TfLiteDelegate *&delegate, bool &delegate_applied, int num_threads)
+void apply_delegate(std::unique_ptr<tflite::Interpreter> &interpreter,
+                    TfLiteDelegate *&delegate, bool &delegate_applied,
+                    const std::string &delegate_type, int num_threads)
 {
-    TfLiteXNNPackDelegateOptions xnnpack_opts = TfLiteXNNPackDelegateOptionsDefault();
-    xnnpack_opts.num_threads = num_threads;
-    delegate = TfLiteXNNPackDelegateCreate(&xnnpack_opts);
-
-    if (interpreter->ModifyGraphWithDelegate(delegate) == kTfLiteOk)
+    delegate_applied = false;
+    if (delegate_type == "xnnpack")
     {
+        TfLiteXNNPackDelegateOptions xnnpack_opts = TfLiteXNNPackDelegateOptionsDefault();
+        xnnpack_opts.num_threads = num_threads;
+        delegate = TfLiteXNNPackDelegateCreate(&xnnpack_opts);
+        if (interpreter->ModifyGraphWithDelegate(delegate) == kTfLiteOk)
+        {
+            delegate_applied = true;
+            std::cout << "[INFO] XNNPACK delegate applied successfully (threads: " << num_threads << ")" << std::endl;
+        }
+        else
+        {
+            std::cerr << "[ERROR] Failed to apply XNNPACK delegate" << std::endl;
+            TfLiteXNNPackDelegateDelete(delegate);
+            delegate = nullptr;
+        }
+    }
+    else if (delegate_type == "gpu")
+    {
+        TfLiteGpuDelegateOptionsV2 gpu_opts = TfLiteGpuDelegateOptionsV2Default();
+        gpu_opts.inference_preference = TFLITE_GPU_INFERENCE_PREFERENCE_FAST_SINGLE_ANSWER;
+        gpu_opts.inference_priority1 = TFLITE_GPU_INFERENCE_PRIORITY_MIN_LATENCY;
+        gpu_opts.inference_priority2 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO;
+        gpu_opts.inference_priority3 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO;
+        delegate = TfLiteGpuDelegateV2Create(&gpu_opts);
+        if (interpreter->ModifyGraphWithDelegate(delegate) == kTfLiteOk)
+        {
+            delegate_applied = true;
+            std::cout << "[INFO] GPU delegate applied successfully" << std::endl;
+        }
+        else
+        {
+            std::cerr << "[ERROR] Failed to apply GPU delegate" << std::endl;
+            TfLiteGpuDelegateV2Delete(delegate);
+            delegate = nullptr;
+        }
+    }
+    else if (delegate_type == "none" || delegate_type.empty())
+    {
+        std::cout << "[INFO] No delegate applied." << std::endl;
+        delegate = nullptr;
         delegate_applied = true;
-        std::cout << "[INFO] XNNPACK delegate applied successfully (threads: " << num_threads << ")" << std::endl;
     }
     else
     {
-        std::cerr << "[ERROR] Failed to apply XNNPACK delegate" << std::endl;
-    }
-}
-
-void apply_gpu_delegate(std::unique_ptr<tflite::Interpreter> &interpreter,
-                        TfLiteDelegate *&delegate, bool &delegate_applied)
-{
-    TfLiteGpuDelegateOptionsV2 gpu_opts = TfLiteGpuDelegateOptionsV2Default();
-    gpu_opts.inference_preference = TFLITE_GPU_INFERENCE_PREFERENCE_FAST_SINGLE_ANSWER;
-    gpu_opts.inference_priority1 = TFLITE_GPU_INFERENCE_PRIORITY_MIN_LATENCY;
-    gpu_opts.inference_priority2 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO;
-    gpu_opts.inference_priority3 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO;
-
-    delegate = TfLiteGpuDelegateV2Create(&gpu_opts);
-
-    if (interpreter->ModifyGraphWithDelegate(delegate) == kTfLiteOk)
-    {
-        delegate_applied = true;
-        std::cout << "[INFO] GPU delegate applied successfully" << std::endl;
-    }
-    else
-    {
-        std::cerr << "[ERROR] Failed to apply GPU delegate" << std::endl;
+        std::cerr << "[ERROR] Unknown delegate type: " << delegate_type << std::endl;
+        delegate = nullptr;
+        delegate_applied = false;
     }
 }
 
@@ -378,102 +462,77 @@ void process_output_tensor(std::unique_ptr<tflite::Interpreter> &interpreter,
     }
 }
 
-void run_warmup(std::unique_ptr<tflite::Interpreter> &interpreter, TfLiteDelegate *xnn_delegate)
+void run_model(std::unique_ptr<tflite::Interpreter> &interpreter,
+               TfLiteDelegate *delegate, const std::string &delegate_type,
+               std::unique_ptr<tflite::profiling::BufferedProfiler> &profiler,
+               bool enable_profiling, InferenceMode mode,
+               std::vector<ProfilerOutput> &profiler_outputs)
 {
-    std::cout << "[INFO] Running " << WARMUP_RUNS << " warmup iterations..." << std::endl;
-    for (int i = 0; i < WARMUP_RUNS; ++i)
+    // Use the cleanup_delegate function for delegate cleanup
+
+    int num_runs = (mode == InferenceMode::WARMUP) ? WARMUP_RUNS : PROFILING_RUNS;
+    std::string phase = (mode == InferenceMode::WARMUP) ? "warm-up" : "run and profile";
+
+    std::cout << "\n[INFO] Running " << num_runs << " " << phase << " iterations..." << std::endl;
+
+    if (mode == InferenceMode::PROFILING_RUN)
     {
+        util::timer_start("Inference");
+    }
+
+    for (int i = 0; i < num_runs; ++i)
+    {
+        if (enable_profiling && profiler && mode == InferenceMode::PROFILING_RUN)
+        {
+            profiler->Reset();
+            profiler->StartProfiling();
+        }
+
         if (interpreter->Invoke() != kTfLiteOk)
         {
-            std::cerr << "Failed to invoke interpreter during warmup" << std::endl;
-            if (xnn_delegate)
-            {
-                TfLiteXNNPackDelegateDelete(xnn_delegate);
-            }
+            std::cerr << "[ERROR] Failed to invoke interpreter during " << phase << std::endl;
+            cleanup_delegate(delegate, delegate_type);
             exit(1);
         }
-    }
-    std::cout << "[INFO] Warmup completed" << std::endl;
-}
 
-void run_inference(std::unique_ptr<tflite::Interpreter> &interpreter, TfLiteDelegate *xnn_delegate,
-                   std::unique_ptr<tflite::profiling::BufferedProfiler> &profiler, bool enable_profiling)
-{
-    // Start profiling after warmup
-    if (enable_profiling && profiler)
-    {
-        profiler->StartProfiling();
-        std::cout << "[INFO] Profiler started after warmup" << std::endl;
-    }
-
-    util::timer_start("Inference");
-
-    if (enable_profiling && profiler)
-    {
-        // Multiple runs for profiling accuracy
-        std::cout << "[INFO] Running " << PROFILING_RUNS << " profiling iterations..." << std::endl;
-        for (int i = 0; i < PROFILING_RUNS; ++i)
+        if (enable_profiling && profiler && mode == InferenceMode::PROFILING_RUN)
         {
-            if (interpreter->Invoke() != kTfLiteOk)
+            profiler->StopProfiling();
+            for (auto &out : profiler_outputs)
             {
-                std::cerr << "Failed to invoke interpreter during profiling" << std::endl;
-                if (xnn_delegate)
-                {
-                    TfLiteXNNPackDelegateDelete(xnn_delegate);
-                }
-                exit(1);
+                out.run_summarizer->ProcessProfiles(profiler->GetProfileEvents(), *interpreter);
             }
         }
+    }
+
+    if (mode == InferenceMode::PROFILING_RUN)
+    {
+        util::timer_stop("Inference");
+    }
+
+    std::cout << "[INFO] " << phase << " completed" << std::endl;
+}
+
+void cleanup_delegate(TfLiteDelegate *&delegate, const std::string &delegate_type)
+{
+    if (!delegate)
+        return;
+    if (delegate_type == "xnnpack")
+    {
+        TfLiteXNNPackDelegateDelete(delegate);
+    }
+    else if (delegate_type == "gpu")
+    {
+        TfLiteGpuDelegateV2Delete(delegate);
+    }
+    else if (delegate_type == "none" || delegate_type.empty())
+    {
+        // No delegate to clean up
     }
     else
     {
-        // Single run for normal execution
-        if (interpreter->Invoke() != kTfLiteOk)
-        {
-            std::cerr << "Failed to invoke interpreter" << std::endl;
-            if (xnn_delegate)
-            {
-                TfLiteXNNPackDelegateDelete(xnn_delegate);
-            }
-            exit(1);
-        }
+        // Future extensibility: add more delegate types here
+        std::cout << "[WARN] Unknown delegate type for cleanup: " << delegate_type;
     }
-
-    util::timer_stop("Inference");
-
-    // Stop profiling if enabled
-    if (enable_profiling && profiler)
-    {
-        profiler->StopProfiling();
-        std::cout << "[INFO] Ran " << PROFILING_RUNS << " profiling iterations" << std::endl;
-        std::cout << "[INFO] Profiler stopped" << std::endl;
-    }
-}
-
-void print_profiling_results(std::unique_ptr<tflite::profiling::BufferedProfiler> &profiler,
-                             std::unique_ptr<tflite::Interpreter> &interpreter, bool enable_profiling)
-{
-    if (enable_profiling && profiler)
-    {
-        std::cout << "\n[INFO] ===== Detailed Profiling Results =====" << std::endl;
-
-        auto profile_events = profiler->GetProfileEvents();
-        std::cout << "[INFO] Total profile events captured: " << profile_events.size() << std::endl;
-
-        if (!profile_events.empty())
-        {
-            tflite::profiling::ProfileSummarizer summarizer;
-            summarizer.ProcessProfiles(profile_events, *interpreter);
-            std::string summary_output = summarizer.GetOutputString();
-
-            std::cout << summary_output << std::endl;
-        }
-        else
-        {
-            std::cout << "[WARNING] No profiling events captured. This may happen when:" << std::endl;
-            std::cout << "  - XNNPACK delegate is applied (operations are fused)" << std::endl;
-            std::cout << "  - Model is too simple or executes too quickly" << std::endl;
-            std::cout << "  - Profiler was not set up correctly" << std::endl;
-        }
-    }
+    delegate = nullptr;
 }

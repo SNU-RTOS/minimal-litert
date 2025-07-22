@@ -18,12 +18,11 @@ run_verify() {
     
     local model_base
     model_base=$(basename "${model%.*}")
-    local logfile="./log/output_verify_${device}_${model_base}.log"
+    local log_file="./log/output_verify_${device}_${model_base}.log"
     
     local bin="./bazel-bin/minimal-litert/verify/verify_$device"
     
     {
-        exec > >(tee "$logfile") 2>&1
         echo "[INFO] Run verify_${device}"
         echo "Running verification on $device with model $model"
         if [ ! -f "$bin" ]; then
@@ -32,9 +31,11 @@ run_verify() {
         fi
         $bin $model
         echo "[INFO] Run verify_${device} finished"
-        echo "Results saved to $logfile"
-        echo ""
-    }
+    } | tee "$log_file" 2>&1
+    
+    echo "===================================="
+    echo ""
+    echo "Results saved to $log_file"
 }
 
 run_main() {
@@ -45,11 +46,10 @@ run_main() {
     
     local model_base
     model_base=$(basename "${model%.*}")
-    local logfile="./log/output_main_${device}_${model_base}.log"
+    local log_file="./log/output_main_${device}_${model_base}.log"
     
     local bin="./bazel-bin/minimal-litert/main/main_$device"
     {
-        exec > >(tee "$logfile") 2>&1
         echo "[INFO] Run main_${device}"
         echo "Running main on $device with model $model and image $image"
         if [ ! -f "$bin" ]; then
@@ -58,37 +58,39 @@ run_main() {
         fi
         $bin $model $image $labels
         echo "[INFO] Run main_${device} finished"
-        echo "Results saved to $logfile"
-        echo ""
-    }
+    } | tee "$log_file" 2>&1
+    echo "===================================="
+    echo ""
+    echo "Results saved to $log_file"
 }
 
 run_main_profile() {
     local model=$1
     local image=$2
     local labels=$3
-    local enable_profile=$4
-    local num_threads=${5:-4}  # Default to 4 threads if not specified
-    local delegate_type=${6:-"xnnpack"}  # Default to xnnpack if not specified
-    
+    local num_threads=${4:-4}
+    local delegate_type=${5:-"xnnpack"}
+
     local model_base
     model_base=$(basename "${model%.*}")
-    local logfile="./log/output_main_profile_${model_base}_${delegate_type}_threads${num_threads}.log"
-    
+
+    local csv_file="./log/output_main_profile_${model_base}_${delegate_type}_${num_threads}threads.csv"
+    local log_file="./log/output_main_profile_${model_base}_${delegate_type}_${num_threads}threads.log"
+
     local bin="./bazel-bin/minimal-litert/main/main_profile"
     {
-        exec > >(tee "$logfile") 2>&1
         echo "[INFO] Run main_profile"
         echo "Running main profile with model $model and image $image (threads: $num_threads, delegate: $delegate_type)"
         if [ ! -f "$bin" ]; then
             echo "Binary $bin not found. Please build the project first."
             exit 1
         fi
-        $bin $model $image $labels $enable_profile $num_threads $delegate_type
+        $bin $model $image $labels $num_threads $delegate_type $csv_file
         echo "[INFO] Run main_profile finished"
-        echo "Results saved to $logfile"
-        echo ""
-    }
+    } | tee "$log_file" 2>&1
+    echo "===================================="
+    echo ""
+    echo "Results saved to $log_file"
 }
 
 ##################### main #####################
@@ -98,9 +100,8 @@ run_main_profile() {
 # run_main gpu ./models/mobilenetv3_small.tflite ./images/dog.jpg ./labels.json
 
 # Test with XNNPACK delegate
-run_main_profile ./models/mobilenetv3_small.tflite ./images/dog.jpg ./labels.json 1 8 xnnpack
-run_main_profile ./models/mobilenetv3_small.tflite ./images/dog.jpg ./labels.json 1 4 gpu
+run_main_profile ./models/mobilenetv3_small.tflite ./images/dog.jpg ./labels.json 8 xnnpack
 
 # Test with GPU delegate
-# run_main_profile ./models/mobilenetv3_small.tflite ./images/dog.jpg ./labels.json 1 4 gpu
+# run_main_profile ./models/mobilenetv3_small.tflite ./images/dog.jpg ./labels.json 8 gpu
 

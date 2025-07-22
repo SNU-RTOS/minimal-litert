@@ -1,25 +1,64 @@
+
 #include "util.hpp"
 
-void util::print_tensor_shape(const TfLiteTensor *tensor)
+void util::print_model_signature(tflite::Interpreter *interpreter)
 {
-    printf("[");
+    std::cout << "[INFO] Model signature keys:";
+    if (interpreter)
+    {
+        const std::vector<const std::string *> &keys = interpreter->signature_keys();
+        std::cout << "The Model contains " << keys.size() << " signature key(s).";
+        if (!keys.empty())
+        {
+            std::cout << "They are listed below: ";
+            for (const std::string *key : keys)
+            {
+                std::cout << "-> Signature Key: " << *key;
+            }
+        }
+    }
+    else
+    {
+        std::cout << "The Model does not contain any signature keys.";
+    }
+    std::cout << std::endl;
+}
+
+void util::print_tensor_shape(const TfLiteTensor *tensor, const std::string &label)
+{
+
+    std::cout << "\n[INFO] Shape of " << label << ": ";
+    std::cout << "[";
     for (int i = 0; i < tensor->dims->size; ++i)
     {
-        printf("%d", tensor->dims->data[i]);
+        std::cout << tensor->dims->data[i];
         if (i < tensor->dims->size - 1)
-            printf(", ");
+            std::cout << ", ";
     }
-    printf("]");
+    std::cout << "]";
+    std::cout << "\n";
 }
 
 void util::print_model_summary(tflite::Interpreter *interpreter, bool delegate_applied)
 {
-    printf("\n[INFO] Model Summary \n");
-    printf("📥 Input tensor count  : %zu\n", interpreter->inputs().size());
-    printf("📤 Output tensor count : %zu\n", interpreter->outputs().size());
-    printf("📦 Total tensor count  : %ld\n", interpreter->tensors_size());
-    printf("🔧 Node (op) count     : %zu\n", interpreter->nodes_size());
-    printf("🧩 Delegate applied    : %s\n", delegate_applied ? "Yes ✅" : "No ❌");
+    std::cout << "\n[INFO] Model Summary " << std::endl;
+    std::cout << "📥 Input tensor count  : " << interpreter->inputs().size() << std::endl;
+    std::cout << "📤 Output tensor count : " << interpreter->outputs().size() << std::endl;
+    std::cout << "📦 Total tensor count  : " << interpreter->tensors_size() << std::endl;
+    std::cout << "🔧 Node (op) count     : " << interpreter->nodes_size() << std::endl;
+    std::cout << "🧩 Delegate applied    : " << (delegate_applied ? "Yes ✅" : "No ❌") << std::endl;
+}
+
+int util::count_total_nodes(tflite::Interpreter *interpreter)
+{
+    int total_nodes = 0;
+    if (!interpreter)
+        return 0;
+    for (int i = 0; i < interpreter->subgraphs_size(); ++i)
+    {
+        total_nodes += static_cast<int>(interpreter->subgraph(i)->nodes_size());
+    }
+    return total_nodes;
 }
 
 // Get indices of top-k highest values
@@ -55,7 +94,7 @@ std::unordered_map<int, std::string> util::load_class_labels(const std::string &
     {
         int idx = std::stoi(key);
         // Explicitly use string key to avoid string_view overloads
-        const Json::Value& keyValue = root[static_cast<const Json::String&>(key)];
+        const Json::Value &keyValue = root[static_cast<const Json::String &>(key)];
         if (keyValue.isArray() && keyValue.size() >= 2)
         {
             label_map[idx] = keyValue[1].asString(); // label = second element
@@ -65,6 +104,16 @@ std::unordered_map<int, std::string> util::load_class_labels(const std::string &
     return label_map;
 }
 
+void util::print_topk_results(const std::vector<float> &probs, const std::unordered_map<int, std::string> &label_map)
+{
+    std::cout << "\n[INFO] Top 5 predictions:" << std::endl;
+    auto top_k_indices = util::get_topK_indices(probs, 5);
+    for (int idx : top_k_indices)
+    {
+        std::string label = label_map.count(idx) ? label_map.at(idx) : "unknown";
+        std::cout << "- Class " << idx << " (" << label << "): " << probs[idx] << std::endl;
+    }
+}
 
 void util::timer_start(const std::string &label)
 {
@@ -81,7 +130,7 @@ void util::timer_stop(const std::string &label)
     }
     else
     {
-        std::cerr << "[WARN] No active timer for label: " << label << std::endl;
+        std::cout << "[WARN] No active timer for label: " << label << std::endl;
     }
 }
 
@@ -104,8 +153,8 @@ void util::print_all_timers()
             std::cout << "- " << label << " took " << ms << " ms (" << us << " us)" << std::endl;
         }
     }
+    std::cout << "\n";
 }
-
 
 // Preprocess: load, resize, center crop, RGB → float32 + normalize
 cv::Mat util::preprocess_image(cv::Mat &image, int target_height, int target_width)

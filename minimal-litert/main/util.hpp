@@ -16,12 +16,13 @@
 #include "tflite/interpreter.h"
 #include "tflite/kernels/register.h"
 #include "tflite/model.h"
-
+#include "tflite/tools/logging.h"
 namespace util
+// Print model signature keys
 {
     using Clock = std::chrono::high_resolution_clock;
     using TimePoint = std::chrono::time_point<Clock>;
-
+    
     struct TimerResult
     {
         TimePoint start;
@@ -29,23 +30,29 @@ namespace util
         int start_index;
         int stop_index;
     };
-
+    
     static std::unordered_map<std::string, TimerResult> timer_map;
     static int global_index = 0;
-
+    
     void timer_start(const std::string &label);
     void timer_stop(const std::string &label);
     void print_all_timers();
+    void print_model_signature(tflite::Interpreter *interpreter);
     //*==========================================*/
-
+    
+    // Count total nodes in all subgraphs
+    int count_total_nodes(tflite::Interpreter *interpreter);
     // Loads class labels from a JSON file, expects JSON format like: { "0": ["n01440764", "tench"], ... }
     std::unordered_map<int, std::string> load_class_labels(const std::string &json_path);
 
     // Print shape of tensor
-    void print_tensor_shape(const TfLiteTensor *tensor);
+    void print_tensor_shape(const TfLiteTensor *tensor, const std::string &label = "");
 
     // Print model summary
     void print_model_summary(tflite::Interpreter *interpreter, bool delegate_applied);
+
+    // Print top-k results
+    void print_topk_results(const std::vector<float> &probs, const std::unordered_map<int, std::string> &label_map);
 
     // Get TopK indices of probs
     std::vector<int> get_topK_indices(const std::vector<float> &data, int k);
