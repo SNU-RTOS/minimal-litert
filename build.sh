@@ -2,11 +2,16 @@
 # build.sh - Build script for minimal-litert project
 set -euo pipefail
 
+
 # Default configuration
 BUILD_MODE="release"
 BUILD_TARGET="all"
 CLEAN_BUILD=false
 VERBOSE=false
+
+source .env
+source ./scripts/utils.sh
+
 
 # Help function
 show_help() {
@@ -75,34 +80,6 @@ parse_args() {
     done
 }
 
-# Setup build configuration
-setup_build_config() {
-    local BUILD_MODE=${1:-release}
-    
-    if [ "$BUILD_MODE" = "debug" ]; then
-        BAZEL_CONF="-c dbg --config=linux"
-        COPT_FLAGS="--copt=-Og"
-        LINKOPTS=""
-    else
-        BAZEL_CONF="-c opt --config=linux"
-        COPT_FLAGS="--copt=-Os --copt=-fPIC"
-        LINKOPTS="--linkopt=-s"
-    fi
-
-    # GPU Delegate Configuration
-    GPU_FLAGS="--define=supports_gpu_delegate=true"
-    GPU_COPT_FLAGS="--copt=-DTFLITE_GPU_ENABLE_INVOKE_LOOP=1 --copt=-DCL_DELEGATE_NO_GL --copt=-DTFLITE_SUPPORTS_GPU_DELEGATE=1"
-    
-    # Export variables for use in calling scripts
-    export BAZEL_CONF COPT_FLAGS LINKOPTS GPU_FLAGS GPU_COPT_FLAGS
-    
-    echo "[INFO] Build configuration:"
-    echo "  Mode: $BUILD_MODE"
-    echo "  Bazel config: $BAZEL_CONF"
-    echo "  C++ flags: $COPT_FLAGS"
-    echo "  Link flags: $LINKOPTS"
-    echo "  GPU flags: $GPU_FLAGS $GPU_COPT_FLAGS"
-}
 
 # Clean build function
 clean_build() {
@@ -123,26 +100,27 @@ build_target() {
     echo "[INFO] Building target: $target"
     echo "[INFO] Build flags: $build_flags"
     
+    local bin="bazel $BAZEL_LAUNCH_CONF build"
     case $target in
         "all")
             echo "[INFO] Building all targets..."
-            bazel build $build_flags //minimal-litert/...
+            $bin $build_flags //minimal-litert/...
             ;;
         "main")
             echo "[INFO] Building main targets..."
-            bazel build $build_flags //minimal-litert/main/...
+            $bin $build_flags //minimal-litert/main/...
             ;;
         "verify")
             echo "[INFO] Building verify targets..."
-            bazel build $build_flags //minimal-litert/verify/...
+            $bin $build_flags //minimal-litert/verify/...
             ;;
         "profile")
             echo "[INFO] Building profile targets..."
-            bazel build $build_flags //minimal-litert/main:main_profile
+            $bin $build_flags //minimal-litert/main:main_profile
             ;;
         *)
             echo "[INFO] Building custom target: $target"
-            bazel build $build_flags $target
+            $bin $build_flags $target
             ;;
     esac
 }
@@ -160,6 +138,13 @@ main() {
     
     # Setup build configuration
     setup_build_config "$BUILD_MODE"
+    
+    echo "[INFO] Build configuration:"
+    echo "  Mode: $BUILD_MODE"
+    echo "  Bazel config: $BAZEL_CONF"
+    echo "  C++ flags: $COPT_FLAGS"
+    echo "  Link flags: $LINKOPTS"
+    echo "  GPU flags: $GPU_FLAGS $GPU_COPT_FLAGS"
     
     # Clean build if requested
     if [ "$CLEAN_BUILD" = true ]; then
