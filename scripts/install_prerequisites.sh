@@ -327,15 +327,15 @@ configure_python_bazel() {
 
 main() {
     log_info "Starting prerequisites installation script..."
-    setup_workspace
-    install_dev_prerequisites
-    install_clang
-    install_bazel
-    install_pyenv_prerequisites
-    install_pyenv
+    # setup_workspace
+    # install_dev_prerequisites
+    # install_clang
+    # install_bazel
+    # install_pyenv_prerequisites
+    # install_pyenv
 
-    configure_pyenv
-    install_python
+    # configure_pyenv
+    # install_python
     configure_python_venv
     configure_python_bazel
 

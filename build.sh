@@ -92,12 +92,31 @@ clean_build() {
 build_target() {
     local target=$1
     local build_flags="$BAZEL_CONF $COPT_FLAGS $LINKOPTS $GPU_FLAGS $GPU_COPT_FLAGS"
+    local arch_optimize_config=""
     
+    # Determine architecture
+    arch=$(uname -m)
+
+    # Set config based on architecture
+    case "${arch}" in
+        x86_64)
+            arch_optimize_config="--config=avx_linux"
+            ;;
+        aarch64*)
+            arch_optimize_config="--config=linux_arm64"
+            ;;
+        *)
+            echo "Unsupported architecture: ${arch}. Using default config."
+            arch_optimize_config=""
+            ;;
+    esac
+
     if [ "$VERBOSE" = true ]; then
-        build_flags="$build_flags --verbose_failures"
+        build_flags="$build_flags $arch_optimize_config --verbose_failures"
     fi
     
     echo "[INFO] Building target: $target"
+    echo "[INFO] Architecture optimization: $arch_optimize_config"
     echo "[INFO] Build flags: $build_flags"
     
     local bin="bazel $BAZEL_LAUNCH_CONF build"

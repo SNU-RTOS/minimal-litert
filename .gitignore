@@ -8,6 +8,10 @@ external/
 # Bazel Build System
 # =============================================================================
 /bazel-*
+bazel-*
+.bazel
+bazel-bin/
+bazel-out/
 MODULE.bazel.lock
 .tf_configure.bazelrc
 
@@ -207,7 +211,9 @@ $RECYCLE.BIN/
 *.csv
 .env
 
-tmp/
+external
+utils
+tmp
 !log/intel-i9_14900-rtx4070_mobile/*
 
 

@@ -1,7 +1,18 @@
 workspace(name = "minimal-litert")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
+# Bazel skylib (required for many rules)
+http_archive(
+    name = "bazel_skylib",
+    sha256 = "74d544d96f4a5bb630d465ca8bbcfe231e3594e5aae57e1edbf17a6eb3ca2506",
+    urls = [
+        "https://storage.googleapis.com/mirror.tensorflow.org/github.com/bazelbuild/bazel-skylib/releases/download/1.3.0/bazel-skylib-1.3.0.tar.gz",
+        "https://github.com/bazelbuild/bazel-skylib/releases/download/1.3.0/bazel-skylib-1.3.0.tar.gz",
+    ],
+)
+load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
+bazel_skylib_workspace()
 
 # Rules shell (from LiteRT official repo)
 http_archive(
@@ -15,12 +26,19 @@ load("@rules_shell//shell:repositories.bzl", "rules_shell_dependencies", "rules_
 rules_shell_dependencies()
 rules_shell_toolchains()
 
-# LiteRT from GitHub
-git_repository(
+# LiteRT from local path
+local_repository(
     name = "litert",
-    remote = "https://github.com/google-ai-edge/LiteRT",
-    branch = "main",
+    path = "external/litert",
 )
+
+# load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+# git_repository(
+#     name = "litert",
+#     remote = "https://github.com/google-ai-edge/LiteRT",
+#     branch = "main",
+# )
+
 
 # Load the custom repository rule to select either a local TensorFlow source or a remote http_archive.
 load("@litert//litert:tensorflow_source_rules.bzl", "tensorflow_source_repo")
