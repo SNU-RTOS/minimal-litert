@@ -58,20 +58,28 @@ minimal-litert/
 ├── WORKSPACE              # Bazel workspace configuration
 ├── .bazelrc              # Bazel build configuration
 ├── configure             # Build environment setup script
+├── configure.py          # Python configuration helper
 ├── build.sh              # Automated build script
 ├── run.sh                # Automated run script
 ├── log/                  # Performance test results
-├── model/                # TensorFlow Lite models
-├── minimal-litert/
+│   └── intel-i9_14900-rtx4070_mobile/  # Hardware-specific results
+├── images/               # Test images
+├── models/               # TensorFlow Lite models
+├── scripts/              # Helper scripts
+│   ├── build-benchmark_util.sh
+│   ├── common.sh
+│   └── install_prerequisites.sh
+├── minimal-litert/       # Main source code
 │   ├── minimal/          # Basic inference examples
-│   ├── minimal-gpu/      # GPU-specific examples
-│   └── src/              # Main source code
-│       ├── main_cpu.cpp         # CPU inference
-│       ├── main_gpu.cpp         # GPU inference
-│       ├── main_cpu_profile.cpp # Performance profiling
-│       ├── verify_cpu.cpp       # CPU verification
-│       ├── verify_gpu.cpp       # GPU verification
-│       └── util.cpp             # Utility functions
+│   ├── main/            # Main implementations
+│   │   ├── main_cpu.cpp     # CPU inference
+│   │   ├── main_gpu.cpp     # GPU inference
+│   │   ├── main_profile.cpp # Performance profiling
+│   │   ├── util.cpp         # Utility functions
+│   │   └── util.hpp         # Utility headers
+│   └── verify/          # Verification tools
+│       ├── verify_cpu.cpp  # CPU verification
+│       └── verify_gpu.cpp  # GPU verification
 └── README.md
 ```
 
@@ -110,34 +118,24 @@ bazel build //minimal-litert/src:main_cpu_profile --config=dbg
 # Default profiling test
 ./run.sh
 
-# Run verification tests
-./run.sh verify --device cpu
-./run.sh verify --device gpu
-
-# Run inference
-./run.sh main --device cpu
-
-# Run profiling with options
-./run.sh profile --delegate xnnpack --threads 8
-./run.sh profile --delegate gpu --threads 4
 ```
 
 ### Manual Execution
 
 ```bash
 # CPU profiling with XNNPACK
-./bazel-bin/minimal-litert/src/main_cpu_profile \
-  ./model/mobilenetv3_small.tflite \
+./bazel-bin/minimal-litert/main/main_profile \
+  ./models/mobilenetv3_small.tflite \
   ./images/dog.jpg \
   ./labels.json \
-  1 8 xnnpack
+  8 xnnpack output.csv
 
 # GPU profiling
-./bazel-bin/minimal-litert/src/main_cpu_profile \
-  ./model/mobilenetv3_small.tflite \
+./bazel-bin/minimal-litert/main/main_profile \
+  ./models/mobilenetv3_small.tflite \
   ./images/dog.jpg \
   ./labels.json \
-  1 4 gpu
+  4 gpu output.csv
 ```
 
 ## Available Build Configurations
