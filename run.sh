@@ -74,23 +74,37 @@ run_main_profile() {
     local model_base
     model_base=$(basename "${model%.*}")
 
-    local csv_file="./log/output_main_profile_${model_base}_${delegate_type}_${num_threads}threads.csv"
     local log_file="./log/output_main_profile_${model_base}_${delegate_type}_${num_threads}threads.log"
+    local csv_file="./log/output_main_profile_${model_base}_${delegate_type}_${num_threads}threads.csv"
+    local tmp_fixed_csv_file="${csv_file}.fixed.csv"
 
     local bin="./bazel-bin/minimal-litert/main/main_profile"
+    echo "[INFO] Run main_profile"
+    echo "===================================="
     {
-        echo "[INFO] Run main_profile"
         echo "Running main profile with model $model and image $image (threads: $num_threads, delegate: $delegate_type)"
         if [ ! -f "$bin" ]; then
             echo "Binary $bin not found. Please build the project first."
             exit 1
         fi
         $bin $model $image $labels $num_threads $delegate_type $csv_file
-        echo "[INFO] Run main_profile finished"
     } | tee "$log_file" 2>&1
     echo "===================================="
+    echo "[INFO] Run main_profile finished"
+    echo "[INFO] Post-processing CSV file..."
+    python3 tools/fix_profile_report.py "$csv_file" "$tmp_fixed_csv_file"
+    if [ $? -eq 0 ]; then
+            mv "$tmp_fixed_csv_file" "$csv_file"
+            echo "[INFO] CSV file overwritten with fixed version: $csv_file"
+        else
+            echo "[ERROR] Failed to fix CSV file. Keeping original."
+            rm -f "$tmp_fixed_csv_file"
+        fi
     echo ""
-    echo "Results saved to $log_file"
+    echo "[INFO] Results saved to:"
+    echo "  Log : $log_file"
+    echo "  CSV : $csv_file"
+    
 }
 
 ##################### main #####################
