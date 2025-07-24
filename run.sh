@@ -70,6 +70,8 @@ run_main_profile() {
     local labels=$3
     local num_threads=${4:-4}
     local delegate_type=${5:-"xnnpack"}
+    local warmup_runs=${6:-}
+    local profiling_runs=${7:-}
 
     local model_base
     model_base=$(basename "${model%.*}")
@@ -82,12 +84,16 @@ run_main_profile() {
     echo "[INFO] Run main_profile"
     echo "===================================="
     {
-        echo "Running main profile with model $model and image $image (threads: $num_threads, delegate: $delegate_type)"
+        echo "Running main profile with model $model and image $image (threads: $num_threads, delegate: $delegate_type, warmup: ${warmup_runs:-default}, profiling: ${profiling_runs:-default})"
         if [ ! -f "$bin" ]; then
             echo "Binary $bin not found. Please build the project first."
             exit 1
         fi
-        $bin $model $image $labels $num_threads $delegate_type $csv_file
+        if [[ -n "$warmup_runs" && -n "$profiling_runs" ]]; then
+            $bin $model $image $labels $num_threads $delegate_type $csv_file $warmup_runs $profiling_runs
+        else
+            $bin $model $image $labels $num_threads $delegate_type $csv_file
+        fi
     } | tee "$log_file" 2>&1
     echo "===================================="
     echo "[INFO] Run main_profile finished"
@@ -108,14 +114,14 @@ run_main_profile() {
 }
 
 ##################### main #####################
-# run_verify cpu ./models/mobilenetv3_small.tflite
-# run_verify gpu ./models/mobilenetv3_small.tflite
-# run_main cpu ./models/mobilenetv3_small.tflite ./images/dog.jpg ./labels.json
-# run_main gpu ./models/mobilenetv3_small.tflite ./images/dog.jpg ./labels.json
+# run_verify cpu ./models/mobileone_s0.tflite
+# run_verify gpu ./models/mobileone_s0.tflite
+# run_main cpu ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json
+# run_main gpu ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json
 
 # Test with XNNPACK delegate
-run_main_profile ./models/mobilenetv3_small.tflite ./images/dog.jpg ./labels.json 8 xnnpack
+run_main_profile ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json 8 xnnpack
 
 # Test with GPU delegate
-# run_main_profile ./models/mobilenetv3_small.tflite ./images/dog.jpg ./labels.json 8 gpu
+run_main_profile ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json 8 gpu
 
