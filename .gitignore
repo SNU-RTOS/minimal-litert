@@ -7,11 +7,11 @@ external/
 # =============================================================================
 # Bazel Build System
 # =============================================================================
-/bazel-*
 bazel-*
-.bazel
-bazel-bin/
-bazel-out/
+bazel-minimal-litert
+bazel-bin
+bazel-out
+bazel-testlogs
 MODULE.bazel.lock
 .tf_configure.bazelrc
 
@@ -211,6 +211,7 @@ $RECYCLE.BIN/
 *.csv
 .env
 
+bin
 external
 utils
 tmp

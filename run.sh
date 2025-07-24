@@ -20,7 +20,7 @@ run_verify() {
     model_base=$(basename "${model%.*}")
     local log_file="./log/output_verify_${device}_${model_base}.log"
     
-    local bin="./bazel-bin/minimal-litert/verify/verify_$device"
+    local bin="./bin/verify_$device"
     
     {
         echo "[INFO] Run verify_${device}"
@@ -48,7 +48,7 @@ run_main() {
     model_base=$(basename "${model%.*}")
     local log_file="./log/output_main_${device}_${model_base}.log"
     
-    local bin="./bazel-bin/minimal-litert/main/main_$device"
+    local bin="./bin/main_$device"
     {
         echo "[INFO] Run main_${device}"
         echo "Running main on $device with model $model and image $image"
@@ -80,15 +80,31 @@ run_main_profile() {
     local csv_file="./log/output_main_profile_${model_base}_${delegate_type}_${num_threads}threads.csv"
     local tmp_fixed_csv_file="${csv_file}.fixed.csv"
 
-    local bin="./bazel-bin/minimal-litert/main/main_profile"
+    local bin="./bin/main_profile"
+
     echo "[INFO] Run main_profile"
     echo "===================================="
     {
         echo "Running main profile with model $model and image $image (threads: $num_threads, delegate: $delegate_type, warmup: ${warmup_runs:-default}, profiling: ${profiling_runs:-default})"
+
+        if [ ! -f "$model" ]; then
+            echo "Model file $model not found."
+            exit 1
+        fi
+        if [ ! -f "$image" ]; then
+            echo "Image file $image not found."
+            exit 1
+        fi
+        if [ ! -f "$labels" ]; then
+            echo "Labels file $labels not found."
+            exit 1
+        fi
+
         if [ ! -f "$bin" ]; then
             echo "Binary $bin not found. Please build the project first."
             exit 1
         fi
+
         if [[ -n "$warmup_runs" && -n "$profiling_runs" ]]; then
             $bin $model $image $labels $num_threads $delegate_type $csv_file $warmup_runs $profiling_runs
         else
@@ -116,11 +132,11 @@ run_main_profile() {
 ##################### main #####################
 # run_verify cpu ./models/mobileone_s0.tflite
 # run_verify gpu ./models/mobileone_s0.tflite
-run_main cpu ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json
-run_main gpu ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json
+# run_main cpu ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json
+# run_main gpu ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json
 
 # Test with XNNPACK delegate
-run_main_profile ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json 8 xnnpack 10 10
+run_main_profile ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json 4 xnnpack 0 1
 # Test with GPU delegate
-run_main_profile ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json 8 gpu 10 10
+# run_main_profile ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json 8 gpu 10 10
 
