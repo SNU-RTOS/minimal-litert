@@ -116,12 +116,11 @@ run_main_profile() {
 ##################### main #####################
 # run_verify cpu ./models/mobileone_s0.tflite
 # run_verify gpu ./models/mobileone_s0.tflite
-# run_main cpu ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json
-# run_main gpu ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json
+run_main cpu ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json
+run_main gpu ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json
 
 # Test with XNNPACK delegate
-run_main_profile ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json 8 xnnpack
-
+run_main_profile ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json 8 xnnpack 10 10
 # Test with GPU delegate
-run_main_profile ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json 8 gpu
+run_main_profile ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json 8 gpu 10 10
 

@@ -1,4 +1,4 @@
-// xnn-delegate-main
+// main_profile.cpp
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -57,9 +57,8 @@ namespace {
     };
 
     // Functions
-    BenchmarkConfig parse_arguments(int argc, char *argv[])
+    void parse_arguments(int argc, char *argv[],BenchmarkConfig &config)
     {
-        BenchmarkConfig config;
         if (argc < 6 || argc > 9)
         {
             std::cerr << "[ERROR] Usage: " << argv[0] << " <model_path> <image_path> <label_json_path> <num_thread> <delegate_type> [csv_file_path] [warmup_runs] [profiling_runs]" << std::endl;
@@ -87,7 +86,6 @@ namespace {
         std::cout << "[INFO] Warmup runs: " << config.num_warmup << std::endl;
         std::cout << "[INFO] Profiling runs: " << config.num_run << std::endl;
 
-        return config;
     }
 
 
@@ -116,10 +114,10 @@ namespace {
         else if (delegate_type == "gpu")
         {
             TfLiteGpuDelegateOptionsV2 gpu_opts = TfLiteGpuDelegateOptionsV2Default();
-            gpu_opts.inference_preference = TFLITE_GPU_INFERENCE_PREFERENCE_FAST_SINGLE_ANSWER;
-            gpu_opts.inference_priority1 = TFLITE_GPU_INFERENCE_PRIORITY_MIN_LATENCY;
-            gpu_opts.inference_priority2 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO;
-            gpu_opts.inference_priority3 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO;
+            // gpu_opts.inference_preference = TFLITE_GPU_INFERENCE_PREFERENCE_FAST_SINGLE_ANSWER;
+            // gpu_opts.inference_priority1 = TFLITE_GPU_INFERENCE_PRIORITY_MIN_LATENCY;
+            // gpu_opts.inference_priority2 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO;
+            // gpu_opts.inference_priority3 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO;
             delegate = TfLiteGpuDelegateV2Create(&gpu_opts);
             if (interpreter->ModifyGraphWithDelegate(delegate) == kTfLiteOk)
             {
@@ -145,6 +143,30 @@ namespace {
             delegate = nullptr;
             delegate_applied = false;
         }
+    }
+
+    void cleanup_delegate(TfLiteDelegate *&delegate, const std::string &delegate_type)
+    {
+        if (!delegate)
+            return;
+        if (delegate_type == "xnnpack")
+        {
+            TfLiteXNNPackDelegateDelete(delegate);
+        }
+        else if (delegate_type == "gpu")
+        {
+            TfLiteGpuDelegateV2Delete(delegate);
+        }
+        else if (delegate_type == "none" || delegate_type.empty())
+        {
+            // No delegate to clean up
+        }
+        else
+        {
+            // Future extensibility: add more delegate types here
+            std::cout << "[WARN] Unknown delegate type for cleanup: " << delegate_type;
+        }
+        delegate = nullptr;
     }
 
     void process_input_tensor(std::unique_ptr<tflite::Interpreter> &interpreter,
@@ -275,7 +297,8 @@ namespace {
                 TfLiteDelegate *delegate, const std::string &delegate_type,
                 std::unique_ptr<tflite::profiling::BufferedProfiler> &profiler,
                 bool enable_profiling, InferenceMode mode,
-                std::vector<ProfilerOutput> &profiler_outputs)
+                std::vector<ProfilerOutput> &profiler_outputs,
+                BenchmarkConfig &config)
     {
         // Use the cleanup_delegate function for delegate cleanup
 
@@ -300,16 +323,18 @@ namespace {
                 util::timer_start(timer_phase_name);
             }
 
-            if (interpreter->Invoke() != kTfLiteOk)
-            {
-                std::cerr << "[ERROR] Failed to invoke interpreter during " << phase << std::endl;
-                cleanup_delegate(delegate, delegate_type);
-                exit(1);
-            }
+            auto kTfLiteStatus = interpreter->Invoke();
             
             if (mode == InferenceMode::RUN)
             {
                 util::timer_stop(timer_phase_name);
+            }
+
+            if (kTfLiteStatus != kTfLiteOk)
+            {
+                std::cerr << "[ERROR] Failed to invoke interpreter during " << phase << std::endl;
+                cleanup_delegate(delegate, delegate_type);
+                exit(1);
             }
 
             if (enable_profiling && profiler && mode == InferenceMode::RUN)
@@ -326,29 +351,7 @@ namespace {
         std::cout << "[INFO] " << phase << " completed" << std::endl;
     }
 
-    void cleanup_delegate(TfLiteDelegate *&delegate, const std::string &delegate_type)
-    {
-        if (!delegate)
-            return;
-        if (delegate_type == "xnnpack")
-        {
-            TfLiteXNNPackDelegateDelete(delegate);
-        }
-        else if (delegate_type == "gpu")
-        {
-            TfLiteGpuDelegateV2Delete(delegate);
-        }
-        else if (delegate_type == "none" || delegate_type.empty())
-        {
-            // No delegate to clean up
-        }
-        else
-        {
-            // Future extensibility: add more delegate types here
-            std::cout << "[WARN] Unknown delegate type for cleanup: " << delegate_type;
-        }
-        delegate = nullptr;
-    }
+    
 }
 
 
@@ -358,7 +361,8 @@ int main(int argc, char *argv[])
 
     /* 0. Parse Argument */
     // Parse command line arguments
-    BenchmarkConfig config = parse_arguments(argc, argv);
+    BenchmarkConfig config;
+    parse_arguments(argc, argv, config);
 
     // Determine model type from filename
     bool is_int8_model = (config.model_path.find("int8") != std::string::npos);
@@ -495,9 +499,9 @@ int main(int argc, char *argv[])
     // Run warmup and profiling for all outputs
 
     run_model(interpreter, delegate, config.delegate_type, profiler, config.enable_profiling,
-              InferenceMode::WARMUP, profiler_outputs);
+              InferenceMode::WARMUP, profiler_outputs, config);
     run_model(interpreter, delegate, config.delegate_type, profiler, config.enable_profiling,
-              InferenceMode::RUN, profiler_outputs);
+              InferenceMode::RUN, profiler_outputs, config);
 
     /* 8. PostProcessing */
 
