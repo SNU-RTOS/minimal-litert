@@ -142,6 +142,8 @@ build_target() {
             $bin $build_flags $target
             ;;
     esac
+
+
 }
 
 # Main execution
@@ -180,7 +182,13 @@ main() {
     echo ""
     echo "[INFO] Available binaries:"
     if [ -d "bazel-bin/minimal-litert" ]; then
-        find bazel-bin/minimal-litert -type f -executable | sort
+        find bazel-bin/minimal-litert -type f -executable | while read -r binfile; do
+            fname="$(basename "$binfile")"
+            if [[ "$fname" != *.* && "$fname" != "MANIFEST" ]]; then
+                cp -f "$binfile" "${ROOT_PATH}/bin/"
+                echo "$fname "
+            fi
+        done | sort
     else
         echo "  No binaries found. Build may have failed."
     fi

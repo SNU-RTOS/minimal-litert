@@ -1,0 +1,223 @@
+#!/usr/bin/env bpftrace
+
+BEGIN {
+    printf("=== Attaching XNNPACK operator-level detailed logging ===\n");
+}
+
+// ───────────────────────────────────────────────────────────────────────────────
+// 1) Syscall / Page-fault / I/O tracepoints: 기본 카운터 생성
+// ───────────────────────────────────────────────────────────────────────────────
+tracepoint:syscalls:sys_enter_read    { @enter_read[tid] = nsecs; }
+tracepoint:syscalls:sys_exit_read /@enter_read[tid]/ {
+    $t = (nsecs - @enter_read[tid]) / 1000;
+    @read_block_total_us[tid] += $t;
+    @read_count[tid]++;
+    @read_bytes[tid] += (uint64)args->ret > 0 ? (uint64)args->ret : 0;
+    delete(@enter_read[tid]);
+}
+
+tracepoint:syscalls:sys_enter_write   { @enter_write[tid] = nsecs; }
+tracepoint:syscalls:sys_exit_write /@enter_write[tid]/ {
+    $t = (nsecs - @enter_write[tid]) / 1000;
+    @write_block_total_us[tid] += $t;
+    @write_count[tid]++;
+    @write_bytes[tid] += (uint64)args->ret > 0 ? (uint64)args->ret : 0;
+    delete(@enter_write[tid]);
+}
+
+kprobe:handle_mm_fault                { @fault_start[tid] = nsecs; @pagefault_count[tid]++; }
+kretprobe:handle_mm_fault /@fault_start[tid]/ {
+    $t = (nsecs - @fault_start[tid]) / 1000;
+    @pagefault_total_us[tid] += $t;
+    delete(@fault_start[tid]);
+}
+
+tracepoint:io_uring:io_uring_submit_req    { @iour_submit[tid] = nsecs; }
+tracepoint:io_uring:io_uring_complete /@iour_submit[tid]/ {
+    $t = (nsecs - @iour_submit[tid]) / 1000;
+    @io_uring_total_us[tid] += $t;
+    @io_uring_complete_count[tid]++;
+    delete(@iour_submit[tid]);
+}
+
+tracepoint:block:block_rq_issue {
+    @rq_start_nsecs[args->dev, args->sector] = nsecs;
+    @rq_tid[args->dev, args->sector]         = tid;
+    @rq_bytes[args->dev, args->sector]       = args->bytes;
+    @block_rq_count[tid]++;
+}
+tracepoint:block:block_rq_complete {
+    $start = @rq_start_nsecs[args->dev, args->sector];
+    $tid   = @rq_tid[args->dev, args->sector];
+    $bytes = @rq_bytes[args->dev, args->sector];
+    if ($start && $tid) {
+        $t = (nsecs - $start) / 1000;
+        @block_rq_total_us[$tid] += $t;
+        @block_read_bytes_total[$tid]  += ($bytes * (args->rwbs == "R"  || args->rwbs == "RA"));
+        @block_write_bytes_total[$tid] += ($bytes * (args->rwbs == "W"));
+    }
+    delete(@rq_start_nsecs[args->dev, args->sector]);
+    delete(@rq_tid[args->dev, args->sector]);
+    delete(@rq_bytes[args->dev, args->sector]);
+}
+
+tracepoint:sched:sched_stat_runtime {
+    @cpu_runtime_us[tid] += args->runtime;
+}
+
+// ───────────────────────────────────────────────────────────────────────────────
+// 2) USDT Probes: operator-level 상세 타이머 & I/O/PF 증분 계산
+// ───────────────────────────────────────────────────────────────────────────────
+
+// ───────────────────────────────────────────────────────────────────────────────
+// USDT Probes: operator 시작 시점에만 baseline 세팅
+// ───────────────────────────────────────────────────────────────────────────────
+usdt:bin/main_profile:xnnpack:operator_timer_start
+{
+    @op_start_ns[tid]        = nsecs;
+
+    // 시간 누적치 baseline
+    @read_block_start[tid]   = @read_block_total_us[tid];
+    @write_block_start[tid]  = @write_block_total_us[tid];
+    @pf_total_start[tid]     = @pagefault_total_us[tid];
+    @iour_total_start[tid]   = @io_uring_total_us[tid];
+    @block_rq_start_us[tid]  = @block_rq_total_us[tid];
+    @cpu_start_us[tid]       = @cpu_runtime_us[tid];
+
+    // 바이트·카운터 baseline
+    @read_bytes_start[tid]   = @read_bytes[tid];
+    @write_bytes_start[tid]  = @write_bytes[tid];
+    @pf_count_start[tid]     = @pagefault_count[tid];
+    @block_count_start[tid]  = @block_rq_count[tid];
+    @iour_count_start[tid]   = @io_uring_complete_count[tid];
+
+    @block_read_bytes_start[tid]  = @block_read_bytes_total[tid];
+    @block_write_bytes_start[tid] = @block_write_bytes_total[tid];
+}
+
+// ───────────────────────────────────────────────────────────────────────────────
+// USDT Probes: operator 완료 시점에 delta 계산 & 출력
+// ───────────────────────────────────────────────────────────────────────────────
+usdt:bin/main_profile:xnnpack:operator_timer_check
+/@op_start_ns[tid]/
+{
+    $idx      = arg0;        // operator index
+    $name     = str(arg1);   // operator name
+
+    // 1) Wall-clock latency (μs)
+    $wall_us  = (nsecs - @op_start_ns[tid]) / 1000;
+
+    // 2) Kernel mode I/O handling time measurements
+    $read_us_delta      = (@read_block_total_us[tid] - @read_block_start[tid]);
+    $write_us_delta     = (@write_block_total_us[tid] - @write_block_start[tid]);
+    $pf_us_delta        = (@pagefault_total_us[tid]    - @pf_total_start[tid]);
+    $iour_us_delta      = (@io_uring_total_us[tid]     - @iour_total_start[tid]);
+    $block_us_delta     = (@block_rq_total_us[tid]     - @block_rq_start_us[tid]);
+    $kernel_io_us_delta = $read_us_delta + $write_us_delta + $pf_us_delta + $iour_us_delta;
+
+    // 3) I/O 호출수 & 바이트량 Δ
+    $read_cnt_delta     = @read_count[tid]     - @read_count_start[tid];
+    $write_cnt_delta    = @write_count[tid]    - @write_count_start[tid];
+    $pf_cnt_delta       = @pagefault_count[tid] - @pf_count_start[tid];
+    $iour_cnt_delta     = @io_uring_complete_count[tid] - @iour_count_start[tid];
+    $block_cnt_delta    = @block_rq_count[tid] - @block_count_start[tid];
+
+    $rbytes_delta       = @read_bytes[tid]     - @read_bytes_start[tid];
+    $wbytes_delta       = @write_bytes[tid]    - @write_bytes_start[tid];
+    $block_read_bytes_delta  = @block_read_bytes_total[tid]  - @block_read_bytes_start[tid];
+    $block_write_bytes_delta = @block_write_bytes_total[tid] - @block_write_bytes_start[tid];
+
+    // 4) CPU runtime Δ (μs)
+    $cpu_us_delta       = @cpu_runtime_us[tid] - @cpu_start_us[tid];
+
+
+    // 다음 op 대비 baseline 리셋
+    @op_start_ns[tid]       = nsecs;
+    @read_block_start[tid]  = @read_block_total_us[tid];
+    @write_block_start[tid] = @write_block_total_us[tid];
+    @pf_total_start[tid]    = @pagefault_total_us[tid];
+    @iour_total_start[tid]  = @io_uring_total_us[tid];
+    @block_rq_start_us[tid] = @block_rq_total_us[tid];
+    @cpu_start_us[tid]      = @cpu_runtime_us[tid];
+
+    @read_count_start[tid]  = @read_count[tid];
+    @write_count_start[tid] = @write_count[tid];
+    @pf_count_start[tid]    = @pagefault_count[tid];
+    @iour_count_start[tid]  = @io_uring_complete_count[tid];
+    @block_count_start[tid] = @block_rq_count[tid];
+
+    @read_bytes_start[tid]  = @read_bytes[tid];
+    @write_bytes_start[tid] = @write_bytes[tid];
+    @block_read_bytes_start[tid]  = @block_read_bytes_total[tid];
+    @block_write_bytes_start[tid] = @block_write_bytes_total[tid];
+
+    printf("[===============================================]");
+    printf("\nResult of node %d: %s\n\n", $idx, $name);
+
+    printf("-- Elapsed Time Analysis --\n");
+    printf(" Wall-clock Time                : %d us\n", $wall_us);
+    printf(" - User Logic Time (Estimated)  : %d us\n", $wall_us - $kernel_io_us_delta);
+    printf(" - I/O Handling elapsed Time    : %d us\n", $kernel_io_us_delta);
+    printf("    - User Mode (Estimated)     : %d us\n", 0);
+    printf("    - Kernel Mode               : %d us\n", $kernel_io_us_delta);
+    printf("        - Read Syscall          : %d us\n", $read_us_delta);
+    printf("        - Write Syscall         : %d us\n", $write_us_delta);
+    printf("        - Page Fault            : %d us\n", $pf_us_delta);
+    printf("        - io_uring              : %d us\n", $iour_us_delta);
+    printf("\n");
+
+    printf("-- I/O Counts --\n");
+    printf(" Read Syscall Count             : %d\n", $read_cnt_delta);
+    printf(" Write Syscall Count            : %d\n", $write_cnt_delta);
+    printf(" Block I/O Count                : %d\n", $block_cnt_delta);
+    printf(" io_uring Completion Count      : %d\n", $iour_cnt_delta);
+    printf("\n");
+
+    printf("-- Total CPU Time --\n");
+    printf(" Total CPU Runtime (us)         : %d\n", $cpu_us_delta);
+    printf("\n");
+
+    printf("-- Total I/O Time (block device) --\n");
+    printf(" Total Block I/O Time           : %d\n", $block_us_delta);
+    printf("\n");
+
+    printf("-- Page Faults & Bytes --\n");
+    printf(" Page Fault Count               : %d\n", $pf_cnt_delta);
+    printf(" Read Bytes                     : %llu\n", $rbytes_delta);
+    printf(" Write Bytes                    : %llu\n", $wbytes_delta);
+    printf(" Block Read Bytes               : %llu\n", $block_read_bytes_delta);
+    printf(" Block Write Bytes              : %llu\n", $block_write_bytes_delta);
+
+    printf("[===============================================]\n\n");
+
+
+}
+
+// ───────────────────────────────────────────────────────────────────────────────
+// END: 모든 맵 삭제
+// ───────────────────────────────────────────────────────────────────────────────
+END {
+    printf("Cleaning up all maps...\n");
+    clear(@op_start_ns);
+    clear(@read_block_start);   clear(@write_block_start);
+    clear(@pf_total_start);     clear(@iour_total_start);
+    clear(@block_rq_start_us);  clear(@cpu_start_us);
+
+    clear(@read_count_start);   clear(@write_count_start);
+    clear(@pf_count_start);     clear(@iour_count_start);
+    clear(@block_count_start);
+
+    clear(@read_bytes_start);   clear(@write_bytes_start);
+
+    // 그리고 기존 누적카운터들도
+    clear(@read_count);         clear(@write_count);
+    clear(@read_bytes);         clear(@write_bytes);
+    clear(@read_block_total_us);clear(@write_block_total_us);
+    clear(@pagefault_count);    clear(@pagefault_total_us);
+    clear(@io_uring_complete_count); clear(@io_uring_total_us);
+    clear(@block_rq_count);     clear(@block_rq_total_us);
+    clear(@block_read_bytes_total);  clear(@block_write_bytes_total);
+    clear(@cpu_runtime_us);
+
+    printf("Done.\n");
+}
