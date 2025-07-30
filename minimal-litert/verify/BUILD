@@ -24,23 +24,23 @@ cc_binary(
     ],
 )
 
-cc_binary(
-    name = "verify_gpu",
-    srcs = [
-        "verify_gpu.cpp",
-    ],
-    linkopts = tflite_linkopts() + select({
-        "//conditions:default": [
-            "-Wl,-rpath,$$ORIGIN/external/litert/bazel-bin/tflite/delegates/gpu",
-            "-lEGL",  # EGL 
-            "-lGLESv2", # OpenGL ES 2.0 
-            "-lm",  # math library
-        ],
-    }),
-    deps = [
-        "@litert//tflite:framework",
-        "@litert//tflite/core:cc_api_stable",
-        "@litert//tflite/kernels:builtin_ops",
-        "@litert//tflite/delegates/gpu:delegate",
-    ],
-)
+# cc_binary(
+#     name = "verify_gpu",
+#     srcs = [
+#         "verify_gpu.cpp",
+#     ],
+#     linkopts = tflite_linkopts() + select({
+#         "//conditions:default": [
+#             "-Wl,-rpath,$$ORIGIN/external/litert/bazel-bin/tflite/delegates/gpu",
+#             "-lEGL",  # EGL 
+#             "-lGLESv2", # OpenGL ES 2.0 
+#             "-lm",  # math library
+#         ],
+#     }),
+#     deps = [
+#         "@litert//tflite:framework",
+#         "@litert//tflite/core:cc_api_stable",
+#         "@litert//tflite/kernels:builtin_ops",
+#         "@litert//tflite/delegates/gpu:delegate",
+#     ],
+# )

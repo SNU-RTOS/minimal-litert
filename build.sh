@@ -107,6 +107,7 @@ build_target() {
     # Set config based on architecture or cross_compile flag
     if [ "$CROSS_COMPILE" = true ]; then
         arch_flag="--config=elinux_aarch64 "
+        echo "[INFO] Cross-compilation enabled. Using elinux_aarch64 config."
     else
         case "${arch}" in
             x86_64)
@@ -122,8 +123,9 @@ build_target() {
         esac
     fi
 
+    build_flags="$build_flags $arch_flag "
     if [ "$VERBOSE" = true ]; then
-        build_flags="$build_flags $arch_flag --verbose_failures"
+        build_flags="$build_flags --verbose_failures"
     fi
 
     echo "[INFO] Building target: $target"
