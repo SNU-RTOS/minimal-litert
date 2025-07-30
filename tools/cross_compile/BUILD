@@ -5,11 +5,12 @@ filegroup(name = "empty")
 
 cc_toolchain_config(
     name = "aarch64_toolchain_config",
+    target_platform = "s32g",  # Specify the target platform here
 )
 
 cc_toolchain(
     name = "aarch64_toolchain",
-    toolchain_identifier = "aarch64-fsl-linux",
+    toolchain_identifier = "aarch64-none-linux",
     toolchain_config = ":aarch64_toolchain_config",
     all_files = ":empty",
     compiler_files = ":empty",
