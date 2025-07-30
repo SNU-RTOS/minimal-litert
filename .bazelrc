@@ -66,6 +66,21 @@ build --experimental_guard_against_concurrent_changes
 build:short_logs --output_filter=DONT_MATCH_ANYTHING
 build:verbose_logs --output_filter=
 
+# Default paths for TF_SYSTEM_LIBS on Linux
+build:linux --define=PREFIX=/usr
+build:linux --define=LIBDIR=$(PREFIX)/lib
+build:linux --define=INCLUDEDIR=$(PREFIX)/include
+build:linux --define=PROTOBUF_INCLUDE_PATH=$(PREFIX)/include
+
+# Dynamic kernels for Linux
+build:linux --config=dynamic_kernels
+build:dynamic_kernels --define=dynamic_loaded_kernels=true
+build:dynamic_kernels --copt=-DAUTOLOAD_DYNAMIC_KERNELS
+
+# Use short logs by default
+build --config=short_logs
+
+
 # Linux-specific configurations
 build:linux --cxxopt=-std=c++17
 build:linux --host_cxxopt=-std=c++17
@@ -90,20 +105,24 @@ build:linux --copt=-Wno-gnu-offsetof-extensions
 
 # Linux ARM64 specific options (for native ARM64 systems)
 # Note: Cross-compilation requires additional toolchain setup
+build:linux_arm64 --config=linux
 build:linux_arm64 --copt="-mtune=generic" 
 build:linux_arm64 --copt="-march=armv8-a" 
 build:linux_arm64 --copt="-O3"
 
 # Linux x86_64 optimizations
+build:linux_x64 --config=linux
 build:linux_x64 --copt="-mtune=generic"
 build:linux_x64 --copt="-march=x86-64"
 build:linux_x64 --copt="-O3"
 
 # Instruction set optimizations for x64
+build:avx_linux --config=linux
 build:avx_linux --copt=-mavx
 build:avx_linux --host_copt=-mavx
 
 # AVX2 optimizations for modern CPUs
+build:avx2_linux --config=linux
 build:avx2_linux --copt=-mavx2
 build:avx2_linux --host_copt=-mavx2
 build:avx2_linux --copt=-mfma
@@ -116,19 +135,15 @@ build:dbg --per_file_copt=+tensorflow/core/kernels.*@-g0
 build:dbg --cxxopt -DTF_LITE_DISABLE_X86_NEON
 build:dbg --copt -DDEBUG_BUILD
 
-# Default paths for TF_SYSTEM_LIBS on Linux
-build:linux --define=PREFIX=/usr
-build:linux --define=LIBDIR=$(PREFIX)/lib
-build:linux --define=INCLUDEDIR=$(PREFIX)/include
-build:linux --define=PROTOBUF_INCLUDE_PATH=$(PREFIX)/include
 
-# Dynamic kernels for Linux
-build:linux --config=dynamic_kernels
-build:dynamic_kernels --define=dynamic_loaded_kernels=true
-build:dynamic_kernels --copt=-DAUTOLOAD_DYNAMIC_KERNELS
+# Cross-compilation configurations for embedded Linux
+build:elinux_aarch64 --config=elinux
+build:elinux_aarch64 --cpu=aarch64
+build:elinux_aarch64 --platforms=//tools/platforms:linux_aarch64
 
-# Use short logs by default
-build --config=short_logs
+build:elinux --crosstool_top=@local_config_embedded_arm//:toolchain
+build:elinux --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
+  
 
 # Load rc file written by ./configure if exists
 try-import %workspace%/.tf_configure.bazelrc

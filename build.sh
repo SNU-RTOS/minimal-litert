@@ -8,6 +8,7 @@ BUILD_MODE="release"
 BUILD_TARGET="all"
 CLEAN_BUILD=false
 VERBOSE=false
+CROSS_COMPILE=false
 
 source .env
 source ./scripts/utils.sh
@@ -27,6 +28,7 @@ OPTIONS:
     -c, --clean         Clean build (remove bazel cache)
     -v, --verbose       Verbose output
     -t, --target TARGET Specific target to build (default: all)
+    --cross_compile     Enable cross-compilation
 
 TARGETS:
     all                 Build all targets
@@ -40,6 +42,7 @@ EXAMPLES:
     $0 --target main                # Build only main targets
     $0 --clean --release            # Clean build in release mode
     $0 --debug --target profile     # Build profile targets in debug mode
+    $0 --cross_compile              # Build with cross-compilation
 
 EOF
 }
@@ -72,6 +75,10 @@ parse_args() {
                 BUILD_TARGET="$2"
                 shift 2
                 ;;
+            --cross_compile)
+                CROSS_COMPILE=true
+                shift
+                ;;
             *)
                 BUILD_TARGET="$1"
                 shift
@@ -92,34 +99,39 @@ clean_build() {
 build_target() {
     local target=$1
     local build_flags="$BAZEL_CONF $COPT_FLAGS $LINKOPTS $GPU_FLAGS $GPU_COPT_FLAGS"
-    local arch_optimize_config=""
-    
+    local arch_flag=""
+
     # Determine architecture
     arch=$(uname -m)
 
-    # Set config based on architecture
-    case "${arch}" in
-        x86_64)
-            arch_optimize_config="--config=avx_linux"
-            ;;
-        aarch64*)
-            arch_optimize_config="--config=linux_arm64"
-            ;;
-        *)
-            echo "Unsupported architecture: ${arch}. Using default config."
-            arch_optimize_config=""
-            ;;
-    esac
+    # Set config based on architecture or cross_compile flag
+    if [ "$CROSS_COMPILE" = true ]; then
+        arch_flag="--config=elinux_aarch64 "
+    else
+        case "${arch}" in
+            x86_64)
+                arch_flag="--config=avx_linux"
+                ;;
+            aarch64*)
+                arch_flag="--config=linux_arm64"
+                ;;
+            *)
+                echo "Unsupported architecture: ${arch}. Using default config."
+                arch_flag=""
+                ;;
+        esac
+    fi
 
     if [ "$VERBOSE" = true ]; then
-        build_flags="$build_flags $arch_optimize_config --verbose_failures"
+        build_flags="$build_flags $arch_flag --verbose_failures"
     fi
-    
+
     echo "[INFO] Building target: $target"
-    echo "[INFO] Architecture optimization: $arch_optimize_config"
+    echo "[INFO] Architecture optimization: $arch_flag"
     echo "[INFO] Build flags: $build_flags"
-    
-    local bin="bazel $BAZEL_LAUNCH_CONF build"
+
+    # local bin="bazel $BAZEL_LAUNCH_CONF build"
+    local bin="bazel build"
     case $target in
         "all")
             echo "[INFO] Building all targets..."
@@ -142,8 +154,6 @@ build_target() {
             $bin $build_flags $target
             ;;
     esac
-
-
 }
 
 # Main execution
@@ -155,6 +165,7 @@ main() {
     echo "[INFO] Build target: $BUILD_TARGET"
     echo "[INFO] Clean build: $CLEAN_BUILD"
     echo "[INFO] Verbose: $VERBOSE"
+    echo "[INFO] cross_compile: ${CROSS_COMPILE:-false}"
     echo "=========================================="
     
     # Setup build configuration

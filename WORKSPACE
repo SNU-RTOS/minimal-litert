@@ -1,5 +1,4 @@
 workspace(name = "minimal-litert")
-
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 # Bazel skylib (required for many rules)
@@ -31,14 +30,6 @@ local_repository(
     name = "litert",
     path = "external/litert",
 )
-
-# load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
-# git_repository(
-#     name = "litert",
-#     remote = "https://github.com/google-ai-edge/LiteRT",
-#     branch = "main",
-# )
-
 
 # XNNPACK from local path
 local_repository(
@@ -151,3 +142,5 @@ load(
     "nccl_configure",
 )
 nccl_configure(name = "local_config_nccl")
+
+register_toolchains("//tools/cross_compile:aarch64_toolchain_entry")
