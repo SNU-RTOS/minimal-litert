@@ -231,4 +231,3 @@ docs/_build/
 tools/model_dump/tflite
 backup
 exported
-*.tflite

@@ -1,0 +1,7 @@
+vit_base_patch8_224.augreg_in21k_ft_in1k
+vit_base_patch16_224.augreg_in21k_ft_in1k
+vit_base_patch32_224.augreg_in21k_ft_in1k
+vit_small_patch16_224.augreg_in21k_ft_in1k
+vit_small_patch32_224.augreg_in21k_ft_in1k
+vit_tiny_patch16_224.augreg_in21k_ft_in1k
+vit_tiny_r_s16_p8_224.augreg_in21k_ft_in1k
