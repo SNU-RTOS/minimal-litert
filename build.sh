@@ -35,7 +35,7 @@ TARGETS:
     main                Build main targets only
     verify              Build verify targets only
     profile             Build profile targets only
-    
+
 EXAMPLES:
     $0                              # Build all targets in release mode
     $0 --debug                      # Build all targets in debug mode
@@ -54,35 +54,35 @@ parse_args() {
             -h|--help)
                 show_help
                 exit 0
-                ;;
+            ;;
             -d|--debug)
                 BUILD_MODE="debug"
                 shift
-                ;;
+            ;;
             -r|--release)
                 BUILD_MODE="release"
                 shift
-                ;;
+            ;;
             -c|--clean)
                 CLEAN_BUILD=true
                 shift
-                ;;
+            ;;
             -v|--verbose)
                 VERBOSE=true
                 shift
-                ;;
+            ;;
             -t|--target)
                 BUILD_TARGET="$2"
                 shift 2
-                ;;
+            ;;
             --cross_compile)
                 CROSS_COMPILE=true
                 shift
-                ;;
+            ;;
             *)
                 BUILD_TARGET="$1"
                 shift
-                ;;
+            ;;
         esac
     done
 }
@@ -98,63 +98,66 @@ clean_build() {
 # Build function
 build_target() {
     local target=$1
-    local build_flags="$BAZEL_CONF $COPT_FLAGS $LINKOPTS $GPU_FLAGS $GPU_COPT_FLAGS"
+    # local build_flags="$BAZEL_CONF $COPT_FLAGS $LINKOPTS $GPU_FLAGS $GPU_COPT_FLAGS"
+    local build_flags="$BAZEL_CONF $COPT_FLAGS $LINKOPTS"
     local arch_flag=""
-
+    
     # Determine architecture
     arch=$(uname -m)
-
+    
     # Set config based on architecture or cross_compile flag
     if [ "$CROSS_COMPILE" = true ]; then
         arch_flag="--config=elinux_aarch64 "
-        echo "[INFO] Cross-compilation enabled. Using elinux_aarch64 config."
     else
         case "${arch}" in
             x86_64)
                 arch_flag="--config=avx_linux"
-                ;;
+            ;;
             aarch64*)
                 arch_flag="--config=linux_arm64"
-                ;;
+            ;;
             *)
                 echo "Unsupported architecture: ${arch}. Using default config."
                 arch_flag=""
-                ;;
+            ;;
         esac
     fi
-
+    
     build_flags="$build_flags $arch_flag "
     if [ "$VERBOSE" = true ]; then
         build_flags="$build_flags --verbose_failures"
     fi
-
+    
     echo "[INFO] Building target: $target"
     echo "[INFO] Architecture optimization: $arch_flag"
     echo "[INFO] Build flags: $build_flags"
-
+    
     # local bin="bazel $BAZEL_LAUNCH_CONF build"
     local bin="bazel build"
     case $target in
         "all")
             echo "[INFO] Building all targets..."
-            $bin $build_flags //minimal-litert/...
-            ;;
+            $bin $build_flags \
+            //minimal-litert/... \
+            @litert//tflite/tools/benchmark:benchmark_model \
+            @litert//tflite:tensorflowlite \
+        ;;
         "main")
             echo "[INFO] Building main targets..."
             $bin $build_flags //minimal-litert/main/...
-            ;;
+        ;;
         "verify")
             echo "[INFO] Building verify targets..."
             $bin $build_flags //minimal-litert/verify/...
-            ;;
+        ;;
         "profile")
             echo "[INFO] Building profile targets..."
             $bin $build_flags //minimal-litert/main:main_profile
-            ;;
+        ;;
         *)
             echo "[INFO] Building custom target: $target"
             $bin $build_flags $target
-            ;;
+        ;;
     esac
 }
 
@@ -191,6 +194,9 @@ main() {
     echo "[INFO] Build completed successfully!"
     echo "[INFO] Built binaries are available in bazel-bin/"
     
+    ensure_dir "${ROOT_PATH}/bin"
+    ensure_dir "${ROOT_PATH}/lib"
+    
     # Show available binaries
     echo ""
     echo "[INFO] Available binaries:"
@@ -203,7 +209,28 @@ main() {
             fi
         done | sort
     else
-        echo "  No binaries found. Build may have failed."
+        echo "  No user-built binaries found. Build may have failed."
+    fi
+    
+    
+    # Include additional binaries from benchmark tools
+    if [ -d "bazel-bin/external/litert/tflite/tools/benchmark" ]; then
+        find bazel-bin/external/litert/tflite/tools/benchmark -type f -executable | while read -r binfile; do
+            fname="$(basename "$binfile")"
+            if [[ "$fname" != *.* && "$fname" != "MANIFEST" ]]; then
+                cp -f "$binfile" "${ROOT_PATH}/bin/"
+                echo "$fname "
+            fi
+        done | sort
+    fi
+    
+    # Include shared libraries (.so files)
+    if [ -d "bazel-bin/external/litert/tflite" ]; then
+        find bazel-bin/external/litert/tflite -type f -name "*.so" | while read -r libfile; do
+            fname="$(basename "$libfile")"
+            cp -f "$libfile" "${ROOT_PATH}/lib/"
+            echo "$fname "
+        done | sort
     fi
 }
 
