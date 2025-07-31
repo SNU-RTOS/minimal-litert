@@ -55,8 +55,8 @@ SAMPLE_IMAGE_DIR = "./val_imgs/"  # Directory containing sample images for verif
 MODEL_LIST_TXT = "./config/model_selected_list.txt"
 REP_SAMPLES = 500  # representative images per whole ImageNet val
 LOG_FILE = "./log/export_tflite_from_timm_v3.log"
-# GPU_DELEGATE_PATH = "./lib/libtensorflowlite_gpu_delegate.so"  # Path to EdgeTPU delegate
-GPU_DELEGATE_PATH = None  # Set to None to disable GPU delegate
+GPU_DELEGATE_PATH = "./lib/libtensorflowlite_gpu_delegate.so"  # Path to EdgeTPU delegate
+# GPU_DELEGATE_PATH = None  # Set to None to disable GPU delegate
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Seeds & environment
