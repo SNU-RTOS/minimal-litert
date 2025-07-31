@@ -1,5 +1,6 @@
 #!/bin/bash
 # This script parses a TFLite model and generates a schema if necessary.
+# This script parses a TFLite model and generates a schema if necessary.
 if [ ! -d tflite ]; then
     echo "tflite directory does not exist."
     echo "Generating tflite schema..."

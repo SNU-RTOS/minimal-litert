@@ -20,11 +20,6 @@ mobilenetv3_small_100.lamb_in1k
 tf_mobilenetv3_large_100.in1k
 mobilenetv3_large_100.ra4_e3600_r224_in1k
 
-
-
-
-
-
 mobilenetv4_conv_small.e2400_r224_in1k
 mobilenetv4_conv_medium.e500_r224_in1k
 mobilenetv4_hybrid_medium.e500_r224_in1k
@@ -42,16 +37,11 @@ efficientvit_b0.r224_in1k
 efficientvit_b1.r224_in1k
 efficientvit_b2.r224_in1k
 
-
-
-
-
 vit_base_patch16_224.orig_in21k_ft_in1k
 vit_small_patch16_224.augreg_in21k_ft_in1k
 vit_small_patch32_224.augreg_in21k_ft_in1k
 
 swin_s3_base_224.ms_in1k
-
 
 tiny_vit_21m_224.in1k
 
@@ -69,4 +59,3 @@ deit_base_patch16_224.fb_in1k
 
 deit3_base_patch16_224.fb_in22k_ft_in1k
 deit3_small_patch16_224.fb_in22k_ft_in1k
-
