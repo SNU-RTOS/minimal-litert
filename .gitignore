@@ -228,3 +228,4 @@ docs/_build/
 # Misc.
 tools/model_dump/tflite
 backup
+exported
