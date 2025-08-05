@@ -25,16 +25,33 @@ load("@rules_shell//shell:repositories.bzl", "rules_shell_dependencies", "rules_
 rules_shell_dependencies()
 rules_shell_toolchains()
 
-# LiteRT from local path
-local_repository(
-    name = "litert",
-    path = "external/litert",
+# Fix abseil-cpp version
+http_archive(
+    name = "com_google_absl",
+    strip_prefix = "abseil-cpp-20240722.1",
+    sha256 = "40cee67604060a7c8794d931538cb55f4d444073e556980c88b6c49bb9b19bb7",
+    url = "https://github.com/abseil/abseil-cpp/releases/download/20240722.1/abseil-cpp-20240722.1.tar.gz",
 )
+
+# Fix protobuf version
+http_archive(
+    name = "com_google_protobuf",
+    strip_prefix = "protobuf-28.3",
+    sha256 = "7c3ebd7aaedd86fa5dc479a0fda803f602caaf78d8aff7ce83b89e1b8ae7442a",
+    url = "https://github.com/protocolbuffers/protobuf/archive/refs/tags/v28.3.tar.gz",
+)
+
 
 # XNNPACK from local path
 local_repository(
     name = "XNNPACK",
     path = "external/XNNPACK",
+)
+
+# LiteRT from local path
+local_repository(
+    name = "litert",
+    path = "external/litert",
 )
 
 # Load the custom repository rule to select either a local TensorFlow source or a remote http_archive.
@@ -143,4 +160,4 @@ load(
 )
 nccl_configure(name = "local_config_nccl")
 
-register_toolchains("//tools/cross_compile:aarch64_toolchain_entry")
+register_toolchains("//tools/cross_compile/toolchain:aarch64_toolchain_entry")

@@ -225,3 +225,8 @@ docs/_build/
 /site
 
 
+# Misc.
+tools/model_dump/tflite
+backup
+exported
+*.tflite
