@@ -148,7 +148,8 @@ build_target() {
         ;;
         "verify")
             echo "[INFO] Building verify targets..."
-            $bin $build_flags //minimal-litert/verify/...
+            $bin $build_flags //minimal-litert/verify/... \
+                //minimal-litert/tools:dump_model_cpu
         ;;
         "profile")
             echo "[INFO] Building profile targets..."

@@ -10,6 +10,11 @@ import argparse
 import os
 from pathlib import Path
 
+# from tensorflow.lite.python.interpreter import Interpreter
+import tensorflow as tf
+
+
+
 # === Builtin Operator Reverse Mapping (enum 값 → 이름)
 BUILTIN_OPERATOR_NAME = {
     v: k
@@ -87,9 +92,9 @@ def parse_recursive_subgraph(model, opcodes, subgraphs, subgraph_index, log, dep
         log.write(line + "\n")
         
 # === Parse and log entire TFLite model structure ===
-def parse_entire_tflite_model(input_file, log_file):
+def parse_entire_tflite_model(model_file, log_file):
     # Load TFLite FlatBuffer Model
-    with open(input_file, "rb") as f:
+    with open(model_file, "rb") as f:
         buf = f.read()
 
     model = Model.GetRootAs(buf, 0)
@@ -101,6 +106,26 @@ def parse_entire_tflite_model(input_file, log_file):
             parse_single_subgraph(model, opcodes, subgraphs, subgraph_index, log)
             log.write("\n\n")
 
+
+def parse_runtime_tflite_model(model_file):
+    
+    interpreter = tf.lite.Interpreter(
+        model_path=model_file,
+        experimental_op_resolver_type=tf.lite.experimental.OpResolverType.AUTO
+    )
+    interpreter.allocate_tensors()
+
+    ops = interpreter._get_ops_details()
+    tensors = interpreter.get_tensor_details()
+
+    for op in ops:
+        print(f"[{op['index']:02}] {op['op_name']}")
+        # for tidx in op['inputs']:
+        #     t = tensors[tidx]
+        #     print(f"    input: {t['name']} ({t['shape']})")
+        # for tidx in op['outputs']:
+        #     t = tensors[tidx]
+        #     print(f"    output: {t['name']} ({t['shape']})")
 
 # === Main CLI Entrypoint ===
 def main():
@@ -158,6 +183,18 @@ def main():
 
     else:
         print("Invalid choice. Exiting.")
+        exit(0)
+
+
+    # parse_runtime_tflite_model(args.model_file)
+    # tf.lite.experimental.Analyzer.analyze(model_path=args.model_file, 
+    #                                       gpu_compatibility=True,
+    #                                     #   experimental_use_mlir=True
+    #                                       )
 
 if __name__ == "__main__":
     main()
+
+
+# === End of file: dev/app/minimal-litert/tools/model_dump/parser.py ===
+

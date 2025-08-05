@@ -25,6 +25,15 @@ load("@rules_shell//shell:repositories.bzl", "rules_shell_dependencies", "rules_
 rules_shell_dependencies()
 rules_shell_toolchains()
 
+# Fix abseil-cpp version
+http_archive(
+    name = "com_google_absl",
+    strip_prefix = "abseil-cpp-20240722.1",
+    sha256 = "40cee67604060a7c8794d931538cb55f4d444073e556980c88b6c49bb9b19bb7",
+    url = "https://github.com/abseil/abseil-cpp/releases/download/20240722.1/abseil-cpp-20240722.1.tar.gz",
+)
+
+# Fix protobuf version
 http_archive(
     name = "com_google_protobuf",
     strip_prefix = "protobuf-28.3",
