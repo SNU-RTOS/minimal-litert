@@ -8,7 +8,6 @@
 #include <cmath>
 #include <cstring>
 
-
 #include "opencv2/opencv.hpp" //opencv
 
 #include "tflite/delegates/xnnpack/xnnpack_delegate.h" //for xnnpack delegate
@@ -26,7 +25,8 @@
 #include "tflite/tools/logging.h"
 #include "util.hpp"
 
-namespace {
+namespace
+{
 
     // Inference mode enum
     enum class InferenceMode
@@ -59,7 +59,7 @@ namespace {
     };
 
     // Functions
-    void parse_arguments(int argc, char *argv[],BenchmarkConfig &config)
+    void parse_arguments(int argc, char *argv[], BenchmarkConfig &config)
     {
         if (argc < 6 || argc > 9)
         {
@@ -87,9 +87,49 @@ namespace {
         std::cout << "[INFO] Delegate type: " << config.delegate_type << std::endl;
         std::cout << "[INFO] Warmup runs: " << config.num_warmup << std::endl;
         std::cout << "[INFO] Profiling runs: " << config.num_run << std::endl;
-
     }
 
+    std::unique_ptr<tflite::profiling::BufferedProfiler> setup_profiler(
+        std::unique_ptr<tflite::Interpreter> &interpreter,
+        const BenchmarkConfig &config,
+        std::vector<ProfilerOutput> &profiler_outputs)
+    {
+
+        constexpr int kProfilingBufferHeadrooms = 512;
+        int total_nodes = util::count_total_nodes(interpreter.get());
+        if (total_nodes > kProfilingBufferHeadrooms)
+            total_nodes += kProfilingBufferHeadrooms;
+        auto profiler = std::make_unique<tflite::profiling::BufferedProfiler>(total_nodes, true);
+        if (!profiler)
+        {
+            std::cerr << "[ERROR] Failed to create profiler" << std::endl;
+            return nullptr;
+        }
+
+        // Always add log output
+        ProfilerOutput pf_out_default;
+        pf_out_default.formatter = std::make_shared<tflite::profiling::ProfileSummaryDefaultFormatter>();
+        pf_out_default.init_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(pf_out_default.formatter);
+        pf_out_default.run_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(pf_out_default.formatter);
+        pf_out_default.output_type = "log";
+        pf_out_default.output_path = "";
+        profiler_outputs.push_back(pf_out_default);
+
+        // Add CSV output if requested
+        if (!config.profiling_result_path.empty())
+        {
+            ProfilerOutput pf_out_csv;
+            pf_out_csv.formatter = std::make_shared<tflite::profiling::ProfileSummaryCSVFormatter>();
+            pf_out_csv.init_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(pf_out_csv.formatter);
+            pf_out_csv.run_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(pf_out_csv.formatter);
+            pf_out_csv.output_type = "csv";
+            pf_out_csv.output_path = config.profiling_result_path;
+            profiler_outputs.push_back(pf_out_csv);
+        }
+
+        interpreter->SetProfiler(profiler.get());
+        return profiler;
+    }
 
     void apply_delegate(std::unique_ptr<tflite::Interpreter> &interpreter,
                         TfLiteDelegate *&delegate, bool &delegate_applied,
@@ -148,7 +188,7 @@ namespace {
     }
 
     void process_input_tensor(std::unique_ptr<tflite::Interpreter> &interpreter,
-                            const cv::Mat &preprocessed_image)
+                              const cv::Mat &preprocessed_image)
     {
         TfLiteTensor *input_tensor = interpreter->input_tensor(0);
 
@@ -211,7 +251,7 @@ namespace {
     }
 
     void process_output_tensor(std::unique_ptr<tflite::Interpreter> &interpreter,
-                            std::vector<float> &probs)
+                               std::vector<float> &probs)
     {
         TfLiteTensor *output_tensor = interpreter->output_tensor(0);
         int num_classes = output_tensor->dims->data[1];
@@ -272,11 +312,11 @@ namespace {
     }
 
     void run_model(std::unique_ptr<tflite::Interpreter> &interpreter,
-                TfLiteDelegate *delegate, const std::string &delegate_type,
-                std::unique_ptr<tflite::profiling::BufferedProfiler> &profiler,
-                bool enable_profiling, InferenceMode mode,
-                std::vector<ProfilerOutput> &profiler_outputs,
-                BenchmarkConfig &config)
+                   TfLiteDelegate *delegate, const std::string &delegate_type,
+                   std::unique_ptr<tflite::profiling::BufferedProfiler> &profiler,
+                   bool enable_profiling, InferenceMode mode,
+                   std::vector<ProfilerOutput> &profiler_outputs,
+                   BenchmarkConfig &config)
     {
         // Use the cleanup_delegate function for delegate cleanup
 
@@ -285,7 +325,6 @@ namespace {
 
         std::cout << "\n[INFO] Running " << iter << " " << phase << " iterations..." << std::endl;
 
-        
         for (int i = 0; i < iter; ++i)
         {
             if (enable_profiling && profiler && mode == InferenceMode::RUN)
@@ -294,7 +333,7 @@ namespace {
                 profiler->StartProfiling();
             }
 
-            std::string timer_phase_name="Inference_" + std::to_string(i);
+            std::string timer_phase_name = "Inference_" + std::to_string(i);
 
             if (mode == InferenceMode::RUN)
             {
@@ -302,7 +341,7 @@ namespace {
             }
 
             auto kTfLiteStatus = interpreter->Invoke();
-            
+
             if (mode == InferenceMode::RUN)
             {
                 util::timer_stop(timer_phase_name);
@@ -325,10 +364,8 @@ namespace {
             }
         }
 
-        
         std::cout << "[INFO] " << phase << " completed" << std::endl;
     }
-
 
 }
 
@@ -370,43 +407,16 @@ int main(int argc, char *argv[])
 
     util::print_model_signature(interpreter.get());
 
-    // Setup Profiler
-    constexpr int kProfilingBufferHeadrooms = 512;
-    int total_nodes = util::count_total_nodes(interpreter.get());
-    if (total_nodes > kProfilingBufferHeadrooms)
-        total_nodes += kProfilingBufferHeadrooms;
-    auto profiler = std::make_unique<tflite::profiling::BufferedProfiler>(total_nodes, true);
-    interpreter->SetProfiler(profiler.get());
-
-    // Initialize profiler outputs
+    // [PROFILE] Setup Profiler
     std::vector<ProfilerOutput> profiler_outputs;
+    auto profiler = setup_profiler(interpreter, config, profiler_outputs);
+    auto init_log_summarizer = profiler_outputs.at(0).init_summarizer;
 
-    // Always add log output
-    ProfilerOutput pf_out_default;
-    pf_out_default.formatter = std::make_shared<tflite::profiling::ProfileSummaryDefaultFormatter>();
-    pf_out_default.init_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(pf_out_default.formatter);
-    pf_out_default.run_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(pf_out_default.formatter);
-    pf_out_default.output_type = "log";
-    pf_out_default.output_path = "";
-    profiler_outputs.push_back(pf_out_default);
-
-    // Add CSV output if requested
-    if (!config.profiling_result_path.empty())
-    {
-        ProfilerOutput pf_out_csv;
-        pf_out_csv.formatter = std::make_shared<tflite::profiling::ProfileSummaryCSVFormatter>();
-        pf_out_csv.init_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(pf_out_csv.formatter);
-        pf_out_csv.run_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(pf_out_csv.formatter);
-        pf_out_csv.output_type = "csv";
-        pf_out_csv.output_path = config.profiling_result_path;
-        profiler_outputs.push_back(pf_out_csv);
-    }
-
-    /* 3. Apply delegate */
-    // Start Initialization Profiling
+    // [PROFILE] Start Initialization Profiling
     profiler->Reset();
     profiler->StartProfiling();
 
+    /* 3. Apply delegate */
     util::timer_start("Apply Delegate");
     TfLiteDelegate *delegate = nullptr;
     bool delegate_applied = false;
@@ -416,18 +426,6 @@ int main(int argc, char *argv[])
         std::cerr << "[ERROR] Failed to apply delegate: " << config.delegate_type << std::endl;
     }
     util::timer_stop("Apply Delegate");
-
-    /* [PROFILE] Setup Profilers */
-
-    // Default formatter/summarizer for log output
-    auto log_formatter = std::make_shared<tflite::profiling::ProfileSummaryDefaultFormatter>();
-    auto init_log_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(log_formatter);
-    auto run_log_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(log_formatter);
-
-    // CSV formatter/summarizer for CSV output
-    auto csv_formatter = std::make_shared<tflite::profiling::ProfileSummaryCSVFormatter>();
-    auto init_csv_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(csv_formatter);
-    auto run_csv_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(csv_formatter);
 
     /* 4. Allocate Tensor */
     util::timer_start("Allocate Tensor");
@@ -440,7 +438,7 @@ int main(int argc, char *argv[])
 
     util::print_model_summary(interpreter.get(), delegate_applied);
 
-    // Finish Init Profiling
+    // [PROFILE] Finish Init Profiling
     profiler->StopProfiling();
     for (auto &out : profiler_outputs)
     {
@@ -481,8 +479,8 @@ int main(int argc, char *argv[])
               InferenceMode::RUN, profiler_outputs, config);
 
     /* 8. PostProcessing */
-
     util::timer_start("Postprocessing");
+
     // Get output tensor
     TfLiteTensor *output_tensor = interpreter->output_tensor(0);
     util::print_tensor_shape(output_tensor, "output_tensor");
@@ -502,7 +500,7 @@ int main(int argc, char *argv[])
     util::print_all_timers();
 
     // Print Ops-level profiling time (log)
-    // Print all profiler outputs
+
     std::cout << "\n[INFO] Generating Ops-level profiling (log)\n"
               << std::endl;
     for (auto &out : profiler_outputs)

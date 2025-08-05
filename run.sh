@@ -89,21 +89,21 @@ run_main_profile() {
     local delegate_type=${5:-"xnnpack"}
     local warmup_runs=${6:-}
     local profiling_runs=${7:-}
-
+    
     local model_base
     model_base=$(basename "${model%.*}")
-
+    
     local log_file="./log/output_main_profile_${model_base}_${delegate_type}_${num_threads}threads.log"
     local csv_file="./log/output_main_profile_${model_base}_${delegate_type}_${num_threads}threads.csv"
     local tmp_fixed_csv_file="${csv_file}.fixed.csv"
-
-    local bin="./bin/main_profile"
-
+    
+    local bin="./bin/main_profile_cpu_only"
+    
     echo "[INFO] Run main_profile"
     echo "===================================="
     {
         echo "Running main profile with model $model and image $image (threads: $num_threads, delegate: $delegate_type, warmup: ${warmup_runs:-default}, profiling: ${profiling_runs:-default})"
-
+        
         if [ ! -f "$model" ]; then
             echo "Model file $model not found."
             exit 1
@@ -116,12 +116,12 @@ run_main_profile() {
             echo "Labels file $labels not found."
             exit 1
         fi
-
+        
         if [ ! -f "$bin" ]; then
             echo "Binary $bin not found. Please build the project first."
             exit 1
         fi
-
+        
         if [[ -n "$warmup_runs" && -n "$profiling_runs" ]]; then
             taskset -c 0-15 $bin $model $image $labels $num_threads $delegate_type $csv_file $warmup_runs $profiling_runs
         else
@@ -133,12 +133,12 @@ run_main_profile() {
     echo "[INFO] Post-processing CSV file..."
     python3 tools/fix_profile_report.py "$csv_file" "$tmp_fixed_csv_file"
     if [ $? -eq 0 ]; then
-            mv "$tmp_fixed_csv_file" "$csv_file"
-            echo "[INFO] CSV file overwritten with fixed version: $csv_file"
-        else
-            echo "[ERROR] Failed to fix CSV file. Keeping original."
-            rm -f "$tmp_fixed_csv_file"
-        fi
+        mv "$tmp_fixed_csv_file" "$csv_file"
+        echo "[INFO] CSV file overwritten with fixed version: $csv_file"
+    else
+        echo "[ERROR] Failed to fix CSV file. Keeping original."
+        rm -f "$tmp_fixed_csv_file"
+    fi
     echo ""
     echo "[INFO] Results saved to:"
     echo "  Log : $log_file"

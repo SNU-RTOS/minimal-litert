@@ -17,7 +17,7 @@ fi
 
 
 
-# python3 parser.py -m ../../models/mobileone_s0.tflite
+python3 parser.py -m ../../models/mobileone_s0.tflite
 # python3 parser.py -m ../../models/mobilenetv3_small.tflite
 # python3 parser.py -m ../../models/mobilenetv3_large_100.ra4_e3600_r224_in1k.tflite
 # echo 1 | python3 parser.py -m ../../models/tf_mobilenetv3_large_100.in1k.tflite
@@ -25,8 +25,8 @@ fi
 
 
 # Define the source and destination directories
-exported_dir="../../models/exported/"
-destination_dir="../../models"
+# exported_dir="../../models/exported/"
+# destination_dir="../../models"
 
 # Find and process .tflite files
 # find "$exported_dir" -type f -name "*.tflite" ! -name "*_pt2e_int8.tflite" | while read -r tflite_file; do
