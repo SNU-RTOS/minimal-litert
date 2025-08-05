@@ -160,4 +160,4 @@ load(
 )
 nccl_configure(name = "local_config_nccl")
 
-register_toolchains("//tools/cross_compile/toolchain:aarch64_toolchain_entry")
+# register_toolchains("//tools/cross_compile/toolchain:aarch64_toolchain_entry")
