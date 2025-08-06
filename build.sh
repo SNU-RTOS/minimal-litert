@@ -111,7 +111,7 @@ build_target() {
     else
         case "${arch}" in
             x86_64)
-                arch_flag="--config=avx_linux"
+                # arch_flag="--config=avx_linux"
             ;;
             aarch64*)
                 arch_flag="--config=linux_arm64"

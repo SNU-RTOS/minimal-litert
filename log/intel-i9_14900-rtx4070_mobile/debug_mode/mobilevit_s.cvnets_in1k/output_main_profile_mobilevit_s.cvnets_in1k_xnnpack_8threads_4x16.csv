@@ -1,0 +1,742 @@
+Profiling Info for Benchmark Initialization:
+============================== Run Order ==============================
+node type,first,avg_ms,%,cdf%,mem KB,times called,name
+ModifyGraphWithDelegate,19.99,19.99,69.5546%,69.5546%,41728,1,ModifyGraphWithDelegate/0
+AllocateTensors,8.75,8.75,30.4454%,100%,22172,1,AllocateTensors/0
+
+============================== Top by Computation Time ==============================
+node type,first,avg_ms,%,cdf%,mem KB,times called,name
+ModifyGraphWithDelegate,19.99,19.99,69.5546%,69.5546%,41728,1,ModifyGraphWithDelegate/0
+AllocateTensors,8.75,8.75,30.4454%,100%,22172,1,AllocateTensors/0
+
+Number of nodes executed: 2
+============================== Summary by node type ==============================
+node type,count,avg_ms,avg %,cdf %,mem KB,times called
+ModifyGraphWithDelegate,1,19.99,69.5546%,69.5546%,41728,1
+AllocateTensors,1,8.75,30.4454%,100%,22172,1
+
+Timings (microseconds): count=1 curr=28740
+Memory (bytes): count=0
+2 nodes observed
+
+
+Operator-wise Profiling Info for Regular Benchmark Runs:
+============================== Run Order ==============================
+node type,first,avg_ms,%,cdf%,mem KB,times called,name
+"Convolution (NHWC, F32) IGEMM",0.141,0.19025,1.41977%,1.41977%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:0
+Sigmoid (NC),0.025,0.04341,0.323953%,1.74372%,0,1,Delegate/Sigmoid (NC):1
+Multiply (ND),0.011,0.02337,0.174402%,1.91812%,0,1,Delegate/Multiply (ND):2
+"Fully Connected (NC, F32) GEMM",0.063,0.07435,0.554847%,2.47297%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:3
+Sigmoid (NC),0.051,0.06068,0.452832%,2.9258%,0,1,Delegate/Sigmoid (NC):4
+Multiply (ND),0.02,0.0242,0.180596%,3.10639%,0,1,Delegate/Multiply (ND):5
+"Convolution (NHWC, F32) DWConv",0.087,0.08315,0.620518%,3.72691%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:6
+Sigmoid (NC),0.066,0.06871,0.512757%,4.23967%,0,1,Delegate/Sigmoid (NC):7
+Multiply (ND),0.016,0.02261,0.16873%,4.4084%,0,1,Delegate/Multiply (ND):8
+"Fully Connected (NC, F32) GEMM",0.107,0.11711,0.873949%,5.28235%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:9
+"Fully Connected (NC, F32) GEMM",0.204,0.24021,1.7926%,7.07495%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:10
+Sigmoid (NC),0.1,0.11507,0.858725%,7.93367%,0,1,Delegate/Sigmoid (NC):11
+Multiply (ND),0.045,0.05544,0.413728%,8.3474%,0,1,Delegate/Multiply (ND):12
+"Convolution (NHWC, F32) DWConv",0.044,0.05245,0.391415%,8.73882%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:13
+Sigmoid (NC),0.036,0.03431,0.256043%,8.99486%,0,1,Delegate/Sigmoid (NC):14
+Multiply (ND),0.008,0.01036,0.0773129%,9.07217%,0,1,Delegate/Multiply (ND):15
+"Fully Connected (NC, F32) GEMM",0.106,0.11161,0.832904%,9.90508%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:16
+"Fully Connected (NC, F32) GEMM",0.2,0.23519,1.75514%,11.6602%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:17
+Sigmoid (NC),0.045,0.06039,0.450668%,12.1109%,0,1,Delegate/Sigmoid (NC):18
+Multiply (ND),0.014,0.02063,0.153954%,12.2648%,0,1,Delegate/Multiply (ND):19
+"Convolution (NHWC, F32) DWConv",0.063,0.07429,0.554399%,12.8192%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:20
+Sigmoid (NC),0.045,0.05573,0.415892%,13.2351%,0,1,Delegate/Sigmoid (NC):21
+Multiply (ND),0.014,0.01855,0.138432%,13.3736%,0,1,Delegate/Multiply (ND):22
+"Fully Connected (NC, F32) GEMM",0.193,0.22455,1.67573%,15.0493%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:23
+Add (ND),0.011,0.01291,0.0963426%,15.1456%,0,1,Delegate/Add (ND):24
+"Fully Connected (NC, F32) GEMM",0.196,0.23192,1.73073%,16.8764%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:25
+Sigmoid (NC),0.045,0.05418,0.404325%,17.2807%,0,1,Delegate/Sigmoid (NC):26
+Multiply (ND),0.014,0.0181,0.135074%,17.4158%,0,1,Delegate/Multiply (ND):27
+"Convolution (NHWC, F32) DWConv",0.062,0.07243,0.540518%,17.9563%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:28
+Sigmoid (NC),0.045,0.05381,0.401564%,18.3578%,0,1,Delegate/Sigmoid (NC):29
+Multiply (ND),0.014,0.01831,0.136641%,18.4945%,0,1,Delegate/Multiply (ND):30
+"Fully Connected (NC, F32) GEMM",0.201,0.22239,1.65961%,20.1541%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:31
+Add (ND),0.006,0.00691,0.0515668%,20.2057%,0,1,Delegate/Add (ND):32
+"Fully Connected (NC, F32) GEMM",0.195,0.23089,1.72305%,21.9287%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:33
+Sigmoid (NC),0.049,0.05636,0.420594%,22.3493%,0,1,Delegate/Sigmoid (NC):34
+Multiply (ND),0.016,0.02154,0.160745%,22.5101%,0,1,Delegate/Multiply (ND):35
+"Convolution (NHWC, F32) DWConv",0.026,0.02884,0.215222%,22.7253%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:36
+Sigmoid (NC),0.013,0.01827,0.136342%,22.8616%,0,1,Delegate/Sigmoid (NC):37
+Multiply (ND),0.005,0.00785,0.0585817%,22.9202%,0,1,Delegate/Multiply (ND):38
+"Fully Connected (NC, F32) GEMM",0.08,0.08798,0.656562%,23.5768%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:39
+"Convolution (NHWC, F32) IGEMM",0.42,0.45275,3.37871%,26.9555%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:40
+Sigmoid (NC),0.014,0.01103,0.0823128%,27.0378%,0,1,Delegate/Sigmoid (NC):41
+Multiply (ND),0.004,0.00393,0.0293281%,27.0671%,0,1,Delegate/Multiply (ND):42
+"Fully Connected (NC, F32) GEMM",0.047,0.051,0.380594%,27.4477%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:43
+"Transpose (ND, X32) Transpose",0.02,0.02117,0.157984%,27.6057%,0,1,Delegate/Transpose (ND	 X32) Transpose:44
+Static Reshape (NC),0,0,0%,27.6057%,0,1,Delegate/Static Reshape (NC):45
+"Transpose (ND, X32) Transpose",0.024,0.02668,0.199103%,27.8048%,0,1,Delegate/Transpose (ND	 X32) Transpose:46
+Static Reshape (NC),0,4e-05,0.000298505%,27.8051%,0,1,Delegate/Static Reshape (NC):47
+"Transpose (ND, X32) Transpose",0.02,0.02087,0.155745%,27.9608%,0,1,Delegate/Transpose (ND	 X32) Transpose:48
+Static Reshape (NC),0.016,0.01643,0.122611%,28.0834%,0,1,Delegate/Static Reshape (NC):49
+Static Reshape (NC),0.007,0.00782,0.0583578%,28.1418%,0,1,Delegate/Static Reshape (NC):50
+Mean (ND) Reduce,0.005,0.00521,0.0388803%,28.1807%,0,1,Delegate/Mean (ND) Reduce:51
+Static Reshape (NC),0,0,0%,28.1807%,0,1,Delegate/Static Reshape (NC):52
+Squared Difference (ND),0.007,0.00882,0.0658204%,28.2465%,0,1,Delegate/Squared Difference (ND):53
+Mean (ND) Reduce,0.005,0.00561,0.0418654%,28.2884%,0,1,Delegate/Mean (ND) Reduce:54
+Add (ND),0.002,0.00191,0.0142536%,28.3026%,0,1,Delegate/Add (ND):55
+Reciprocal Square Root (NC),0,1e-05,7.46263e-05%,28.3027%,0,1,Delegate/Reciprocal Square Root (NC):56
+Multiply (ND),0.002,0.00217,0.0161939%,28.3189%,0,1,Delegate/Multiply (ND):57
+Subtract (ND),0.002,0.00191,0.0142536%,28.3331%,0,1,Delegate/Subtract (ND):58
+Static Reshape (NC),0,4e-05,0.000298505%,28.3334%,0,1,Delegate/Static Reshape (NC):59
+Multiply (ND),0.004,0.00443,0.0330595%,28.3665%,0,1,Delegate/Multiply (ND):60
+Static Reshape (NC),0,0,0%,28.3665%,0,1,Delegate/Static Reshape (NC):61
+Add (ND),0.003,0.00339,0.0252983%,28.3918%,0,1,Delegate/Add (ND):62
+"Fully Connected (NC, F32) GEMM",0.199,0.21768,1.62447%,30.0163%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:63
+Static Reshape (NC),0,0,0%,30.0163%,0,1,Delegate/Static Reshape (NC):64
+"Transpose (ND, X32) Transpose",0.04,0.04735,0.353356%,30.3696%,0,1,Delegate/Transpose (ND	 X32) Transpose:65
+"Slice (ND, X32)",0.027,0.02838,0.211789%,30.5814%,0,1,Delegate/Slice (ND	 X32):66
+"Slice (ND, X32)",0.05,0.04799,0.358132%,30.9395%,0,1,Delegate/Slice (ND	 X32):67
+"Slice (ND, X32)",0.034,0.03838,0.286416%,31.226%,0,1,Delegate/Slice (ND	 X32):68
+Static Reshape (NC),0,0,0%,31.226%,0,1,Delegate/Static Reshape (NC):69
+Static Reshape (NC),0,0,0%,31.226%,0,1,Delegate/Static Reshape (NC):70
+Multiply (ND),0.349,0.21395,1.59663%,32.8226%,0,1,Delegate/Multiply (ND):71
+Multiply (ND),0.233,0.13414,1.00104%,33.8236%,0,1,Delegate/Multiply (ND):72
+"Transpose (ND, X32) Transpose",0.242,0.09803,0.731562%,34.5552%,0,1,Delegate/Transpose (ND	 X32) Transpose:73
+Static Reshape (NC),0,6e-05,0.000447758%,34.5556%,0,1,Delegate/Static Reshape (NC):74
+Static Reshape (NC),0,3e-05,0.000223879%,34.5559%,0,1,Delegate/Static Reshape (NC):75
+"Batch Matrix Multiply (NC, F32) GEMM",0.24,0.22204,1.657%,36.2129%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:76
+Static Reshape (NC),0,0,0%,36.2129%,0,1,Delegate/Static Reshape (NC):77
+"Softmax (NC, F32)",0.139,0.15207,1.13484%,37.3477%,0,1,Delegate/Softmax (NC	 F32):78
+Static Reshape (NC),0,0.00021,0.00156715%,37.3493%,0,1,Delegate/Static Reshape (NC):79
+Static Reshape (NC),0,0,0%,37.3493%,0,1,Delegate/Static Reshape (NC):80
+"Batch Matrix Multiply (NC, F32) GEMM",0.168,0.18297,1.36544%,38.7147%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:81
+Static Reshape (NC),0,0,0%,38.7147%,0,1,Delegate/Static Reshape (NC):82
+"Transpose (ND, X32) Transpose",0.01,0.01179,0.0879844%,38.8027%,0,1,Delegate/Transpose (ND	 X32) Transpose:83
+Static Reshape (NC),0,0,0%,38.8027%,0,1,Delegate/Static Reshape (NC):84
+"Fully Connected (NC, F32) GEMM",0.082,0.07601,0.567235%,39.3699%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:85
+Add (ND),0.013,0.01384,0.103283%,39.4732%,0,1,Delegate/Add (ND):86
+Static Reshape (NC),0.008,0.00778,0.0580593%,39.5313%,0,1,Delegate/Static Reshape (NC):87
+Mean (ND) Reduce,0.004,0.00512,0.0382087%,39.5695%,0,1,Delegate/Mean (ND) Reduce:88
+Static Reshape (NC),0,1e-05,7.46263e-05%,39.5696%,0,1,Delegate/Static Reshape (NC):89
+Squared Difference (ND),0.009,0.00795,0.0593279%,39.6289%,0,1,Delegate/Squared Difference (ND):90
+Mean (ND) Reduce,0.005,0.00485,0.0361938%,39.6651%,0,1,Delegate/Mean (ND) Reduce:91
+Add (ND),0.002,0.00176,0.0131342%,39.6782%,0,1,Delegate/Add (ND):92
+Reciprocal Square Root (NC),0,1e-05,7.46263e-05%,39.6783%,0,1,Delegate/Reciprocal Square Root (NC):93
+Multiply (ND),0.003,0.00216,0.0161193%,39.6944%,0,1,Delegate/Multiply (ND):94
+Subtract (ND),0.002,0.00202,0.0150745%,39.7095%,0,1,Delegate/Subtract (ND):95
+Static Reshape (NC),0,0,0%,39.7095%,0,1,Delegate/Static Reshape (NC):96
+Multiply (ND),0.01,0.00972,0.0725368%,39.782%,0,1,Delegate/Multiply (ND):97
+Static Reshape (NC),0,0,0%,39.782%,0,1,Delegate/Static Reshape (NC):98
+Add (ND),0.004,0.00425,0.0317162%,39.8137%,0,1,Delegate/Add (ND):99
+"Fully Connected (NC, F32) GEMM",0.142,0.1464,1.09253%,40.9063%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:100
+Static Reshape (NC),0.013,0.01374,0.102537%,41.0088%,0,1,Delegate/Static Reshape (NC):101
+Sigmoid (NC),0.018,0.01658,0.12373%,41.1325%,0,1,Delegate/Sigmoid (NC):102
+Multiply (ND),0.006,0.00616,0.0459698%,41.1785%,0,1,Delegate/Multiply (ND):103
+"Fully Connected (NC, F32) GEMM",0.138,0.14578,1.0879%,42.2664%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:104
+Add (ND),0.009,0.00957,0.0714174%,42.3378%,0,1,Delegate/Add (ND):105
+Static Reshape (NC),0.004,0.00555,0.0414176%,42.3792%,0,1,Delegate/Static Reshape (NC):106
+Mean (ND) Reduce,0.006,0.00935,0.0697756%,42.449%,0,1,Delegate/Mean (ND) Reduce:107
+Static Reshape (NC),0,2e-05,0.000149253%,42.4492%,0,1,Delegate/Static Reshape (NC):108
+Squared Difference (ND),0.004,0.0071,0.0529847%,42.5021%,0,1,Delegate/Squared Difference (ND):109
+Mean (ND) Reduce,0.004,0.00776,0.05791%,42.5601%,0,1,Delegate/Mean (ND) Reduce:110
+Add (ND),0.001,0.00381,0.0284326%,42.5885%,0,1,Delegate/Add (ND):111
+Reciprocal Square Root (NC),0,0,0%,42.5885%,0,1,Delegate/Reciprocal Square Root (NC):112
+Multiply (ND),0.002,0.00484,0.0361191%,42.6246%,0,1,Delegate/Multiply (ND):113
+Subtract (ND),0.002,0.00493,0.0367908%,42.6614%,0,1,Delegate/Subtract (ND):114
+Static Reshape (NC),0,0,0%,42.6614%,0,1,Delegate/Static Reshape (NC):115
+Multiply (ND),0.008,0.01108,0.082686%,42.7441%,0,1,Delegate/Multiply (ND):116
+Static Reshape (NC),0,0,0%,42.7441%,0,1,Delegate/Static Reshape (NC):117
+Add (ND),0.004,0.00615,0.0458952%,42.79%,0,1,Delegate/Add (ND):118
+"Fully Connected (NC, F32) GEMM",0.226,0.22029,1.64394%,44.4339%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:119
+Static Reshape (NC),0,1e-05,7.46263e-05%,44.434%,0,1,Delegate/Static Reshape (NC):120
+"Transpose (ND, X32) Transpose",0.041,0.04327,0.322908%,44.7569%,0,1,Delegate/Transpose (ND	 X32) Transpose:121
+"Slice (ND, X32)",0.029,0.03096,0.231043%,44.9879%,0,1,Delegate/Slice (ND	 X32):122
+"Slice (ND, X32)",0.038,0.04253,0.317386%,45.3053%,0,1,Delegate/Slice (ND	 X32):123
+"Slice (ND, X32)",0.035,0.03331,0.24858%,45.5539%,0,1,Delegate/Slice (ND	 X32):124
+Static Reshape (NC),0,9e-05,0.000671637%,45.5546%,0,1,Delegate/Static Reshape (NC):125
+Static Reshape (NC),0,0,0%,45.5546%,0,1,Delegate/Static Reshape (NC):126
+Multiply (ND),0.173,0.22633,1.68902%,47.2436%,0,1,Delegate/Multiply (ND):127
+Multiply (ND),0.011,0.15747,1.17514%,48.4187%,0,1,Delegate/Multiply (ND):128
+"Transpose (ND, X32) Transpose",0.014,0.10558,0.787905%,49.2066%,0,1,Delegate/Transpose (ND	 X32) Transpose:129
+Static Reshape (NC),0,4e-05,0.000298505%,49.2069%,0,1,Delegate/Static Reshape (NC):130
+Static Reshape (NC),0,0,0%,49.2069%,0,1,Delegate/Static Reshape (NC):131
+"Batch Matrix Multiply (NC, F32) GEMM",0.123,0.21607,1.61245%,50.8194%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:132
+Static Reshape (NC),0,0,0%,50.8194%,0,1,Delegate/Static Reshape (NC):133
+"Softmax (NC, F32)",0.141,0.1516,1.13133%,51.9507%,0,1,Delegate/Softmax (NC	 F32):134
+Static Reshape (NC),0,0,0%,51.9507%,0,1,Delegate/Static Reshape (NC):135
+Static Reshape (NC),0,2e-05,0.000149253%,51.9509%,0,1,Delegate/Static Reshape (NC):136
+"Batch Matrix Multiply (NC, F32) GEMM",0.177,0.19078,1.42372%,53.3746%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:137
+Static Reshape (NC),0,0,0%,53.3746%,0,1,Delegate/Static Reshape (NC):138
+"Transpose (ND, X32) Transpose",0.01,0.01119,0.0835068%,53.4581%,0,1,Delegate/Transpose (ND	 X32) Transpose:139
+Static Reshape (NC),0,0,0%,53.4581%,0,1,Delegate/Static Reshape (NC):140
+"Fully Connected (NC, F32) GEMM",0.08,0.07575,0.565294%,54.0234%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:141
+Add (ND),0.017,0.01389,0.103656%,54.1271%,0,1,Delegate/Add (ND):142
+Static Reshape (NC),0.008,0.0077,0.0574623%,54.1845%,0,1,Delegate/Static Reshape (NC):143
+Mean (ND) Reduce,0.005,0.00471,0.035149%,54.2197%,0,1,Delegate/Mean (ND) Reduce:144
+Static Reshape (NC),0,2e-05,0.000149253%,54.2198%,0,1,Delegate/Static Reshape (NC):145
+Squared Difference (ND),0.008,0.00784,0.058507%,54.2783%,0,1,Delegate/Squared Difference (ND):146
+Mean (ND) Reduce,0.005,0.00498,0.0371639%,54.3155%,0,1,Delegate/Mean (ND) Reduce:147
+Add (ND),0.002,0.00205,0.0152984%,54.3308%,0,1,Delegate/Add (ND):148
+Reciprocal Square Root (NC),0,0,0%,54.3308%,0,1,Delegate/Reciprocal Square Root (NC):149
+Multiply (ND),0.003,0.0023,0.0171641%,54.348%,0,1,Delegate/Multiply (ND):150
+Subtract (ND),0.002,0.00182,0.013582%,54.3615%,0,1,Delegate/Subtract (ND):151
+Static Reshape (NC),0,9e-05,0.000671637%,54.3622%,0,1,Delegate/Static Reshape (NC):152
+Multiply (ND),0.012,0.00956,0.0713428%,54.4336%,0,1,Delegate/Multiply (ND):153
+Static Reshape (NC),0,0,0%,54.4336%,0,1,Delegate/Static Reshape (NC):154
+Add (ND),0.004,0.00408,0.0304475%,54.464%,0,1,Delegate/Add (ND):155
+"Fully Connected (NC, F32) GEMM",0.145,0.147,1.09701%,55.561%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:156
+Static Reshape (NC),0.02,0.01377,0.10276%,55.6638%,0,1,Delegate/Static Reshape (NC):157
+Sigmoid (NC),0.017,0.01636,0.122089%,55.7859%,0,1,Delegate/Sigmoid (NC):158
+Multiply (ND),0.006,0.00602,0.044925%,55.8308%,0,1,Delegate/Multiply (ND):159
+"Fully Connected (NC, F32) GEMM",0.139,0.14475,1.08022%,56.911%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:160
+Add (ND),0.004,0.0043,0.0320893%,56.9431%,0,1,Delegate/Add (ND):161
+Static Reshape (NC),0.004,0.00367,0.0273879%,56.9705%,0,1,Delegate/Static Reshape (NC):162
+Mean (ND) Reduce,0.004,0.00449,0.0335072%,57.004%,0,1,Delegate/Mean (ND) Reduce:163
+Static Reshape (NC),0,0,0%,57.004%,0,1,Delegate/Static Reshape (NC):164
+Squared Difference (ND),0.007,0.0067,0.0499996%,57.054%,0,1,Delegate/Squared Difference (ND):165
+Mean (ND) Reduce,0.005,0.00496,0.0370146%,57.091%,0,1,Delegate/Mean (ND) Reduce:166
+Add (ND),0.002,0.00209,0.0155969%,57.1066%,0,1,Delegate/Add (ND):167
+Reciprocal Square Root (NC),0,0,0%,57.1066%,0,1,Delegate/Reciprocal Square Root (NC):168
+Multiply (ND),0.003,0.00214,0.01597%,57.1226%,0,1,Delegate/Multiply (ND):169
+Subtract (ND),0.002,0.00175,0.0130596%,57.1356%,0,1,Delegate/Subtract (ND):170
+Static Reshape (NC),0,0,0%,57.1356%,0,1,Delegate/Static Reshape (NC):171
+Multiply (ND),0.004,0.00431,0.0321639%,57.1678%,0,1,Delegate/Multiply (ND):172
+Static Reshape (NC),0,0,0%,57.1678%,0,1,Delegate/Static Reshape (NC):173
+Add (ND),0.003,0.00336,0.0250744%,57.1929%,0,1,Delegate/Add (ND):174
+Multiply (ND),0.004,0.00371,0.0276864%,57.2205%,0,1,Delegate/Multiply (ND):175
+Add (ND),0.003,0.00328,0.0244774%,57.245%,0,1,Delegate/Add (ND):176
+Static Reshape (NC),0,0,0%,57.245%,0,1,Delegate/Static Reshape (NC):177
+"Transpose (ND, X32) Transpose",0.035,0.0281,0.2097%,57.4547%,0,1,Delegate/Transpose (ND	 X32) Transpose:178
+Static Reshape (NC),0,0,0%,57.4547%,0,1,Delegate/Static Reshape (NC):179
+"Transpose (ND, X32) Transpose",0.03,0.03051,0.227685%,57.6824%,0,1,Delegate/Transpose (ND	 X32) Transpose:180
+Static Reshape (NC),0,0,0%,57.6824%,0,1,Delegate/Static Reshape (NC):181
+"Transpose (ND, X32) Transpose",0.013,0.01248,0.0931336%,57.7755%,0,1,Delegate/Transpose (ND	 X32) Transpose:182
+"Fully Connected (NC, F32) GEMM",0.047,0.05104,0.380893%,58.1564%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:183
+Sigmoid (NC),0.006,0.00677,0.050522%,58.207%,0,1,Delegate/Sigmoid (NC):184
+Multiply (ND),0.003,0.00325,0.0242536%,58.2312%,0,1,Delegate/Multiply (ND):185
+"Copy (NC, X32)",0.012,0.01255,0.093656%,58.3249%,0,1,Delegate/Copy (NC	 X32):186
+"Convolution (NHWC, F32) IGEMM",0.854,0.89195,6.65629%,64.9812%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:187
+Sigmoid (NC),0.006,0.00657,0.0490295%,65.0302%,0,1,Delegate/Sigmoid (NC):188
+Multiply (ND),0.003,0.00321,0.023955%,65.0541%,0,1,Delegate/Multiply (ND):189
+"Fully Connected (NC, F32) GEMM",0.129,0.13224,0.986858%,66.041%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:190
+Sigmoid (NC),0.018,0.0214,0.1597%,66.2007%,0,1,Delegate/Sigmoid (NC):191
+Multiply (ND),0.006,0.00742,0.0553727%,66.2561%,0,1,Delegate/Multiply (ND):192
+"Convolution (NHWC, F32) DWConv",0.012,0.01368,0.102089%,66.3582%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:193
+Sigmoid (NC),0.009,0.00953,0.0711189%,66.4293%,0,1,Delegate/Sigmoid (NC):194
+Multiply (ND),0.003,0.00543,0.0405221%,66.4698%,0,1,Delegate/Multiply (ND):195
+"Fully Connected (NC, F32) GEMM",0.052,0.05487,0.409475%,66.8793%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:196
+"Convolution (NHWC, F32) IGEMM",0.232,0.22504,1.67939%,68.5587%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:197
+Sigmoid (NC),0.007,0.00483,0.0360445%,68.5947%,0,1,Delegate/Sigmoid (NC):198
+Multiply (ND),0.004,0.00245,0.0182834%,68.613%,0,1,Delegate/Multiply (ND):199
+"Fully Connected (NC, F32) GEMM",0.021,0.02595,0.193655%,68.8066%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:200
+"Transpose (ND, X32) Transpose",0.009,0.0091,0.0679099%,68.8746%,0,1,Delegate/Transpose (ND	 X32) Transpose:201
+Static Reshape (NC),0,0,0%,68.8746%,0,1,Delegate/Static Reshape (NC):202
+"Transpose (ND, X32) Transpose",0.013,0.01462,0.109104%,68.9837%,0,1,Delegate/Transpose (ND	 X32) Transpose:203
+Static Reshape (NC),0,0,0%,68.9837%,0,1,Delegate/Static Reshape (NC):204
+"Transpose (ND, X32) Transpose",0.037,0.01357,0.101268%,69.0849%,0,1,Delegate/Transpose (ND	 X32) Transpose:205
+Static Reshape (NC),0.009,0.00812,0.0605966%,69.1455%,0,1,Delegate/Static Reshape (NC):206
+Static Reshape (NC),0.005,0.00458,0.0341788%,69.1797%,0,1,Delegate/Static Reshape (NC):207
+Mean (ND) Reduce,0.004,0.0035,0.0261192%,69.2058%,0,1,Delegate/Mean (ND) Reduce:208
+Static Reshape (NC),0,0,0%,69.2058%,0,1,Delegate/Static Reshape (NC):209
+Squared Difference (ND),0.006,0.00563,0.0420146%,69.2478%,0,1,Delegate/Squared Difference (ND):210
+Mean (ND) Reduce,0.004,0.00358,0.0267162%,69.2746%,0,1,Delegate/Mean (ND) Reduce:211
+Add (ND),0.001,0.00117,0.00873128%,69.2833%,0,1,Delegate/Add (ND):212
+Reciprocal Square Root (NC),0,0,0%,69.2833%,0,1,Delegate/Reciprocal Square Root (NC):213
+Multiply (ND),0.001,0.00148,0.0110447%,69.2943%,0,1,Delegate/Multiply (ND):214
+Subtract (ND),0.001,0.00122,0.00910441%,69.3034%,0,1,Delegate/Subtract (ND):215
+Static Reshape (NC),0,0,0%,69.3034%,0,1,Delegate/Static Reshape (NC):216
+Multiply (ND),0.002,0.00265,0.019776%,69.3232%,0,1,Delegate/Multiply (ND):217
+Static Reshape (NC),0,0,0%,69.3232%,0,1,Delegate/Static Reshape (NC):218
+Add (ND),0.002,0.00214,0.01597%,69.3392%,0,1,Delegate/Add (ND):219
+"Fully Connected (NC, F32) GEMM",0.11,0.11584,0.864471%,70.2037%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:220
+Static Reshape (NC),0,4e-05,0.000298505%,70.204%,0,1,Delegate/Static Reshape (NC):221
+"Transpose (ND, X32) Transpose",0.014,0.01467,0.109477%,70.3134%,0,1,Delegate/Transpose (ND	 X32) Transpose:222
+"Slice (ND, X32)",0.01,0.0097,0.0723875%,70.3858%,0,1,Delegate/Slice (ND	 X32):223
+"Slice (ND, X32)",0.012,0.01214,0.0905963%,70.4764%,0,1,Delegate/Slice (ND	 X32):224
+"Slice (ND, X32)",0.012,0.01251,0.0933575%,70.5698%,0,1,Delegate/Slice (ND	 X32):225
+Static Reshape (NC),0,0,0%,70.5698%,0,1,Delegate/Static Reshape (NC):226
+Static Reshape (NC),0,0.00022,0.00164178%,70.5714%,0,1,Delegate/Static Reshape (NC):227
+Multiply (ND),0.006,0.00624,0.0465668%,70.618%,0,1,Delegate/Multiply (ND):228
+Multiply (ND),0.007,0.00676,0.0504474%,70.6684%,0,1,Delegate/Multiply (ND):229
+"Transpose (ND, X32) Transpose",0.005,0.00583,0.0435071%,70.7119%,0,1,Delegate/Transpose (ND	 X32) Transpose:230
+Static Reshape (NC),0,0,0%,70.7119%,0,1,Delegate/Static Reshape (NC):231
+Static Reshape (NC),0,0,0%,70.7119%,0,1,Delegate/Static Reshape (NC):232
+"Batch Matrix Multiply (NC, F32) GEMM",0.016,0.01744,0.130148%,70.8421%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:233
+Static Reshape (NC),0,0,0%,70.8421%,0,1,Delegate/Static Reshape (NC):234
+"Softmax (NC, F32)",0.026,0.02662,0.198655%,71.0407%,0,1,Delegate/Softmax (NC	 F32):235
+Static Reshape (NC),0,0,0%,71.0407%,0,1,Delegate/Static Reshape (NC):236
+Static Reshape (NC),0,0.00015,0.00111939%,71.0419%,0,1,Delegate/Static Reshape (NC):237
+"Batch Matrix Multiply (NC, F32) GEMM",0.02,0.0211,0.157462%,71.1993%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:238
+Static Reshape (NC),0,0,0%,71.1993%,0,1,Delegate/Static Reshape (NC):239
+"Transpose (ND, X32) Transpose",0.005,0.00574,0.0428355%,71.2422%,0,1,Delegate/Transpose (ND	 X32) Transpose:240
+Static Reshape (NC),0,0,0%,71.2422%,0,1,Delegate/Static Reshape (NC):241
+"Fully Connected (NC, F32) GEMM",0.039,0.04081,0.30455%,71.5467%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:242
+Add (ND),0.006,0.00319,0.0238058%,71.5705%,0,1,Delegate/Add (ND):243
+Static Reshape (NC),0.002,0.00217,0.0161939%,71.5867%,0,1,Delegate/Static Reshape (NC):244
+Mean (ND) Reduce,0.003,0.00318,0.0237312%,71.6104%,0,1,Delegate/Mean (ND) Reduce:245
+Static Reshape (NC),0,0,0%,71.6104%,0,1,Delegate/Static Reshape (NC):246
+Squared Difference (ND),0.004,0.00357,0.0266416%,71.6371%,0,1,Delegate/Squared Difference (ND):247
+Mean (ND) Reduce,0.003,0.00336,0.0250744%,71.6622%,0,1,Delegate/Mean (ND) Reduce:248
+Add (ND),0.001,0.00129,0.00962679%,71.6718%,0,1,Delegate/Add (ND):249
+Reciprocal Square Root (NC),0,0,0%,71.6718%,0,1,Delegate/Reciprocal Square Root (NC):250
+Multiply (ND),0.002,0.00163,0.0121641%,71.6839%,0,1,Delegate/Multiply (ND):251
+Subtract (ND),0.001,0.0014,0.0104477%,71.6944%,0,1,Delegate/Subtract (ND):252
+Static Reshape (NC),0,3e-05,0.000223879%,71.6946%,0,1,Delegate/Static Reshape (NC):253
+Multiply (ND),0.004,0.00334,0.0249252%,71.7195%,0,1,Delegate/Multiply (ND):254
+Static Reshape (NC),0,0,0%,71.7195%,0,1,Delegate/Static Reshape (NC):255
+Add (ND),0.002,0.00225,0.0167909%,71.7363%,0,1,Delegate/Add (ND):256
+"Fully Connected (NC, F32) GEMM",0.082,0.07852,0.585966%,72.3223%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:257
+Static Reshape (NC),0.004,0.0044,0.0328356%,72.3551%,0,1,Delegate/Static Reshape (NC):258
+Sigmoid (NC),0.007,0.00712,0.0531339%,72.4083%,0,1,Delegate/Sigmoid (NC):259
+Multiply (ND),0.009,0.00345,0.0257461%,72.434%,0,1,Delegate/Multiply (ND):260
+"Fully Connected (NC, F32) GEMM",0.077,0.07778,0.580443%,73.0145%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:261
+Add (ND),0.002,0.00257,0.019179%,73.0336%,0,1,Delegate/Add (ND):262
+Static Reshape (NC),0.002,0.00214,0.01597%,73.0496%,0,1,Delegate/Static Reshape (NC):263
+Mean (ND) Reduce,0.003,0.003,0.0223879%,73.072%,0,1,Delegate/Mean (ND) Reduce:264
+Static Reshape (NC),0,0,0%,73.072%,0,1,Delegate/Static Reshape (NC):265
+Squared Difference (ND),0.003,0.00226,0.0168655%,73.0889%,0,1,Delegate/Squared Difference (ND):266
+Mean (ND) Reduce,0.003,0.00334,0.0249252%,73.1138%,0,1,Delegate/Mean (ND) Reduce:267
+Add (ND),0.002,0.00123,0.00917904%,73.123%,0,1,Delegate/Add (ND):268
+Reciprocal Square Root (NC),0,0,0%,73.123%,0,1,Delegate/Reciprocal Square Root (NC):269
+Multiply (ND),0.002,0.00159,0.0118656%,73.1348%,0,1,Delegate/Multiply (ND):270
+Subtract (ND),0.001,0.00137,0.0102238%,73.1451%,0,1,Delegate/Subtract (ND):271
+Static Reshape (NC),0,2e-05,0.000149253%,73.1452%,0,1,Delegate/Static Reshape (NC):272
+Multiply (ND),0.004,0.00388,0.028955%,73.1742%,0,1,Delegate/Multiply (ND):273
+Static Reshape (NC),0,0,0%,73.1742%,0,1,Delegate/Static Reshape (NC):274
+Add (ND),0.002,0.00243,0.0181342%,73.1923%,0,1,Delegate/Add (ND):275
+"Fully Connected (NC, F32) GEMM",0.124,0.11836,0.883277%,74.0756%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:276
+Static Reshape (NC),0,1e-05,7.46263e-05%,74.0756%,0,1,Delegate/Static Reshape (NC):277
+"Transpose (ND, X32) Transpose",0.014,0.01487,0.110969%,74.1866%,0,1,Delegate/Transpose (ND	 X32) Transpose:278
+"Slice (ND, X32)",0.01,0.01056,0.0788054%,74.2654%,0,1,Delegate/Slice (ND	 X32):279
+"Slice (ND, X32)",0.013,0.0141,0.105223%,74.3706%,0,1,Delegate/Slice (ND	 X32):280
+"Slice (ND, X32)",0.012,0.01357,0.101268%,74.4719%,0,1,Delegate/Slice (ND	 X32):281
+Static Reshape (NC),0,0,0%,74.4719%,0,1,Delegate/Static Reshape (NC):282
+Static Reshape (NC),0,0,0%,74.4719%,0,1,Delegate/Static Reshape (NC):283
+Multiply (ND),0.006,0.00759,0.0566414%,74.5285%,0,1,Delegate/Multiply (ND):284
+Multiply (ND),0.007,0.00798,0.0595518%,74.5881%,0,1,Delegate/Multiply (ND):285
+"Transpose (ND, X32) Transpose",0.005,0.00713,0.0532086%,74.6413%,0,1,Delegate/Transpose (ND	 X32) Transpose:286
+Static Reshape (NC),0,0,0%,74.6413%,0,1,Delegate/Static Reshape (NC):287
+Static Reshape (NC),0,0,0%,74.6413%,0,1,Delegate/Static Reshape (NC):288
+"Batch Matrix Multiply (NC, F32) GEMM",0.016,0.01828,0.136417%,74.7777%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:289
+Static Reshape (NC),0,0,0%,74.7777%,0,1,Delegate/Static Reshape (NC):290
+"Softmax (NC, F32)",0.025,0.02683,0.200222%,74.978%,0,1,Delegate/Softmax (NC	 F32):291
+Static Reshape (NC),0,9e-05,0.000671637%,74.9786%,0,1,Delegate/Static Reshape (NC):292
+Static Reshape (NC),0,0,0%,74.9786%,0,1,Delegate/Static Reshape (NC):293
+"Batch Matrix Multiply (NC, F32) GEMM",0.044,0.02118,0.158059%,75.1367%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:294
+Static Reshape (NC),0,0,0%,75.1367%,0,1,Delegate/Static Reshape (NC):295
+"Transpose (ND, X32) Transpose",0.005,0.0057,0.042537%,75.1792%,0,1,Delegate/Transpose (ND	 X32) Transpose:296
+Static Reshape (NC),0,0,0%,75.1792%,0,1,Delegate/Static Reshape (NC):297
+"Fully Connected (NC, F32) GEMM",0.044,0.04263,0.318132%,75.4973%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:298
+Add (ND),0.002,0.00287,0.0214178%,75.5188%,0,1,Delegate/Add (ND):299
+Static Reshape (NC),0.003,0.00212,0.0158208%,75.5346%,0,1,Delegate/Static Reshape (NC):300
+Mean (ND) Reduce,0.003,0.00315,0.0235073%,75.5581%,0,1,Delegate/Mean (ND) Reduce:301
+Static Reshape (NC),0,0,0%,75.5581%,0,1,Delegate/Static Reshape (NC):302
+Squared Difference (ND),0.002,0.0024,0.0179103%,75.576%,0,1,Delegate/Squared Difference (ND):303
+Mean (ND) Reduce,0.003,0.00311,0.0232088%,75.5992%,0,1,Delegate/Mean (ND) Reduce:304
+Add (ND),0.001,0.00142,0.0105969%,75.6098%,0,1,Delegate/Add (ND):305
+Reciprocal Square Root (NC),0,1e-05,7.46263e-05%,75.6099%,0,1,Delegate/Reciprocal Square Root (NC):306
+Multiply (ND),0.001,0.00144,0.0107462%,75.6206%,0,1,Delegate/Multiply (ND):307
+Subtract (ND),0.002,0.00144,0.0107462%,75.6314%,0,1,Delegate/Subtract (ND):308
+Static Reshape (NC),0,0,0%,75.6314%,0,1,Delegate/Static Reshape (NC):309
+Multiply (ND),0.003,0.00327,0.0244028%,75.6558%,0,1,Delegate/Multiply (ND):310
+Static Reshape (NC),0,0,0%,75.6558%,0,1,Delegate/Static Reshape (NC):311
+Add (ND),0.002,0.00211,0.0157462%,75.6715%,0,1,Delegate/Add (ND):312
+"Fully Connected (NC, F32) GEMM",0.075,0.07914,0.590593%,76.2621%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:313
+Static Reshape (NC),0.004,0.00463,0.034552%,76.2967%,0,1,Delegate/Static Reshape (NC):314
+Sigmoid (NC),0.007,0.00716,0.0534324%,76.3501%,0,1,Delegate/Sigmoid (NC):315
+Multiply (ND),0.003,0.00324,0.0241789%,76.3743%,0,1,Delegate/Multiply (ND):316
+"Fully Connected (NC, F32) GEMM",0.086,0.07903,0.589772%,76.9641%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:317
+Add (ND),0.002,0.00266,0.0198506%,76.9839%,0,1,Delegate/Add (ND):318
+Static Reshape (NC),0.002,0.00215,0.0160447%,77%,0,1,Delegate/Static Reshape (NC):319
+Mean (ND) Reduce,0.002,0.00295,0.0220148%,77.022%,0,1,Delegate/Mean (ND) Reduce:320
+Static Reshape (NC),0,0,0%,77.022%,0,1,Delegate/Static Reshape (NC):321
+Squared Difference (ND),0.002,0.00238,0.0177611%,77.0397%,0,1,Delegate/Squared Difference (ND):322
+Mean (ND) Reduce,0.003,0.00307,0.0229103%,77.0626%,0,1,Delegate/Mean (ND) Reduce:323
+Add (ND),0.001,0.00132,0.00985067%,77.0725%,0,1,Delegate/Add (ND):324
+Reciprocal Square Root (NC),0,0,0%,77.0725%,0,1,Delegate/Reciprocal Square Root (NC):325
+Multiply (ND),0.001,0.00144,0.0107462%,77.0832%,0,1,Delegate/Multiply (ND):326
+Subtract (ND),0.002,0.00164,0.0122387%,77.0955%,0,1,Delegate/Subtract (ND):327
+Static Reshape (NC),0,0.00023,0.00171641%,77.0972%,0,1,Delegate/Static Reshape (NC):328
+Multiply (ND),0.004,0.00445,0.0332087%,77.1304%,0,1,Delegate/Multiply (ND):329
+Static Reshape (NC),0,0,0%,77.1304%,0,1,Delegate/Static Reshape (NC):330
+Add (ND),0.002,0.00244,0.0182088%,77.1486%,0,1,Delegate/Add (ND):331
+"Fully Connected (NC, F32) GEMM",0.116,0.11627,0.86768%,78.0163%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:332
+Static Reshape (NC),0,0,0%,78.0163%,0,1,Delegate/Static Reshape (NC):333
+"Transpose (ND, X32) Transpose",0.014,0.01411,0.105298%,78.1216%,0,1,Delegate/Transpose (ND	 X32) Transpose:334
+"Slice (ND, X32)",0.01,0.01009,0.0752979%,78.1969%,0,1,Delegate/Slice (ND	 X32):335
+"Slice (ND, X32)",0.014,0.01366,0.10194%,78.2988%,0,1,Delegate/Slice (ND	 X32):336
+"Slice (ND, X32)",0.013,0.01316,0.0982082%,78.397%,0,1,Delegate/Slice (ND	 X32):337
+Static Reshape (NC),0,0,0%,78.397%,0,1,Delegate/Static Reshape (NC):338
+Static Reshape (NC),0,0,0%,78.397%,0,1,Delegate/Static Reshape (NC):339
+Multiply (ND),0.006,0.00677,0.050522%,78.4475%,0,1,Delegate/Multiply (ND):340
+Multiply (ND),0.008,0.00831,0.0620145%,78.5096%,0,1,Delegate/Multiply (ND):341
+"Transpose (ND, X32) Transpose",0.005,0.00682,0.0508951%,78.5605%,0,1,Delegate/Transpose (ND	 X32) Transpose:342
+Static Reshape (NC),0,0.00021,0.00156715%,78.562%,0,1,Delegate/Static Reshape (NC):343
+Static Reshape (NC),0,0,0%,78.562%,0,1,Delegate/Static Reshape (NC):344
+"Batch Matrix Multiply (NC, F32) GEMM",0.017,0.01861,0.13888%,78.7009%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:345
+Static Reshape (NC),0,3e-05,0.000223879%,78.7011%,0,1,Delegate/Static Reshape (NC):346
+"Softmax (NC, F32)",0.027,0.02648,0.19761%,78.8987%,0,1,Delegate/Softmax (NC	 F32):347
+Static Reshape (NC),0,0,0%,78.8987%,0,1,Delegate/Static Reshape (NC):348
+Static Reshape (NC),0,0,0%,78.8987%,0,1,Delegate/Static Reshape (NC):349
+"Batch Matrix Multiply (NC, F32) GEMM",0.02,0.0208,0.155223%,79.054%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:350
+Static Reshape (NC),0,0.00019,0.0014179%,79.0554%,0,1,Delegate/Static Reshape (NC):351
+"Transpose (ND, X32) Transpose",0.004,0.00454,0.0338803%,79.0893%,0,1,Delegate/Transpose (ND	 X32) Transpose:352
+Static Reshape (NC),0,0,0%,79.0893%,0,1,Delegate/Static Reshape (NC):353
+"Fully Connected (NC, F32) GEMM",0.051,0.04157,0.310222%,79.3995%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:354
+Add (ND),0.003,0.00302,0.0225371%,79.422%,0,1,Delegate/Add (ND):355
+Static Reshape (NC),0.003,0.00226,0.0168655%,79.4389%,0,1,Delegate/Static Reshape (NC):356
+Mean (ND) Reduce,0.003,0.00306,0.0228357%,79.4617%,0,1,Delegate/Mean (ND) Reduce:357
+Static Reshape (NC),0,0,0%,79.4617%,0,1,Delegate/Static Reshape (NC):358
+Squared Difference (ND),0.002,0.00222,0.016567%,79.4783%,0,1,Delegate/Squared Difference (ND):359
+Mean (ND) Reduce,0.003,0.00327,0.0244028%,79.5027%,0,1,Delegate/Mean (ND) Reduce:360
+Add (ND),0.002,0.00146,0.0108954%,79.5136%,0,1,Delegate/Add (ND):361
+Reciprocal Square Root (NC),0,0,0%,79.5136%,0,1,Delegate/Reciprocal Square Root (NC):362
+Multiply (ND),0.001,0.00153,0.0114178%,79.525%,0,1,Delegate/Multiply (ND):363
+Subtract (ND),0.001,0.00122,0.00910441%,79.5341%,0,1,Delegate/Subtract (ND):364
+Static Reshape (NC),0,0,0%,79.5341%,0,1,Delegate/Static Reshape (NC):365
+Multiply (ND),0.004,0.0034,0.0253729%,79.5595%,0,1,Delegate/Multiply (ND):366
+Static Reshape (NC),0,0,0%,79.5595%,0,1,Delegate/Static Reshape (NC):367
+Add (ND),0.003,0.00232,0.0173133%,79.5768%,0,1,Delegate/Add (ND):368
+"Fully Connected (NC, F32) GEMM",0.083,0.07877,0.587831%,80.1646%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:369
+Static Reshape (NC),0.005,0.00686,0.0511936%,80.2158%,0,1,Delegate/Static Reshape (NC):370
+Sigmoid (NC),0.005,0.00848,0.0632831%,80.2791%,0,1,Delegate/Sigmoid (NC):371
+Multiply (ND),0.003,0.00587,0.0438056%,80.3229%,0,1,Delegate/Multiply (ND):372
+"Fully Connected (NC, F32) GEMM",0.083,0.08069,0.60216%,80.9251%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:373
+Add (ND),0.003,0.00475,0.0354475%,80.9605%,0,1,Delegate/Add (ND):374
+Static Reshape (NC),0.002,0.00354,0.0264177%,80.9869%,0,1,Delegate/Static Reshape (NC):375
+Mean (ND) Reduce,0.002,0.00439,0.0327609%,81.0197%,0,1,Delegate/Mean (ND) Reduce:376
+Static Reshape (NC),0,0,0%,81.0197%,0,1,Delegate/Static Reshape (NC):377
+Squared Difference (ND),0.002,0.0038,0.028358%,81.048%,0,1,Delegate/Squared Difference (ND):378
+Mean (ND) Reduce,0.003,0.00325,0.0242536%,81.0723%,0,1,Delegate/Mean (ND) Reduce:379
+Add (ND),0.001,0.00152,0.0113432%,81.0836%,0,1,Delegate/Add (ND):380
+Reciprocal Square Root (NC),0,0,0%,81.0836%,0,1,Delegate/Reciprocal Square Root (NC):381
+Multiply (ND),0.001,0.00153,0.0114178%,81.0951%,0,1,Delegate/Multiply (ND):382
+Subtract (ND),0.001,0.00132,0.00985067%,81.1049%,0,1,Delegate/Subtract (ND):383
+Static Reshape (NC),0,5e-05,0.000373132%,81.1053%,0,1,Delegate/Static Reshape (NC):384
+Multiply (ND),0.004,0.0039,0.0291043%,81.1344%,0,1,Delegate/Multiply (ND):385
+Static Reshape (NC),0,0,0%,81.1344%,0,1,Delegate/Static Reshape (NC):386
+Add (ND),0.002,0.00268,0.0199999%,81.1544%,0,1,Delegate/Add (ND):387
+"Fully Connected (NC, F32) GEMM",0.117,0.11819,0.882008%,82.0364%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:388
+Static Reshape (NC),0,0,0%,82.0364%,0,1,Delegate/Static Reshape (NC):389
+"Transpose (ND, X32) Transpose",0.013,0.01706,0.127312%,82.1637%,0,1,Delegate/Transpose (ND	 X32) Transpose:390
+"Slice (ND, X32)",0.01,0.0102,0.0761188%,82.2398%,0,1,Delegate/Slice (ND	 X32):391
+"Slice (ND, X32)",0.013,0.01405,0.10485%,82.3447%,0,1,Delegate/Slice (ND	 X32):392
+"Slice (ND, X32)",0.013,0.01284,0.0958202%,82.4405%,0,1,Delegate/Slice (ND	 X32):393
+Static Reshape (NC),0,3e-05,0.000223879%,82.4407%,0,1,Delegate/Static Reshape (NC):394
+Static Reshape (NC),0,0,0%,82.4407%,0,1,Delegate/Static Reshape (NC):395
+Multiply (ND),0.005,0.00868,0.0647756%,82.5055%,0,1,Delegate/Multiply (ND):396
+Multiply (ND),0.006,0.00901,0.0672383%,82.5727%,0,1,Delegate/Multiply (ND):397
+"Transpose (ND, X32) Transpose",0.005,0.00734,0.0547757%,82.6275%,0,1,Delegate/Transpose (ND	 X32) Transpose:398
+Static Reshape (NC),0,0,0%,82.6275%,0,1,Delegate/Static Reshape (NC):399
+Static Reshape (NC),0,4e-05,0.000298505%,82.6278%,0,1,Delegate/Static Reshape (NC):400
+"Batch Matrix Multiply (NC, F32) GEMM",0.015,0.02171,0.162014%,82.7898%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:401
+Static Reshape (NC),0,0,0%,82.7898%,0,1,Delegate/Static Reshape (NC):402
+"Softmax (NC, F32)",0.025,0.0276,0.205969%,82.9958%,0,1,Delegate/Softmax (NC	 F32):403
+Static Reshape (NC),0,0,0%,82.9958%,0,1,Delegate/Static Reshape (NC):404
+Static Reshape (NC),0,4e-05,0.000298505%,82.9961%,0,1,Delegate/Static Reshape (NC):405
+"Batch Matrix Multiply (NC, F32) GEMM",0.019,0.02098,0.156566%,83.1527%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:406
+Static Reshape (NC),0,0.00046,0.00343281%,83.1561%,0,1,Delegate/Static Reshape (NC):407
+"Transpose (ND, X32) Transpose",0.005,0.00485,0.0361938%,83.1923%,0,1,Delegate/Transpose (ND	 X32) Transpose:408
+Static Reshape (NC),0,0,0%,83.1923%,0,1,Delegate/Static Reshape (NC):409
+"Fully Connected (NC, F32) GEMM",0.036,0.04183,0.312162%,83.5044%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:410
+Add (ND),0.003,0.00281,0.02097%,83.5254%,0,1,Delegate/Add (ND):411
+Static Reshape (NC),0.002,0.00221,0.0164924%,83.5419%,0,1,Delegate/Static Reshape (NC):412
+Mean (ND) Reduce,0.003,0.00306,0.0228357%,83.5648%,0,1,Delegate/Mean (ND) Reduce:413
+Static Reshape (NC),0,0,0%,83.5648%,0,1,Delegate/Static Reshape (NC):414
+Squared Difference (ND),0.002,0.00288,0.0214924%,83.5862%,0,1,Delegate/Squared Difference (ND):415
+Mean (ND) Reduce,0.003,0.00342,0.0255222%,83.6118%,0,1,Delegate/Mean (ND) Reduce:416
+Add (ND),0.001,0.0013,0.00970142%,83.6215%,0,1,Delegate/Add (ND):417
+Reciprocal Square Root (NC),0,0,0%,83.6215%,0,1,Delegate/Reciprocal Square Root (NC):418
+Multiply (ND),0.001,0.00145,0.0108208%,83.6323%,0,1,Delegate/Multiply (ND):419
+Subtract (ND),0.001,0.00125,0.00932829%,83.6416%,0,1,Delegate/Subtract (ND):420
+Static Reshape (NC),0,0,0%,83.6416%,0,1,Delegate/Static Reshape (NC):421
+Multiply (ND),0.004,0.00347,0.0258953%,83.6675%,0,1,Delegate/Multiply (ND):422
+Static Reshape (NC),0,0,0%,83.6675%,0,1,Delegate/Static Reshape (NC):423
+Add (ND),0.002,0.00225,0.0167909%,83.6843%,0,1,Delegate/Add (ND):424
+"Fully Connected (NC, F32) GEMM",0.087,0.0791,0.590294%,84.2746%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:425
+Static Reshape (NC),0.005,0.00489,0.0364923%,84.3111%,0,1,Delegate/Static Reshape (NC):426
+Sigmoid (NC),0.006,0.00601,0.0448504%,84.3559%,0,1,Delegate/Sigmoid (NC):427
+Multiply (ND),0.003,0.00331,0.0247013%,84.3806%,0,1,Delegate/Multiply (ND):428
+"Fully Connected (NC, F32) GEMM",0.088,0.07946,0.592981%,84.9736%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:429
+Add (ND),0.002,0.00217,0.0161939%,84.9898%,0,1,Delegate/Add (ND):430
+Static Reshape (NC),0.002,0.00224,0.0167163%,85.0065%,0,1,Delegate/Static Reshape (NC):431
+Mean (ND) Reduce,0.003,0.00294,0.0219401%,85.0285%,0,1,Delegate/Mean (ND) Reduce:432
+Static Reshape (NC),0,3e-05,0.000223879%,85.0287%,0,1,Delegate/Static Reshape (NC):433
+Squared Difference (ND),0.002,0.0025,0.0186566%,85.0474%,0,1,Delegate/Squared Difference (ND):434
+Mean (ND) Reduce,0.003,0.00301,0.0224625%,85.0698%,0,1,Delegate/Mean (ND) Reduce:435
+Add (ND),0.002,0.00152,0.0113432%,85.0812%,0,1,Delegate/Add (ND):436
+Reciprocal Square Root (NC),0,0,0%,85.0812%,0,1,Delegate/Reciprocal Square Root (NC):437
+Multiply (ND),0.002,0.0014,0.0104477%,85.0916%,0,1,Delegate/Multiply (ND):438
+Subtract (ND),0.001,0.00118,0.0088059%,85.1004%,0,1,Delegate/Subtract (ND):439
+Static Reshape (NC),0,0,0%,85.1004%,0,1,Delegate/Static Reshape (NC):440
+Multiply (ND),0.002,0.00212,0.0158208%,85.1162%,0,1,Delegate/Multiply (ND):441
+Static Reshape (NC),0,0,0%,85.1162%,0,1,Delegate/Static Reshape (NC):442
+Add (ND),0.003,0.00217,0.0161939%,85.1324%,0,1,Delegate/Add (ND):443
+Multiply (ND),0.003,0.0022,0.0164178%,85.1488%,0,1,Delegate/Multiply (ND):444
+Add (ND),0.003,0.00241,0.0179849%,85.1668%,0,1,Delegate/Add (ND):445
+Static Reshape (NC),0,0,0%,85.1668%,0,1,Delegate/Static Reshape (NC):446
+"Transpose (ND, X32) Transpose",0.017,0.01736,0.129551%,85.2964%,0,1,Delegate/Transpose (ND	 X32) Transpose:447
+Static Reshape (NC),0,2e-05,0.000149253%,85.2965%,0,1,Delegate/Static Reshape (NC):448
+"Transpose (ND, X32) Transpose",0.014,0.01332,0.0994022%,85.3959%,0,1,Delegate/Transpose (ND	 X32) Transpose:449
+Static Reshape (NC),0,0,0%,85.3959%,0,1,Delegate/Static Reshape (NC):450
+"Transpose (ND, X32) Transpose",0.01,0.0102,0.0761188%,85.472%,0,1,Delegate/Transpose (ND	 X32) Transpose:451
+"Fully Connected (NC, F32) GEMM",0.028,0.02865,0.213804%,85.6859%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:452
+Sigmoid (NC),0.003,0.00305,0.022761%,85.7086%,0,1,Delegate/Sigmoid (NC):453
+Multiply (ND),0.003,0.00248,0.0185073%,85.7271%,0,1,Delegate/Multiply (ND):454
+"Copy (NC, X32)",0.028,0.00645,0.048134%,85.7753%,0,1,Delegate/Copy (NC	 X32):455
+"Convolution (NHWC, F32) IGEMM",0.562,0.45915,3.42647%,89.2017%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:456
+Sigmoid (NC),0.019,0.01275,0.0951485%,89.2969%,0,1,Delegate/Sigmoid (NC):457
+Multiply (ND),0.005,0.00833,0.0621637%,89.359%,0,1,Delegate/Multiply (ND):458
+"Fully Connected (NC, F32) GEMM",0.086,0.07364,0.549548%,89.9086%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:459
+Sigmoid (NC),0.009,0.00792,0.059104%,89.9677%,0,1,Delegate/Sigmoid (NC):460
+Multiply (ND),0.005,0.00373,0.0278356%,89.9955%,0,1,Delegate/Multiply (ND):461
+"Convolution (NHWC, F32) DWConv",0.01,0.00834,0.0622383%,90.0578%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:462
+Sigmoid (NC),0.004,0.00362,0.0270147%,90.0848%,0,1,Delegate/Sigmoid (NC):463
+Multiply (ND),0.004,0.00278,0.0207461%,90.1055%,0,1,Delegate/Multiply (ND):464
+"Fully Connected (NC, F32) GEMM",0.05,0.02955,0.220521%,90.326%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:465
+"Convolution (NHWC, F32) IGEMM",0.115,0.09589,0.715592%,91.0416%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:466
+Sigmoid (NC),0.003,0.00235,0.0175372%,91.0592%,0,1,Delegate/Sigmoid (NC):467
+Multiply (ND),0.036,0.00311,0.0232088%,91.0824%,0,1,Delegate/Multiply (ND):468
+"Fully Connected (NC, F32) GEMM",0.019,0.01501,0.112014%,91.1944%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:469
+"Transpose (ND, X32) Transpose",0.005,0.00326,0.0243282%,91.2187%,0,1,Delegate/Transpose (ND	 X32) Transpose:470
+Static Reshape (NC),0,0,0%,91.2187%,0,1,Delegate/Static Reshape (NC):471
+"Transpose (ND, X32) Transpose",0.007,0.00594,0.044328%,91.2631%,0,1,Delegate/Transpose (ND	 X32) Transpose:472
+Static Reshape (NC),0,0,0%,91.2631%,0,1,Delegate/Static Reshape (NC):473
+"Transpose (ND, X32) Transpose",0.007,0.00585,0.0436564%,91.3067%,0,1,Delegate/Transpose (ND	 X32) Transpose:474
+Static Reshape (NC),0.003,0.00252,0.0188058%,91.3255%,0,1,Delegate/Static Reshape (NC):475
+Static Reshape (NC),0.002,0.00206,0.015373%,91.3409%,0,1,Delegate/Static Reshape (NC):476
+Mean (ND) Reduce,0.004,0.00286,0.0213431%,91.3622%,0,1,Delegate/Mean (ND) Reduce:477
+Static Reshape (NC),0,0,0%,91.3622%,0,1,Delegate/Static Reshape (NC):478
+Squared Difference (ND),0.003,0.00235,0.0175372%,91.3798%,0,1,Delegate/Squared Difference (ND):479
+Mean (ND) Reduce,0.003,0.00297,0.022164%,91.4019%,0,1,Delegate/Mean (ND) Reduce:480
+Add (ND),0.001,0.00109,0.00813427%,91.4101%,0,1,Delegate/Add (ND):481
+Reciprocal Square Root (NC),0,0,0%,91.4101%,0,1,Delegate/Reciprocal Square Root (NC):482
+Multiply (ND),0.002,0.00112,0.00835815%,91.4184%,0,1,Delegate/Multiply (ND):483
+Subtract (ND),0.002,0.00112,0.00835815%,91.4268%,0,1,Delegate/Subtract (ND):484
+Static Reshape (NC),0,3e-05,0.000223879%,91.427%,0,1,Delegate/Static Reshape (NC):485
+Multiply (ND),0.002,0.00206,0.015373%,91.4424%,0,1,Delegate/Multiply (ND):486
+Static Reshape (NC),0,0,0%,91.4424%,0,1,Delegate/Static Reshape (NC):487
+Add (ND),0.002,0.00201,0.0149999%,91.4574%,0,1,Delegate/Add (ND):488
+"Fully Connected (NC, F32) GEMM",0.062,0.05739,0.42828%,91.8857%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:489
+Static Reshape (NC),0,0,0%,91.8857%,0,1,Delegate/Static Reshape (NC):490
+"Transpose (ND, X32) Transpose",0.009,0.00797,0.0594772%,91.9451%,0,1,Delegate/Transpose (ND	 X32) Transpose:491
+"Slice (ND, X32)",0.006,0.00491,0.0366415%,91.9818%,0,1,Delegate/Slice (ND	 X32):492
+"Slice (ND, X32)",0.006,0.00568,0.0423877%,92.0242%,0,1,Delegate/Slice (ND	 X32):493
+"Slice (ND, X32)",0.01,0.00457,0.0341042%,92.0583%,0,1,Delegate/Slice (ND	 X32):494
+Static Reshape (NC),0,0,0%,92.0583%,0,1,Delegate/Static Reshape (NC):495
+Static Reshape (NC),0,0,0%,92.0583%,0,1,Delegate/Static Reshape (NC):496
+Multiply (ND),0.004,0.00427,0.0318654%,92.0901%,0,1,Delegate/Multiply (ND):497
+Multiply (ND),0.005,0.00477,0.0355967%,92.1257%,0,1,Delegate/Multiply (ND):498
+"Transpose (ND, X32) Transpose",0.003,0.00523,0.0390296%,92.1648%,0,1,Delegate/Transpose (ND	 X32) Transpose:499
+Static Reshape (NC),0,1e-05,7.46263e-05%,92.1648%,0,1,Delegate/Static Reshape (NC):500
+Static Reshape (NC),0,0,0%,92.1648%,0,1,Delegate/Static Reshape (NC):501
+"Batch Matrix Multiply (NC, F32) GEMM",0.007,0.01176,0.0877605%,92.2526%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:502
+Static Reshape (NC),0,0,0%,92.2526%,0,1,Delegate/Static Reshape (NC):503
+"Softmax (NC, F32)",0.01,0.00899,0.0670891%,92.3197%,0,1,Delegate/Softmax (NC	 F32):504
+Static Reshape (NC),0,0,0%,92.3197%,0,1,Delegate/Static Reshape (NC):505
+Static Reshape (NC),0,0,0%,92.3197%,0,1,Delegate/Static Reshape (NC):506
+"Batch Matrix Multiply (NC, F32) GEMM",0.01,0.00831,0.0620145%,92.3817%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:507
+Static Reshape (NC),0,4e-05,0.000298505%,92.382%,0,1,Delegate/Static Reshape (NC):508
+"Transpose (ND, X32) Transpose",0.003,0.0029,0.0216416%,92.4036%,0,1,Delegate/Transpose (ND	 X32) Transpose:509
+Static Reshape (NC),0,0,0%,92.4036%,0,1,Delegate/Static Reshape (NC):510
+"Fully Connected (NC, F32) GEMM",0.029,0.02057,0.153506%,92.5572%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:511
+Add (ND),0.005,0.00374,0.0279102%,92.5851%,0,1,Delegate/Add (ND):512
+Static Reshape (NC),0.003,0.0021,0.0156715%,92.6007%,0,1,Delegate/Static Reshape (NC):513
+Mean (ND) Reduce,0.003,0.00273,0.020373%,92.6211%,0,1,Delegate/Mean (ND) Reduce:514
+Static Reshape (NC),0,0,0%,92.6211%,0,1,Delegate/Static Reshape (NC):515
+Squared Difference (ND),0.003,0.00207,0.0154476%,92.6366%,0,1,Delegate/Squared Difference (ND):516
+Mean (ND) Reduce,0.003,0.00262,0.0195521%,92.6561%,0,1,Delegate/Mean (ND) Reduce:517
+Add (ND),0.002,0.00109,0.00813427%,92.6642%,0,1,Delegate/Add (ND):518
+Reciprocal Square Root (NC),0,6e-05,0.000447758%,92.6647%,0,1,Delegate/Reciprocal Square Root (NC):519
+Multiply (ND),0.002,0.0012,0.00895516%,92.6736%,0,1,Delegate/Multiply (ND):520
+Subtract (ND),0.002,0.0011,0.00820889%,92.6818%,0,1,Delegate/Subtract (ND):521
+Static Reshape (NC),0,0,0%,92.6818%,0,1,Delegate/Static Reshape (NC):522
+Multiply (ND),0.002,0.00179,0.0133581%,92.6952%,0,1,Delegate/Multiply (ND):523
+Static Reshape (NC),0,0,0%,92.6952%,0,1,Delegate/Static Reshape (NC):524
+Add (ND),0.002,0.0024,0.0179103%,92.7131%,0,1,Delegate/Add (ND):525
+"Fully Connected (NC, F32) GEMM",0.046,0.04006,0.298953%,93.0121%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:526
+Static Reshape (NC),0.004,0.00354,0.0264177%,93.0385%,0,1,Delegate/Static Reshape (NC):527
+Sigmoid (NC),0.004,0.00334,0.0249252%,93.0634%,0,1,Delegate/Sigmoid (NC):528
+Multiply (ND),0.004,0.00363,0.0270894%,93.0905%,0,1,Delegate/Multiply (ND):529
+"Fully Connected (NC, F32) GEMM",0.046,0.03821,0.285147%,93.3756%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:530
+Add (ND),0.003,0.00304,0.0226864%,93.3983%,0,1,Delegate/Add (ND):531
+Static Reshape (NC),0.002,0.00217,0.0161939%,93.4145%,0,1,Delegate/Static Reshape (NC):532
+Mean (ND) Reduce,0.003,0.00254,0.0189551%,93.4335%,0,1,Delegate/Mean (ND) Reduce:533
+Static Reshape (NC),0,2e-05,0.000149253%,93.4336%,0,1,Delegate/Static Reshape (NC):534
+Squared Difference (ND),0.002,0.00175,0.0130596%,93.4467%,0,1,Delegate/Squared Difference (ND):535
+Mean (ND) Reduce,0.003,0.00257,0.019179%,93.4659%,0,1,Delegate/Mean (ND) Reduce:536
+Add (ND),0.001,0.00122,0.00910441%,93.475%,0,1,Delegate/Add (ND):537
+Reciprocal Square Root (NC),0,5e-05,0.000373132%,93.4753%,0,1,Delegate/Reciprocal Square Root (NC):538
+Multiply (ND),0.001,0.00118,0.0088059%,93.4842%,0,1,Delegate/Multiply (ND):539
+Subtract (ND),0.002,0.0011,0.00820889%,93.4924%,0,1,Delegate/Subtract (ND):540
+Static Reshape (NC),0,0,0%,93.4924%,0,1,Delegate/Static Reshape (NC):541
+Multiply (ND),0.002,0.00205,0.0152984%,93.5077%,0,1,Delegate/Multiply (ND):542
+Static Reshape (NC),0,0,0%,93.5077%,0,1,Delegate/Static Reshape (NC):543
+Add (ND),0.002,0.00194,0.0144775%,93.5221%,0,1,Delegate/Add (ND):544
+"Fully Connected (NC, F32) GEMM",0.067,0.05683,0.424101%,93.9462%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:545
+Static Reshape (NC),0,0,0%,93.9462%,0,1,Delegate/Static Reshape (NC):546
+"Transpose (ND, X32) Transpose",0.008,0.00687,0.0512683%,93.9975%,0,1,Delegate/Transpose (ND	 X32) Transpose:547
+"Slice (ND, X32)",0.008,0.00468,0.0349251%,94.0324%,0,1,Delegate/Slice (ND	 X32):548
+"Slice (ND, X32)",0.007,0.00559,0.0417161%,94.0742%,0,1,Delegate/Slice (ND	 X32):549
+"Slice (ND, X32)",0.006,0.00493,0.0367908%,94.1109%,0,1,Delegate/Slice (ND	 X32):550
+Static Reshape (NC),0,0,0%,94.1109%,0,1,Delegate/Static Reshape (NC):551
+Static Reshape (NC),0,4e-05,0.000298505%,94.1112%,0,1,Delegate/Static Reshape (NC):552
+Multiply (ND),0.004,0.00324,0.0241789%,94.1354%,0,1,Delegate/Multiply (ND):553
+Multiply (ND),0.004,0.0035,0.0261192%,94.1615%,0,1,Delegate/Multiply (ND):554
+"Transpose (ND, X32) Transpose",0.003,0.00251,0.0187312%,94.1803%,0,1,Delegate/Transpose (ND	 X32) Transpose:555
+Static Reshape (NC),0,0,0%,94.1803%,0,1,Delegate/Static Reshape (NC):556
+Static Reshape (NC),0,0,0%,94.1803%,0,1,Delegate/Static Reshape (NC):557
+"Batch Matrix Multiply (NC, F32) GEMM",0.007,0.00601,0.0448504%,94.2251%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:558
+Static Reshape (NC),0,0,0%,94.2251%,0,1,Delegate/Static Reshape (NC):559
+"Softmax (NC, F32)",0.009,0.00764,0.0570145%,94.2821%,0,1,Delegate/Softmax (NC	 F32):560
+Static Reshape (NC),0,0,0%,94.2821%,0,1,Delegate/Static Reshape (NC):561
+Static Reshape (NC),0,0,0%,94.2821%,0,1,Delegate/Static Reshape (NC):562
+"Batch Matrix Multiply (NC, F32) GEMM",0.009,0.00752,0.056119%,94.3382%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:563
+Static Reshape (NC),0,0,0%,94.3382%,0,1,Delegate/Static Reshape (NC):564
+"Transpose (ND, X32) Transpose",0.004,0.00362,0.0270147%,94.3653%,0,1,Delegate/Transpose (ND	 X32) Transpose:565
+Static Reshape (NC),0,0,0%,94.3653%,0,1,Delegate/Static Reshape (NC):566
+"Fully Connected (NC, F32) GEMM",0.025,0.02052,0.153133%,94.5184%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:567
+Add (ND),0.003,0.0025,0.0186566%,94.5371%,0,1,Delegate/Add (ND):568
+Static Reshape (NC),0.003,0.00179,0.0133581%,94.5504%,0,1,Delegate/Static Reshape (NC):569
+Mean (ND) Reduce,0.003,0.00258,0.0192536%,94.5697%,0,1,Delegate/Mean (ND) Reduce:570
+Static Reshape (NC),0,0,0%,94.5697%,0,1,Delegate/Static Reshape (NC):571
+Squared Difference (ND),0.002,0.00177,0.0132089%,94.5829%,0,1,Delegate/Squared Difference (ND):572
+Mean (ND) Reduce,0.003,0.00238,0.0177611%,94.6006%,0,1,Delegate/Mean (ND) Reduce:573
+Add (ND),0.002,0.00109,0.00813427%,94.6088%,0,1,Delegate/Add (ND):574
+Reciprocal Square Root (NC),0,0,0%,94.6088%,0,1,Delegate/Reciprocal Square Root (NC):575
+Multiply (ND),0.001,0.00116,0.00865665%,94.6174%,0,1,Delegate/Multiply (ND):576
+Subtract (ND),0.001,0.00108,0.00805964%,94.6255%,0,1,Delegate/Subtract (ND):577
+Static Reshape (NC),0,0,0%,94.6255%,0,1,Delegate/Static Reshape (NC):578
+Multiply (ND),0.002,0.00206,0.015373%,94.6409%,0,1,Delegate/Multiply (ND):579
+Static Reshape (NC),0,0,0%,94.6409%,0,1,Delegate/Static Reshape (NC):580
+Add (ND),0.002,0.00202,0.0150745%,94.6559%,0,1,Delegate/Add (ND):581
+"Fully Connected (NC, F32) GEMM",0.048,0.03868,0.288655%,94.9446%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:582
+Static Reshape (NC),0.004,0.00347,0.0258953%,94.9705%,0,1,Delegate/Static Reshape (NC):583
+Sigmoid (NC),0.003,0.00284,0.0211939%,94.9917%,0,1,Delegate/Sigmoid (NC):584
+Multiply (ND),0.004,0.00388,0.028955%,95.0206%,0,1,Delegate/Multiply (ND):585
+"Fully Connected (NC, F32) GEMM",0.047,0.03948,0.294625%,95.3153%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:586
+Add (ND),0.003,0.00272,0.0202984%,95.3356%,0,1,Delegate/Add (ND):587
+Static Reshape (NC),0.002,0.00175,0.0130596%,95.3486%,0,1,Delegate/Static Reshape (NC):588
+Mean (ND) Reduce,0.003,0.00271,0.0202237%,95.3688%,0,1,Delegate/Mean (ND) Reduce:589
+Static Reshape (NC),0,0,0%,95.3688%,0,1,Delegate/Static Reshape (NC):590
+Squared Difference (ND),0.002,0.00174,0.012985%,95.3818%,0,1,Delegate/Squared Difference (ND):591
+Mean (ND) Reduce,0.003,0.00251,0.0187312%,95.4006%,0,1,Delegate/Mean (ND) Reduce:592
+Add (ND),0.002,0.00134,0.00999993%,95.4106%,0,1,Delegate/Add (ND):593
+Reciprocal Square Root (NC),0,0,0%,95.4106%,0,1,Delegate/Reciprocal Square Root (NC):594
+Multiply (ND),0.001,0.00152,0.0113432%,95.4219%,0,1,Delegate/Multiply (ND):595
+Subtract (ND),0.001,0.00113,0.00843277%,95.4303%,0,1,Delegate/Subtract (ND):596
+Static Reshape (NC),0,0,0%,95.4303%,0,1,Delegate/Static Reshape (NC):597
+Multiply (ND),0.002,0.00227,0.0169402%,95.4473%,0,1,Delegate/Multiply (ND):598
+Static Reshape (NC),0,0,0%,95.4473%,0,1,Delegate/Static Reshape (NC):599
+Add (ND),0.002,0.00213,0.0158954%,95.4632%,0,1,Delegate/Add (ND):600
+"Fully Connected (NC, F32) GEMM",0.084,0.05879,0.438728%,95.9019%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:601
+Static Reshape (NC),0,0,0%,95.9019%,0,1,Delegate/Static Reshape (NC):602
+"Transpose (ND, X32) Transpose",0.007,0.00871,0.0649995%,95.9669%,0,1,Delegate/Transpose (ND	 X32) Transpose:603
+"Slice (ND, X32)",0.005,0.00485,0.0361938%,96.0031%,0,1,Delegate/Slice (ND	 X32):604
+"Slice (ND, X32)",0.007,0.00569,0.0424624%,96.0456%,0,1,Delegate/Slice (ND	 X32):605
+"Slice (ND, X32)",0.006,0.00479,0.035746%,96.0813%,0,1,Delegate/Slice (ND	 X32):606
+Static Reshape (NC),0,0.0002,0.00149253%,96.0828%,0,1,Delegate/Static Reshape (NC):607
+Static Reshape (NC),0,0,0%,96.0828%,0,1,Delegate/Static Reshape (NC):608
+Multiply (ND),0.004,0.00315,0.0235073%,96.1063%,0,1,Delegate/Multiply (ND):609
+Multiply (ND),0.004,0.00346,0.0258207%,96.1321%,0,1,Delegate/Multiply (ND):610
+"Transpose (ND, X32) Transpose",0.003,0.00268,0.0199999%,96.1521%,0,1,Delegate/Transpose (ND	 X32) Transpose:611
+Static Reshape (NC),0,4e-05,0.000298505%,96.1524%,0,1,Delegate/Static Reshape (NC):612
+Static Reshape (NC),0,4e-05,0.000298505%,96.1527%,0,1,Delegate/Static Reshape (NC):613
+"Batch Matrix Multiply (NC, F32) GEMM",0.006,0.00551,0.0411191%,96.1938%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:614
+Static Reshape (NC),0,2e-05,0.000149253%,96.194%,0,1,Delegate/Static Reshape (NC):615
+"Softmax (NC, F32)",0.009,0.00778,0.0580593%,96.252%,0,1,Delegate/Softmax (NC	 F32):616
+Static Reshape (NC),0,0,0%,96.252%,0,1,Delegate/Static Reshape (NC):617
+Static Reshape (NC),0,0,0%,96.252%,0,1,Delegate/Static Reshape (NC):618
+"Batch Matrix Multiply (NC, F32) GEMM",0.009,0.00804,0.0599996%,96.312%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:619
+Static Reshape (NC),0,0,0%,96.312%,0,1,Delegate/Static Reshape (NC):620
+"Transpose (ND, X32) Transpose",0.004,0.0034,0.0253729%,96.3374%,0,1,Delegate/Transpose (ND	 X32) Transpose:621
+Static Reshape (NC),0,0,0%,96.3374%,0,1,Delegate/Static Reshape (NC):622
+"Fully Connected (NC, F32) GEMM",0.025,0.02067,0.154253%,96.4917%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:623
+Add (ND),0.003,0.00259,0.0193282%,96.511%,0,1,Delegate/Add (ND):624
+Static Reshape (NC),0.002,0.0019,0.014179%,96.5252%,0,1,Delegate/Static Reshape (NC):625
+Mean (ND) Reduce,0.003,0.00259,0.0193282%,96.5445%,0,1,Delegate/Mean (ND) Reduce:626
+Static Reshape (NC),0,0,0%,96.5445%,0,1,Delegate/Static Reshape (NC):627
+Squared Difference (ND),0.002,0.00215,0.0160447%,96.5605%,0,1,Delegate/Squared Difference (ND):628
+Mean (ND) Reduce,0.003,0.00258,0.0192536%,96.5798%,0,1,Delegate/Mean (ND) Reduce:629
+Add (ND),0.001,0.00103,0.00768651%,96.5875%,0,1,Delegate/Add (ND):630
+Reciprocal Square Root (NC),0,0,0%,96.5875%,0,1,Delegate/Reciprocal Square Root (NC):631
+Multiply (ND),0.001,0.00112,0.00835815%,96.5958%,0,1,Delegate/Multiply (ND):632
+Subtract (ND),0.001,0.00112,0.00835815%,96.6042%,0,1,Delegate/Subtract (ND):633
+Static Reshape (NC),0,7e-05,0.000522384%,96.6047%,0,1,Delegate/Static Reshape (NC):634
+Multiply (ND),0.003,0.00211,0.0157462%,96.6205%,0,1,Delegate/Multiply (ND):635
+Static Reshape (NC),0,0,0%,96.6205%,0,1,Delegate/Static Reshape (NC):636
+Add (ND),0.002,0.00185,0.0138059%,96.6343%,0,1,Delegate/Add (ND):637
+"Fully Connected (NC, F32) GEMM",0.045,0.03866,0.288505%,96.9228%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:638
+Static Reshape (NC),0.004,0.00317,0.0236565%,96.9464%,0,1,Delegate/Static Reshape (NC):639
+Sigmoid (NC),0.003,0.00315,0.0235073%,96.9699%,0,1,Delegate/Sigmoid (NC):640
+Multiply (ND),0.004,0.00371,0.0276864%,96.9976%,0,1,Delegate/Multiply (ND):641
+"Fully Connected (NC, F32) GEMM",0.046,0.04305,0.321266%,97.3189%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:642
+Add (ND),0.003,0.00291,0.0217163%,97.3406%,0,1,Delegate/Add (ND):643
+Static Reshape (NC),0.002,0.00183,0.0136566%,97.3543%,0,1,Delegate/Static Reshape (NC):644
+Mean (ND) Reduce,0.003,0.00266,0.0198506%,97.3741%,0,1,Delegate/Mean (ND) Reduce:645
+Static Reshape (NC),0,0,0%,97.3741%,0,1,Delegate/Static Reshape (NC):646
+Squared Difference (ND),0.002,0.00227,0.0169402%,97.3911%,0,1,Delegate/Squared Difference (ND):647
+Mean (ND) Reduce,0.003,0.00251,0.0187312%,97.4098%,0,1,Delegate/Mean (ND) Reduce:648
+Add (ND),0.001,0.00108,0.00805964%,97.4179%,0,1,Delegate/Add (ND):649
+Reciprocal Square Root (NC),0,0,0%,97.4179%,0,1,Delegate/Reciprocal Square Root (NC):650
+Multiply (ND),0.002,0.00127,0.00947754%,97.4273%,0,1,Delegate/Multiply (ND):651
+Subtract (ND),0.002,0.00114,0.0085074%,97.4358%,0,1,Delegate/Subtract (ND):652
+Static Reshape (NC),0,0.00012,0.000895516%,97.4367%,0,1,Delegate/Static Reshape (NC):653
+Multiply (ND),0.003,0.00188,0.0140297%,97.4508%,0,1,Delegate/Multiply (ND):654
+Static Reshape (NC),0,0,0%,97.4508%,0,1,Delegate/Static Reshape (NC):655
+Add (ND),0.002,0.00178,0.0132835%,97.4641%,0,1,Delegate/Add (ND):656
+Multiply (ND),0.002,0.00192,0.0143283%,97.4784%,0,1,Delegate/Multiply (ND):657
+Add (ND),0.003,0.00207,0.0154476%,97.4938%,0,1,Delegate/Add (ND):658
+Static Reshape (NC),0,0,0%,97.4938%,0,1,Delegate/Static Reshape (NC):659
+"Transpose (ND, X32) Transpose",0.022,0.01622,0.121044%,97.6149%,0,1,Delegate/Transpose (ND	 X32) Transpose:660
+Static Reshape (NC),0,0,0%,97.6149%,0,1,Delegate/Static Reshape (NC):661
+"Transpose (ND, X32) Transpose",0.007,0.00602,0.044925%,97.6598%,0,1,Delegate/Transpose (ND	 X32) Transpose:662
+Static Reshape (NC),0,0,0%,97.6598%,0,1,Delegate/Static Reshape (NC):663
+"Transpose (ND, X32) Transpose",0.006,0.00495,0.03694%,97.6967%,0,1,Delegate/Transpose (ND	 X32) Transpose:664
+"Fully Connected (NC, F32) GEMM",0.019,0.01591,0.11873%,97.8155%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:665
+Sigmoid (NC),0.003,0.00222,0.016567%,97.832%,0,1,Delegate/Sigmoid (NC):666
+Multiply (ND),0.021,0.00284,0.0211939%,97.8532%,0,1,Delegate/Multiply (ND):667
+"Copy (NC, X32)",0.005,0.00432,0.0322386%,97.8855%,0,1,Delegate/Copy (NC	 X32):668
+"Convolution (NHWC, F32) IGEMM",0.236,0.19078,1.42372%,99.3092%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:669
+Sigmoid (NC),0.002,0.00203,0.0151491%,99.3243%,0,1,Delegate/Sigmoid (NC):670
+Multiply (ND),0.004,0.00262,0.0195521%,99.3439%,0,1,Delegate/Multiply (ND):671
+"Fully Connected (NC, F32) GEMM",0.037,0.03546,0.264625%,99.6085%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:672
+Sigmoid (NC),0.005,0.00465,0.0347012%,99.6432%,0,1,Delegate/Sigmoid (NC):673
+Multiply (ND),0.003,0.00299,0.0223133%,99.6655%,0,1,Delegate/Multiply (ND):674
+Sum (ND) Reduce,0.006,0.00523,0.0390296%,99.7046%,0,1,Delegate/Sum (ND) Reduce:675
+"Fully Connected (NC, F32) GEMM",0.041,0.03959,0.295446%,100%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:676
+
+============================== Top by Computation Time ==============================
+node type,first,avg_ms,%,cdf%,mem KB,times called,name
+"Convolution (NHWC, F32) IGEMM",0.854,0.89195,6.65629%,6.65629%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:187
+"Convolution (NHWC, F32) IGEMM",0.562,0.45915,3.42647%,10.0828%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:456
+"Convolution (NHWC, F32) IGEMM",0.42,0.45275,3.37871%,13.4615%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:40
+"Fully Connected (NC, F32) GEMM",0.204,0.24021,1.7926%,15.2541%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:10
+"Fully Connected (NC, F32) GEMM",0.2,0.23519,1.75514%,17.0092%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:17
+"Fully Connected (NC, F32) GEMM",0.196,0.23192,1.73073%,18.7399%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:25
+"Fully Connected (NC, F32) GEMM",0.195,0.23089,1.72305%,20.463%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:33
+Multiply (ND),0.173,0.22633,1.68902%,22.152%,0,1,Delegate/Multiply (ND):127
+"Convolution (NHWC, F32) IGEMM",0.232,0.22504,1.67939%,23.8314%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:197
+"Fully Connected (NC, F32) GEMM",0.193,0.22455,1.67573%,25.5071%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:23
+
+Number of nodes executed: 677
+============================== Summary by node type ==============================
+node type,count,avg_ms,avg %,cdf %,mem KB,times called
+"Fully Connected (NC, F32) GEMM",58,5.215,39.6036%,39.6036%,0,58
+"Convolution (NHWC, F32) IGEMM",7,2.502,19.0006%,58.6042%,0,7
+Multiply (ND),97,1.234,9.3712%,67.9754%,0,97
+"Batch Matrix Multiply (NC, F32) GEMM",18,1.011,7.6777%,75.6531%,0,18
+Sigmoid (NC),34,0.776,5.89307%,81.5462%,0,34
+"Transpose (ND, X32) Transpose",45,0.707,5.36908%,86.9153%,0,45
+"Softmax (NC, F32)",9,0.43,3.26549%,90.1807%,0,9
+"Slice (ND, X32)",27,0.399,3.03007%,93.2108%,0,27
+"Convolution (NHWC, F32) DWConv",7,0.33,2.50608%,95.7169%,0,7
+Add (ND),65,0.172,1.3062%,97.0231%,0,65
+Static Reshape (NC),201,0.139,1.05559%,98.0787%,0,201
+Mean (ND) Reduce,42,0.132,1.00243%,99.0811%,0,42
+Squared Difference (ND),21,0.069,0.523998%,99.6051%,0,21
+Subtract (ND),21,0.025,0.189854%,99.795%,0,21
+"Copy (NC, X32)",3,0.022,0.167072%,99.962%,0,3
+Sum (ND) Reduce,1,0.005,0.0379708%,100%,0,1
+Reciprocal Square Root (NC),21,0,0%,100%,0,21
+
+Timings (microseconds): count=100 first=13197 curr=12462 min=10984 max=16566 avg=13400.1 std=1032
+Memory (bytes): count=0
+677 nodes observed
+
+

@@ -94,37 +94,37 @@ cc_binary(
         "@litert//tflite/tools/benchmark:benchmark_model_lib",
     ],
 )
-# Main inference with profiling binary
-cc_binary(
-    name = "main_profile",
-    srcs = ["main_profile.cpp"],
-    copts = [
-        "-I/usr/include/opencv4",
-        "-I/usr/include/jsoncpp",
-    ],
-    linkopts = tflite_linkopts() + [
-        "-Wl,-rpath,$$ORIGIN/external/litert/bazel-bin/tflite/delegates/gpu",
-        "-lEGL",  # EGL
-        "-lGLESv2",  # OpenGL ES 2.0
-        "-lm",  # math library
-        "-ljsoncpp",
-        "-lopencv_core",
-        "-lopencv_imgproc",
-        "-lopencv_imgcodecs",
-        "-lopencv_highgui",
-    ],
-    deps = [
-        ":util",
-        "@litert//tflite:framework",
-        "@litert//tflite/core:cc_api_stable",
-        "@litert//tflite/delegates/gpu:delegate",
-        "@litert//tflite/delegates/xnnpack:xnnpack_delegate",
-        "@litert//tflite/kernels:builtin_ops",
-        "@litert//tflite/profiling:profile_summarizer",
-        "@litert//tflite/profiling:profiler",
-        "@litert//tflite/tools/benchmark:benchmark_model_lib",
-    ],
-)
+# # Main inference with profiling binary
+# cc_binary(
+#     name = "main_profile",
+#     srcs = ["main_profile.cpp"],
+#     copts = [
+#         "-I/usr/include/opencv4",
+#         "-I/usr/include/jsoncpp",
+#     ],
+#     linkopts = tflite_linkopts() + [
+#         "-Wl,-rpath,$$ORIGIN/external/litert/bazel-bin/tflite/delegates/gpu",
+#         "-lEGL",  # EGL
+#         "-lGLESv2",  # OpenGL ES 2.0
+#         "-lm",  # math library
+#         "-ljsoncpp",
+#         "-lopencv_core",
+#         "-lopencv_imgproc",
+#         "-lopencv_imgcodecs",
+#         "-lopencv_highgui",
+#     ],
+#     deps = [
+#         ":util",
+#         "@litert//tflite:framework",
+#         "@litert//tflite/core:cc_api_stable",
+#         "@litert//tflite/delegates/gpu:delegate",
+#         "@litert//tflite/delegates/xnnpack:xnnpack_delegate",
+#         "@litert//tflite/kernels:builtin_ops",
+#         "@litert//tflite/profiling:profile_summarizer",
+#         "@litert//tflite/profiling:profiler",
+#         "@litert//tflite/tools/benchmark:benchmark_model_lib",
+#     ],
+# )
 
 # # Main GPU inference binary
 # cc_binary(

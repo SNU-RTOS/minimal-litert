@@ -216,6 +216,8 @@ external
 utils
 tmp
 !log/intel-i9_14900-rtx4070_mobile/*
+!log/intel-i9_14900-rtx4070_mobile/debug_mode/*/*
+!log/intel-i9_14900-rtx4070_mobile/release_mode/*/*
 
 
 # =============================================================================

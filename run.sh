@@ -31,8 +31,8 @@ run_verify() {
         fi
         $bin $model
         echo "[INFO] Run verify_${device} finished"
-    } | tee "$log_file" 2>&1
-    
+    } 2>&1 | tee "$log_file"
+
     echo "===================================="
     echo ""
     echo "Results saved to $log_file"
@@ -44,20 +44,15 @@ run_dump_model() {
     
     local model_base
     model_base=$(basename "${model%.*}")
-    local log_file="./log/output_dump_model_${device}_${model_base}.log"
+    local log_file="./log/${model_base}_dump.log"
     
     local bin="./bin/dump_model_$device"
-    # {
     if [ ! -f "$bin" ]; then
-            echo "Binary $bin not found. Please build the project first."
-            exit 1
+        echo "Binary $bin not found. Please build the project first."
+        exit 1
     fi
-    $bin $model
-    # } | tee "$log_file" 2>&1
+    $bin $model $log_file
     
-    echo "===================================="
-    echo ""
-    # echo "Results saved to $log_file"
 }
 
 run_main() {
@@ -80,7 +75,7 @@ run_main() {
         fi
         $bin $model $image $labels
         echo "[INFO] Run main_${device} finished"
-    } | tee "$log_file" 2>&1
+    } 2>&1 | tee "$log_file" 
     echo "===================================="
     echo ""
     echo "Results saved to $log_file"
@@ -128,11 +123,11 @@ run_main_profile() {
         fi
         
         if [[ -n "$warmup_runs" && -n "$profiling_runs" ]]; then
-            $bin $model $image $labels $num_threads $delegate_type $csv_file $warmup_runs $profiling_runs
+            taskset -c 0-15 $bin $model $image $labels $num_threads $delegate_type $csv_file $warmup_runs $profiling_runs
         else
-            $bin $model $image $labels $num_threads $delegate_type $csv_file
+            taskset -c 0-15 $bin $model $image $labels $num_threads $delegate_type $csv_file
         fi
-    } | tee "$log_file" 2>&1
+    } 2>&1 | tee "$log_file"
     echo "===================================="
     echo "[INFO] Run main_profile finished"
     echo "[INFO] Post-processing CSV file..."
@@ -155,13 +150,14 @@ run_main_profile() {
 # run_verify cpu ./models/mobileone_s0.tflite
 # run_verify gpu ./models/mobileone_s0.tflite
 
-run_dump_model cpu ./models/mobileone_s0.tflite
+# run_dump_model cpu ./models/mobileone_s0.tflite
 
 # run_main cpu ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json
 # run_main gpu ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json
 
 # Test with XNNPACK delegate
-# run_main_profile ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json 4 xnnpack 0 1
+# run_main_profile ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json 12 xnnpack 100 500
+run_main_profile ./models/mobilevit_s.cvnets_in1k.tflite ./images/dog.jpg ./labels.json 8 xnnpack 50 100
 # Test with GPU delegate
 # run_main_profile ./models/mobileone_s0.tflite ./images/dog.jpg ./labels.json 8 gpu 10 10
 
