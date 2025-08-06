@@ -1,0 +1,743 @@
+Running main profile with model ./models/mobilenetv3_small.tflite and image ./images/dog.jpg (threads: 1, delegate: xnnpack, warmup: 100, profiling: 500)
+
+====== main_cpu with profiling ====
+[INFO] Model path: ./models/mobilenetv3_small.tflite
+[INFO] Image path: ./images/dog.jpg
+[INFO] Label path: ./labels.json
+[INFO] Profiling result path: ./log/output_main_profile_mobilenetv3_small_xnnpack_1threads.csv
+[INFO] Profiling enabled: YES
+[INFO] Number of threads: 1
+[INFO] Delegate type: xnnpack
+[INFO] Warmup runs: 100
+[INFO] Profiling runs: 500
+[INFO] Model type detected: FP32
+[INFO] Initializing profiler...
+[INFO] Loading model from: ./models/mobilenetv3_small.tflite
+[INFO] Model signature keys:The Model contains 1 signature key(s).They are listed below: -> Signature Key: serving_default
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+[INFO] XNNPACK delegate applied successfully (threads: 1)
+
+[INFO] Model Summary 
+📥 Input tensor count  : 1
+📤 Output tensor count : 1
+📦 Total tensor count  : 256
+🔧 Node (op) count     : 133
+🧩 Delegate applied    : Yes ✅
+
+[INFO] Shape of input_tensor: [1, 224, 224, 3]
+[INFO] Processing FP32 input path
+
+[INFO] Running 100 warm-up iterations...
+[INFO] warm-up completed
+
+[INFO] Running 500 run and profile iterations...
+[INFO] run and profile completed
+
+[INFO] Shape of output_tensor: [1, 1000]
+[INFO] Processing FP32 output path
+
+[INFO] Top 5 predictions:
+- Class 207 (golden_retriever): 0.790361
+- Class 208 (Labrador_retriever): 0.0509196
+- Class 244 (Tibetan_mastiff): 0.0145071
+- Class 257 (Great_Pyrenees): 0.0122607
+- Class 219 (cocker_spaniel): 0.0110343
+
+[INFO] Elapsed time summary
+- Load Model took 0.016 ms (16 us)
+- Build Interpreter took 0.67 ms (670 us)
+- Apply Delegate took 3.299 ms (3299 us)
+- Allocate Tensor took 0.906 ms (906 us)
+- Load Input Image took 7.566 ms (7566 us)
+- Preprocessing took 0.995 ms (995 us)
+- Inference_0 took 2.012 ms (2012 us)
+- Inference_1 took 1.971 ms (1971 us)
+- Inference_2 took 1.986 ms (1986 us)
+- Inference_3 took 2.219 ms (2219 us)
+- Inference_4 took 2.275 ms (2275 us)
+- Inference_5 took 2.179 ms (2179 us)
+- Inference_6 took 2.048 ms (2048 us)
+- Inference_7 took 1.99 ms (1990 us)
+- Inference_8 took 2.32 ms (2320 us)
+- Inference_9 took 2.512 ms (2512 us)
+- Inference_10 took 2.216 ms (2216 us)
+- Inference_11 took 1.976 ms (1976 us)
+- Inference_12 took 2.033 ms (2033 us)
+- Inference_13 took 2.032 ms (2032 us)
+- Inference_14 took 1.899 ms (1899 us)
+- Inference_15 took 1.911 ms (1911 us)
+- Inference_16 took 2.233 ms (2233 us)
+- Inference_17 took 2.447 ms (2447 us)
+- Inference_18 took 2.2 ms (2200 us)
+- Inference_19 took 2.121 ms (2121 us)
+- Inference_20 took 1.933 ms (1933 us)
+- Inference_21 took 1.9 ms (1900 us)
+- Inference_22 took 1.968 ms (1968 us)
+- Inference_23 took 2.076 ms (2076 us)
+- Inference_24 took 2.47 ms (2470 us)
+- Inference_25 took 2.14 ms (2140 us)
+- Inference_26 took 2.041 ms (2041 us)
+- Inference_27 took 1.96 ms (1960 us)
+- Inference_28 took 1.973 ms (1973 us)
+- Inference_29 took 1.907 ms (1907 us)
+- Inference_30 took 2.001 ms (2001 us)
+- Inference_31 took 1.962 ms (1962 us)
+- Inference_32 took 2.047 ms (2047 us)
+- Inference_33 took 1.975 ms (1975 us)
+- Inference_34 took 2.093 ms (2093 us)
+- Inference_35 took 2.093 ms (2093 us)
+- Inference_36 took 2.178 ms (2178 us)
+- Inference_37 took 2.037 ms (2037 us)
+- Inference_38 took 1.961 ms (1961 us)
+- Inference_39 took 1.998 ms (1998 us)
+- Inference_40 took 1.977 ms (1977 us)
+- Inference_41 took 2.05 ms (2050 us)
+- Inference_42 took 2.007 ms (2007 us)
+- Inference_43 took 1.982 ms (1982 us)
+- Inference_44 took 1.999 ms (1999 us)
+- Inference_45 took 2.052 ms (2052 us)
+- Inference_46 took 2 ms (2000 us)
+- Inference_47 took 1.953 ms (1953 us)
+- Inference_48 took 1.99 ms (1990 us)
+- Inference_49 took 2.018 ms (2018 us)
+- Inference_50 took 1.969 ms (1969 us)
+- Inference_51 took 2.07 ms (2070 us)
+- Inference_52 took 2.012 ms (2012 us)
+- Inference_53 took 1.999 ms (1999 us)
+- Inference_54 took 2.047 ms (2047 us)
+- Inference_55 took 1.99 ms (1990 us)
+- Inference_56 took 2.009 ms (2009 us)
+- Inference_57 took 2.055 ms (2055 us)
+- Inference_58 took 1.99 ms (1990 us)
+- Inference_59 took 2.036 ms (2036 us)
+- Inference_60 took 2.29 ms (2290 us)
+- Inference_61 took 2.163 ms (2163 us)
+- Inference_62 took 2.75 ms (2750 us)
+- Inference_63 took 2.166 ms (2166 us)
+- Inference_64 took 2.224 ms (2224 us)
+- Inference_65 took 2.037 ms (2037 us)
+- Inference_66 took 1.986 ms (1986 us)
+- Inference_67 took 1.93 ms (1930 us)
+- Inference_68 took 1.9 ms (1900 us)
+- Inference_69 took 1.909 ms (1909 us)
+- Inference_70 took 1.994 ms (1994 us)
+- Inference_71 took 2.309 ms (2309 us)
+- Inference_72 took 2.593 ms (2593 us)
+- Inference_73 took 2.03 ms (2030 us)
+- Inference_74 took 1.969 ms (1969 us)
+- Inference_75 took 1.952 ms (1952 us)
+- Inference_76 took 1.952 ms (1952 us)
+- Inference_77 took 1.954 ms (1954 us)
+- Inference_78 took 2.004 ms (2004 us)
+- Inference_79 took 2.062 ms (2062 us)
+- Inference_80 took 2.072 ms (2072 us)
+- Inference_81 took 2.054 ms (2054 us)
+- Inference_82 took 2.037 ms (2037 us)
+- Inference_83 took 1.991 ms (1991 us)
+- Inference_84 took 1.962 ms (1962 us)
+- Inference_85 took 2.141 ms (2141 us)
+- Inference_86 took 2.106 ms (2106 us)
+- Inference_87 took 2.248 ms (2248 us)
+- Inference_88 took 2.18 ms (2180 us)
+- Inference_89 took 1.963 ms (1963 us)
+- Inference_90 took 1.996 ms (1996 us)
+- Inference_91 took 1.995 ms (1995 us)
+- Inference_92 took 2.058 ms (2058 us)
+- Inference_93 took 1.975 ms (1975 us)
+- Inference_94 took 2.043 ms (2043 us)
+- Inference_95 took 2.125 ms (2125 us)
+- Inference_96 took 2.132 ms (2132 us)
+- Inference_97 took 2.041 ms (2041 us)
+- Inference_98 took 1.987 ms (1987 us)
+- Inference_99 took 2.028 ms (2028 us)
+- Inference_100 took 2.034 ms (2034 us)
+- Inference_101 took 1.964 ms (1964 us)
+- Inference_102 took 1.967 ms (1967 us)
+- Inference_103 took 2.134 ms (2134 us)
+- Inference_104 took 2.139 ms (2139 us)
+- Inference_105 took 2.042 ms (2042 us)
+- Inference_106 took 2.018 ms (2018 us)
+- Inference_107 took 2.015 ms (2015 us)
+- Inference_108 took 2.074 ms (2074 us)
+- Inference_109 took 2.022 ms (2022 us)
+- Inference_110 took 2.208 ms (2208 us)
+- Inference_111 took 2.081 ms (2081 us)
+- Inference_112 took 2.101 ms (2101 us)
+- Inference_113 took 2.136 ms (2136 us)
+- Inference_114 took 1.969 ms (1969 us)
+- Inference_115 took 2.003 ms (2003 us)
+- Inference_116 took 2.036 ms (2036 us)
+- Inference_117 took 2.053 ms (2053 us)
+- Inference_118 took 2.088 ms (2088 us)
+- Inference_119 took 2.038 ms (2038 us)
+- Inference_120 took 1.976 ms (1976 us)
+- Inference_121 took 2.001 ms (2001 us)
+- Inference_122 took 1.996 ms (1996 us)
+- Inference_123 took 2.026 ms (2026 us)
+- Inference_124 took 2.021 ms (2021 us)
+- Inference_125 took 2 ms (2000 us)
+- Inference_126 took 2.038 ms (2038 us)
+- Inference_127 took 2.019 ms (2019 us)
+- Inference_128 took 2.003 ms (2003 us)
+- Inference_129 took 2.063 ms (2063 us)
+- Inference_130 took 1.962 ms (1962 us)
+- Inference_131 took 2.06 ms (2060 us)
+- Inference_132 took 2.024 ms (2024 us)
+- Inference_133 took 2.068 ms (2068 us)
+- Inference_134 took 2.07 ms (2070 us)
+- Inference_135 took 2 ms (2000 us)
+- Inference_136 took 2.054 ms (2054 us)
+- Inference_137 took 2.022 ms (2022 us)
+- Inference_138 took 1.968 ms (1968 us)
+- Inference_139 took 2.056 ms (2056 us)
+- Inference_140 took 2.001 ms (2001 us)
+- Inference_141 took 1.978 ms (1978 us)
+- Inference_142 took 1.967 ms (1967 us)
+- Inference_143 took 2.066 ms (2066 us)
+- Inference_144 took 2.029 ms (2029 us)
+- Inference_145 took 2.053 ms (2053 us)
+- Inference_146 took 2.124 ms (2124 us)
+- Inference_147 took 2.168 ms (2168 us)
+- Inference_148 took 2.046 ms (2046 us)
+- Inference_149 took 2.033 ms (2033 us)
+- Inference_150 took 2.054 ms (2054 us)
+- Inference_151 took 2.137 ms (2137 us)
+- Inference_152 took 2.042 ms (2042 us)
+- Inference_153 took 2.054 ms (2054 us)
+- Inference_154 took 2.028 ms (2028 us)
+- Inference_155 took 2.074 ms (2074 us)
+- Inference_156 took 2.083 ms (2083 us)
+- Inference_157 took 2.143 ms (2143 us)
+- Inference_158 took 2.079 ms (2079 us)
+- Inference_159 took 2.077 ms (2077 us)
+- Inference_160 took 2.006 ms (2006 us)
+- Inference_161 took 2.039 ms (2039 us)
+- Inference_162 took 2.099 ms (2099 us)
+- Inference_163 took 2.02 ms (2020 us)
+- Inference_164 took 2.064 ms (2064 us)
+- Inference_165 took 2.039 ms (2039 us)
+- Inference_166 took 2.206 ms (2206 us)
+- Inference_167 took 2.101 ms (2101 us)
+- Inference_168 took 2.06 ms (2060 us)
+- Inference_169 took 1.983 ms (1983 us)
+- Inference_170 took 2.224 ms (2224 us)
+- Inference_171 took 2.317 ms (2317 us)
+- Inference_172 took 2.198 ms (2198 us)
+- Inference_173 took 2.307 ms (2307 us)
+- Inference_174 took 2.382 ms (2382 us)
+- Inference_175 took 2.09 ms (2090 us)
+- Inference_176 took 2.057 ms (2057 us)
+- Inference_177 took 2.213 ms (2213 us)
+- Inference_178 took 2.075 ms (2075 us)
+- Inference_179 took 2.279 ms (2279 us)
+- Inference_180 took 2.135 ms (2135 us)
+- Inference_181 took 2.081 ms (2081 us)
+- Inference_182 took 2.081 ms (2081 us)
+- Inference_183 took 2.023 ms (2023 us)
+- Inference_184 took 2.115 ms (2115 us)
+- Inference_185 took 1.985 ms (1985 us)
+- Inference_186 took 2.003 ms (2003 us)
+- Inference_187 took 1.995 ms (1995 us)
+- Inference_188 took 1.988 ms (1988 us)
+- Inference_189 took 1.979 ms (1979 us)
+- Inference_190 took 2.038 ms (2038 us)
+- Inference_191 took 1.997 ms (1997 us)
+- Inference_192 took 1.988 ms (1988 us)
+- Inference_193 took 2.055 ms (2055 us)
+- Inference_194 took 2.078 ms (2078 us)
+- Inference_195 took 2.01 ms (2010 us)
+- Inference_196 took 1.996 ms (1996 us)
+- Inference_197 took 2.031 ms (2031 us)
+- Inference_198 took 2.117 ms (2117 us)
+- Inference_199 took 2.058 ms (2058 us)
+- Inference_200 took 2.017 ms (2017 us)
+- Inference_201 took 1.948 ms (1948 us)
+- Inference_202 took 1.966 ms (1966 us)
+- Inference_203 took 2.04 ms (2040 us)
+- Inference_204 took 2.066 ms (2066 us)
+- Inference_205 took 2.03 ms (2030 us)
+- Inference_206 took 2.045 ms (2045 us)
+- Inference_207 took 1.991 ms (1991 us)
+- Inference_208 took 2.09 ms (2090 us)
+- Inference_209 took 2.081 ms (2081 us)
+- Inference_210 took 2.057 ms (2057 us)
+- Inference_211 took 2.063 ms (2063 us)
+- Inference_212 took 1.999 ms (1999 us)
+- Inference_213 took 2.009 ms (2009 us)
+- Inference_214 took 2.005 ms (2005 us)
+- Inference_215 took 1.975 ms (1975 us)
+- Inference_216 took 2.132 ms (2132 us)
+- Inference_217 took 2.036 ms (2036 us)
+- Inference_218 took 1.995 ms (1995 us)
+- Inference_219 took 1.99 ms (1990 us)
+- Inference_220 took 2.019 ms (2019 us)
+- Inference_221 took 2.034 ms (2034 us)
+- Inference_222 took 2.167 ms (2167 us)
+- Inference_223 took 2.042 ms (2042 us)
+- Inference_224 took 2.099 ms (2099 us)
+- Inference_225 took 1.991 ms (1991 us)
+- Inference_226 took 2.062 ms (2062 us)
+- Inference_227 took 2.052 ms (2052 us)
+- Inference_228 took 2.037 ms (2037 us)
+- Inference_229 took 2.05 ms (2050 us)
+- Inference_230 took 2 ms (2000 us)
+- Inference_231 took 2.016 ms (2016 us)
+- Inference_232 took 1.956 ms (1956 us)
+- Inference_233 took 2.036 ms (2036 us)
+- Inference_234 took 2.001 ms (2001 us)
+- Inference_235 took 1.997 ms (1997 us)
+- Inference_236 took 2.052 ms (2052 us)
+- Inference_237 took 2.127 ms (2127 us)
+- Inference_238 took 2.022 ms (2022 us)
+- Inference_239 took 1.963 ms (1963 us)
+- Inference_240 took 1.956 ms (1956 us)
+- Inference_241 took 1.977 ms (1977 us)
+- Inference_242 took 1.979 ms (1979 us)
+- Inference_243 took 2.058 ms (2058 us)
+- Inference_244 took 2.028 ms (2028 us)
+- Inference_245 took 2.1 ms (2100 us)
+- Inference_246 took 2.066 ms (2066 us)
+- Inference_247 took 2.042 ms (2042 us)
+- Inference_248 took 2.052 ms (2052 us)
+- Inference_249 took 2.085 ms (2085 us)
+- Inference_250 took 2.067 ms (2067 us)
+- Inference_251 took 2.215 ms (2215 us)
+- Inference_252 took 2.157 ms (2157 us)
+- Inference_253 took 2.26 ms (2260 us)
+- Inference_254 took 2.064 ms (2064 us)
+- Inference_255 took 2.001 ms (2001 us)
+- Inference_256 took 2.072 ms (2072 us)
+- Inference_257 took 2.133 ms (2133 us)
+- Inference_258 took 2.097 ms (2097 us)
+- Inference_259 took 2.154 ms (2154 us)
+- Inference_260 took 2.163 ms (2163 us)
+- Inference_261 took 2.231 ms (2231 us)
+- Inference_262 took 2.319 ms (2319 us)
+- Inference_263 took 2.149 ms (2149 us)
+- Inference_264 took 2.012 ms (2012 us)
+- Inference_265 took 2.2 ms (2200 us)
+- Inference_266 took 2.167 ms (2167 us)
+- Inference_267 took 2.027 ms (2027 us)
+- Inference_268 took 2.019 ms (2019 us)
+- Inference_269 took 2.304 ms (2304 us)
+- Inference_270 took 2.133 ms (2133 us)
+- Inference_271 took 2.028 ms (2028 us)
+- Inference_272 took 2.032 ms (2032 us)
+- Inference_273 took 2.159 ms (2159 us)
+- Inference_274 took 2.206 ms (2206 us)
+- Inference_275 took 2.205 ms (2205 us)
+- Inference_276 took 2.488 ms (2488 us)
+- Inference_277 took 2.447 ms (2447 us)
+- Inference_278 took 2.187 ms (2187 us)
+- Inference_279 took 2.072 ms (2072 us)
+- Inference_280 took 2.352 ms (2352 us)
+- Inference_281 took 2.338 ms (2338 us)
+- Inference_282 took 2.034 ms (2034 us)
+- Inference_283 took 2.238 ms (2238 us)
+- Inference_284 took 2.261 ms (2261 us)
+- Inference_285 took 2.087 ms (2087 us)
+- Inference_286 took 2.027 ms (2027 us)
+- Inference_287 took 1.942 ms (1942 us)
+- Inference_288 took 1.945 ms (1945 us)
+- Inference_289 took 2.017 ms (2017 us)
+- Inference_290 took 1.995 ms (1995 us)
+- Inference_291 took 2.052 ms (2052 us)
+- Inference_292 took 2.021 ms (2021 us)
+- Inference_293 took 2.086 ms (2086 us)
+- Inference_294 took 1.989 ms (1989 us)
+- Inference_295 took 2.046 ms (2046 us)
+- Inference_296 took 2.069 ms (2069 us)
+- Inference_297 took 2.099 ms (2099 us)
+- Inference_298 took 2.1 ms (2100 us)
+- Inference_299 took 2.073 ms (2073 us)
+- Inference_300 took 2.228 ms (2228 us)
+- Inference_301 took 2.132 ms (2132 us)
+- Inference_302 took 2.188 ms (2188 us)
+- Inference_303 took 2.086 ms (2086 us)
+- Inference_304 took 2.031 ms (2031 us)
+- Inference_305 took 2.022 ms (2022 us)
+- Inference_306 took 2.123 ms (2123 us)
+- Inference_307 took 2.548 ms (2548 us)
+- Inference_308 took 2.323 ms (2323 us)
+- Inference_309 took 2.074 ms (2074 us)
+- Inference_310 took 1.967 ms (1967 us)
+- Inference_311 took 1.973 ms (1973 us)
+- Inference_312 took 2.079 ms (2079 us)
+- Inference_313 took 2.07 ms (2070 us)
+- Inference_314 took 2.437 ms (2437 us)
+- Inference_315 took 2.508 ms (2508 us)
+- Inference_316 took 2.124 ms (2124 us)
+- Inference_317 took 2.043 ms (2043 us)
+- Inference_318 took 1.95 ms (1950 us)
+- Inference_319 took 1.947 ms (1947 us)
+- Inference_320 took 1.962 ms (1962 us)
+- Inference_321 took 2.002 ms (2002 us)
+- Inference_322 took 2.475 ms (2475 us)
+- Inference_323 took 2.498 ms (2498 us)
+- Inference_324 took 2.299 ms (2299 us)
+- Inference_325 took 2.127 ms (2127 us)
+- Inference_326 took 2.042 ms (2042 us)
+- Inference_327 took 2.379 ms (2379 us)
+- Inference_328 took 2.119 ms (2119 us)
+- Inference_329 took 2.171 ms (2171 us)
+- Inference_330 took 2.334 ms (2334 us)
+- Inference_331 took 2.172 ms (2172 us)
+- Inference_332 took 1.961 ms (1961 us)
+- Inference_333 took 1.99 ms (1990 us)
+- Inference_334 took 1.975 ms (1975 us)
+- Inference_335 took 1.889 ms (1889 us)
+- Inference_336 took 1.975 ms (1975 us)
+- Inference_337 took 2.386 ms (2386 us)
+- Inference_338 took 2.69 ms (2690 us)
+- Inference_339 took 2.243 ms (2243 us)
+- Inference_340 took 2.065 ms (2065 us)
+- Inference_341 took 1.981 ms (1981 us)
+- Inference_342 took 2.016 ms (2016 us)
+- Inference_343 took 1.961 ms (1961 us)
+- Inference_344 took 2.233 ms (2233 us)
+- Inference_345 took 2.808 ms (2808 us)
+- Inference_346 took 2.619 ms (2619 us)
+- Inference_347 took 2.682 ms (2682 us)
+- Inference_348 took 2.495 ms (2495 us)
+- Inference_349 took 1.965 ms (1965 us)
+- Inference_350 took 1.966 ms (1966 us)
+- Inference_351 took 2.278 ms (2278 us)
+- Inference_352 took 2.753 ms (2753 us)
+- Inference_353 took 2.573 ms (2573 us)
+- Inference_354 took 2.258 ms (2258 us)
+- Inference_355 took 2.131 ms (2131 us)
+- Inference_356 took 2.372 ms (2372 us)
+- Inference_357 took 2.187 ms (2187 us)
+- Inference_358 took 2.599 ms (2599 us)
+- Inference_359 took 3.135 ms (3135 us)
+- Inference_360 took 2.404 ms (2404 us)
+- Inference_361 took 2.009 ms (2009 us)
+- Inference_362 took 2.133 ms (2133 us)
+- Inference_363 took 2.104 ms (2104 us)
+- Inference_364 took 2.174 ms (2174 us)
+- Inference_365 took 2.585 ms (2585 us)
+- Inference_366 took 3.019 ms (3019 us)
+- Inference_367 took 2.84 ms (2840 us)
+- Inference_368 took 2.024 ms (2024 us)
+- Inference_369 took 2.07 ms (2070 us)
+- Inference_370 took 1.964 ms (1964 us)
+- Inference_371 took 2.043 ms (2043 us)
+- Inference_372 took 2.506 ms (2506 us)
+- Inference_373 took 2.846 ms (2846 us)
+- Inference_374 took 2.628 ms (2628 us)
+- Inference_375 took 2.105 ms (2105 us)
+- Inference_376 took 2.051 ms (2051 us)
+- Inference_377 took 1.97 ms (1970 us)
+- Inference_378 took 2.03 ms (2030 us)
+- Inference_379 took 2.288 ms (2288 us)
+- Inference_380 took 2.619 ms (2619 us)
+- Inference_381 took 2.411 ms (2411 us)
+- Inference_382 took 1.988 ms (1988 us)
+- Inference_383 took 2.016 ms (2016 us)
+- Inference_384 took 1.877 ms (1877 us)
+- Inference_385 took 1.913 ms (1913 us)
+- Inference_386 took 2.293 ms (2293 us)
+- Inference_387 took 2.835 ms (2835 us)
+- Inference_388 took 2.414 ms (2414 us)
+- Inference_389 took 2.172 ms (2172 us)
+- Inference_390 took 2.148 ms (2148 us)
+- Inference_391 took 2.304 ms (2304 us)
+- Inference_392 took 2.005 ms (2005 us)
+- Inference_393 took 2.105 ms (2105 us)
+- Inference_394 took 2.377 ms (2377 us)
+- Inference_395 took 2.391 ms (2391 us)
+- Inference_396 took 1.916 ms (1916 us)
+- Inference_397 took 1.94 ms (1940 us)
+- Inference_398 took 1.866 ms (1866 us)
+- Inference_399 took 1.956 ms (1956 us)
+- Inference_400 took 1.963 ms (1963 us)
+- Inference_401 took 2.201 ms (2201 us)
+- Inference_402 took 2.695 ms (2695 us)
+- Inference_403 took 2.191 ms (2191 us)
+- Inference_404 took 2.055 ms (2055 us)
+- Inference_405 took 1.981 ms (1981 us)
+- Inference_406 took 1.974 ms (1974 us)
+- Inference_407 took 1.989 ms (1989 us)
+- Inference_408 took 2.148 ms (2148 us)
+- Inference_409 took 2.271 ms (2271 us)
+- Inference_410 took 2.436 ms (2436 us)
+- Inference_411 took 2.052 ms (2052 us)
+- Inference_412 took 2.083 ms (2083 us)
+- Inference_413 took 2.197 ms (2197 us)
+- Inference_414 took 2.27 ms (2270 us)
+- Inference_415 took 2.254 ms (2254 us)
+- Inference_416 took 2.285 ms (2285 us)
+- Inference_417 took 2.288 ms (2288 us)
+- Inference_418 took 2.212 ms (2212 us)
+- Inference_419 took 2.114 ms (2114 us)
+- Inference_420 took 1.877 ms (1877 us)
+- Inference_421 took 1.892 ms (1892 us)
+- Inference_422 took 1.895 ms (1895 us)
+- Inference_423 took 1.966 ms (1966 us)
+- Inference_424 took 2.238 ms (2238 us)
+- Inference_425 took 2.639 ms (2639 us)
+- Inference_426 took 2.293 ms (2293 us)
+- Inference_427 took 1.977 ms (1977 us)
+- Inference_428 took 1.961 ms (1961 us)
+- Inference_429 took 1.928 ms (1928 us)
+- Inference_430 took 1.99 ms (1990 us)
+- Inference_431 took 2.005 ms (2005 us)
+- Inference_432 took 2.386 ms (2386 us)
+- Inference_433 took 2.586 ms (2586 us)
+- Inference_434 took 2.061 ms (2061 us)
+- Inference_435 took 1.948 ms (1948 us)
+- Inference_436 took 1.95 ms (1950 us)
+- Inference_437 took 2.006 ms (2006 us)
+- Inference_438 took 2.028 ms (2028 us)
+- Inference_439 took 2.227 ms (2227 us)
+- Inference_440 took 2.653 ms (2653 us)
+- Inference_441 took 2.448 ms (2448 us)
+- Inference_442 took 2.008 ms (2008 us)
+- Inference_443 took 1.994 ms (1994 us)
+- Inference_444 took 2.064 ms (2064 us)
+- Inference_445 took 2.072 ms (2072 us)
+- Inference_446 took 2.145 ms (2145 us)
+- Inference_447 took 2.462 ms (2462 us)
+- Inference_448 took 2.727 ms (2727 us)
+- Inference_449 took 2.056 ms (2056 us)
+- Inference_450 took 1.942 ms (1942 us)
+- Inference_451 took 2.026 ms (2026 us)
+- Inference_452 took 2.2 ms (2200 us)
+- Inference_453 took 2.241 ms (2241 us)
+- Inference_454 took 2.444 ms (2444 us)
+- Inference_455 took 3.037 ms (3037 us)
+- Inference_456 took 2.782 ms (2782 us)
+- Inference_457 took 2.355 ms (2355 us)
+- Inference_458 took 2.308 ms (2308 us)
+- Inference_459 took 2.452 ms (2452 us)
+- Inference_460 took 2.399 ms (2399 us)
+- Inference_461 took 2.784 ms (2784 us)
+- Inference_462 took 2.629 ms (2629 us)
+- Inference_463 took 2.016 ms (2016 us)
+- Inference_464 took 2.006 ms (2006 us)
+- Inference_465 took 1.842 ms (1842 us)
+- Inference_466 took 2.165 ms (2165 us)
+- Inference_467 took 2.014 ms (2014 us)
+- Inference_468 took 2.847 ms (2847 us)
+- Inference_469 took 2.378 ms (2378 us)
+- Inference_470 took 2.104 ms (2104 us)
+- Inference_471 took 1.993 ms (1993 us)
+- Inference_472 took 1.811 ms (1811 us)
+- Inference_473 took 1.912 ms (1912 us)
+- Inference_474 took 2.13 ms (2130 us)
+- Inference_475 took 2.772 ms (2772 us)
+- Inference_476 took 2.606 ms (2606 us)
+- Inference_477 took 2.02 ms (2020 us)
+- Inference_478 took 2.104 ms (2104 us)
+- Inference_479 took 2.04 ms (2040 us)
+- Inference_480 took 1.895 ms (1895 us)
+- Inference_481 took 2.087 ms (2087 us)
+- Inference_482 took 2.422 ms (2422 us)
+- Inference_483 took 2.689 ms (2689 us)
+- Inference_484 took 2.886 ms (2886 us)
+- Inference_485 took 2.494 ms (2494 us)
+- Inference_486 took 2.126 ms (2126 us)
+- Inference_487 took 2.032 ms (2032 us)
+- Inference_488 took 2.368 ms (2368 us)
+- Inference_489 took 2.707 ms (2707 us)
+- Inference_490 took 2.946 ms (2946 us)
+- Inference_491 took 2.448 ms (2448 us)
+- Inference_492 took 2.105 ms (2105 us)
+- Inference_493 took 1.97 ms (1970 us)
+- Inference_494 took 1.804 ms (1804 us)
+- Inference_495 took 1.849 ms (1849 us)
+- Inference_496 took 2.353 ms (2353 us)
+- Inference_497 took 2.646 ms (2646 us)
+- Inference_498 took 2.371 ms (2371 us)
+- Inference_499 took 2.32 ms (2320 us)
+- Postprocessing took 0.006 ms (6 us)
+
+
+[INFO] Generating Ops-level profiling (log)
+
+INFO: Profiling Info for Benchmark Initialization:
+============================== Run Order ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	                 ModifyGraphWithDelegate	    3.274	    3.274	 78.363%	 78.363%	 18944.000	        1	ModifyGraphWithDelegate/0
+	                         AllocateTensors	    0.904	    0.904	 21.637%	100.000%	  2304.000	        1	AllocateTensors/0
+
+============================== Top by Computation Time ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	                 ModifyGraphWithDelegate	    3.274	    3.274	 78.363%	 78.363%	 18944.000	        1	ModifyGraphWithDelegate/0
+	                         AllocateTensors	    0.904	    0.904	 21.637%	100.000%	  2304.000	        1	AllocateTensors/0
+
+Number of nodes executed: 2
+============================== Summary by node type ==============================
+	                             [Node type]	  [count]	  [avg ms]	    [avg %]	    [cdf %]	  [mem KB]	[times called]
+	                 ModifyGraphWithDelegate	        1	     3.274	    78.363%	    78.363%	 18944.000	        1
+	                         AllocateTensors	        1	     0.904	    21.637%	   100.000%	  2304.000	        1
+
+Timings (microseconds): count=2 curr=4178(all same)
+Memory (bytes): count=0
+2 nodes observed
+
+
+
+INFO: Operator-wise Profiling Info for Regular Benchmark Runs:
+============================== Run Order ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	           Convolution (NHWC, F32) IGEMM	    0.152	    0.136	  6.565%	  6.565%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:0
+	                          HardSwish (NC)	    0.010	    0.012	  0.558%	  7.123%	     0.000	        1	Delegate/HardSwish (NC):1
+	          Convolution (NHWC, F32) DWConv	    0.022	    0.024	  1.177%	  8.300%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:2
+	                         Sum (ND) Reduce	    0.002	    0.002	  0.098%	  8.398%	     0.000	        1	Delegate/Sum (ND) Reduce:3
+	                           Multiply (ND)	    0.000	    0.000	  0.000%	  8.398%	     0.000	        1	Delegate/Multiply (ND):4
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	  8.398%	     0.000	        1	Delegate/Static Reshape (NC):5
+	          Fully Connected (NC, F32) GEMM	    0.000	    0.000	  0.000%	  8.398%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:6
+	          Fully Connected (NC, F32) GEMM	    0.000	    0.000	  0.001%	  8.399%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:7
+	                           Multiply (ND)	    0.000	    0.000	  0.000%	  8.399%	     0.000	        1	Delegate/Multiply (ND):8
+	                           Multiply (ND)	    0.005	    0.006	  0.270%	  8.669%	     0.000	        1	Delegate/Multiply (ND):9
+	          Fully Connected (NC, F32) GEMM	    0.027	    0.028	  1.362%	 10.031%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:10
+	          Fully Connected (NC, F32) GEMM	    0.104	    0.111	  5.366%	 15.398%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:11
+	          Convolution (NHWC, F32) DWConv	    0.019	    0.021	  1.025%	 16.422%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:12
+	          Fully Connected (NC, F32) GEMM	    0.035	    0.037	  1.788%	 18.210%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:13
+	          Fully Connected (NC, F32) GEMM	    0.046	    0.049	  2.371%	 20.581%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:14
+	          Convolution (NHWC, F32) DWConv	    0.021	    0.023	  1.103%	 21.684%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:15
+	          Fully Connected (NC, F32) GEMM	    0.042	    0.045	  2.153%	 23.837%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:16
+	                                Add (ND)	    0.001	    0.001	  0.049%	 23.886%	     0.000	        1	Delegate/Add (ND):17
+	          Fully Connected (NC, F32) GEMM	    0.049	    0.050	  2.403%	 26.289%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:18
+	                          HardSwish (NC)	    0.003	    0.004	  0.174%	 26.462%	     0.000	        1	Delegate/HardSwish (NC):19
+	          Convolution (NHWC, F32) DWConv	    0.017	    0.018	  0.878%	 27.340%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:20
+	                          HardSwish (NC)	    0.001	    0.001	  0.048%	 27.388%	     0.000	        1	Delegate/HardSwish (NC):21
+	                         Sum (ND) Reduce	    0.000	    0.000	  0.003%	 27.391%	     0.000	        1	Delegate/Sum (ND) Reduce:22
+	                           Multiply (ND)	    0.000	    0.000	  0.001%	 27.392%	     0.000	        1	Delegate/Multiply (ND):23
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	 27.392%	     0.000	        1	Delegate/Static Reshape (NC):24
+	          Fully Connected (NC, F32) GEMM	    0.000	    0.000	  0.005%	 27.396%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:25
+	          Fully Connected (NC, F32) GEMM	    0.000	    0.000	  0.001%	 27.397%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:26
+	                           Multiply (ND)	    0.000	    0.000	  0.000%	 27.397%	     0.000	        1	Delegate/Multiply (ND):27
+	                           Multiply (ND)	    0.001	    0.001	  0.050%	 27.448%	     0.000	        1	Delegate/Multiply (ND):28
+	          Fully Connected (NC, F32) GEMM	    0.019	    0.020	  0.975%	 28.423%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:29
+	          Fully Connected (NC, F32) GEMM	    0.051	    0.053	  2.561%	 30.984%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:30
+	                          HardSwish (NC)	    0.002	    0.002	  0.102%	 31.087%	     0.000	        1	Delegate/HardSwish (NC):31
+	          Convolution (NHWC, F32) DWConv	    0.041	    0.043	  2.091%	 33.177%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:32
+	                          HardSwish (NC)	    0.002	    0.002	  0.113%	 33.290%	     0.000	        1	Delegate/HardSwish (NC):33
+	                         Sum (ND) Reduce	    0.001	    0.001	  0.050%	 33.340%	     0.000	        1	Delegate/Sum (ND) Reduce:34
+	                           Multiply (ND)	    0.000	    0.000	  0.000%	 33.340%	     0.000	        1	Delegate/Multiply (ND):35
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	 33.340%	     0.000	        1	Delegate/Static Reshape (NC):36
+	          Fully Connected (NC, F32) GEMM	    0.001	    0.001	  0.050%	 33.391%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:37
+	          Fully Connected (NC, F32) GEMM	    0.001	    0.001	  0.050%	 33.441%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:38
+	                           Multiply (ND)	    0.000	    0.000	  0.000%	 33.441%	     0.000	        1	Delegate/Multiply (ND):39
+	                           Multiply (ND)	    0.003	    0.003	  0.155%	 33.596%	     0.000	        1	Delegate/Multiply (ND):40
+	          Fully Connected (NC, F32) GEMM	    0.047	    0.050	  2.398%	 35.995%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:41
+	                                Add (ND)	    0.000	    0.000	  0.001%	 35.995%	     0.000	        1	Delegate/Add (ND):42
+	          Fully Connected (NC, F32) GEMM	    0.054	    0.053	  2.554%	 38.549%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:43
+	                          HardSwish (NC)	    0.002	    0.002	  0.103%	 38.652%	     0.000	        1	Delegate/HardSwish (NC):44
+	          Convolution (NHWC, F32) DWConv	    0.041	    0.043	  2.095%	 40.747%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:45
+	                          HardSwish (NC)	    0.002	    0.002	  0.110%	 40.857%	     0.000	        1	Delegate/HardSwish (NC):46
+	                         Sum (ND) Reduce	    0.001	    0.001	  0.050%	 40.907%	     0.000	        1	Delegate/Sum (ND) Reduce:47
+	                           Multiply (ND)	    0.000	    0.000	  0.000%	 40.907%	     0.000	        1	Delegate/Multiply (ND):48
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	 40.907%	     0.000	        1	Delegate/Static Reshape (NC):49
+	          Fully Connected (NC, F32) GEMM	    0.001	    0.001	  0.056%	 40.964%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:50
+	          Fully Connected (NC, F32) GEMM	    0.001	    0.001	  0.049%	 41.012%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:51
+	                           Multiply (ND)	    0.000	    0.000	  0.000%	 41.012%	     0.000	        1	Delegate/Multiply (ND):52
+	                           Multiply (ND)	    0.003	    0.003	  0.147%	 41.159%	     0.000	        1	Delegate/Multiply (ND):53
+	          Fully Connected (NC, F32) GEMM	    0.047	    0.050	  2.409%	 43.568%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:54
+	                                Add (ND)	    0.000	    0.000	  0.001%	 43.569%	     0.000	        1	Delegate/Add (ND):55
+	          Fully Connected (NC, F32) GEMM	    0.025	    0.026	  1.254%	 44.823%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:56
+	                          HardSwish (NC)	    0.001	    0.001	  0.049%	 44.872%	     0.000	        1	Delegate/HardSwish (NC):57
+	          Convolution (NHWC, F32) DWConv	    0.021	    0.022	  1.071%	 45.943%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:58
+	                          HardSwish (NC)	    0.001	    0.001	  0.053%	 45.996%	     0.000	        1	Delegate/HardSwish (NC):59
+	                         Sum (ND) Reduce	    0.000	    0.000	  0.004%	 46.000%	     0.000	        1	Delegate/Sum (ND) Reduce:60
+	                           Multiply (ND)	    0.000	    0.000	  0.002%	 46.002%	     0.000	        1	Delegate/Multiply (ND):61
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	 46.002%	     0.000	        1	Delegate/Static Reshape (NC):62
+	          Fully Connected (NC, F32) GEMM	    0.000	    0.000	  0.012%	 46.014%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:63
+	          Fully Connected (NC, F32) GEMM	    0.000	    0.000	  0.003%	 46.017%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:64
+	                           Multiply (ND)	    0.000	    0.000	  0.000%	 46.017%	     0.000	        1	Delegate/Multiply (ND):65
+	                           Multiply (ND)	    0.002	    0.002	  0.101%	 46.118%	     0.000	        1	Delegate/Multiply (ND):66
+	          Fully Connected (NC, F32) GEMM	    0.039	    0.041	  1.979%	 48.097%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:67
+	          Fully Connected (NC, F32) GEMM	    0.037	    0.039	  1.896%	 49.993%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:68
+	                          HardSwish (NC)	    0.001	    0.001	  0.051%	 50.044%	     0.000	        1	Delegate/HardSwish (NC):69
+	          Convolution (NHWC, F32) DWConv	    0.023	    0.025	  1.199%	 51.243%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:70
+	                          HardSwish (NC)	    0.001	    0.001	  0.055%	 51.298%	     0.000	        1	Delegate/HardSwish (NC):71
+	                         Sum (ND) Reduce	    0.000	    0.000	  0.005%	 51.303%	     0.000	        1	Delegate/Sum (ND) Reduce:72
+	                           Multiply (ND)	    0.000	    0.000	  0.000%	 51.303%	     0.000	        1	Delegate/Multiply (ND):73
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	 51.303%	     0.000	        1	Delegate/Static Reshape (NC):74
+	          Fully Connected (NC, F32) GEMM	    0.000	    0.000	  0.011%	 51.314%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:75
+	          Fully Connected (NC, F32) GEMM	    0.000	    0.000	  0.005%	 51.319%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:76
+	                           Multiply (ND)	    0.000	    0.000	  0.000%	 51.319%	     0.000	        1	Delegate/Multiply (ND):77
+	                           Multiply (ND)	    0.001	    0.001	  0.059%	 51.378%	     0.000	        1	Delegate/Multiply (ND):78
+	          Fully Connected (NC, F32) GEMM	    0.050	    0.053	  2.544%	 53.921%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:79
+	                                Add (ND)	    0.000	    0.000	  0.005%	 53.926%	     0.000	        1	Delegate/Add (ND):80
+	          Fully Connected (NC, F32) GEMM	    0.080	    0.085	  4.099%	 58.025%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:81
+	                          HardSwish (NC)	    0.002	    0.002	  0.117%	 58.142%	     0.000	        1	Delegate/HardSwish (NC):82
+	          Convolution (NHWC, F32) DWConv	    0.013	    0.014	  0.660%	 58.801%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:83
+	                          HardSwish (NC)	    0.000	    0.000	  0.007%	 58.809%	     0.000	        1	Delegate/HardSwish (NC):84
+	                         Sum (ND) Reduce	    0.000	    0.000	  0.002%	 58.811%	     0.000	        1	Delegate/Sum (ND) Reduce:85
+	                           Multiply (ND)	    0.000	    0.000	  0.000%	 58.811%	     0.000	        1	Delegate/Multiply (ND):86
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	 58.811%	     0.000	        1	Delegate/Static Reshape (NC):87
+	          Fully Connected (NC, F32) GEMM	    0.001	    0.002	  0.088%	 58.899%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:88
+	          Fully Connected (NC, F32) GEMM	    0.001	    0.001	  0.067%	 58.966%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:89
+	                           Multiply (ND)	    0.000	    0.000	  0.000%	 58.966%	     0.000	        1	Delegate/Multiply (ND):90
+	                           Multiply (ND)	    0.000	    0.000	  0.009%	 58.975%	     0.000	        1	Delegate/Multiply (ND):91
+	          Fully Connected (NC, F32) GEMM	    0.060	    0.064	  3.067%	 62.042%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:92
+	          Fully Connected (NC, F32) GEMM	    0.094	    0.100	  4.826%	 66.868%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:93
+	                          HardSwish (NC)	    0.001	    0.001	  0.055%	 66.923%	     0.000	        1	Delegate/HardSwish (NC):94
+	          Convolution (NHWC, F32) DWConv	    0.025	    0.027	  1.319%	 68.242%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:95
+	                          HardSwish (NC)	    0.001	    0.001	  0.057%	 68.299%	     0.000	        1	Delegate/HardSwish (NC):96
+	                         Sum (ND) Reduce	    0.000	    0.000	  0.005%	 68.304%	     0.000	        1	Delegate/Sum (ND) Reduce:97
+	                           Multiply (ND)	    0.000	    0.000	  0.000%	 68.304%	     0.000	        1	Delegate/Multiply (ND):98
+	                     Static Reshape (NC)	    0.000	    0.000	  0.001%	 68.305%	     0.000	        1	Delegate/Static Reshape (NC):99
+	          Fully Connected (NC, F32) GEMM	    0.004	    0.006	  0.309%	 68.615%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:100
+	          Fully Connected (NC, F32) GEMM	    0.005	    0.006	  0.299%	 68.913%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:101
+	                           Multiply (ND)	    0.000	    0.000	  0.000%	 68.913%	     0.000	        1	Delegate/Multiply (ND):102
+	                           Multiply (ND)	    0.001	    0.002	  0.075%	 68.988%	     0.000	        1	Delegate/Multiply (ND):103
+	          Fully Connected (NC, F32) GEMM	    0.129	    0.138	  6.657%	 75.646%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:104
+	                                Add (ND)	    0.000	    0.000	  0.002%	 75.647%	     0.000	        1	Delegate/Add (ND):105
+	          Fully Connected (NC, F32) GEMM	    0.094	    0.101	  4.860%	 80.507%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:106
+	                          HardSwish (NC)	    0.001	    0.001	  0.053%	 80.560%	     0.000	        1	Delegate/HardSwish (NC):107
+	          Convolution (NHWC, F32) DWConv	    0.025	    0.028	  1.326%	 81.886%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:108
+	                          HardSwish (NC)	    0.001	    0.001	  0.057%	 81.943%	     0.000	        1	Delegate/HardSwish (NC):109
+	                         Sum (ND) Reduce	    0.000	    0.000	  0.005%	 81.948%	     0.000	        1	Delegate/Sum (ND) Reduce:110
+	                           Multiply (ND)	    0.000	    0.000	  0.000%	 81.948%	     0.000	        1	Delegate/Multiply (ND):111
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	 81.948%	     0.000	        1	Delegate/Static Reshape (NC):112
+	          Fully Connected (NC, F32) GEMM	    0.004	    0.006	  0.302%	 82.249%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:113
+	          Fully Connected (NC, F32) GEMM	    0.004	    0.006	  0.288%	 82.537%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:114
+	                           Multiply (ND)	    0.000	    0.000	  0.000%	 82.537%	     0.000	        1	Delegate/Multiply (ND):115
+	                           Multiply (ND)	    0.001	    0.001	  0.066%	 82.603%	     0.000	        1	Delegate/Multiply (ND):116
+	          Fully Connected (NC, F32) GEMM	    0.131	    0.138	  6.657%	 89.260%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:117
+	                                Add (ND)	    0.000	    0.000	  0.003%	 89.262%	     0.000	        1	Delegate/Add (ND):118
+	          Fully Connected (NC, F32) GEMM	    0.093	    0.100	  4.822%	 94.084%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:119
+	                          HardSwish (NC)	    0.001	    0.001	  0.055%	 94.139%	     0.000	        1	Delegate/HardSwish (NC):120
+	                         Sum (ND) Reduce	    0.000	    0.000	  0.022%	 94.162%	     0.000	        1	Delegate/Sum (ND) Reduce:121
+	                           Multiply (ND)	    0.000	    0.000	  0.001%	 94.163%	     0.000	        1	Delegate/Multiply (ND):122
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	 94.163%	     0.000	        1	Delegate/Static Reshape (NC):123
+	          Fully Connected (NC, F32) GEMM	    0.033	    0.044	  2.114%	 96.277%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:124
+	                          HardSwish (NC)	    0.000	    0.000	  0.000%	 96.277%	     0.000	        1	Delegate/HardSwish (NC):125
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	 96.277%	     0.000	        1	Delegate/Static Reshape (NC):126
+	          Fully Connected (NC, F32) GEMM	    0.060	    0.077	  3.723%	100.000%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:127
+
+============================== Top by Computation Time ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	          Fully Connected (NC, F32) GEMM	    0.129	    0.138	  6.657%	  6.657%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:104
+	          Fully Connected (NC, F32) GEMM	    0.131	    0.138	  6.657%	 13.314%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:117
+	           Convolution (NHWC, F32) IGEMM	    0.152	    0.136	  6.565%	 19.879%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:0
+	          Fully Connected (NC, F32) GEMM	    0.104	    0.111	  5.366%	 25.246%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:11
+	          Fully Connected (NC, F32) GEMM	    0.094	    0.101	  4.860%	 30.105%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:106
+	          Fully Connected (NC, F32) GEMM	    0.094	    0.100	  4.826%	 34.931%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:93
+	          Fully Connected (NC, F32) GEMM	    0.093	    0.100	  4.822%	 39.753%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:119
+	          Fully Connected (NC, F32) GEMM	    0.080	    0.085	  4.099%	 43.852%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:81
+	          Fully Connected (NC, F32) GEMM	    0.060	    0.077	  3.723%	 47.574%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:127
+	          Fully Connected (NC, F32) GEMM	    0.060	    0.064	  3.067%	 50.641%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:92
+
+Number of nodes executed: 128
+============================== Summary by node type ==============================
+	                             [Node type]	  [count]	  [avg ms]	    [avg %]	    [cdf %]	  [mem KB]	[times called]
+	          Fully Connected (NC, F32) GEMM	       42	     1.570	    76.773%	    76.773%	     0.000	       42
+	          Convolution (NHWC, F32) DWConv	       11	     0.284	    13.888%	    90.660%	     0.000	       11
+	           Convolution (NHWC, F32) IGEMM	        1	     0.136	     6.650%	    97.311%	     0.000	        1
+	                          HardSwish (NC)	       19	     0.033	     1.614%	    98.924%	     0.000	       19
+	                           Multiply (ND)	       28	     0.017	     0.831%	    99.756%	     0.000	       28
+	                         Sum (ND) Reduce	       10	     0.004	     0.196%	    99.951%	     0.000	       10
+	                                Add (ND)	        6	     0.001	     0.049%	   100.000%	     0.000	        6
+	                     Static Reshape (NC)	       11	     0.000	     0.000%	   100.000%	     0.000	       11
+
+Timings (microseconds): count=500 first=1944 curr=2259 min=1747 max=3071 avg=2073.28 std=213
+Memory (bytes): count=0
+128 nodes observed
+
+
+

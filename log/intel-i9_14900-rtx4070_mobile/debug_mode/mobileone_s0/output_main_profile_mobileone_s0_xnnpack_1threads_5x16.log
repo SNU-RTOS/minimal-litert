@@ -1,0 +1,593 @@
+Running main profile with model ./models/mobileone_s0.tflite and image ./images/dog.jpg (threads: 1, delegate: xnnpack, warmup: 50, profiling: 100)
+
+====== main_cpu with profiling ====
+[INFO] Model path: ./models/mobileone_s0.tflite
+[INFO] Image path: ./images/dog.jpg
+[INFO] Label path: ./labels.json
+[INFO] Profiling result path: ./log/output_main_profile_mobileone_s0_xnnpack_1threads.csv
+[INFO] Profiling enabled: YES
+[INFO] Number of threads: 1
+[INFO] Delegate type: xnnpack
+[INFO] Warmup runs: 50
+[INFO] Profiling runs: 100
+[INFO] Model type detected: FP32
+[INFO] Initializing profiler...
+[INFO] Loading model from: ./models/mobileone_s0.tflite
+INFO: Initialized TensorFlow Lite runtime.
+[INFO] Model signature keys:The Model contains 1 signature key(s).They are listed below: -> Signature Key: serving_default
+Note (XNNPACK): [xnn_initialize]: initializing XNNPACK  (xnn_initialize, external/XNNPACK/src/init.c:49)
+Note (XNNPACK): l1_data_cache_bytes=49152, l1_data_cache_line_size=64, l1_data_cache_associativity=12, l1_data_cache_num_sets=64. (init_hardware_config, external/XNNPACK/src/configs/hardware-config.c:342)
+Note (XNNPACK): l2_data_cache_bytes=2097152, l2_data_cache_line_size=64, l2_data_cache_associativity=16, l2_data_cache_num_sets=2048. (init_hardware_config, external/XNNPACK/src/configs/hardware-config.c:361)
+Note (XNNPACK): [xnn_initialize]: return  (xnn_initialize, external/XNNPACK/src/init.c:66)
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+VERBOSE: XNNPack weight cache not enabled.
+VERBOSE: Replacing 50 out of 50 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 1 partitions for subgraph 0.
+VERBOSE: SubgraphInit called with params: 0x57797c74a950, length: 0
+VERBOSE: SubgraphCreate: called
+Note (XNNPACK): [xnn_create_subgraph]: external_value_ids=139, flags=0x0 (xnn_create_subgraph, external/XNNPACK/src/subgraph.c:114)
+Note (XNNPACK): [xnn_create_subgraph:] return: (xnn_create_subgraph, external/XNNPACK/src/subgraph.c:149)
+VERBOSE: SubgraphCreate: created XNNPACK subgraph with 139 external values
+VERBOSE: SubgraphCreate: creating XNNPACK runtime with flags: 24
+Note (XNNPACK): [xnn_create_runtime_v4]: calling create_runtime_impl (xnn_create_runtime_v4, external/XNNPACK/src/runtime.c:753)
+Note (XNNPACK): [create_runtime_impl]: Creating runtime with 50 nodes and 278 values (create_runtime_impl, external/XNNPACK/src/runtime.c:551)
+Note (XNNPACK): fuse Constant Pad Node #1 into Convolution 2D Node #0 (xnn_subgraph_fusion, external/XNNPACK/src/subgraph.c:1613)
+Note (XNNPACK): fuse Constant Pad Node #3 into Depthwise Convolution 2D Node #2 (xnn_subgraph_fusion, external/XNNPACK/src/subgraph.c:1644)
+Note (XNNPACK): fuse Constant Pad Node #8 into Depthwise Convolution 2D Node #7 (xnn_subgraph_fusion, external/XNNPACK/src/subgraph.c:1644)
+Note (XNNPACK): fuse Constant Pad Node #25 into Depthwise Convolution 2D Node #24 (xnn_subgraph_fusion, external/XNNPACK/src/subgraph.c:1644)
+Note (XNNPACK): fuse Constant Pad Node #46 into Depthwise Convolution 2D Node #45 (xnn_subgraph_fusion, external/XNNPACK/src/subgraph.c:1644)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 1: Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): Using igemm microkernel 'xnn_f32_igemm_minmax_ukernel_1x16__fma3_broadcast'. (init_f32_igemm_config, external/XNNPACK/src/configs/gemm-config.c:1260)
+Note (XNNPACK): Using igemm microkernel 'xnn_f32_igemm_minmax_ukernel_5x16__fma3_broadcast_prfm'. (init_f32_igemm_config, external/XNNPACK/src/configs/gemm-config.c:1261)
+Note (XNNPACK): Using gemm microkernel 'xnn_f32_gemm_minmax_ukernel_1x8__fma3_broadcast'. (init_f32_gemm_nr2_config_impl, external/XNNPACK/src/configs/gemm-config.c:1483)
+Note (XNNPACK): Using gemm microkernel 'xnn_f32_gemm_minmax_ukernel_5x8__fma3_broadcast'. (init_f32_gemm_nr2_config_impl, external/XNNPACK/src/configs/gemm-config.c:1484)
+Note (XNNPACK): Using gemm microkernel 'xnn_f32_gemm_minmax_ukernel_10x8__fma3_broadcast'. (init_f32_gemm_nr2_config_impl, external/XNNPACK/src/configs/gemm-config.c:1485)
+Note (XNNPACK): Using igemm microkernel 'xnn_f32_igemm_minmax_ukernel_1x8__fma3_broadcast'. (init_f32_gemm_nr2_config_impl, external/XNNPACK/src/configs/gemm-config.c:1486)
+Note (XNNPACK): Using igemm microkernel 'xnn_f32_igemm_minmax_ukernel_5x8__fma3_broadcast'. (init_f32_gemm_nr2_config_impl, external/XNNPACK/src/configs/gemm-config.c:1487)
+Note (XNNPACK): Using igemm microkernel 'xnn_f32_igemm_minmax_ukernel_10x8__fma3_broadcast'. (init_f32_gemm_nr2_config_impl, external/XNNPACK/src/configs/gemm-config.c:1488)
+Note (XNNPACK): Using gemm microkernel 'xnn_f32_gemm_minmax_ukernel_1x8__fma3_broadcast'. (init_f32_gemm_nr2_config_impl, external/XNNPACK/src/configs/gemm-config.c:1483)
+Note (XNNPACK): Using gemm microkernel 'xnn_f32_gemm_minmax_ukernel_5x8__fma3_broadcast'. (init_f32_gemm_nr2_config_impl, external/XNNPACK/src/configs/gemm-config.c:1484)
+Note (XNNPACK): Using gemm microkernel 'xnn_f32_gemm_minmax_ukernel_10x8__fma3_broadcast'. (init_f32_gemm_nr2_config_impl, external/XNNPACK/src/configs/gemm-config.c:1485)
+Note (XNNPACK): Using igemm microkernel 'xnn_f32_igemm_minmax_ukernel_1x8__fma3_broadcast'. (init_f32_gemm_nr2_config_impl, external/XNNPACK/src/configs/gemm-config.c:1486)
+Note (XNNPACK): Using igemm microkernel 'xnn_f32_igemm_minmax_ukernel_5x8__fma3_broadcast'. (init_f32_gemm_nr2_config_impl, external/XNNPACK/src/configs/gemm-config.c:1487)
+Note (XNNPACK): Using igemm microkernel 'xnn_f32_igemm_minmax_ukernel_10x8__fma3_broadcast'. (init_f32_gemm_nr2_config_impl, external/XNNPACK/src/configs/gemm-config.c:1488)
+Note (XNNPACK): Using dwconv microkernel 'xnn_f32_dwconv_minmax_ukernel_3p16c__fma3'. (init_f32_dwconv_config, external/XNNPACK/src/configs/dwconv-config.c:237)
+Note (XNNPACK): Using dwconv microkernel 'xnn_f32_dwconv_minmax_ukernel_4p16c__fma3'. (init_f32_dwconv_config, external/XNNPACK/src/configs/dwconv-config.c:242)
+Note (XNNPACK): Using dwconv microkernel 'xnn_f32_dwconv_minmax_ukernel_9p16c__fma3'. (init_f32_dwconv_config, external/XNNPACK/src/configs/dwconv-config.c:247)
+Note (XNNPACK): Using dwconv microkernel 'xnn_f32_dwconv_minmax_ukernel_25p16c__fma3'. (init_f32_dwconv_config, external/XNNPACK/src/configs/dwconv-config.c:252)
+Note (XNNPACK): Using vmulcaddc microkernel 'xnn_f32_vmulcaddc_minmax_ukernel_c4__sse_2x'. (init_f32_vmulcaddc_config, external/XNNPACK/src/configs/vmulcaddc-config.c:82)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 3: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 4: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 48, output_channels: 48, input_stride: 48, output_stride: 48, flags: 0x0 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1636)
+Note (XNNPACK): Using gemm microkernel 'xnn_f32_gemm_minmax_ukernel_1x16__fma3_broadcast'. (init_f32_gemm_config_impl, external/XNNPACK/src/configs/gemm-config.c:779)
+Note (XNNPACK): Using gemm microkernel 'xnn_f32_gemm_minmax_ukernel_2x16__fma3_broadcast'. (init_f32_gemm_config_impl, external/XNNPACK/src/configs/gemm-config.c:780)
+Note (XNNPACK): Using gemm microkernel 'xnn_f32_gemm_minmax_ukernel_5x16__fma3_broadcast'. (init_f32_gemm_config_impl, external/XNNPACK/src/configs/gemm-config.c:781)
+Note (XNNPACK): Using gemm microkernel 'xnn_f32_gemm_minmax_ukernel_1x16__fma3_broadcast'. (init_f32_gemm_config_impl, external/XNNPACK/src/configs/gemm-config.c:779)
+Note (XNNPACK): Using gemm microkernel 'xnn_f32_gemm_minmax_ukernel_2x16__fma3_broadcast'. (init_f32_gemm_config_impl, external/XNNPACK/src/configs/gemm-config.c:780)
+Note (XNNPACK): Using gemm microkernel 'xnn_f32_gemm_minmax_ukernel_5x16__fma3_broadcast'. (init_f32_gemm_config_impl, external/XNNPACK/src/configs/gemm-config.c:781)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1649)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_nr2_config: 0x57797b9b9660, mr: 10, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1658)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  check if gemm_nr2_config is better than gemm_config (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1664)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1685)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 48, output_channels: 48, input_stride: 48, output_stride: 48, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 5: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 6: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 48, output_channels: 48, input_stride: 48, output_stride: 48, flags: 0x0 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1636)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1649)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_nr2_config: 0x57797b9b9660, mr: 10, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1658)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  check if gemm_nr2_config is better than gemm_config (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1664)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1685)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 48, output_channels: 48, input_stride: 48, output_stride: 48, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 8: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 9: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 48, output_channels: 128, input_stride: 48, output_stride: 128, flags: 0x0 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1636)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1649)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_nr2_config: 0x57797b9b9660, mr: 10, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1658)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  check if gemm_nr2_config is better than gemm_config (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1664)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1685)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 48, output_channels: 128, input_stride: 48, output_stride: 128, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 10: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 11: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 128, output_channels: 128, input_stride: 128, output_stride: 128, flags: 0x0 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1636)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1649)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_nr2_config: 0x57797b9b9660, mr: 10, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1658)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  check if gemm_nr2_config is better than gemm_config (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1664)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1685)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 128, output_channels: 128, input_stride: 128, output_stride: 128, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 12: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 13: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 128, output_channels: 128, input_stride: 128, output_stride: 128, flags: 0x0 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1636)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1649)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_nr2_config: 0x57797b9b9660, mr: 10, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1658)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  check if gemm_nr2_config is better than gemm_config (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1664)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1685)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 128, output_channels: 128, input_stride: 128, output_stride: 128, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 14: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 15: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 128, output_channels: 128, input_stride: 128, output_stride: 128, flags: 0x0 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1636)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1649)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_nr2_config: 0x57797b9b9660, mr: 10, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1658)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  check if gemm_nr2_config is better than gemm_config (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1664)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1685)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 128, output_channels: 128, input_stride: 128, output_stride: 128, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 16: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 17: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 128, output_channels: 128, input_stride: 128, output_stride: 128, flags: 0x0 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1636)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1649)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_nr2_config: 0x57797b9b9660, mr: 10, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1658)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  check if gemm_nr2_config is better than gemm_config (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1664)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1685)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 128, output_channels: 128, input_stride: 128, output_stride: 128, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 18: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 19: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 128, output_channels: 128, input_stride: 128, output_stride: 128, flags: 0x0 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1636)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1649)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_nr2_config: 0x57797b9b9660, mr: 10, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1658)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  check if gemm_nr2_config is better than gemm_config (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1664)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1685)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 128, output_channels: 128, input_stride: 128, output_stride: 128, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 20: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 21: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 128, output_channels: 128, input_stride: 128, output_stride: 128, flags: 0x0 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1636)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1649)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_nr2_config: 0x57797b9b9660, mr: 10, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1658)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  check if gemm_nr2_config is better than gemm_config (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1664)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1685)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 128, output_channels: 128, input_stride: 128, output_stride: 128, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 22: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 23: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 128, output_channels: 128, input_stride: 128, output_stride: 128, flags: 0x0 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1636)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1649)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_nr2_config: 0x57797b9b9660, mr: 10, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1658)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  check if gemm_nr2_config is better than gemm_config (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1664)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1685)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 128, output_channels: 128, input_stride: 128, output_stride: 128, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 25: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 26: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 128, output_channels: 256, input_stride: 128, output_stride: 256, flags: 0x0 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1636)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1649)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_nr2_config: 0x57797b9b9660, mr: 10, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1658)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  check if gemm_nr2_config is better than gemm_config (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1664)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1685)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 128, output_channels: 256, input_stride: 128, output_stride: 256, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 27: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 28: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 256, output_channels: 256, input_stride: 256, output_stride: 256, flags: 0x0 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1636)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1649)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_nr2_config: 0x57797b9b9660, mr: 10, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1658)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  check if gemm_nr2_config is better than gemm_config (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1664)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1685)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 256, output_channels: 256, input_stride: 256, output_stride: 256, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 29: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 30: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 256, output_channels: 256, input_stride: 256, output_stride: 256, flags: 0x0 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1636)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1649)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_nr2_config: 0x57797b9b9660, mr: 10, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1658)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  check if gemm_nr2_config is better than gemm_config (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1664)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1685)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 256, output_channels: 256, input_stride: 256, output_stride: 256, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 31: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 32: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 256, output_channels: 256, input_stride: 256, output_stride: 256, flags: 0x0 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1636)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1649)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_nr2_config: 0x57797b9b9660, mr: 10, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1658)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  check if gemm_nr2_config is better than gemm_config (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1664)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1685)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 256, output_channels: 256, input_stride: 256, output_stride: 256, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 33: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 34: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 256, output_channels: 256, input_stride: 256, output_stride: 256, flags: 0x0 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1636)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1649)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_nr2_config: 0x57797b9b9660, mr: 10, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1658)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  check if gemm_nr2_config is better than gemm_config (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1664)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1685)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 256, output_channels: 256, input_stride: 256, output_stride: 256, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 35: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 36: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 256, output_channels: 256, input_stride: 256, output_stride: 256, flags: 0x0 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1636)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1649)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_nr2_config: 0x57797b9b9660, mr: 10, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1658)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  check if gemm_nr2_config is better than gemm_config (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1664)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1685)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 256, output_channels: 256, input_stride: 256, output_stride: 256, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 37: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 38: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 256, output_channels: 256, input_stride: 256, output_stride: 256, flags: 0x0 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1636)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1649)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_nr2_config: 0x57797b9b9660, mr: 10, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1658)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  check if gemm_nr2_config is better than gemm_config (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1664)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1685)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 256, output_channels: 256, input_stride: 256, output_stride: 256, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 39: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 40: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 256, output_channels: 256, input_stride: 256, output_stride: 256, flags: 0x0 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1636)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1649)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_nr2_config: 0x57797b9b9660, mr: 10, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1658)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  check if gemm_nr2_config is better than gemm_config (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1664)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1685)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 256, output_channels: 256, input_stride: 256, output_stride: 256, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 41: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 42: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 256, output_channels: 256, input_stride: 256, output_stride: 256, flags: 0x0 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1636)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1649)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_nr2_config: 0x57797b9b9660, mr: 10, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1658)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  check if gemm_nr2_config is better than gemm_config (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1664)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1685)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 256, output_channels: 256, input_stride: 256, output_stride: 256, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 43: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 44: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 256, output_channels: 256, input_stride: 256, output_stride: 256, flags: 0x0 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1636)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1649)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_nr2_config: 0x57797b9b9660, mr: 10, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1658)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  check if gemm_nr2_config is better than gemm_config (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1664)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1685)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 256, output_channels: 256, input_stride: 256, output_stride: 256, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 46: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 47: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 256, output_channels: 1024, input_stride: 256, output_stride: 1024, flags: 0x0 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1636)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1649)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_nr2_config: 0x57797b9b9660, mr: 10, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1658)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  check if gemm_nr2_config is better than gemm_config (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1664)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1685)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 256, output_channels: 1024, input_stride: 256, output_stride: 1024, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 48: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): Using reduce microkernel 'xnn_f32_rsum_ukernel__avx_u32_acc4'. (init_f32_rsum_config, external/XNNPACK/src/configs/reduce-config.c:727)
+Note (XNNPACK): Using reduce_discontiguous microkernel 'xnn_f32_rdsum_ukernel_7p7x__avx_c32'. (init_f32_rsum_config, external/XNNPACK/src/configs/reduce-config.c:739)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 49: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 1024, output_channels: 1000, input_stride: 1024, output_stride: 1000, flags: 0x10 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1636)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1649)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  gemm_nr2_config: 0x57797b9b9660, mr: 10, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1658)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  check if gemm_nr2_config is better than gemm_config (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1664)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x57797b9ba080, mr: 5, nr: 16 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1685)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 1024, output_channels: 1000, input_stride: 1024, output_stride: 1000, flags: 0x10 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [create_runtime_impl]:  created runtime 0x57797c747af0 with 50 nodes and 278 values (create_runtime_impl, external/XNNPACK/src/runtime.c:739)
+VERBOSE: SubgraphCreate: created XNNPACK runtime 
+[INFO] XNNPACK delegate applied successfully (threads: 1)
+
+[INFO] Model Summary 
+📥 Input tensor count  : 1
+📤 Output tensor count : 1
+📦 Total tensor count  : 141
+🔧 Node (op) count     : 51
+🧩 Delegate applied    : Yes ✅
+
+[INFO] Shape of input_tensor: [1, 224, 224, 3]
+[INFO] Processing FP32 input path
+
+[INFO] Running 50 warm-up iterations...
+Note (XNNPACK): setup_runtime: Setting up runtime with 50 operators (setup_runtime, external/XNNPACK/src/runtime.c:902)
+[INFO] warm-up completed
+
+[INFO] Running 100 run and profile iterations...
+[INFO] run and profile completed
+
+[INFO] Shape of output_tensor: [1, 1000]
+[INFO] Processing FP32 output path
+
+[INFO] Top 5 predictions:
+- Class 207 (golden_retriever): 0.734142
+- Class 257 (Great_Pyrenees): 0.106012
+- Class 208 (Labrador_retriever): 0.0527867
+- Class 244 (Tibetan_mastiff): 0.0202354
+- Class 222 (kuvasz): 0.0182101
+
+[INFO] Elapsed time summary
+- Load Model took 0.03 ms (30 us)
+- Build Interpreter took 0.758 ms (758 us)
+- Apply Delegate took 3.816 ms (3816 us)
+- Allocate Tensor took 2.313 ms (2313 us)
+- Load Input Image took 6.906 ms (6906 us)
+- Preprocessing took 1.098 ms (1098 us)
+- Inference_0 took 6.89 ms (6890 us)
+- Inference_1 took 7.786 ms (7786 us)
+- Inference_2 took 6.849 ms (6849 us)
+- Inference_3 took 6.756 ms (6756 us)
+- Inference_4 took 7.476 ms (7476 us)
+- Inference_5 took 6.71 ms (6710 us)
+- Inference_6 took 7.126 ms (7126 us)
+- Inference_7 took 6.638 ms (6638 us)
+- Inference_8 took 6.685 ms (6685 us)
+- Inference_9 took 6.691 ms (6691 us)
+- Inference_10 took 6.771 ms (6771 us)
+- Inference_11 took 6.6 ms (6600 us)
+- Inference_12 took 6.641 ms (6641 us)
+- Inference_13 took 6.666 ms (6666 us)
+- Inference_14 took 6.773 ms (6773 us)
+- Inference_15 took 6.967 ms (6967 us)
+- Inference_16 took 6.903 ms (6903 us)
+- Inference_17 took 6.773 ms (6773 us)
+- Inference_18 took 6.771 ms (6771 us)
+- Inference_19 took 6.737 ms (6737 us)
+- Inference_20 took 6.517 ms (6517 us)
+- Inference_21 took 6.709 ms (6709 us)
+- Inference_22 took 6.655 ms (6655 us)
+- Inference_23 took 7.337 ms (7337 us)
+- Inference_24 took 6.878 ms (6878 us)
+- Inference_25 took 7.233 ms (7233 us)
+- Inference_26 took 7.142 ms (7142 us)
+- Inference_27 took 6.656 ms (6656 us)
+- Inference_28 took 7.268 ms (7268 us)
+- Inference_29 took 6.93 ms (6930 us)
+- Inference_30 took 6.764 ms (6764 us)
+- Inference_31 took 6.997 ms (6997 us)
+- Inference_32 took 8.399 ms (8399 us)
+- Inference_33 took 7.648 ms (7648 us)
+- Inference_34 took 7.399 ms (7399 us)
+- Inference_35 took 7.479 ms (7479 us)
+- Inference_36 took 6.47 ms (6470 us)
+- Inference_37 took 7.393 ms (7393 us)
+- Inference_38 took 7.305 ms (7305 us)
+- Inference_39 took 6.992 ms (6992 us)
+- Inference_40 took 7.465 ms (7465 us)
+- Inference_41 took 6.784 ms (6784 us)
+- Inference_42 took 8.316 ms (8316 us)
+- Inference_43 took 6.616 ms (6616 us)
+- Inference_44 took 7.721 ms (7721 us)
+- Inference_45 took 6.657 ms (6657 us)
+- Inference_46 took 6.891 ms (6891 us)
+- Inference_47 took 7.359 ms (7359 us)
+- Inference_48 took 6.718 ms (6718 us)
+- Inference_49 took 6.839 ms (6839 us)
+- Inference_50 took 6.67 ms (6670 us)
+- Inference_51 took 6.67 ms (6670 us)
+- Inference_52 took 6.603 ms (6603 us)
+- Inference_53 took 6.791 ms (6791 us)
+- Inference_54 took 6.986 ms (6986 us)
+- Inference_55 took 6.693 ms (6693 us)
+- Inference_56 took 6.756 ms (6756 us)
+- Inference_57 took 6.815 ms (6815 us)
+- Inference_58 took 6.601 ms (6601 us)
+- Inference_59 took 7.331 ms (7331 us)
+- Inference_60 took 6.866 ms (6866 us)
+- Inference_61 took 6.813 ms (6813 us)
+- Inference_62 took 7.032 ms (7032 us)
+- Inference_63 took 7.58 ms (7580 us)
+- Inference_64 took 6.971 ms (6971 us)
+- Inference_65 took 6.647 ms (6647 us)
+- Inference_66 took 6.596 ms (6596 us)
+- Inference_67 took 6.723 ms (6723 us)
+- Inference_68 took 6.955 ms (6955 us)
+- Inference_69 took 6.81 ms (6810 us)
+- Inference_70 took 6.644 ms (6644 us)
+- Inference_71 took 6.773 ms (6773 us)
+- Inference_72 took 6.769 ms (6769 us)
+- Inference_73 took 6.771 ms (6771 us)
+- Inference_74 took 6.602 ms (6602 us)
+- Inference_75 took 6.732 ms (6732 us)
+- Inference_76 took 6.614 ms (6614 us)
+- Inference_77 took 6.662 ms (6662 us)
+- Inference_78 took 6.819 ms (6819 us)
+- Inference_79 took 6.672 ms (6672 us)
+- Inference_80 took 6.599 ms (6599 us)
+- Inference_81 took 6.732 ms (6732 us)
+- Inference_82 took 6.76 ms (6760 us)
+- Inference_83 took 6.671 ms (6671 us)
+- Inference_84 took 6.77 ms (6770 us)
+- Inference_85 took 6.582 ms (6582 us)
+- Inference_86 took 6.746 ms (6746 us)
+- Inference_87 took 6.609 ms (6609 us)
+- Inference_88 took 7.023 ms (7023 us)
+- Inference_89 took 6.962 ms (6962 us)
+- Inference_90 took 7.103 ms (7103 us)
+- Inference_91 took 6.964 ms (6964 us)
+- Inference_92 took 6.819 ms (6819 us)
+- Inference_93 took 6.862 ms (6862 us)
+- Inference_94 took 6.727 ms (6727 us)
+- Inference_95 took 6.657 ms (6657 us)
+- Inference_96 took 6.791 ms (6791 us)
+- Inference_97 took 6.698 ms (6698 us)
+- Inference_98 took 6.784 ms (6784 us)
+- Inference_99 took 6.858 ms (6858 us)
+- Postprocessing took 0.008 ms (8 us)
+
+
+[INFO] Generating Ops-level profiling (log)
+
+INFO: Profiling Info for Benchmark Initialization:
+============================== Run Order ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	                 ModifyGraphWithDelegate	    3.771	    3.771	 62.043%	 62.043%	 15616.000	        1	ModifyGraphWithDelegate/0
+	                         AllocateTensors	    2.307	    2.307	 37.957%	100.000%	  7424.000	        1	AllocateTensors/0
+
+============================== Top by Computation Time ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	                 ModifyGraphWithDelegate	    3.771	    3.771	 62.043%	 62.043%	 15616.000	        1	ModifyGraphWithDelegate/0
+	                         AllocateTensors	    2.307	    2.307	 37.957%	100.000%	  7424.000	        1	AllocateTensors/0
+
+Number of nodes executed: 2
+============================== Summary by node type ==============================
+	                             [Node type]	  [count]	  [avg ms]	    [avg %]	    [cdf %]	  [mem KB]	[times called]
+	                 ModifyGraphWithDelegate	        1	     3.771	    62.043%	    62.043%	 15616.000	        1
+	                         AllocateTensors	        1	     2.307	    37.957%	   100.000%	  7424.000	        1
+
+Timings (microseconds): count=2 curr=6078(all same)
+Memory (bytes): count=0
+2 nodes observed
+
+
+
+INFO: Operator-wise Profiling Info for Regular Benchmark Runs:
+============================== Run Order ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	           Convolution (NHWC, F32) IGEMM	    0.325	    0.352	  5.121%	  5.121%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:0
+	          Convolution (NHWC, F32) DWConv	    0.059	    0.059	  0.865%	  5.986%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:1
+	          Fully Connected (NC, F32) GEMM	    0.144	    0.149	  2.170%	  8.156%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:2
+	          Convolution (NHWC, F32) DWConv	    0.048	    0.048	  0.694%	  8.850%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:3
+	          Fully Connected (NC, F32) GEMM	    0.150	    0.150	  2.185%	 11.036%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:4
+	          Convolution (NHWC, F32) DWConv	    0.011	    0.012	  0.181%	 11.216%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:5
+	          Fully Connected (NC, F32) GEMM	    0.094	    0.099	  1.444%	 12.660%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:6
+	          Convolution (NHWC, F32) DWConv	    0.028	    0.031	  0.446%	 13.106%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:7
+	          Fully Connected (NC, F32) GEMM	    0.294	    0.307	  4.468%	 17.573%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:8
+	          Convolution (NHWC, F32) DWConv	    0.028	    0.031	  0.446%	 18.019%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:9
+	          Fully Connected (NC, F32) GEMM	    0.335	    0.310	  4.516%	 22.535%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:10
+	          Convolution (NHWC, F32) DWConv	    0.028	    0.030	  0.437%	 22.973%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:11
+	          Fully Connected (NC, F32) GEMM	    0.294	    0.304	  4.419%	 27.392%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:12
+	          Convolution (NHWC, F32) DWConv	    0.028	    0.030	  0.442%	 27.834%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:13
+	          Fully Connected (NC, F32) GEMM	    0.290	    0.306	  4.455%	 32.288%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:14
+	          Convolution (NHWC, F32) DWConv	    0.028	    0.030	  0.433%	 32.721%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:15
+	          Fully Connected (NC, F32) GEMM	    0.289	    0.303	  4.414%	 37.135%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:16
+	          Convolution (NHWC, F32) DWConv	    0.028	    0.029	  0.425%	 37.560%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:17
+	          Fully Connected (NC, F32) GEMM	    0.292	    0.312	  4.535%	 42.095%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:18
+	          Convolution (NHWC, F32) DWConv	    0.028	    0.030	  0.443%	 42.539%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:19
+	          Fully Connected (NC, F32) GEMM	    0.291	    0.305	  4.435%	 46.973%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:20
+	          Convolution (NHWC, F32) DWConv	    0.007	    0.007	  0.105%	 47.078%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:21
+	          Fully Connected (NC, F32) GEMM	    0.151	    0.154	  2.245%	 49.324%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:22
+	          Convolution (NHWC, F32) DWConv	    0.013	    0.014	  0.206%	 49.529%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:23
+	          Fully Connected (NC, F32) GEMM	    0.315	    0.328	  4.765%	 54.294%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:24
+	          Convolution (NHWC, F32) DWConv	    0.014	    0.015	  0.213%	 54.507%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:25
+	          Fully Connected (NC, F32) GEMM	    0.315	    0.323	  4.696%	 59.203%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:26
+	          Convolution (NHWC, F32) DWConv	    0.014	    0.015	  0.215%	 59.417%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:27
+	          Fully Connected (NC, F32) GEMM	    0.307	    0.327	  4.752%	 64.170%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:28
+	          Convolution (NHWC, F32) DWConv	    0.014	    0.015	  0.215%	 64.385%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:29
+	          Fully Connected (NC, F32) GEMM	    0.307	    0.325	  4.731%	 69.116%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:30
+	          Convolution (NHWC, F32) DWConv	    0.014	    0.015	  0.217%	 69.333%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:31
+	          Fully Connected (NC, F32) GEMM	    0.312	    0.329	  4.791%	 74.125%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:32
+	          Convolution (NHWC, F32) DWConv	    0.014	    0.015	  0.220%	 74.345%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:33
+	          Fully Connected (NC, F32) GEMM	    0.358	    0.323	  4.693%	 79.038%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:34
+	          Convolution (NHWC, F32) DWConv	    0.015	    0.014	  0.208%	 79.246%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:35
+	          Fully Connected (NC, F32) GEMM	    0.314	    0.319	  4.634%	 83.879%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:36
+	          Convolution (NHWC, F32) DWConv	    0.014	    0.015	  0.215%	 84.094%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:37
+	          Fully Connected (NC, F32) GEMM	    0.309	    0.326	  4.740%	 88.834%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:38
+	          Convolution (NHWC, F32) DWConv	    0.014	    0.015	  0.220%	 89.054%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:39
+	          Fully Connected (NC, F32) GEMM	    0.362	    0.323	  4.699%	 93.753%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:40
+	          Convolution (NHWC, F32) DWConv	    0.004	    0.003	  0.049%	 93.802%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:41
+	          Fully Connected (NC, F32) GEMM	    0.430	    0.334	  4.855%	 98.657%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:42
+	                         Sum (ND) Reduce	    0.002	    0.001	  0.017%	 98.674%	     0.000	        1	Delegate/Sum (ND) Reduce:43
+	          Fully Connected (NC, F32) GEMM	    0.123	    0.091	  1.326%	100.000%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:44
+
+============================== Top by Computation Time ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	           Convolution (NHWC, F32) IGEMM	    0.325	    0.352	  5.121%	  5.121%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:0
+	          Fully Connected (NC, F32) GEMM	    0.430	    0.334	  4.855%	  9.976%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:42
+	          Fully Connected (NC, F32) GEMM	    0.312	    0.329	  4.791%	 14.767%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:32
+	          Fully Connected (NC, F32) GEMM	    0.315	    0.328	  4.765%	 19.532%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:24
+	          Fully Connected (NC, F32) GEMM	    0.307	    0.327	  4.752%	 24.284%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:28
+	          Fully Connected (NC, F32) GEMM	    0.309	    0.326	  4.740%	 29.025%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:38
+	          Fully Connected (NC, F32) GEMM	    0.307	    0.325	  4.731%	 33.756%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:30
+	          Fully Connected (NC, F32) GEMM	    0.362	    0.323	  4.699%	 38.455%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:40
+	          Fully Connected (NC, F32) GEMM	    0.315	    0.323	  4.696%	 43.151%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:26
+	          Fully Connected (NC, F32) GEMM	    0.358	    0.323	  4.693%	 47.844%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:34
+
+Number of nodes executed: 45
+============================== Summary by node type ==============================
+	                             [Node type]	  [count]	  [avg ms]	    [avg %]	    [cdf %]	  [mem KB]	[times called]
+	          Fully Connected (NC, F32) GEMM	       22	     6.037	    88.080%	    88.080%	     0.000	       22
+	          Convolution (NHWC, F32) DWConv	       21	     0.464	     6.770%	    94.850%	     0.000	       21
+	           Convolution (NHWC, F32) IGEMM	        1	     0.352	     5.136%	    99.985%	     0.000	        1
+	                         Sum (ND) Reduce	        1	     0.001	     0.015%	   100.000%	     0.000	        1
+
+Timings (microseconds): count=100 first=6854 curr=6818 min=6436 max=8362 avg=6875.07 std=348
+Memory (bytes): count=0
+45 nodes observed
+
+
+
