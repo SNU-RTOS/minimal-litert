@@ -1,0 +1,195 @@
+Profiling Info for Benchmark Initialization:
+============================== Run Order ==============================
+node type,first,avg_ms,%,cdf%,mem KB,times called,name
+ModifyGraphWithDelegate,65.989,65.989,47.7092%,47.7092%,42100,1,ModifyGraphWithDelegate/0
+AllocateTensors,72.326,72.326,52.2908%,100%,5600,1,AllocateTensors/0
+
+============================== Top by Computation Time ==============================
+node type,first,avg_ms,%,cdf%,mem KB,times called,name
+AllocateTensors,72.326,72.326,52.2908%,52.2908%,5600,1,AllocateTensors/0
+ModifyGraphWithDelegate,65.989,65.989,47.7092%,100%,42100,1,ModifyGraphWithDelegate/0
+
+Number of nodes executed: 2
+============================== Summary by node type ==============================
+node type,count,avg_ms,avg %,cdf %,mem KB,times called
+AllocateTensors,1,72.326,52.2908%,52.2908%,5600,1
+ModifyGraphWithDelegate,1,65.989,47.7092%,100%,42100,1
+
+Timings (microseconds): count=1 curr=138315
+Memory (bytes): count=0
+2 nodes observed
+
+
+Operator-wise Profiling Info for Regular Benchmark Runs:
+============================== Run Order ==============================
+node type,first,avg_ms,%,cdf%,mem KB,times called,name
+"Convolution (NHWC, F32) IGEMM",1.471,1.43356,3.19467%,3.19467%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:0
+HardSwish (NC),0.331,0.33318,0.742487%,3.93716%,0,1,Delegate/HardSwish (NC):1
+"Convolution (NHWC, F32) DWConv",0.952,0.98504,2.19515%,6.1323%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:2
+"Fully Connected (NC, F32) GEMM",0.604,0.62454,1.39178%,7.52408%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:3
+Add (ND),0.597,0.64686,1.44152%,8.9656%,0,1,Delegate/Add (ND):4
+"Fully Connected (NC, F32) GEMM",1.808,1.85732,4.13901%,13.1046%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:5
+"Convolution (NHWC, F32) DWConv",3.508,3.5134,7.82956%,20.9342%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:6
+"Fully Connected (NC, F32) GEMM",0.465,0.46738,1.04155%,21.9757%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:7
+"Fully Connected (NC, F32) GEMM",0.54,0.53868,1.20044%,23.1762%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:8
+"Convolution (NHWC, F32) DWConv",1.213,1.25682,2.80081%,25.977%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:9
+"Fully Connected (NC, F32) GEMM",0.544,0.55782,1.24309%,27.2201%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:10
+Add (ND),0.138,0.14198,0.3164%,27.5365%,0,1,Delegate/Add (ND):11
+"Fully Connected (NC, F32) GEMM",0.528,0.5091,1.13452%,28.671%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:12
+"Convolution (NHWC, F32) DWConv",1.659,1.6812,3.74653%,32.4175%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:13
+Sum (ND) Reduce,0.322,0.32956,0.73442%,33.1519%,0,1,Delegate/Sum (ND) Reduce:14
+Multiply (ND),0.036,0.03514,0.078309%,33.2302%,0,1,Delegate/Multiply (ND):15
+Static Reshape (NC),0.001,0.001,0.00222849%,33.2325%,0,1,Delegate/Static Reshape (NC):16
+"Fully Connected (NC, F32) GEMM",0.015,0.01482,0.0330262%,33.2655%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:17
+"Fully Connected (NC, F32) GEMM",0.006,0.00576,0.0128361%,33.2783%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:18
+Multiply (ND),0.003,0.00378,0.00842368%,33.2868%,0,1,Delegate/Multiply (ND):19
+Multiply (ND),0.055,0.05602,0.12484%,33.4116%,0,1,Delegate/Multiply (ND):20
+"Fully Connected (NC, F32) GEMM",0.187,0.1936,0.431435%,33.843%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:21
+"Fully Connected (NC, F32) GEMM",0.314,0.3156,0.70331%,34.5463%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:22
+"Convolution (NHWC, F32) DWConv",1.159,1.13398,2.52706%,37.0734%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:23
+Sum (ND) Reduce,0.607,0.5542,1.23503%,38.3084%,0,1,Delegate/Sum (ND) Reduce:24
+Multiply (ND),0.033,0.03368,0.0750554%,38.3835%,0,1,Delegate/Multiply (ND):25
+Static Reshape (NC),0.001,0.00098,0.00218392%,38.3857%,0,1,Delegate/Static Reshape (NC):26
+"Fully Connected (NC, F32) GEMM",0.018,0.01936,0.0431435%,38.4288%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:27
+"Fully Connected (NC, F32) GEMM",0.01,0.01058,0.0235774%,38.4524%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:28
+Multiply (ND),0.003,0.00452,0.0100728%,38.4625%,0,1,Delegate/Multiply (ND):29
+Multiply (ND),0.097,0.09456,0.210726%,38.6732%,0,1,Delegate/Multiply (ND):30
+"Fully Connected (NC, F32) GEMM",0.325,0.32892,0.732994%,39.4062%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:31
+Add (ND),0.066,0.07832,0.174535%,39.5807%,0,1,Delegate/Add (ND):32
+"Fully Connected (NC, F32) GEMM",0.317,0.32666,0.727957%,40.3087%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:33
+"Convolution (NHWC, F32) DWConv",1.157,1.21354,2.70436%,43.013%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:34
+Sum (ND) Reduce,0.533,0.54494,1.21439%,44.2274%,0,1,Delegate/Sum (ND) Reduce:35
+Multiply (ND),0.036,0.03654,0.0814289%,44.3088%,0,1,Delegate/Multiply (ND):36
+Static Reshape (NC),0.001,0.00046,0.0010251%,44.3099%,0,1,Delegate/Static Reshape (NC):37
+"Fully Connected (NC, F32) GEMM",0.018,0.02362,0.0526368%,44.3625%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:38
+"Fully Connected (NC, F32) GEMM",0.008,0.01278,0.02848%,44.391%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:39
+Multiply (ND),0.002,0.00264,0.0058832%,44.3969%,0,1,Delegate/Multiply (ND):40
+Multiply (ND),0.096,0.09288,0.206982%,44.6039%,0,1,Delegate/Multiply (ND):41
+"Fully Connected (NC, F32) GEMM",0.322,0.32714,0.729027%,45.3329%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:42
+Add (ND),0.058,0.05326,0.118689%,45.4516%,0,1,Delegate/Add (ND):43
+"Fully Connected (NC, F32) GEMM",0.649,0.65714,1.46443%,46.916%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:44
+HardSwish (NC),0.15,0.15876,0.353794%,47.2698%,0,1,Delegate/HardSwish (NC):45
+"Convolution (NHWC, F32) DWConv",0.378,0.39314,0.876107%,48.1459%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:46
+HardSwish (NC),0.048,0.05004,0.111513%,48.2574%,0,1,Delegate/HardSwish (NC):47
+"Fully Connected (NC, F32) GEMM",0.314,0.31854,0.709862%,48.9673%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:48
+"Fully Connected (NC, F32) GEMM",0.249,0.25398,0.565991%,49.5333%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:49
+HardSwish (NC),0.032,0.02836,0.0631999%,49.5965%,0,1,Delegate/HardSwish (NC):50
+"Convolution (NHWC, F32) DWConv",0.147,0.15702,0.349917%,49.9464%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:51
+HardSwish (NC),0.029,0.03168,0.0705984%,50.017%,0,1,Delegate/HardSwish (NC):52
+"Fully Connected (NC, F32) GEMM",0.259,0.26198,0.583819%,50.6008%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:53
+Add (ND),0.02,0.0207,0.0461297%,50.6469%,0,1,Delegate/Add (ND):54
+"Fully Connected (NC, F32) GEMM",0.232,0.23506,0.523828%,51.1708%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:55
+HardSwish (NC),0.023,0.02748,0.0612388%,51.232%,0,1,Delegate/HardSwish (NC):56
+"Convolution (NHWC, F32) DWConv",0.136,0.14392,0.320724%,51.5527%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:57
+HardSwish (NC),0.026,0.02802,0.0624422%,51.6152%,0,1,Delegate/HardSwish (NC):58
+"Fully Connected (NC, F32) GEMM",0.237,0.23862,0.531761%,52.1469%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:59
+Add (ND),0.016,0.01638,0.0365026%,52.1834%,0,1,Delegate/Add (ND):60
+"Fully Connected (NC, F32) GEMM",0.226,0.22784,0.507738%,52.6912%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:61
+HardSwish (NC),0.03,0.02962,0.0660077%,52.7572%,0,1,Delegate/HardSwish (NC):62
+"Convolution (NHWC, F32) DWConv",0.138,0.14198,0.3164%,53.0736%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:63
+HardSwish (NC),0.027,0.0269,0.0599463%,53.1335%,0,1,Delegate/HardSwish (NC):64
+"Fully Connected (NC, F32) GEMM",0.237,0.23924,0.533143%,53.6667%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:65
+Add (ND),0.012,0.0127,0.0283018%,53.695%,0,1,Delegate/Add (ND):66
+"Fully Connected (NC, F32) GEMM",0.61,0.58492,1.30349%,54.9985%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:67
+HardSwish (NC),0.056,0.0523,0.11655%,55.115%,0,1,Delegate/HardSwish (NC):68
+"Convolution (NHWC, F32) DWConv",0.474,0.46244,1.03054%,56.1455%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:69
+HardSwish (NC),0.107,0.10766,0.239919%,56.3855%,0,1,Delegate/HardSwish (NC):70
+Sum (ND) Reduce,0.721,0.76866,1.71295%,58.0984%,0,1,Delegate/Sum (ND) Reduce:71
+Multiply (ND),0.04,0.04172,0.0929724%,58.1914%,0,1,Delegate/Multiply (ND):72
+Static Reshape (NC),0.001,0.00114,0.00254047%,58.1939%,0,1,Delegate/Static Reshape (NC):73
+"Fully Connected (NC, F32) GEMM",0.106,0.11252,0.250749%,58.4447%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:74
+"Fully Connected (NC, F32) GEMM",0.1,0.10364,0.23096%,58.6756%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:75
+Multiply (ND),0.02,0.0194,0.0432326%,58.7189%,0,1,Delegate/Multiply (ND):76
+Multiply (ND),0.119,0.1147,0.255607%,58.9745%,0,1,Delegate/Multiply (ND):77
+"Fully Connected (NC, F32) GEMM",0.967,0.96032,2.14006%,61.1145%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:78
+"Fully Connected (NC, F32) GEMM",1.201,1.21136,2.6995%,63.814%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:79
+HardSwish (NC),0.102,0.11402,0.254092%,64.0681%,0,1,Delegate/HardSwish (NC):80
+"Convolution (NHWC, F32) DWConv",0.683,0.69752,1.55441%,65.6225%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:81
+HardSwish (NC),0.233,0.23528,0.524318%,66.1469%,0,1,Delegate/HardSwish (NC):82
+Sum (ND) Reduce,1.165,1.1948,2.66259%,68.8094%,0,1,Delegate/Sum (ND) Reduce:83
+Multiply (ND),0.042,0.04178,0.0931061%,68.9026%,0,1,Delegate/Multiply (ND):84
+Static Reshape (NC),0.001,0.00106,0.00236219%,68.9049%,0,1,Delegate/Static Reshape (NC):85
+"Fully Connected (NC, F32) GEMM",0.139,0.14122,0.314707%,69.2196%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:86
+"Fully Connected (NC, F32) GEMM",0.118,0.11816,0.263318%,69.4829%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:87
+Multiply (ND),0.025,0.02198,0.0489821%,69.5319%,0,1,Delegate/Multiply (ND):88
+Multiply (ND),0.161,0.16232,0.361728%,69.8936%,0,1,Delegate/Multiply (ND):89
+"Fully Connected (NC, F32) GEMM",1.224,1.2393,2.76176%,72.6554%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:90
+Add (ND),0.082,0.05822,0.129742%,72.7852%,0,1,Delegate/Add (ND):91
+"Fully Connected (NC, F32) GEMM",1.147,1.1729,2.61379%,75.3989%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:92
+HardSwish (NC),0.098,0.10022,0.223339%,75.6223%,0,1,Delegate/HardSwish (NC):93
+"Convolution (NHWC, F32) DWConv",0.565,0.5693,1.26868%,76.891%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:94
+HardSwish (NC),0.047,0.0474,0.10563%,76.9966%,0,1,Delegate/HardSwish (NC):95
+Sum (ND) Reduce,0.17,0.17012,0.37911%,77.3757%,0,1,Delegate/Sum (ND) Reduce:96
+Multiply (ND),0.014,0.01612,0.0359232%,77.4116%,0,1,Delegate/Multiply (ND):97
+Static Reshape (NC),0.001,0.00084,0.00187193%,77.4135%,0,1,Delegate/Static Reshape (NC):98
+"Fully Connected (NC, F32) GEMM",0.133,0.13594,0.30294%,77.7164%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:99
+"Fully Connected (NC, F32) GEMM",0.171,0.21254,0.473642%,78.1901%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:100
+Multiply (ND),0.017,0.01696,0.0377951%,78.2279%,0,1,Delegate/Multiply (ND):101
+Multiply (ND),0.051,0.05214,0.116193%,78.3441%,0,1,Delegate/Multiply (ND):102
+"Fully Connected (NC, F32) GEMM",0.574,0.56194,1.25228%,79.5963%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:103
+"Fully Connected (NC, F32) GEMM",0.659,0.66358,1.47878%,81.0751%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:104
+HardSwish (NC),0.084,0.05606,0.124929%,81.2%,0,1,Delegate/HardSwish (NC):105
+"Convolution (NHWC, F32) DWConv",0.689,0.66452,1.48087%,82.6809%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:106
+HardSwish (NC),0.056,0.05822,0.129742%,82.8107%,0,1,Delegate/HardSwish (NC):107
+Sum (ND) Reduce,0.296,0.28836,0.642606%,83.4533%,0,1,Delegate/Sum (ND) Reduce:108
+Multiply (ND),0.016,0.01854,0.0413161%,83.4946%,0,1,Delegate/Multiply (ND):109
+Static Reshape (NC),0.001,0.00098,0.00218392%,83.4968%,0,1,Delegate/Static Reshape (NC):110
+"Fully Connected (NC, F32) GEMM",0.216,0.2336,0.520574%,84.0173%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:111
+"Fully Connected (NC, F32) GEMM",0.247,0.24454,0.544954%,84.5623%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:112
+Multiply (ND),0.017,0.01736,0.0386865%,84.601%,0,1,Delegate/Multiply (ND):113
+Multiply (ND),0.063,0.06362,0.141776%,84.7428%,0,1,Delegate/Multiply (ND):114
+"Fully Connected (NC, F32) GEMM",0.958,0.97164,2.16529%,86.9081%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:115
+Add (ND),0.027,0.0282,0.0628433%,86.9709%,0,1,Delegate/Add (ND):116
+"Fully Connected (NC, F32) GEMM",0.65,0.65292,1.45502%,88.4259%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:117
+HardSwish (NC),0.032,0.03222,0.0718018%,88.4977%,0,1,Delegate/HardSwish (NC):118
+"Convolution (NHWC, F32) DWConv",0.636,0.67288,1.4995%,89.9972%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:119
+HardSwish (NC),0.069,0.0587,0.130812%,90.128%,0,1,Delegate/HardSwish (NC):120
+Sum (ND) Reduce,0.303,0.27638,0.615909%,90.7439%,0,1,Delegate/Sum (ND) Reduce:121
+Multiply (ND),0.02,0.0201,0.0447926%,90.7887%,0,1,Delegate/Multiply (ND):122
+Static Reshape (NC),0.001,0.00024,0.000534837%,90.7893%,0,1,Delegate/Static Reshape (NC):123
+"Fully Connected (NC, F32) GEMM",0.241,0.23722,0.528641%,91.3179%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:124
+"Fully Connected (NC, F32) GEMM",0.268,0.26124,0.58217%,91.9001%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:125
+Multiply (ND),0.016,0.01744,0.0388648%,91.9389%,0,1,Delegate/Multiply (ND):126
+Multiply (ND),0.062,0.0644,0.143514%,92.0825%,0,1,Delegate/Multiply (ND):127
+"Fully Connected (NC, F32) GEMM",0.766,0.78724,1.75435%,93.8368%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:128
+Add (ND),0.028,0.03072,0.0684591%,93.9053%,0,1,Delegate/Add (ND):129
+"Fully Connected (NC, F32) GEMM",0.657,0.70664,1.57474%,95.48%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:130
+HardSwish (NC),0.033,0.04378,0.0975631%,95.5776%,0,1,Delegate/HardSwish (NC):131
+Sum (ND) Reduce,0.096,0.09408,0.209656%,95.7872%,0,1,Delegate/Sum (ND) Reduce:132
+Multiply (ND),0.049,0.04354,0.0970283%,95.8843%,0,1,Delegate/Multiply (ND):133
+Static Reshape (NC),0.001,0.00104,0.00231763%,95.8866%,0,1,Delegate/Static Reshape (NC):134
+"Fully Connected (NC, F32) GEMM",0.857,0.8617,1.92029%,97.8069%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:135
+HardSwish (NC),0.08,0.07044,0.156975%,97.9638%,0,1,Delegate/HardSwish (NC):136
+Static Reshape (NC),0.001,0.00114,0.00254047%,97.9664%,0,1,Delegate/Static Reshape (NC):137
+"Fully Connected (NC, F32) GEMM",0.907,0.91256,2.03363%,100%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:138
+
+============================== Top by Computation Time ==============================
+node type,first,avg_ms,%,cdf%,mem KB,times called,name
+"Convolution (NHWC, F32) DWConv",3.508,3.5134,7.82956%,7.82956%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:6
+"Fully Connected (NC, F32) GEMM",1.808,1.85732,4.13901%,11.9686%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:5
+"Convolution (NHWC, F32) DWConv",1.659,1.6812,3.74653%,15.7151%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:13
+"Convolution (NHWC, F32) IGEMM",1.471,1.43356,3.19467%,18.9098%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:0
+"Convolution (NHWC, F32) DWConv",1.213,1.25682,2.80081%,21.7106%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:9
+"Fully Connected (NC, F32) GEMM",1.224,1.2393,2.76176%,24.4723%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:90
+"Convolution (NHWC, F32) DWConv",1.157,1.21354,2.70436%,27.1767%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:34
+"Fully Connected (NC, F32) GEMM",1.201,1.21136,2.6995%,29.8762%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:79
+Sum (ND) Reduce,1.165,1.1948,2.66259%,32.5388%,0,1,Delegate/Sum (ND) Reduce:83
+"Fully Connected (NC, F32) GEMM",1.147,1.1729,2.61379%,35.1526%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:92
+
+Number of nodes executed: 139
+============================== Summary by node type ==============================
+node type,count,avg_ms,avg %,cdf %,mem KB,times called
+"Fully Connected (NC, F32) GEMM",48,21.627,48.2702%,48.2702%,0,48
+"Convolution (NHWC, F32) DWConv",15,13.679,30.5308%,78.801%,0,15
+Sum (ND) Reduce,9,4.217,9.41211%,88.2131%,0,9
+HardSwish (NC),21,1.682,3.75413%,91.9672%,0,21
+"Convolution (NHWC, F32) IGEMM",1,1.433,3.19838%,95.1656%,0,1
+Add (ND),10,1.082,2.41496%,97.5806%,0,10
+Multiply (ND),25,1.079,2.40827%,99.9888%,0,25
+Static Reshape (NC),10,0.005,0.0111597%,100%,0,10
+
+Timings (microseconds): count=50 first=44366 curr=45159 min=44129 max=46219 avg=44873.5 std=552
+Memory (bytes): count=0
+139 nodes observed
+
+

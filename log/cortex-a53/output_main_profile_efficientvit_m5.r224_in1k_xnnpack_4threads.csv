@@ -1,0 +1,342 @@
+Profiling Info for Benchmark Initialization:
+============================== Run Order ==============================
+node type,first,avg_ms,%,cdf%,mem KB,times called,name
+ModifyGraphWithDelegate,213.693,107.225,79.2675%,79.2675%,0,2,ModifyGraphWithDelegate/0
+AllocateTensors,56.09,56.09,20.7325%,100%,3808,1,AllocateTensors/0
+
+============================== Top by Computation Time ==============================
+node type,first,avg_ms,%,cdf%,mem KB,times called,name
+ModifyGraphWithDelegate,213.693,107.225,79.2675%,79.2675%,0,2,ModifyGraphWithDelegate/0
+AllocateTensors,56.09,56.09,20.7325%,100%,3808,1,AllocateTensors/0
+
+Number of nodes executed: 2
+============================== Summary by node type ==============================
+node type,count,avg_ms,avg %,cdf %,mem KB,times called
+ModifyGraphWithDelegate,1,214.451,79.2675%,79.2675%,0,2
+AllocateTensors,1,56.09,20.7325%,100%,3808,1
+
+Timings (microseconds): count=1 curr=270541
+Memory (bytes): count=0
+2 nodes observed
+
+
+Operator-wise Profiling Info for Regular Benchmark Runs:
+============================== Run Order ==============================
+node type,first,avg_ms,%,cdf%,mem KB,times called,name
+"Convolution (NHWC, F32) IGEMM",2.691,1.89178,2.76511%,2.76511%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:0
+"Convolution (NHWC, F32) IGEMM",3.897,3.22612,4.71544%,7.48054%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:1
+"Convolution (NHWC, F32) IGEMM",2.779,2.78538,4.07123%,11.5518%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:2
+"Convolution (NHWC, F32) IGEMM",2.769,2.77562,4.05697%,15.6087%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:3
+"Convolution (NHWC, F32) DWConv",0.237,0.22524,0.32922%,15.938%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:4
+Add (ND),0.067,0.035895,0.419725%,16.3577%,0,8,Delegate/Add (ND):5
+"Fully Connected (NC, F32) GEMM",1.25,1.2687,1.85439%,18.2121%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:6
+"Fully Connected (NC, F32) GEMM",1.181,1.19722,1.74991%,19.962%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:7
+Add (ND),0.064,0.0903,0.131986%,20.094%,0,1,Delegate/Add (ND):8
+Static Reshape (NC),0.031,0.04068,0.0594596%,20.1534%,0,1,Delegate/Static Reshape (NC):9
+"Transpose (ND, X32) Transpose",0.03,0.00675474,0.187587%,20.341%,0,19,Delegate/Transpose (ND	 X32) Transpose:10
+Static Reshape (NC),0.085,0.00207474,0.057618%,20.3986%,0,19,Delegate/Static Reshape (NC):11
+"Slice (ND, X32)",0.032,0.02026,0.0296129%,20.4282%,0,1,Delegate/Slice (ND	 X32):12
+"Slice (ND, X32)",0.017,0.01612,0.0235617%,20.4518%,0,1,Delegate/Slice (ND	 X32):13
+"Slice (ND, X32)",0.015,0.01454,0.0212523%,20.4731%,0,1,Delegate/Slice (ND	 X32):14
+"Fully Connected (NC, F32) GEMM",0.105,0.10632,0.155402%,20.6285%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:15
+"Slice (ND, X32)",0.017,0.0118733,0.104127%,20.7326%,0,6,Delegate/Slice (ND	 X32):16
+"Slice (ND, X32)",0.006,0.00660667,0.0579395%,20.7905%,0,6,Delegate/Slice (ND	 X32):17
+"Slice (ND, X32)",0.01,0.00608667,0.0533792%,20.8439%,0,6,Delegate/Slice (ND	 X32):18
+"Transpose (ND, X32) Transpose",0.016,0.01598,0.0233571%,20.8673%,0,1,Delegate/Transpose (ND	 X32) Transpose:19
+Static Reshape (NC),0.01,0.00629,0.0183875%,20.8857%,0,2,Delegate/Static Reshape (NC):20
+"Convolution (NHWC, F32) IGEMM",0.245,0.24984,0.365177%,21.2508%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:21
+"Transpose (ND, X32) Transpose",0.006,0.00646,0.00944221%,21.2603%,0,1,Delegate/Transpose (ND	 X32) Transpose:22
+Static Reshape (NC),0.001,0.00094,0.00137394%,21.2616%,0,1,Delegate/Static Reshape (NC):23
+Static Reshape (NC),0,0.00061,0.0017832%,21.2634%,0,2,Delegate/Static Reshape (NC):24
+"Transpose (ND, X32) Transpose",0.005,0.014472,0.105764%,21.3692%,0,5,Delegate/Transpose (ND	 X32) Transpose:25
+"Batch Matrix Multiply (NC, F32) GEMM",0.046,0.0403,0.0589042%,21.4281%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:26
+GATHER_ND,0.156,0.15976,0.233512%,21.6616%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_0/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_0/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;3]:19
+GATHER_ND,0.147,0.14786,0.216119%,21.8777%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_1/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_0/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;3]:115
+GATHER_ND,0.145,0.14654,0.214189%,22.0919%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_1/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_1/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;3]:193
+GATHER_ND,0.144,0.14718,0.215125%,22.307%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_1/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_2/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;3]:271
+GATHER_ND,0.02,0.02076,0.0303437%,22.3374%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_2/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_0/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;4]:370
+GATHER_ND,0.019,0.01938,0.0283266%,22.3657%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_2/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_1/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;4]:469
+GATHER_ND,0.02,0.0204,0.0298175%,22.3955%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_2/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_2/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;4]:568
+GATHER_ND,0.019,0.01948,0.0284728%,22.424%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_2/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_3/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;4]:667
+"Transpose (ND, X32) Transpose",0.029,0.03048,0.0445509%,22.4686%,0,1,Delegate/Transpose (ND	 X32) Transpose:0
+"Slice (ND, X32)",0.003,0.00412,0.00602197%,22.4746%,0,1,Delegate/Slice (ND	 X32):1
+Add (ND),0.051,0.00948316,0.263359%,22.7379%,0,19,Delegate/Add (ND):2
+"Softmax (NC, F32)",0.055,0.0529,0.0773209%,22.8153%,0,1,Delegate/Softmax (NC	 F32):3
+"Batch Matrix Multiply (NC, F32) GEMM",0.095,0.09526,0.139236%,22.9545%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:4
+Static Reshape (NC),0.001,0.0005,0.000730821%,22.9552%,0,1,Delegate/Static Reshape (NC):5
+"Transpose (ND, X32) Transpose",0.014,0.01408,0.0205799%,22.9758%,0,1,Delegate/Transpose (ND	 X32) Transpose:6
+Add (ND),0.017,0.01698,0.19855%,23.1743%,0,8,Delegate/Add (ND):7
+"Fully Connected (NC, F32) GEMM",0.138,0.659003,7.70581%,30.8802%,0,8,Delegate/Fully Connected (NC	 F32) GEMM:8
+"Slice (ND, X32)",0.007,0.01434,0.02096%,30.9011%,0,1,Delegate/Slice (ND	 X32):9
+"Slice (ND, X32)",0.006,0.00624,0.00912065%,30.9102%,0,1,Delegate/Slice (ND	 X32):10
+"Slice (ND, X32)",0.01,0.01096,0.0160196%,30.9263%,0,1,Delegate/Slice (ND	 X32):11
+"Transpose (ND, X32) Transpose",0.014,0.01406,0.0205507%,30.9468%,0,1,Delegate/Transpose (ND	 X32) Transpose:12
+Static Reshape (NC),0.001,0.00086,0.00125701%,30.9481%,0,1,Delegate/Static Reshape (NC):13
+"Convolution (NHWC, F32) DWConv",0.046,0.04744,0.0693403%,31.0174%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:14
+"Transpose (ND, X32) Transpose",0.005,0.00724,0.0105823%,31.028%,0,1,Delegate/Transpose (ND	 X32) Transpose:15
+Static Reshape (NC),0.001,0.00072,0.00105238%,31.029%,0,1,Delegate/Static Reshape (NC):16
+Static Reshape (NC),0.001,0.00419895,0.11661%,31.1457%,0,19,Delegate/Static Reshape (NC):17
+"Transpose (ND, X32) Transpose",0.005,0.00652,0.00952991%,31.1552%,0,1,Delegate/Transpose (ND	 X32) Transpose:18
+"Batch Matrix Multiply (NC, F32) GEMM",0.03,0.03076,0.0449601%,31.2001%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:19
+"Slice (ND, X32)",0.003,0.00366,0.0160488%,31.2162%,0,3,Delegate/Slice (ND	 X32):20
+Add (ND),0.019,0.01594,0.0232986%,31.2395%,0,1,Delegate/Add (ND):21
+"Softmax (NC, F32)",0.049,0.04606,0.0673233%,31.3068%,0,1,Delegate/Softmax (NC	 F32):22
+"Batch Matrix Multiply (NC, F32) GEMM",0.093,0.0958,0.140025%,31.4468%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:23
+Add (ND),0.016,0.01574,0.0230063%,31.4698%,0,1,Delegate/Add (ND):26
+"Fully Connected (NC, F32) GEMM",0.104,0.10458,0.152859%,31.6227%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:27
+"Slice (ND, X32)",0.014,0.01254,0.018329%,31.641%,0,1,Delegate/Slice (ND	 X32):28
+"Slice (ND, X32)",0.006,0.00674,0.00985147%,31.6509%,0,1,Delegate/Slice (ND	 X32):29
+"Slice (ND, X32)",0.01,0.0101,0.0147626%,31.6656%,0,1,Delegate/Slice (ND	 X32):30
+"Transpose (ND, X32) Transpose",0.014,0.0141,0.0206092%,31.6863%,0,1,Delegate/Transpose (ND	 X32) Transpose:31
+Static Reshape (NC),0.001,0.001,0.00146164%,31.6877%,0,1,Delegate/Static Reshape (NC):32
+"Convolution (NHWC, F32) DWConv",0.019,0.0182,0.0266019%,31.7143%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:33
+"Transpose (ND, X32) Transpose",0.005,0.00608,0.00888679%,31.7232%,0,1,Delegate/Transpose (ND	 X32) Transpose:34
+Static Reshape (NC),0.001,0.008715,0.0509529%,31.7742%,0,4,Delegate/Static Reshape (NC):35
+Static Reshape (NC),0.001,0.001,0.00146164%,31.7756%,0,1,Delegate/Static Reshape (NC):36
+"Transpose (ND, X32) Transpose",0.005,0.00518,0.00757131%,31.7832%,0,1,Delegate/Transpose (ND	 X32) Transpose:37
+"Batch Matrix Multiply (NC, F32) GEMM",0.028,0.0298,0.043557%,31.8267%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:38
+"Slice (ND, X32)",0.004,0.00415,0.0121316%,31.8389%,0,2,Delegate/Slice (ND	 X32):39
+Add (ND),0.018,0.01856,0.0271281%,31.866%,0,1,Delegate/Add (ND):40
+"Softmax (NC, F32)",0.048,0.04544,0.0664171%,31.9324%,0,1,Delegate/Softmax (NC	 F32):41
+"Batch Matrix Multiply (NC, F32) GEMM",0.091,0.09112,0.133185%,32.0656%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:42
+Static Reshape (NC),0,0.00012,0.000175397%,32.0658%,0,1,Delegate/Static Reshape (NC):43
+"Transpose (ND, X32) Transpose",0.014,0.00869,0.0254034%,32.0912%,0,2,Delegate/Transpose (ND	 X32) Transpose:44
+"Copy (NC, X32)",0.036,0.03588,0.0524438%,32.1436%,0,1,Delegate/Copy (NC	 X32):45
+Clamp (NC),0.016,0.01658,0.024234%,32.1679%,0,1,Delegate/Clamp (NC):46
+"Fully Connected (NC, F32) GEMM",0.59,0.59762,0.873507%,33.0414%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:47
+Static Reshape (NC),0.001,0.00054,0.00157857%,33.043%,0,2,Delegate/Static Reshape (NC):48
+"Transpose (ND, X32) Transpose",0.026,0.0267,0.0390259%,33.082%,0,1,Delegate/Transpose (ND	 X32) Transpose:49
+Static Reshape (NC),0,0.00044,0.000643123%,33.0826%,0,1,Delegate/Static Reshape (NC):50
+Add (ND),0.072,0.06978,0.101993%,33.1846%,0,1,Delegate/Add (ND):51
+"Convolution (NHWC, F32) DWConv",0.149,0.15718,0.229741%,33.4144%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:52
+Add (ND),0.045,0.04756,0.0695157%,33.4839%,0,1,Delegate/Add (ND):53
+"Fully Connected (NC, F32) GEMM",1.186,1.24728,1.82308%,35.307%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:54
+"Fully Connected (NC, F32) GEMM",1.234,1.20342,1.75897%,37.0659%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:55
+Add (ND),0.09,0.09034,0.132045%,37.198%,0,1,Delegate/Add (ND):56
+"Convolution (NHWC, F32) DWConv",0.15,0.17514,0.255992%,37.454%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:57
+Add (ND),0.048,0.05042,0.073696%,37.5277%,0,1,Delegate/Add (ND):58
+"Fully Connected (NC, F32) GEMM",1.229,1.21092,1.76993%,39.2976%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:59
+"Fully Connected (NC, F32) GEMM",1.204,1.2378,1.80922%,41.1068%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:60
+Add (ND),0.05,0.06436,0.0940713%,41.2009%,0,1,Delegate/Add (ND):61
+"Fully Connected (NC, F32) GEMM",2.42,2.44752,3.5774%,44.7783%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:62
+"Convolution (NHWC, F32) DWConv",0.478,0.49496,0.723455%,45.5017%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:63
+Sum (ND) Reduce,0.093,0.09188,0.134296%,45.636%,0,1,Delegate/Sum (ND) Reduce:64
+Multiply (ND),0.022,0.02056,0.0300514%,45.6661%,0,1,Delegate/Multiply (ND):65
+Static Reshape (NC),0.001,0.001,0.00146164%,45.6675%,0,1,Delegate/Static Reshape (NC):66
+"Fully Connected (NC, F32) GEMM",0.168,0.14752,0.215622%,45.8832%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:67
+"Fully Connected (NC, F32) GEMM",0.196,0.18614,0.27207%,46.1552%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:68
+Sigmoid (NC),0.017,0.01766,0.0258126%,46.181%,0,1,Delegate/Sigmoid (NC):69
+Multiply (ND),0.058,0.0594,0.0868216%,46.2679%,0,1,Delegate/Multiply (ND):70
+"Fully Connected (NC, F32) GEMM",1.199,1.20796,1.76561%,48.0335%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:71
+"Convolution (NHWC, F32) DWConv",0.142,0.14186,0.207349%,48.2408%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:72
+Add (ND),0.032,0.03242,0.0473865%,48.2882%,0,1,Delegate/Add (ND):73
+"Fully Connected (NC, F32) GEMM",0.831,0.85146,1.24453%,49.5327%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:74
+"Fully Connected (NC, F32) GEMM",0.882,0.88354,1.29142%,50.8242%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:75
+Add (ND),0.043,0.04494,0.0656862%,50.8898%,0,1,Delegate/Add (ND):76
+"Convolution (NHWC, F32) DWConv",0.094,0.08658,0.126549%,51.0164%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:77
+Add (ND),0.028,0.02372,0.0346702%,51.0511%,0,1,Delegate/Add (ND):78
+"Fully Connected (NC, F32) GEMM",0.813,0.819,1.19709%,52.2482%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:79
+"Fully Connected (NC, F32) GEMM",0.875,0.89498,1.30814%,53.5563%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:80
+Add (ND),0.044,0.07696,0.112488%,53.6688%,0,1,Delegate/Add (ND):81
+"Slice (ND, X32)",0.012,0.01204,0.0175982%,53.6864%,0,1,Delegate/Slice (ND	 X32):82
+"Slice (ND, X32)",0.008,0.00806,0.0117808%,53.6982%,0,1,Delegate/Slice (ND	 X32):83
+"Slice (ND, X32)",0.007,0.007,0.0102315%,53.7084%,0,1,Delegate/Slice (ND	 X32):84
+"Transpose (ND, X32) Transpose",0.014,0.0151,0.0220708%,53.7305%,0,1,Delegate/Transpose (ND	 X32) Transpose:85
+"Fully Connected (NC, F32) GEMM",0.059,0.06028,0.0881078%,53.8186%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:86
+"Slice (ND, X32)",0.004,0.0035,0.00511575%,53.8237%,0,1,Delegate/Slice (ND	 X32):87
+"Slice (ND, X32)",0.003,0.00304,0.00444339%,53.8281%,0,1,Delegate/Slice (ND	 X32):88
+"Slice (ND, X32)",0.005,0.00486,0.00710358%,53.8352%,0,1,Delegate/Slice (ND	 X32):89
+"Transpose (ND, X32) Transpose",0.005,0.0048,0.00701589%,53.8423%,0,1,Delegate/Transpose (ND	 X32) Transpose:90
+"Transpose (ND, X32) Transpose",0.008,0.00876,0.012804%,53.8551%,0,1,Delegate/Transpose (ND	 X32) Transpose:91
+"Convolution (NHWC, F32) IGEMM",0.072,0.0726,0.106115%,53.9612%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:92
+"Transpose (ND, X32) Transpose",0.005,0.00466,0.00681126%,53.968%,0,1,Delegate/Transpose (ND	 X32) Transpose:93
+Static Reshape (NC),0,0.00102,0.00149088%,53.9695%,0,1,Delegate/Static Reshape (NC):94
+Static Reshape (NC),0.001,0.00078,0.00114008%,53.9706%,0,1,Delegate/Static Reshape (NC):95
+"Transpose (ND, X32) Transpose",0.005,0.00744,0.0108746%,53.9815%,0,1,Delegate/Transpose (ND	 X32) Transpose:96
+"Batch Matrix Multiply (NC, F32) GEMM",0.019,0.02146,0.0313669%,54.0129%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:97
+"Slice (ND, X32)",0.004,0.00394,0.00575887%,54.0186%,0,1,Delegate/Slice (ND	 X32):98
+Add (ND),0.043,0.0284,0.0415107%,54.0601%,0,1,Delegate/Add (ND):99
+"Softmax (NC, F32)",0.025,0.02182,0.031893%,54.092%,0,1,Delegate/Softmax (NC	 F32):100
+Static Reshape (NC),0.007,0.00704,0.01029%,54.1023%,0,1,Delegate/Static Reshape (NC):101
+Static Reshape (NC),0.005,0.00488,0.00713282%,54.1094%,0,1,Delegate/Static Reshape (NC):102
+"Slice (ND, X32)",0.005,0.00488,0.00713282%,54.1166%,0,1,Delegate/Slice (ND	 X32):103
+"Slice (ND, X32)",0.005,0.00486,0.00710358%,54.1237%,0,1,Delegate/Slice (ND	 X32):104
+"Transpose (ND, X32) Transpose",0.022,0.02228,0.0325654%,54.1562%,0,1,Delegate/Transpose (ND	 X32) Transpose:105
+"Slice (ND, X32)",0.004,0.00348,0.00508652%,54.1613%,0,1,Delegate/Slice (ND	 X32):106
+"Slice (ND, X32)",0.004,0.00424,0.00619737%,54.1675%,0,1,Delegate/Slice (ND	 X32):107
+"Slice (ND, X32)",0.004,0.00396,0.00578811%,54.1733%,0,1,Delegate/Slice (ND	 X32):108
+"Transpose (ND, X32) Transpose",0.02,0.02102,0.0307237%,54.204%,0,1,Delegate/Transpose (ND	 X32) Transpose:109
+"Slice (ND, X32)",0.004,0.0039,0.00570041%,54.2097%,0,1,Delegate/Slice (ND	 X32):110
+"Slice (ND, X32)",0.004,0.00442,0.00646046%,54.2162%,0,1,Delegate/Slice (ND	 X32):111
+"Slice (ND, X32)",0.004,0.00336,0.00491112%,54.2211%,0,1,Delegate/Slice (ND	 X32):112
+"Transpose (ND, X32) Transpose",0.013,0.01416,0.0206969%,54.2418%,0,1,Delegate/Transpose (ND	 X32) Transpose:113
+"Slice (ND, X32)",0.001,0.00188,0.00274789%,54.2445%,0,1,Delegate/Slice (ND	 X32):114
+"Slice (ND, X32)",0.002,0.002,0.00292329%,54.2475%,0,1,Delegate/Slice (ND	 X32):115
+"Slice (ND, X32)",0.001,0.00104,0.00152011%,54.249%,0,1,Delegate/Slice (ND	 X32):116
+"Slice (ND, X32)",0.002,0.002,0.00292329%,54.2519%,0,1,Delegate/Slice (ND	 X32):117
+"Transpose (ND, X32) Transpose",0.013,0.01314,0.019206%,54.2711%,0,1,Delegate/Transpose (ND	 X32) Transpose:118
+"Slice (ND, X32)",0.002,0.002,0.00292329%,54.2741%,0,1,Delegate/Slice (ND	 X32):119
+"Slice (ND, X32)",0.001,0.0011,0.00160781%,54.2757%,0,1,Delegate/Slice (ND	 X32):120
+"Slice (ND, X32)",0.002,0.002,0.00292329%,54.2786%,0,1,Delegate/Slice (ND	 X32):121
+"Slice (ND, X32)",0.002,0.00198,0.00289405%,54.2815%,0,1,Delegate/Slice (ND	 X32):122
+"Transpose (ND, X32) Transpose",0.013,0.01312,0.0191768%,54.3006%,0,1,Delegate/Transpose (ND	 X32) Transpose:123
+"Slice (ND, X32)",0.002,0.00194,0.00283559%,54.3035%,0,1,Delegate/Slice (ND	 X32):124
+"Slice (ND, X32)",0.002,0.00198,0.00289405%,54.3064%,0,1,Delegate/Slice (ND	 X32):125
+"Slice (ND, X32)",0.002,0.002,0.00292329%,54.3093%,0,1,Delegate/Slice (ND	 X32):126
+"Slice (ND, X32)",0.002,0.002,0.00292329%,54.3122%,0,1,Delegate/Slice (ND	 X32):127
+"Transpose (ND, X32) Transpose",0.012,0.01242,0.0181536%,54.3304%,0,1,Delegate/Transpose (ND	 X32) Transpose:128
+"Slice (ND, X32)",0.002,0.00204,0.00298175%,54.3334%,0,1,Delegate/Slice (ND	 X32):129
+"Slice (ND, X32)",0.002,0.00198,0.00289405%,54.3363%,0,1,Delegate/Slice (ND	 X32):130
+"Slice (ND, X32)",0.002,0.002,0.00292329%,54.3392%,0,1,Delegate/Slice (ND	 X32):131
+"Slice (ND, X32)",0.001,0.00112,0.00163704%,54.3408%,0,1,Delegate/Slice (ND	 X32):132
+FULLY_CONNECTED,0.211,0.21686,0.316972%,54.6578%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_1/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_0/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;16]:133
+Static Reshape (NC),0.017,0.023528,0.859738%,55.5175%,0,25,Delegate/Static Reshape (NC):0
+"Transpose (ND, X32) Transpose",0.02,0.0109824,0.401309%,55.9188%,0,25,Delegate/Transpose (ND	 X32) Transpose:1
+"Fully Connected (NC, F32) GEMM",0.058,0.0407622,1.07244%,56.9913%,0,18,Delegate/Fully Connected (NC	 F32) GEMM:3
+"Slice (ND, X32)",0.005,0.00375,0.0986609%,57.0899%,0,18,Delegate/Slice (ND	 X32):4
+"Slice (ND, X32)",0.003,0.00313667,0.0825244%,57.1725%,0,18,Delegate/Slice (ND	 X32):5
+"Slice (ND, X32)",0.005,0.00364222,0.0958253%,57.2683%,0,18,Delegate/Slice (ND	 X32):6
+"Transpose (ND, X32) Transpose",0.005,0.00270778,0.0712405%,57.3395%,0,18,Delegate/Transpose (ND	 X32) Transpose:7
+"Transpose (ND, X32) Transpose",0.008,0.00581444,0.152976%,57.4925%,0,18,Delegate/Transpose (ND	 X32) Transpose:8
+"Convolution (NHWC, F32) DWConv",0.026,0.0117656,0.309547%,57.802%,0,18,Delegate/Convolution (NHWC	 F32) DWConv:9
+Static Reshape (NC),0.001,0.000803333,0.0211354%,57.8232%,0,18,Delegate/Static Reshape (NC):12
+"Transpose (ND, X32) Transpose",0.014,0.00483333,0.127163%,57.9503%,0,18,Delegate/Transpose (ND	 X32) Transpose:13
+"Batch Matrix Multiply (NC, F32) GEMM",0.015,0.0216111,0.568579%,58.5189%,0,18,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:14
+Add (ND),0.005,0.0130792,0.45881%,58.9777%,0,24,Delegate/Add (ND):15
+"Softmax (NC, F32)",0.014,0.00739778,0.194632%,59.1724%,0,18,Delegate/Softmax (NC	 F32):16
+Static Reshape (NC),0.004,0.00247778,0.0651893%,59.2376%,0,18,Delegate/Static Reshape (NC):18
+FULLY_CONNECTED,0.148,0.1505,0.219977%,59.4575%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_1/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_0/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;31]:153
+FULLY_CONNECTED,0.153,0.15262,0.223076%,59.6806%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_1/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_0/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;46]:173
+"Copy (NC, X32)",0.016,0.0163343,0.167124%,59.8477%,0,7,Delegate/Copy (NC	 X32):2
+Clamp (NC),0.008,0.00706286,0.0722636%,59.92%,0,7,Delegate/Clamp (NC):3
+"Fully Connected (NC, F32) GEMM",0.414,0.341043,3.48938%,63.4094%,0,7,Delegate/Fully Connected (NC	 F32) GEMM:4
+"Convolution (NHWC, F32) DWConv",0.086,0.0606286,0.620321%,64.0297%,0,7,Delegate/Convolution (NHWC	 F32) DWConv:6
+"Fully Connected (NC, F32) GEMM",0.888,0.770651,7.88492%,71.9146%,0,7,Delegate/Fully Connected (NC	 F32) GEMM:9
+Add (ND),0.043,0.0450314,0.460739%,72.3754%,0,7,Delegate/Add (ND):10
+"Convolution (NHWC, F32) DWConv",0.078,0.0665967,0.584043%,72.9594%,0,6,Delegate/Convolution (NHWC	 F32) DWConv:11
+Add (ND),0.018,0.0158367,0.138885%,73.0983%,0,6,Delegate/Add (ND):12
+"Fully Connected (NC, F32) GEMM",0.842,0.702953,6.1648%,79.2631%,0,6,Delegate/Fully Connected (NC	 F32) GEMM:13
+"Fully Connected (NC, F32) GEMM",0.876,0.796587,6.98595%,86.249%,0,6,Delegate/Fully Connected (NC	 F32) GEMM:14
+"Fully Connected (NC, F32) GEMM",0.062,0.06291,0.183904%,86.4329%,0,2,Delegate/Fully Connected (NC	 F32) GEMM:19
+"Slice (ND, X32)",0.003,0.00318,0.0232401%,86.4562%,0,5,Delegate/Slice (ND	 X32):21
+"Slice (ND, X32)",0.005,0.00336,0.0245556%,86.4807%,0,5,Delegate/Slice (ND	 X32):22
+"Transpose (ND, X32) Transpose",0.006,0.00535,0.0156396%,86.4964%,0,2,Delegate/Transpose (ND	 X32) Transpose:23
+"Transpose (ND, X32) Transpose",0.009,0.00602,0.0439955%,86.5404%,0,5,Delegate/Transpose (ND	 X32) Transpose:24
+"Convolution (NHWC, F32) IGEMM",0.072,0.07316,0.213868%,86.7542%,0,2,Delegate/Convolution (NHWC	 F32) IGEMM:25
+"Transpose (ND, X32) Transpose",0.005,0.0058,0.0169551%,86.7712%,0,2,Delegate/Transpose (ND	 X32) Transpose:26
+Static Reshape (NC),0,0.00053,0.00154934%,86.7727%,0,2,Delegate/Static Reshape (NC):27
+Static Reshape (NC),0,0.0004,0.00292329%,86.7757%,0,5,Delegate/Static Reshape (NC):28
+"Transpose (ND, X32) Transpose",0.004,0.02014,0.058875%,86.8345%,0,2,Delegate/Transpose (ND	 X32) Transpose:29
+"Batch Matrix Multiply (NC, F32) GEMM",0.019,0.02411,0.0704804%,86.905%,0,2,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:30
+Add (ND),0.006,0.00613,0.0179197%,86.9229%,0,2,Delegate/Add (ND):31
+"Softmax (NC, F32)",0.019,0.01789,0.0522976%,86.9752%,0,2,Delegate/Softmax (NC	 F32):32
+Static Reshape (NC),0.006,0.00715,0.0209015%,86.9961%,0,2,Delegate/Static Reshape (NC):33
+Static Reshape (NC),0.005,0.0042,0.0306945%,87.0268%,0,5,Delegate/Static Reshape (NC):34
+FULLY_CONNECTED,0.208,0.21496,0.314195%,87.341%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_1/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_1/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;16]:211
+FULLY_CONNECTED,0.149,0.14914,0.217989%,87.559%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_1/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_1/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;31]:231
+FULLY_CONNECTED,0.141,0.14148,0.206793%,87.7658%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_1/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_1/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;46]:251
+FULLY_CONNECTED,0.211,0.21346,0.312002%,88.0778%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_1/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_2/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;16]:289
+FULLY_CONNECTED,0.148,0.14448,0.211178%,88.289%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_1/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_2/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;31]:309
+FULLY_CONNECTED,0.151,0.15402,0.225122%,88.5141%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_1/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_2/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;46]:329
+"Fully Connected (NC, F32) GEMM",1.773,1.80862,2.64356%,91.1577%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:16
+"Convolution (NHWC, F32) DWConv",0.272,0.27336,0.399555%,91.5572%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:17
+Sum (ND) Reduce,0.063,0.0651,0.095153%,91.6524%,0,1,Delegate/Sum (ND) Reduce:18
+Multiply (ND),0.017,0.017,0.0248479%,91.6772%,0,1,Delegate/Multiply (ND):19
+"Fully Connected (NC, F32) GEMM",0.223,0.22724,0.332144%,92.0094%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:21
+"Fully Connected (NC, F32) GEMM",0.3,0.28888,0.422239%,92.4316%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:22
+Sigmoid (NC),0.033,0.03302,0.0482635%,92.4799%,0,1,Delegate/Sigmoid (NC):23
+Multiply (ND),0.033,0.03466,0.0506605%,92.5305%,0,1,Delegate/Multiply (ND):24
+"Fully Connected (NC, F32) GEMM",0.97,0.98786,1.4439%,93.9744%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:25
+"Convolution (NHWC, F32) DWConv",0.078,0.06728,0.0983393%,94.0728%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:26
+Add (ND),0.021,0.01432,0.0209307%,94.0937%,0,1,Delegate/Add (ND):27
+"Fully Connected (NC, F32) GEMM",0.569,0.59194,0.865205%,94.9589%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:28
+"Fully Connected (NC, F32) GEMM",0.661,0.67064,0.980236%,95.9391%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:29
+Add (ND),0.036,0.0383,0.0559809%,95.9951%,0,1,Delegate/Add (ND):30
+"Convolution (NHWC, F32) DWConv",0.044,0.04702,0.0687265%,96.0639%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:31
+Add (ND),0.009,0.00585,0.0342024%,96.0981%,0,4,Delegate/Add (ND):32
+"Fully Connected (NC, F32) GEMM",0.557,0.57488,0.840269%,96.9383%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:33
+"Fully Connected (NC, F32) GEMM",0.665,0.66632,0.973922%,97.9122%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:34
+Add (ND),0.034,0.03582,0.0523561%,97.9646%,0,1,Delegate/Add (ND):35
+"Slice (ND, X32)",0.006,0.00896,0.0130963%,97.9777%,0,1,Delegate/Slice (ND	 X32):36
+"Slice (ND, X32)",0.004,0.0057,0.00833136%,97.986%,0,1,Delegate/Slice (ND	 X32):37
+"Slice (ND, X32)",0.004,0.00452,0.00660663%,97.9926%,0,1,Delegate/Slice (ND	 X32):38
+"Fully Connected (NC, F32) GEMM",0.027,0.02782,0.0406629%,98.0333%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:40
+"Slice (ND, X32)",0.003,0.00316,0.00461879%,98.0379%,0,1,Delegate/Slice (ND	 X32):41
+"Slice (ND, X32)",0.002,0.00234,0.00342024%,98.0413%,0,1,Delegate/Slice (ND	 X32):42
+"Slice (ND, X32)",0.004,0.00322,0.00470649%,98.0461%,0,1,Delegate/Slice (ND	 X32):43
+"Transpose (ND, X32) Transpose",0.028,0.02264,0.0330916%,98.0791%,0,1,Delegate/Transpose (ND	 X32) Transpose:45
+"Convolution (NHWC, F32) IGEMM",0.034,0.03282,0.0479711%,98.1271%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:46
+"Transpose (ND, X32) Transpose",0.002,0.00204,0.00298175%,98.1301%,0,1,Delegate/Transpose (ND	 X32) Transpose:47
+Static Reshape (NC),0.001,0.00058,0.000847753%,98.1309%,0,1,Delegate/Static Reshape (NC):49
+"Transpose (ND, X32) Transpose",0.002,0.00232,0.00339101%,98.1343%,0,1,Delegate/Transpose (ND	 X32) Transpose:50
+"Batch Matrix Multiply (NC, F32) GEMM",0.019,0.02034,0.0297298%,98.1641%,0,1,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:51
+Add (ND),0.005,0.00464,0.00678202%,98.1708%,0,1,Delegate/Add (ND):52
+"Softmax (NC, F32)",0.008,0.00822,0.0120147%,98.1829%,0,1,Delegate/Softmax (NC	 F32):53
+Static Reshape (NC),0.004,0.00402,0.0058758%,98.1887%,0,1,Delegate/Static Reshape (NC):54
+Static Reshape (NC),0.002,0.002,0.00292329%,98.1917%,0,1,Delegate/Static Reshape (NC):55
+FULLY_CONNECTED,0.07,0.07018,0.102578%,98.2942%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_2/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_0/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;17]:388
+FULLY_CONNECTED,0.028,0.02806,0.0410137%,98.3352%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_2/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_0/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;32]:408
+FULLY_CONNECTED,0.025,0.0261,0.0381489%,98.3734%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_2/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_0/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;47]:428
+FULLY_CONNECTED,0.029,0.02818,0.0411891%,98.4146%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_2/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_0/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;62]:448
+"Slice (ND, X32)",0.004,0.00399333,0.0175105%,98.4321%,0,3,Delegate/Slice (ND	 X32):19
+"Fully Connected (NC, F32) GEMM",0.031,0.02966,0.130057%,98.5622%,0,3,Delegate/Fully Connected (NC	 F32) GEMM:20
+"Slice (ND, X32)",0.003,0.00318,0.0139441%,98.5761%,0,3,Delegate/Slice (ND	 X32):23
+"Convolution (NHWC, F32) IGEMM",0.027,0.0309667,0.135787%,98.7119%,0,3,Delegate/Convolution (NHWC	 F32) IGEMM:26
+"Transpose (ND, X32) Transpose",0.002,0.00221333,0.00970531%,98.7216%,0,3,Delegate/Transpose (ND	 X32) Transpose:27
+Static Reshape (NC),0,0.000826667,0.00362487%,98.7252%,0,3,Delegate/Static Reshape (NC):29
+"Transpose (ND, X32) Transpose",0.002,0.00231333,0.0101438%,98.7354%,0,3,Delegate/Transpose (ND	 X32) Transpose:30
+"Batch Matrix Multiply (NC, F32) GEMM",0.022,0.02054,0.0900664%,98.8254%,0,3,Delegate/Batch Matrix Multiply (NC	 F32) GEMM:31
+"Softmax (NC, F32)",0.007,0.008,0.0350794%,98.8605%,0,3,Delegate/Softmax (NC	 F32):33
+FULLY_CONNECTED,0.101,0.07054,0.103104%,98.9636%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_2/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_1/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;17]:487
+FULLY_CONNECTED,0.029,0.02804,0.0409845%,99.0046%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_2/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_1/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;32]:507
+FULLY_CONNECTED,0.027,0.02668,0.0389966%,99.0436%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_2/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_1/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;47]:527
+FULLY_CONNECTED,0.028,0.028,0.040926%,99.0845%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_2/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_1/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;62]:547
+FULLY_CONNECTED,0.068,0.06992,0.102198%,99.1867%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_2/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_2/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;17]:586
+FULLY_CONNECTED,0.029,0.03062,0.0447555%,99.2315%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_2/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_2/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;32]:606
+FULLY_CONNECTED,0.026,0.02594,0.037915%,99.2694%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_2/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_2/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;47]:626
+FULLY_CONNECTED,0.026,0.02686,0.0392597%,99.3086%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_2/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_2/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;62]:646
+FULLY_CONNECTED,0.069,0.0703,0.102754%,99.4114%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_2/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_3/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;17]:685
+FULLY_CONNECTED,0.03,0.02898,0.0423584%,99.4538%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_2/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_3/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;32]:705
+FULLY_CONNECTED,0.026,0.02648,0.0387043%,99.4925%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_2/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_3/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;47]:725
+FULLY_CONNECTED,0.026,0.02662,0.0389089%,99.5314%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_msra.EfficientVitMsra_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_msra.EfficientVitStage_2/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_msra.EfficientVitBlock_3/timm.models.efficientvit_msra.ResidualDrop_mixer/timm.models.efficientvit_msra.LocalWindowAttention_m/timm.models.efficientvit_msra.CascadedGroupAttention_attn;62]:745
+Sum (ND) Reduce,0.025,0.02292,0.0335009%,99.5649%,0,1,Delegate/Sum (ND) Reduce:11
+"Fully Connected (NC, F32) GEMM",0.296,0.2977,0.435131%,100%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:12
+
+============================== Top by Computation Time ==============================
+node type,first,avg_ms,%,cdf%,mem KB,times called,name
+"Convolution (NHWC, F32) IGEMM",3.897,3.22612,4.71544%,4.71544%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:1
+"Convolution (NHWC, F32) IGEMM",2.779,2.78538,4.07123%,8.78667%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:2
+"Convolution (NHWC, F32) IGEMM",2.769,2.77562,4.05697%,12.8436%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:3
+"Fully Connected (NC, F32) GEMM",2.42,2.44752,3.5774%,16.421%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:62
+"Convolution (NHWC, F32) IGEMM",2.691,1.89178,2.76511%,19.1861%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:0
+"Fully Connected (NC, F32) GEMM",1.773,1.80862,2.64356%,21.8297%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:16
+"Fully Connected (NC, F32) GEMM",1.25,1.2687,1.85439%,23.6841%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:6
+"Fully Connected (NC, F32) GEMM",1.186,1.24728,1.82308%,25.5072%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:54
+"Fully Connected (NC, F32) GEMM",1.204,1.2378,1.80922%,27.3164%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:60
+"Fully Connected (NC, F32) GEMM",1.229,1.21092,1.76993%,29.0863%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:59
+
+Number of nodes executed: 278
+============================== Summary by node type ==============================
+node type,count,avg_ms,avg %,cdf %,mem KB,times called
+"Fully Connected (NC, F32) GEMM",36,44.793,65.5962%,65.5962%,0,85
+"Convolution (NHWC, F32) IGEMM",9,11.268,16.5012%,82.0974%,0,12
+"Convolution (NHWC, F32) DWConv",14,2.764,4.04768%,86.145%,0,42
+FULLY_CONNECTED,25,2.137,3.12948%,89.2745%,0,25
+Add (ND),26,2.112,3.09287%,92.3674%,0,96
+"Transpose (ND, X32) Transpose",38,1.135,1.66213%,94.0295%,0,147
+"Batch Matrix Multiply (NC, F32) GEMM",11,0.919,1.34581%,95.3753%,0,31
+Static Reshape (NC),31,0.913,1.33702%,96.7123%,0,143
+GATHER_ND,8,0.677,0.991418%,97.7038%,0,8
+"Slice (ND, X32)",59,0.632,0.925519%,98.6293%,0,140
+"Softmax (NC, F32)",8,0.364,0.533052%,99.1623%,0,28
+Sum (ND) Reduce,3,0.178,0.260668%,99.423%,0,3
+"Copy (NC, X32)",2,0.149,0.2182%,99.6412%,0,8
+Multiply (ND),4,0.13,0.190376%,99.8316%,0,4
+Clamp (NC),2,0.065,0.0951879%,99.9268%,0,8
+Sigmoid (NC),2,0.05,0.0732214%,100%,0,2
+
+Timings (microseconds): count=50 first=69270 curr=71342 min=66862 max=71923 avg=68416.2 std=1011
+Memory (bytes): count=0
+278 nodes observed
+
+

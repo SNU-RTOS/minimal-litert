@@ -1,0 +1,1264 @@
+{
+	"xnnpack_version":	"1.0.0",
+	"arch_flags":	316,
+	"ukernels":	{
+		"node_31":	{
+			"input_channels":	64,
+			"output_channels":	128,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_36":	{
+			"input_channels":	128,
+			"output_channels":	64,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_53":	{
+			"input_channels":	64,
+			"output_channels":	256,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_55":	{
+			"input_channels":	256,
+			"output_channels":	64,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_72":	{
+			"input_channels":	64,
+			"output_channels":	128,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_77":	{
+			"input_channels":	128,
+			"output_channels":	64,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_94":	{
+			"input_channels":	64,
+			"output_channels":	256,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_96":	{
+			"input_channels":	256,
+			"output_channels":	64,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_113":	{
+			"input_channels":	64,
+			"output_channels":	128,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_118":	{
+			"input_channels":	128,
+			"output_channels":	64,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_135":	{
+			"input_channels":	64,
+			"output_channels":	256,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_137":	{
+			"input_channels":	256,
+			"output_channels":	64,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_171":	{
+			"input_channels":	128,
+			"output_channels":	256,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_176":	{
+			"input_channels":	256,
+			"output_channels":	128,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_193":	{
+			"input_channels":	128,
+			"output_channels":	512,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_195":	{
+			"input_channels":	512,
+			"output_channels":	128,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_212":	{
+			"input_channels":	128,
+			"output_channels":	256,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_217":	{
+			"input_channels":	256,
+			"output_channels":	128,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_234":	{
+			"input_channels":	128,
+			"output_channels":	512,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_236":	{
+			"input_channels":	512,
+			"output_channels":	128,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_253":	{
+			"input_channels":	128,
+			"output_channels":	256,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_258":	{
+			"input_channels":	256,
+			"output_channels":	128,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_275":	{
+			"input_channels":	128,
+			"output_channels":	512,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_277":	{
+			"input_channels":	512,
+			"output_channels":	128,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_312":	{
+			"input_channels":	320,
+			"output_channels":	640,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_317":	{
+			"input_channels":	640,
+			"output_channels":	320,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_337":	{
+			"input_channels":	320,
+			"output_channels":	1280,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_339":	{
+			"input_channels":	1280,
+			"output_channels":	320,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_359":	{
+			"input_channels":	320,
+			"output_channels":	640,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_364":	{
+			"input_channels":	640,
+			"output_channels":	320,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_384":	{
+			"input_channels":	320,
+			"output_channels":	1280,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_386":	{
+			"input_channels":	1280,
+			"output_channels":	320,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_406":	{
+			"input_channels":	320,
+			"output_channels":	640,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_411":	{
+			"input_channels":	640,
+			"output_channels":	320,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_431":	{
+			"input_channels":	320,
+			"output_channels":	1280,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_433":	{
+			"input_channels":	1280,
+			"output_channels":	320,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_453":	{
+			"input_channels":	320,
+			"output_channels":	640,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_458":	{
+			"input_channels":	640,
+			"output_channels":	320,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_478":	{
+			"input_channels":	320,
+			"output_channels":	1280,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_480":	{
+			"input_channels":	1280,
+			"output_channels":	320,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_500":	{
+			"input_channels":	320,
+			"output_channels":	640,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_505":	{
+			"input_channels":	640,
+			"output_channels":	320,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_525":	{
+			"input_channels":	320,
+			"output_channels":	1280,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_527":	{
+			"input_channels":	1280,
+			"output_channels":	320,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_547":	{
+			"input_channels":	320,
+			"output_channels":	640,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_552":	{
+			"input_channels":	640,
+			"output_channels":	320,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_572":	{
+			"input_channels":	320,
+			"output_channels":	1280,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_574":	{
+			"input_channels":	1280,
+			"output_channels":	320,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_594":	{
+			"input_channels":	320,
+			"output_channels":	640,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_599":	{
+			"input_channels":	640,
+			"output_channels":	320,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_619":	{
+			"input_channels":	320,
+			"output_channels":	1280,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_621":	{
+			"input_channels":	1280,
+			"output_channels":	320,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_641":	{
+			"input_channels":	320,
+			"output_channels":	640,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_646":	{
+			"input_channels":	640,
+			"output_channels":	320,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_666":	{
+			"input_channels":	320,
+			"output_channels":	1280,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_668":	{
+			"input_channels":	1280,
+			"output_channels":	320,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_688":	{
+			"input_channels":	320,
+			"output_channels":	640,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_693":	{
+			"input_channels":	640,
+			"output_channels":	320,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_713":	{
+			"input_channels":	320,
+			"output_channels":	1280,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_715":	{
+			"input_channels":	1280,
+			"output_channels":	320,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_752":	{
+			"input_channels":	512,
+			"output_channels":	1024,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_757":	{
+			"input_channels":	1024,
+			"output_channels":	512,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_777":	{
+			"input_channels":	512,
+			"output_channels":	2048,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_779":	{
+			"input_channels":	2048,
+			"output_channels":	512,
+			"mr":	4,
+			"nr":	12,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_4":	"xnn_f32_gemm_minmax_ukernel_4x12__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x12__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_799":	{
+			"input_channels":	512,
+			"output_channels":	1024,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_804":	{
+			"input_channels":	1024,
+			"output_channels":	512,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_824":	{
+			"input_channels":	512,
+			"output_channels":	2048,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_826":	{
+			"input_channels":	2048,
+			"output_channels":	512,
+			"mr":	4,
+			"nr":	12,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_4":	"xnn_f32_gemm_minmax_ukernel_4x12__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x12__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_846":	{
+			"input_channels":	512,
+			"output_channels":	1024,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_851":	{
+			"input_channels":	1024,
+			"output_channels":	512,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm_pack8",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u8_prfm"
+			}
+		},
+		"node_871":	{
+			"input_channels":	512,
+			"output_channels":	2048,
+			"mr":	6,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_6":	"xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_873":	{
+			"input_channels":	2048,
+			"output_channels":	512,
+			"mr":	4,
+			"nr":	12,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_4":	"xnn_f32_gemm_minmax_ukernel_4x12__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x12__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_16":	{
+			"input_channels":	512,
+			"output_channels":	2048,
+			"mr":	1,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_1":	"xnn_f32_gemm_minmax_ukernel_1x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		},
+		"node_34":	{
+			"input_channels":	2048,
+			"output_channels":	1000,
+			"mr":	1,
+			"nr":	8,
+			"log2_kr":	0,
+			"log2_sr":	0,
+			"planes":	0,
+			"mr_packed":	0,
+			"kernel_names":	{
+				"gemm_ukernel_macro_name":	"XNN_INIT_HMP_GEMM_UKERNEL",
+				"mr_1":	"xnn_f32_gemm_minmax_ukernel_1x8__asm_aarch64_neonfma_cortex_a53_prfm",
+				"init_name":	"xnn_init_f32_minmax_scalar_params",
+				"pack_gemm_gio_fn_name":	"xnn_pack_f32_gemm_gio_w",
+				"pack_gemm_goi_fn_name":	"xnn_x32_packw_gemm_goi_ukernel_x8__neon_ld4lane_u4_prfm"
+			}
+		}
+	}
+}

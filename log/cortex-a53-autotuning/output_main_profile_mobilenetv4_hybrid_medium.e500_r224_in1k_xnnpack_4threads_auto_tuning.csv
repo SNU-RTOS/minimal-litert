@@ -1,0 +1,216 @@
+Profiling Info for Benchmark Initialization:
+============================== Run Order ==============================
+node type,first,avg_ms,%,cdf%,mem KB,times called,name
+ModifyGraphWithDelegate,142.454,71.4475,62.5211%,62.5211%,0,2,ModifyGraphWithDelegate/0
+AllocateTensors,85.66,85.66,37.4789%,100%,5264,1,AllocateTensors/0
+
+============================== Top by Computation Time ==============================
+node type,first,avg_ms,%,cdf%,mem KB,times called,name
+AllocateTensors,85.66,85.66,37.4789%,37.4789%,5264,1,AllocateTensors/0
+ModifyGraphWithDelegate,142.454,71.4475,62.5211%,100%,0,2,ModifyGraphWithDelegate/0
+
+Number of nodes executed: 2
+============================== Summary by node type ==============================
+node type,count,avg_ms,avg %,cdf %,mem KB,times called
+ModifyGraphWithDelegate,1,142.895,62.5211%,62.5211%,0,2
+AllocateTensors,1,85.66,37.4789%,100%,5264,1
+
+Timings (microseconds): count=1 curr=228555
+Memory (bytes): count=0
+2 nodes observed
+
+
+Operator-wise Profiling Info for Regular Benchmark Runs:
+============================== Run Order ==============================
+node type,first,avg_ms,%,cdf%,mem KB,times called,name
+"Convolution (NHWC, F32) IGEMM",2.42,2.25432,1.69121%,1.69121%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:0
+"Convolution (NHWC, F32) IGEMM",9.489,9.53958,7.15665%,8.84786%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:1
+"Fully Connected (NC, F32) GEMM",1.632,0.641322,4.33012%,13.178%,0,9,Delegate/Fully Connected (NC	 F32) GEMM:2
+"Convolution (NHWC, F32) DWConv",0.745,0.75706,0.567951%,13.7459%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:3
+"Fully Connected (NC, F32) GEMM",2.668,2.65424,1.99123%,15.7372%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:4
+"Convolution (NHWC, F32) DWConv",5.565,5.60766,4.2069%,19.9441%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:5
+"Fully Connected (NC, F32) GEMM",1.048,1.62758,7.32614%,27.2702%,0,6,Delegate/Fully Connected (NC	 F32) GEMM:6
+"Convolution (NHWC, F32) DWConv",0.3,0.26274,0.197109%,27.4673%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:7
+"Fully Connected (NC, F32) GEMM",0.832,1.09548,1.64367%,29.111%,0,2,Delegate/Fully Connected (NC	 F32) GEMM:8
+"Convolution (NHWC, F32) DWConv",0.56,0.57196,0.429088%,29.5401%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:9
+"Fully Connected (NC, F32) GEMM",0.8,0.80668,0.605176%,30.1452%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:10
+Add (ND),0.106,0.039945,0.119868%,30.2651%,0,4,Delegate/Add (ND):11
+"Convolution (NHWC, F32) DWConv",0.205,0.25738,0.386176%,30.6513%,0,2,Delegate/Convolution (NHWC	 F32) DWConv:12
+"Fully Connected (NC, F32) GEMM",3.239,1.23513,2.77981%,33.4311%,0,3,Delegate/Fully Connected (NC	 F32) GEMM:13
+"Convolution (NHWC, F32) DWConv",3.927,1.32645,3.98046%,37.4116%,0,4,Delegate/Convolution (NHWC	 F32) DWConv:14
+"Fully Connected (NC, F32) GEMM",1.219,0.621008,2.32942%,39.741%,0,5,Delegate/Fully Connected (NC	 F32) GEMM:15
+"Fully Connected (NC, F32) GEMM",0.795,0.480447,1.0813%,40.8223%,0,3,Delegate/Fully Connected (NC	 F32) GEMM:16
+"Fully Connected (NC, F32) GEMM",0.936,0.41288,0.929236%,41.7515%,0,3,Delegate/Fully Connected (NC	 F32) GEMM:17
+Add (ND),0.064,0.06076,0.0455825%,41.7971%,0,1,Delegate/Add (ND):18
+"Convolution (NHWC, F32) DWConv",0.129,0.67493,1.01267%,42.8098%,0,2,Delegate/Convolution (NHWC	 F32) DWConv:19
+"Fully Connected (NC, F32) GEMM",1.567,1.12983,3.39042%,46.2002%,0,4,Delegate/Fully Connected (NC	 F32) GEMM:20
+"Convolution (NHWC, F32) DWConv",0.735,0.76024,0.570337%,46.7705%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:21
+"Fully Connected (NC, F32) GEMM",1.737,1.718,1.28885%,48.0594%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:22
+Add (ND),0.105,0.11704,0.0878042%,48.1472%,0,1,Delegate/Add (ND):23
+"Convolution (NHWC, F32) DWConv",0.143,0.68469,1.02732%,49.1745%,0,2,Delegate/Convolution (NHWC	 F32) DWConv:24
+"Fully Connected (NC, F32) GEMM",1.579,1.62844,2.44333%,51.6178%,0,2,Delegate/Fully Connected (NC	 F32) GEMM:25
+"Convolution (NHWC, F32) DWConv",2.027,2.03562,1.52714%,53.145%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:26
+"Fully Connected (NC, F32) GEMM",1.738,1.25089,1.87685%,55.0218%,0,2,Delegate/Fully Connected (NC	 F32) GEMM:27
+Add (ND),0.098,0.10314,0.0773763%,55.0992%,0,1,Delegate/Add (ND):28
+Subtract (ND),0.053,0.04364,0.032739%,55.1319%,0,1,Delegate/Subtract (ND):29
+Multiply (ND),0.027,0.02234,0.0167596%,55.1487%,0,1,Delegate/Multiply (ND):30
+Multiply (ND),0.02,0.02064,0.0154843%,55.1642%,0,1,Delegate/Multiply (ND):31
+Add (ND),0.028,0.02818,0.0211408%,55.1853%,0,1,Delegate/Add (ND):32
+"Constant Pad (ND, X32)",0.038,0.04002,0.0300233%,55.2154%,0,1,Delegate/Constant Pad (ND	 X32):33
+"Convolution (NHWC, F32) DWConv",0.047,0.05358,0.0401961%,55.2555%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:34
+"Fully Connected (NC, F32) GEMM",0.056,0.381,0.571657%,55.8272%,0,2,Delegate/Fully Connected (NC	 F32) GEMM:35
+"Transpose (ND, X32) Transpose",0.046,0.01786,0.0133987%,55.8406%,0,1,Delegate/Transpose (ND	 X32) Transpose:36
+"Convolution (NHWC, F32) DWConv",0.054,0.05118,0.0383956%,55.879%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:37
+"Fully Connected (NC, F32) GEMM",0.051,0.62703,0.940804%,56.8198%,0,2,Delegate/Fully Connected (NC	 F32) GEMM:38
+"Transpose (ND, X32) Transpose",0.012,0.01274,0.00955763%,56.8294%,0,1,Delegate/Transpose (ND	 X32) Transpose:39
+"Fully Connected (NC, F32) GEMM",0.62,0.6275,0.470754%,57.3001%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:40
+"Transpose (ND, X32) Transpose",0.092,0.0873,0.065493%,57.3656%,0,1,Delegate/Transpose (ND	 X32) Transpose:41
+Static Reshape (NC),0.001,0.0009,0.000675186%,57.3663%,0,1,Delegate/Static Reshape (NC):42
+"Transpose (ND, X32) Transpose",0.148,0.15478,0.116117%,57.4824%,0,1,Delegate/Transpose (ND	 X32) Transpose:43
+Multiply (ND),0.04,0.02498,0.0187402%,57.5011%,0,1,Delegate/Multiply (ND):44
+Static Reshape (NC),0.001,0.00082,0.000615169%,57.5018%,0,1,Delegate/Static Reshape (NC):45
+"Transpose (ND, X32) Transpose",0.017,0.01315,0.0197304%,57.5215%,0,2,Delegate/Transpose (ND	 X32) Transpose:46
+Static Reshape (NC),0.006,0.01452,0.010893%,57.5324%,0,1,Delegate/Static Reshape (NC):47
+Static Reshape (NC),0.007,0.01236,0.00927255%,57.5417%,0,1,Delegate/Static Reshape (NC):48
+FULLY_CONNECTED,1.497,1.50866,1.13181%,58.6735%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.mobilenetv3.MobileNetV3_wrapped/torch.nn.modules.container.Sequential_blocks/torch.nn.modules.container.Sequential_2/timm.models._efficientnet_blocks.MobileAttention_4/timm.layers.attention2d.MultiQueryAttention2d_attn;2]:52
+"Softmax (NC, F32)",0.175,0.117653,0.706109%,59.3796%,0,8,Delegate/Softmax (NC	 F32):0
+FULLY_CONNECTED,1.175,1.18892,0.891935%,60.2715%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.mobilenetv3.MobileNetV3_wrapped/torch.nn.modules.container.Sequential_blocks/torch.nn.modules.container.Sequential_2/timm.models._efficientnet_blocks.MobileAttention_4/timm.layers.attention2d.MultiQueryAttention2d_attn;5]:55
+"Transpose (ND, X32) Transpose",0.091,0.0441075,0.264718%,60.5362%,0,8,Delegate/Transpose (ND	 X32) Transpose:0
+Static Reshape (NC),0.001,0.001015,0.00609168%,60.5423%,0,8,Delegate/Static Reshape (NC):1
+Add (ND),0.084,0.0581375,0.348921%,60.8912%,0,8,Delegate/Add (ND):3
+"Convolution (NHWC, F32) DWConv",0.177,0.163438,0.980895%,61.8721%,0,8,Delegate/Convolution (NHWC	 F32) DWConv:4
+"Fully Connected (NC, F32) GEMM",1.558,1.40452,8.42941%,70.3015%,0,8,Delegate/Fully Connected (NC	 F32) GEMM:5
+"Convolution (NHWC, F32) DWConv",0.694,0.911267,2.05091%,72.3524%,0,3,Delegate/Convolution (NHWC	 F32) DWConv:6
+"Fully Connected (NC, F32) GEMM",1.761,1.70665,3.84101%,76.1935%,0,3,Delegate/Fully Connected (NC	 F32) GEMM:7
+Add (ND),0.105,0.09048,0.203636%,76.3971%,0,3,Delegate/Add (ND):8
+Subtract (ND),0.04,0.0374667,0.0843232%,76.4814%,0,3,Delegate/Subtract (ND):9
+Multiply (ND),0.022,0.0212429,0.111556%,76.593%,0,7,Delegate/Multiply (ND):10
+Multiply (ND),0.018,0.0157933,0.0355448%,76.6285%,0,3,Delegate/Multiply (ND):11
+Add (ND),0.029,0.02266,0.050999%,76.6795%,0,3,Delegate/Add (ND):12
+"Constant Pad (ND, X32)",0.039,0.03873,0.058111%,76.7376%,0,2,Delegate/Constant Pad (ND	 X32):13
+"Transpose (ND, X32) Transpose",0.037,0.0128533,0.028928%,76.7666%,0,3,Delegate/Transpose (ND	 X32) Transpose:16
+"Convolution (NHWC, F32) DWConv",0.062,0.0602133,0.135517%,76.9021%,0,3,Delegate/Convolution (NHWC	 F32) DWConv:17
+"Fully Connected (NC, F32) GEMM",0.057,0.451573,1.01632%,77.9184%,0,3,Delegate/Fully Connected (NC	 F32) GEMM:18
+"Transpose (ND, X32) Transpose",0.007,0.027425,0.0822976%,78.0007%,0,4,Delegate/Transpose (ND	 X32) Transpose:19
+"Transpose (ND, X32) Transpose",0.096,0.08932,0.134017%,78.1347%,0,2,Delegate/Transpose (ND	 X32) Transpose:21
+Static Reshape (NC),0.001,0.000866667,0.00195054%,78.1367%,0,3,Delegate/Static Reshape (NC):22
+"Transpose (ND, X32) Transpose",0.169,0.107853,0.242737%,78.3794%,0,3,Delegate/Transpose (ND	 X32) Transpose:23
+Multiply (ND),0.008,0.02382,0.0357398%,78.4151%,0,2,Delegate/Multiply (ND):24
+Static Reshape (NC),0.001,0.00293333,0.00660182%,78.4217%,0,3,Delegate/Static Reshape (NC):25
+"Transpose (ND, X32) Transpose",0.011,0.01761,0.0264223%,78.4482%,0,2,Delegate/Transpose (ND	 X32) Transpose:26
+Static Reshape (NC),0.007,0.01136,0.025567%,78.4737%,0,3,Delegate/Static Reshape (NC):27
+Static Reshape (NC),0.005,0.01027,0.0154092%,78.4891%,0,2,Delegate/Static Reshape (NC):28
+FULLY_CONNECTED,1.475,1.49834,1.12406%,79.6132%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.mobilenetv3.MobileNetV3_wrapped/torch.nn.modules.container.Sequential_blocks/torch.nn.modules.container.Sequential_2/timm.models._efficientnet_blocks.MobileAttention_6/timm.layers.attention2d.MultiQueryAttention2d_attn;2]:84
+FULLY_CONNECTED,1.191,1.16266,0.872235%,80.4854%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.mobilenetv3.MobileNetV3_wrapped/torch.nn.modules.container.Sequential_blocks/torch.nn.modules.container.Sequential_2/timm.models._efficientnet_blocks.MobileAttention_6/timm.layers.attention2d.MultiQueryAttention2d_attn;5]:87
+Add (ND),0.103,0.06586,0.247043%,80.7325%,0,5,Delegate/Add (ND):7
+Subtract (ND),0.039,0.0271067,0.0610068%,80.7935%,0,3,Delegate/Subtract (ND):8
+Multiply (ND),0.022,0.0158867,0.0357548%,80.8292%,0,3,Delegate/Multiply (ND):9
+"Constant Pad (ND, X32)",0.039,0.03358,0.0251919%,80.8544%,0,1,Delegate/Constant Pad (ND	 X32):12
+"Convolution (NHWC, F32) DWConv",0.045,0.04958,0.0371952%,80.8916%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:13
+"Fully Connected (NC, F32) GEMM",0.056,0.34072,1.02244%,81.9141%,0,4,Delegate/Fully Connected (NC	 F32) GEMM:14
+"Transpose (ND, X32) Transpose",0.008,0.01072,0.0241266%,81.9382%,0,3,Delegate/Transpose (ND	 X32) Transpose:15
+"Convolution (NHWC, F32) DWConv",0.042,0.0473,0.0354848%,81.9737%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:16
+"Transpose (ND, X32) Transpose",0.007,0.02543,0.0381555%,82.0118%,0,2,Delegate/Transpose (ND	 X32) Transpose:18
+"Fully Connected (NC, F32) GEMM",0.621,0.6242,0.468279%,82.4801%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:19
+"Transpose (ND, X32) Transpose",0.085,0.06542,0.098157%,82.5783%,0,2,Delegate/Transpose (ND	 X32) Transpose:20
+Static Reshape (NC),0.001,0.000806667,0.0018155%,82.5801%,0,3,Delegate/Static Reshape (NC):21
+"Transpose (ND, X32) Transpose",0.156,0.0618267,0.139148%,82.7192%,0,3,Delegate/Transpose (ND	 X32) Transpose:22
+Multiply (ND),0.006,0.02422,0.01817%,82.7374%,0,1,Delegate/Multiply (ND):23
+Static Reshape (NC),0.001,0.005705,0.0171197%,82.7545%,0,4,Delegate/Static Reshape (NC):24
+"Transpose (ND, X32) Transpose",0.011,0.01504,0.0112831%,82.7658%,0,1,Delegate/Transpose (ND	 X32) Transpose:25
+Static Reshape (NC),0.006,0.014,0.0105029%,82.7763%,0,1,Delegate/Static Reshape (NC):26
+FULLY_CONNECTED,1.483,1.53374,1.15062%,83.9269%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.mobilenetv3.MobileNetV3_wrapped/torch.nn.modules.container.Sequential_blocks/torch.nn.modules.container.Sequential_2/timm.models._efficientnet_blocks.MobileAttention_8/timm.layers.attention2d.MultiQueryAttention2d_attn;2]:115
+FULLY_CONNECTED,1.178,1.1584,0.869039%,84.796%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.mobilenetv3.MobileNetV3_wrapped/torch.nn.modules.container.Sequential_blocks/torch.nn.modules.container.Sequential_2/timm.models._efficientnet_blocks.MobileAttention_8/timm.layers.attention2d.MultiQueryAttention2d_attn;5]:118
+FULLY_CONNECTED,1.504,1.50166,1.12655%,85.9225%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.mobilenetv3.MobileNetV3_wrapped/torch.nn.modules.container.Sequential_blocks/torch.nn.modules.container.Sequential_2/timm.models._efficientnet_blocks.MobileAttention_10/timm.layers.attention2d.MultiQueryAttention2d_attn;2]:147
+FULLY_CONNECTED,1.153,1.1565,0.867614%,86.7901%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.mobilenetv3.MobileNetV3_wrapped/torch.nn.modules.container.Sequential_blocks/torch.nn.modules.container.Sequential_2/timm.models._efficientnet_blocks.MobileAttention_10/timm.layers.attention2d.MultiQueryAttention2d_attn;5]:150
+"Convolution (NHWC, F32) DWConv",0.49,0.46524,0.349026%,87.1392%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:8
+"Fully Connected (NC, F32) GEMM",2.358,2.37764,1.78372%,88.9229%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:9
+"Convolution (NHWC, F32) DWConv",1.001,1.04562,0.784431%,89.7073%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:10
+"Fully Connected (NC, F32) GEMM",1.629,1.59692,1.19802%,90.9053%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:11
+Add (ND),0.07,0.05642,0.0423266%,90.9477%,0,1,Delegate/Add (ND):16
+Add (ND),0.072,0.06278,0.047098%,90.9948%,0,1,Delegate/Add (ND):21
+"Convolution (NHWC, F32) DWConv",0.097,0.0799,0.0599415%,91.0547%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:22
+"Fully Connected (NC, F32) GEMM",1.182,1.21426,0.910946%,91.9656%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:23
+Add (ND),0.052,0.05318,0.039896%,92.0055%,0,1,Delegate/Add (ND):26
+"Fully Connected (NC, F32) GEMM",0.686,0.68744,0.515722%,92.5213%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:28
+Add (ND),0.036,0.0354,0.0265573%,92.5478%,0,1,Delegate/Add (ND):29
+"Convolution (NHWC, F32) DWConv",0.07,0.07944,0.0595964%,92.6074%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:30
+"Fully Connected (NC, F32) GEMM",0.708,0.70826,0.531341%,93.1388%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:31
+"Convolution (NHWC, F32) DWConv",0.507,0.51506,0.386401%,93.5252%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:32
+"Fully Connected (NC, F32) GEMM",0.669,0.699,0.524394%,94.0496%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:33
+Add (ND),0.032,0.0325,0.0243817%,94.0739%,0,1,Delegate/Add (ND):34
+"Fully Connected (NC, F32) GEMM",0.695,0.70042,0.52546%,94.5994%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:36
+Add (ND),0.036,0.0359,0.0269324%,94.6263%,0,1,Delegate/Add (ND):37
+"Fully Connected (NC, F32) GEMM",1.65,1.63464,1.22632%,95.8527%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:39
+Add (ND),0.049,0.08054,0.0604216%,95.9131%,0,1,Delegate/Add (ND):40
+Subtract (ND),0.014,0.01582,0.0118683%,95.9249%,0,1,Delegate/Subtract (ND):41
+Multiply (ND),0.011,0.01068,0.0080122%,95.933%,0,1,Delegate/Multiply (ND):42
+Multiply (ND),0.009,0.0094,0.00705194%,95.94%,0,1,Delegate/Multiply (ND):43
+Add (ND),0.011,0.01142,0.00856736%,95.9486%,0,1,Delegate/Add (ND):44
+"Fully Connected (NC, F32) GEMM",0.082,0.08228,0.061727%,96.0103%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:45
+"Fully Connected (NC, F32) GEMM",0.078,0.07914,0.0593713%,96.0697%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:47
+"Transpose (ND, X32) Transpose",0.006,0.00714,0.00535647%,96.075%,0,1,Delegate/Transpose (ND	 X32) Transpose:48
+"Fully Connected (NC, F32) GEMM",0.296,0.29716,0.222931%,96.298%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:49
+"Transpose (ND, X32) Transpose",0.023,0.02638,0.0197904%,96.3177%,0,1,Delegate/Transpose (ND	 X32) Transpose:50
+Static Reshape (NC),0,0.00018,0.000135037%,96.3179%,0,1,Delegate/Static Reshape (NC):51
+"Transpose (ND, X32) Transpose",0.04,0.04488,0.0336693%,96.3515%,0,1,Delegate/Transpose (ND	 X32) Transpose:52
+Multiply (ND),0.06,0.0253,0.0189802%,96.3705%,0,1,Delegate/Multiply (ND):53
+Static Reshape (NC),0.001,0.00088,0.000660182%,96.3712%,0,1,Delegate/Static Reshape (NC):54
+"Transpose (ND, X32) Transpose",0.018,0.01212,0.0090925%,96.3803%,0,1,Delegate/Transpose (ND	 X32) Transpose:55
+Static Reshape (NC),0.006,0.0072,0.00540149%,96.3857%,0,1,Delegate/Static Reshape (NC):56
+Static Reshape (NC),0.006,0.00758,0.00568656%,96.3914%,0,1,Delegate/Static Reshape (NC):57
+FULLY_CONNECTED,0.409,0.41546,0.311681%,96.7031%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.mobilenetv3.MobileNetV3_wrapped/torch.nn.modules.container.Sequential_blocks/torch.nn.modules.container.Sequential_3/timm.models._efficientnet_blocks.MobileAttention_8/timm.layers.attention2d.MultiQueryAttention2d_attn;2]:209
+FULLY_CONNECTED,0.306,0.30854,0.231469%,96.9345%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.mobilenetv3.MobileNetV3_wrapped/torch.nn.modules.container.Sequential_blocks/torch.nn.modules.container.Sequential_3/timm.models._efficientnet_blocks.MobileAttention_8/timm.layers.attention2d.MultiQueryAttention2d_attn;5]:212
+"Fully Connected (NC, F32) GEMM",0.078,0.380407,0.85615%,97.7907%,0,3,Delegate/Fully Connected (NC	 F32) GEMM:12
+"Transpose (ND, X32) Transpose",0.008,0.00952,0.0142839%,97.805%,0,2,Delegate/Transpose (ND	 X32) Transpose:13
+"Transpose (ND, X32) Transpose",0.022,0.02725,0.0408862%,97.8458%,0,2,Delegate/Transpose (ND	 X32) Transpose:17
+Static Reshape (NC),0.001,0.0008,0.00120033%,97.847%,0,2,Delegate/Static Reshape (NC):18
+Multiply (ND),0.005,0.02094,0.0314186%,97.8785%,0,2,Delegate/Multiply (ND):20
+Static Reshape (NC),0.005,0.00687,0.0103078%,97.8888%,0,2,Delegate/Static Reshape (NC):23
+FULLY_CONNECTED,0.407,0.41258,0.30952%,98.1983%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.mobilenetv3.MobileNetV3_wrapped/torch.nn.modules.container.Sequential_blocks/torch.nn.modules.container.Sequential_3/timm.models._efficientnet_blocks.MobileAttention_10/timm.layers.attention2d.MultiQueryAttention2d_attn;2]:237
+FULLY_CONNECTED,0.334,0.30646,0.229908%,98.4282%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.mobilenetv3.MobileNetV3_wrapped/torch.nn.modules.container.Sequential_blocks/torch.nn.modules.container.Sequential_3/timm.models._efficientnet_blocks.MobileAttention_10/timm.layers.attention2d.MultiQueryAttention2d_attn;5]:240
+"Transpose (ND, X32) Transpose",0.008,0.00888,0.00666183%,98.4349%,0,1,Delegate/Transpose (ND	 X32) Transpose:14
+Static Reshape (NC),0.001,0.00086,0.000645177%,98.4355%,0,1,Delegate/Static Reshape (NC):19
+Multiply (ND),0.006,0.0156,0.0117032%,98.4472%,0,1,Delegate/Multiply (ND):21
+FULLY_CONNECTED,0.408,0.41246,0.30943%,98.7566%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.mobilenetv3.MobileNetV3_wrapped/torch.nn.modules.container.Sequential_blocks/torch.nn.modules.container.Sequential_3/timm.models._efficientnet_blocks.MobileAttention_12/timm.layers.attention2d.MultiQueryAttention2d_attn;2]:266
+FULLY_CONNECTED,0.304,0.30864,0.231544%,98.9882%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.mobilenetv3.MobileNetV3_wrapped/torch.nn.modules.container.Sequential_blocks/torch.nn.modules.container.Sequential_3/timm.models._efficientnet_blocks.MobileAttention_12/timm.layers.attention2d.MultiQueryAttention2d_attn;5]:269
+FULLY_CONNECTED,0.403,0.40924,0.307014%,99.2952%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.mobilenetv3.MobileNetV3_wrapped/torch.nn.modules.container.Sequential_blocks/torch.nn.modules.container.Sequential_3/timm.models._efficientnet_blocks.MobileAttention_14/timm.layers.attention2d.MultiQueryAttention2d_attn;2]:294
+FULLY_CONNECTED,0.302,0.30728,0.230523%,99.5257%,0,1,[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.mobilenetv3.MobileNetV3_wrapped/torch.nn.modules.container.Sequential_blocks/torch.nn.modules.container.Sequential_3/timm.models._efficientnet_blocks.MobileAttention_14/timm.layers.attention2d.MultiQueryAttention2d_attn;5]:297
+Sum (ND) Reduce,0.599,0.62936,0.47215%,99.9979%,0,1,Delegate/Sum (ND) Reduce:9
+Static Reshape (NC),0.001,0.001,0.000750206%,99.9986%,0,1,Delegate/Static Reshape (NC):11
+Static Reshape (NC),0.002,0.00184,0.00138038%,100%,0,1,Delegate/Static Reshape (NC):13
+
+============================== Top by Computation Time ==============================
+node type,first,avg_ms,%,cdf%,mem KB,times called,name
+"Convolution (NHWC, F32) IGEMM",9.489,9.53958,7.15665%,7.15665%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:1
+"Convolution (NHWC, F32) DWConv",5.565,5.60766,4.2069%,11.3636%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:5
+"Fully Connected (NC, F32) GEMM",2.668,2.65424,1.99123%,13.3548%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:4
+"Fully Connected (NC, F32) GEMM",2.358,2.37764,1.78372%,15.1385%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:9
+"Convolution (NHWC, F32) IGEMM",2.42,2.25432,1.69121%,16.8297%,0,1,Delegate/Convolution (NHWC	 F32) IGEMM:0
+"Convolution (NHWC, F32) DWConv",2.027,2.03562,1.52714%,18.3568%,0,1,Delegate/Convolution (NHWC	 F32) DWConv:26
+"Fully Connected (NC, F32) GEMM",1.737,1.718,1.28885%,19.6457%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:22
+"Fully Connected (NC, F32) GEMM",1.761,1.70665,3.84101%,23.4867%,0,3,Delegate/Fully Connected (NC	 F32) GEMM:7
+"Fully Connected (NC, F32) GEMM",1.65,1.63464,1.22632%,24.713%,0,1,Delegate/Fully Connected (NC	 F32) GEMM:39
+"Fully Connected (NC, F32) GEMM",1.579,1.62844,2.44333%,27.1564%,0,2,Delegate/Fully Connected (NC	 F32) GEMM:25
+
+Number of nodes executed: 156
+============================== Summary by node type ==============================
+node type,count,avg_ms,avg %,cdf %,mem KB,times called
+"Fully Connected (NC, F32) GEMM",33,76.221,57.2148%,57.2148%,0,80
+"Convolution (NHWC, F32) DWConv",22,25.132,18.8652%,76.08%,0,39
+FULLY_CONNECTED,16,13.581,10.1945%,86.2745%,0,16
+"Convolution (NHWC, F32) IGEMM",2,11.793,8.85234%,95.1268%,0,2
+Add (ND),17,1.963,1.47351%,96.6003%,0,35
+"Transpose (ND, X32) Transpose",23,1.913,1.43598%,98.0363%,0,48
+"Softmax (NC, F32)",1,0.941,0.706356%,98.7427%,0,8
+Sum (ND) Reduce,1,0.629,0.472155%,99.2148%,0,1
+Multiply (ND),13,0.479,0.359558%,99.5744%,0,25
+Subtract (ND),4,0.251,0.188412%,99.7628%,0,8
+Static Reshape (NC),21,0.166,0.124607%,99.8874%,0,42
+"Constant Pad (ND, X32)",3,0.15,0.112597%,100%,0,4
+
+Timings (microseconds): count=50 first=134459 curr=134978 min=131932 max=134978 avg=133297 std=683
+Memory (bytes): count=0
+156 nodes observed
+
+

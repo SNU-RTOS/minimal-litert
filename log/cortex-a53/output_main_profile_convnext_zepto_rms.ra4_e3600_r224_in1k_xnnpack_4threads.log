@@ -1,0 +1,1455 @@
+Running main profile with model ./models/convnext_zepto_rms.ra4_e3600_r224_in1k.tflite and image ./images/dog.jpg (threads: 4, delegate: xnnpack, warmup: 10, profiling: 50)
+
+====== main_cpu with profiling ====
+[INFO] Model path: ./models/convnext_zepto_rms.ra4_e3600_r224_in1k.tflite
+[INFO] Image path: ./images/dog.jpg
+[INFO] Label path: ./labels.json
+[INFO] Profiling result path: ./log/output_main_profile_convnext_zepto_rms.ra4_e3600_r224_in1k_xnnpack_4threads.csv
+[INFO] Profiling enabled: YES
+[INFO] Number of threads: 4
+[INFO] Delegate type: xnnpack
+[INFO] Warmup runs: 10
+[INFO] Profiling runs: 50
+[INFO] Model type detected: FP32
+[INFO] Initializing profiler...
+[INFO] Loading model from: ./models/convnext_zepto_rms.ra4_e3600_r224_in1k.tflite
+INFO: Initialized TensorFlow Lite runtime.
+[INFO] Model signature keys:The Model contains 1 signature key(s).They are listed below: -> Signature Key: serving_default
+Note (XNNPACK): [xnn_initialize]: initializing XNNPACK  (xnn_initialize, external/XNNPACK/src/init.c:49)
+Note (XNNPACK): l1_data_cache_bytes=16384, l1_data_cache_line_size=64, l1_data_cache_associativity=4, l1_data_cache_num_sets=64. (init_hardware_config, external/XNNPACK/src/configs/hardware-config.c:342)
+Note (XNNPACK): l2_data_cache_bytes=262144, l2_data_cache_line_size=64, l2_data_cache_associativity=16, l2_data_cache_num_sets=256. (init_hardware_config, external/XNNPACK/src/configs/hardware-config.c:361)
+Note (XNNPACK): cpuinfo_get_uarchs_count: 1. (init_hardware_config, external/XNNPACK/src/configs/hardware-config.c:378)
+Note (XNNPACK): cpu_get_uarch(0): 0x300353 (init_hardware_config, external/XNNPACK/src/configs/hardware-config.c:380)
+Note (XNNPACK): [xnn_initialize]: return  (xnn_initialize, external/XNNPACK/src/init.c:66)
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+VERBOSE: XNNPack weight cache not enabled.
+VERBOSE: Replacing 236 out of 236 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 1 partitions for subgraph 0.
+VERBOSE: SubgraphInit called with params: 0x55901f78e0, length: 0
+VERBOSE: SubgraphCreate: called
+Note (XNNPACK): [xnn_create_subgraph]: external_value_ids=335, flags=0x0 (xnn_create_subgraph, external/XNNPACK/src/subgraph.c:114)
+Note (XNNPACK): [xnn_create_subgraph:] return: (xnn_create_subgraph, external/XNNPACK/src/subgraph.c:149)
+VERBOSE: SubgraphCreate: created XNNPACK subgraph with 335 external values
+VERBOSE: SubgraphCreate: creating XNNPACK runtime with flags: 24
+Note (XNNPACK): [xnn_create_runtime_v4]: calling create_runtime_impl (xnn_create_runtime_v4, external/XNNPACK/src/runtime.c:753)
+Note (XNNPACK): [create_runtime_impl]: Creating runtime with 237 nodes and 671 values (create_runtime_impl, external/XNNPACK/src/runtime.c:551)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 0: Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): Using igemm microkernel 'xnn_f32_igemm_minmax_ukernel_1x8__asm_aarch64_neonfma_cortex_a53_prfm'. (init_f32_igemm_config, external/XNNPACK/src/configs/gemm-config.c:1104)
+Note (XNNPACK): Using igemm microkernel 'xnn_f32_igemm_minmax_ukernel_4x8__asm_aarch64_neonfma_cortex_a53_prfm'. (init_f32_igemm_config, external/XNNPACK/src/configs/gemm-config.c:1105)
+Note (XNNPACK): Using igemm microkernel 'xnn_f32_igemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm'. (init_f32_igemm_config, external/XNNPACK/src/configs/gemm-config.c:1106)
+Note (XNNPACK): Using gemm microkernel 'xnn_f32_gemm_minmax_ukernel_4x2__asm_aarch64_neonfma_ld128'. (init_f32_gemm_nr2_config_impl, external/XNNPACK/src/configs/gemm-config.c:1438)
+Note (XNNPACK): Using igemm microkernel 'xnn_f32_igemm_minmax_ukernel_4x2__asm_aarch64_neonfma_cortex_a75_prfm'. (init_f32_gemm_nr2_config_impl, external/XNNPACK/src/configs/gemm-config.c:1439)
+Note (XNNPACK): Using gemm microkernel 'xnn_f32_gemm_minmax_ukernel_4x2__asm_aarch64_neonfma_ld128'. (init_f32_gemm_nr2_config_impl, external/XNNPACK/src/configs/gemm-config.c:1438)
+Note (XNNPACK): Using igemm microkernel 'xnn_f32_igemm_minmax_ukernel_4x2__asm_aarch64_neonfma_cortex_a75_prfm'. (init_f32_gemm_nr2_config_impl, external/XNNPACK/src/configs/gemm-config.c:1439)
+Note (XNNPACK): Using dwconv microkernel 'xnn_f32_dwconv_minmax_ukernel_3p8c__neonfma'. (init_f32_dwconv_config, external/XNNPACK/src/configs/dwconv-config.c:162)
+Note (XNNPACK): Using dwconv microkernel 'xnn_f32_dwconv_minmax_ukernel_4p8c__neonfma'. (init_f32_dwconv_config, external/XNNPACK/src/configs/dwconv-config.c:167)
+Note (XNNPACK): Using dwconv microkernel 'xnn_f32_dwconv_minmax_ukernel_9p4c__asm_aarch64_neonfma_cortex_a55'. (init_f32_dwconv_config, external/XNNPACK/src/configs/dwconv-config.c:191)
+Note (XNNPACK): Using dwconv microkernel 'xnn_f32_dwconv_minmax_ukernel_25p8c__neonfma_acc2'. (init_f32_dwconv_config, external/XNNPACK/src/configs/dwconv-config.c:206)
+Note (XNNPACK): Using vmulcaddc microkernel 'xnn_f32_vmulcaddc_minmax_ukernel_c4__neonfma_2x'. (init_f32_vmulcaddc_config, external/XNNPACK/src/configs/vmulcaddc-config.c:77)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 1: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): Using reduce microkernel 'xnn_f32_rsum_ukernel__neon_u16_acc4'. (init_f32_rsum_config, external/XNNPACK/src/configs/reduce-config.c:713)
+Note (XNNPACK): Using reduce_discontiguous microkernel 'xnn_f32_rdsum_ukernel_7p7x__neon_c16'. (init_f32_rsum_config, external/XNNPACK/src/configs/reduce-config.c:714)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 2: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): Using binary microkernel 'xnn_f32_vmul_ukernel__neon_u8'. (init_f32_vmul_config, external/XNNPACK/src/configs/binary-elementwise-config.c:742)
+Note (XNNPACK): Using binary microkernel 'xnn_f32_vmulc_ukernel__neon_u8'. (init_f32_vmul_config, external/XNNPACK/src/configs/binary-elementwise-config.c:743)
+Note (XNNPACK): Using binary microkernel 'xnn_f32_vmulc_ukernel__neon_u8'. (init_f32_vmul_config, external/XNNPACK/src/configs/binary-elementwise-config.c:744)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 3: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): Using unary microkernel 'xnn_xx_copy_ukernel__scalar_memcpy'. (init_xx_copy_config, external/XNNPACK/src/configs/unary-elementwise-config.c:2134)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 4: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): Using binary microkernel 'xnn_f32_vsub_ukernel__neon_u8'. (init_f32_vsub_config, external/XNNPACK/src/configs/binary-elementwise-config.c:863)
+Note (XNNPACK): Using binary microkernel 'xnn_f32_vsubc_ukernel__neon_u8'. (init_f32_vsub_config, external/XNNPACK/src/configs/binary-elementwise-config.c:864)
+Note (XNNPACK): Using binary microkernel 'xnn_f32_vrsubc_ukernel__neon_u8'. (init_f32_vsub_config, external/XNNPACK/src/configs/binary-elementwise-config.c:865)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 5: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 6: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 7: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 8: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): Using binary microkernel 'xnn_f32_vadd_ukernel__neon_u8'. (init_f32_vadd_config, external/XNNPACK/src/configs/binary-elementwise-config.c:403)
+Note (XNNPACK): Using binary microkernel 'xnn_f32_vaddc_ukernel__neon_u8'. (init_f32_vadd_config, external/XNNPACK/src/configs/binary-elementwise-config.c:404)
+Note (XNNPACK): Using binary microkernel 'xnn_f32_vaddc_ukernel__neon_u8'. (init_f32_vadd_config, external/XNNPACK/src/configs/binary-elementwise-config.c:405)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 9: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 10: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): Using unary microkernel 'xnn_f32_vrsqrt_ukernel__scalar_sqrt_u4'. (init_f32_rsqrt_config_impl, external/XNNPACK/src/configs/unary-elementwise-config.c:1433)
+Note (XNNPACK): Using unary microkernel 'xnn_f32_vrsqrt_ukernel__scalar_sqrt_u4'. (init_f32_rsqrt_config_impl, external/XNNPACK/src/configs/unary-elementwise-config.c:1433)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 11: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 12: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 13: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 14: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 15: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 16: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 17: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 18: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 19: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 20: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 21: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 22: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 23: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 24: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 25: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 26: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [create_fully_connected_operator] Creating fully-connected operator for node 26 with 3 inputs and 1 outputs (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:247)
+Note (XNNPACK): Input tensor shape: num_dims=4 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:261)
+Note (XNNPACK):   dim[0] = 1 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[1] = 56 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[2] = 56 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[3] = 32 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK): Total input elements: 100352 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:271)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 32, output_channels: 128, input_stride: 32, output_stride: 128 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2060)
+Note (XNNPACK): Using gemm microkernel 'xnn_f32_gemm_minmax_ukernel_1x8__asm_aarch64_neonfma_cortex_a53_prfm'. (init_f32_gemm_config_impl, external/XNNPACK/src/configs/gemm-config.c:583)
+Note (XNNPACK): Using gemm microkernel 'xnn_f32_gemm_minmax_ukernel_4x8__asm_aarch64_neonfma_cortex_a53_prfm'. (init_f32_gemm_config_impl, external/XNNPACK/src/configs/gemm-config.c:584)
+Note (XNNPACK): Using gemm microkernel 'xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm'. (init_f32_gemm_config_impl, external/XNNPACK/src/configs/gemm-config.c:585)
+Note (XNNPACK): Using gemm microkernel 'xnn_f32_gemm_minmax_ukernel_1x8__asm_aarch64_neonfma_cortex_a53_prfm'. (init_f32_gemm_config_impl, external/XNNPACK/src/configs/gemm-config.c:583)
+Note (XNNPACK): Using gemm microkernel 'xnn_f32_gemm_minmax_ukernel_4x8__asm_aarch64_neonfma_cortex_a53_prfm'. (init_f32_gemm_config_impl, external/XNNPACK/src/configs/gemm-config.c:584)
+Note (XNNPACK): Using gemm microkernel 'xnn_f32_gemm_minmax_ukernel_6x8__asm_aarch64_neonfma_cortex_a53_prfm'. (init_f32_gemm_config_impl, external/XNNPACK/src/configs/gemm-config.c:585)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x558871db88, mr: 6, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2107)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 32, output_channels: 128, input_stride: 32, output_stride: 128, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 27: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): Using unary microkernel 'xnn_f32_vgelu_ukernel__neon_rational_12_10_div_u8'. (init_f32_gelu_config_impl, external/XNNPACK/src/configs/unary-elementwise-config.c:858)
+Note (XNNPACK): Using unary microkernel 'xnn_f32_vgelu_ukernel__neon_rational_12_10_div_u8'. (init_f32_gelu_config_impl, external/XNNPACK/src/configs/unary-elementwise-config.c:858)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 28: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [create_fully_connected_operator] Creating fully-connected operator for node 28 with 3 inputs and 1 outputs (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:247)
+Note (XNNPACK): Input tensor shape: num_dims=4 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:261)
+Note (XNNPACK):   dim[0] = 1 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[1] = 56 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[2] = 56 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[3] = 128 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK): Total input elements: 401408 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:271)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 128, output_channels: 32, input_stride: 128, output_stride: 32 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2060)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x558871db88, mr: 6, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2107)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 128, output_channels: 32, input_stride: 128, output_stride: 32, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 29: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 30: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 31: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 32: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 33: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 34: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 35: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 36: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 37: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 38: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 39: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 40: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 41: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 42: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 43: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [create_fully_connected_operator] Creating fully-connected operator for node 43 with 3 inputs and 1 outputs (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:247)
+Note (XNNPACK): Input tensor shape: num_dims=4 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:261)
+Note (XNNPACK):   dim[0] = 1 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[1] = 56 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[2] = 56 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[3] = 32 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK): Total input elements: 100352 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:271)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 32, output_channels: 128, input_stride: 32, output_stride: 128 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2060)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x558871db88, mr: 6, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2107)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 32, output_channels: 128, input_stride: 32, output_stride: 128, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 44: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 45: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [create_fully_connected_operator] Creating fully-connected operator for node 45 with 3 inputs and 1 outputs (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:247)
+Note (XNNPACK): Input tensor shape: num_dims=4 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:261)
+Note (XNNPACK):   dim[0] = 1 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[1] = 56 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[2] = 56 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[3] = 128 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK): Total input elements: 401408 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:271)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 128, output_channels: 32, input_stride: 128, output_stride: 32 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2060)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x558871db88, mr: 6, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2107)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 128, output_channels: 32, input_stride: 128, output_stride: 32, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 46: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 47: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 48: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 49: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 50: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 51: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 52: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 53: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 54: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 55: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 56: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 57: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 58: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 59: Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 60: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 61: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 62: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 63: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 64: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 65: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 66: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 67: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 68: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 69: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 70: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 71: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 72: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 73: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [create_fully_connected_operator] Creating fully-connected operator for node 73 with 3 inputs and 1 outputs (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:247)
+Note (XNNPACK): Input tensor shape: num_dims=4 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:261)
+Note (XNNPACK):   dim[0] = 1 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[1] = 28 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[2] = 28 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[3] = 64 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK): Total input elements: 50176 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:271)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 64, output_channels: 256, input_stride: 64, output_stride: 256 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2060)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x558871db88, mr: 6, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2107)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 64, output_channels: 256, input_stride: 64, output_stride: 256, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 74: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 75: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [create_fully_connected_operator] Creating fully-connected operator for node 75 with 3 inputs and 1 outputs (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:247)
+Note (XNNPACK): Input tensor shape: num_dims=4 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:261)
+Note (XNNPACK):   dim[0] = 1 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[1] = 28 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[2] = 28 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[3] = 256 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK): Total input elements: 200704 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:271)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 256, output_channels: 64, input_stride: 256, output_stride: 64 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2060)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x558871db88, mr: 6, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2107)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 256, output_channels: 64, input_stride: 256, output_stride: 64, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 76: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 77: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 78: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 79: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 80: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 81: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 82: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 83: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 84: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 85: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 86: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 87: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 88: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 89: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 90: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [create_fully_connected_operator] Creating fully-connected operator for node 90 with 3 inputs and 1 outputs (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:247)
+Note (XNNPACK): Input tensor shape: num_dims=4 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:261)
+Note (XNNPACK):   dim[0] = 1 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[1] = 28 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[2] = 28 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[3] = 64 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK): Total input elements: 50176 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:271)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 64, output_channels: 256, input_stride: 64, output_stride: 256 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2060)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x558871db88, mr: 6, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2107)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 64, output_channels: 256, input_stride: 64, output_stride: 256, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 91: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 92: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [create_fully_connected_operator] Creating fully-connected operator for node 92 with 3 inputs and 1 outputs (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:247)
+Note (XNNPACK): Input tensor shape: num_dims=4 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:261)
+Note (XNNPACK):   dim[0] = 1 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[1] = 28 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[2] = 28 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[3] = 256 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK): Total input elements: 200704 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:271)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 256, output_channels: 64, input_stride: 256, output_stride: 64 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2060)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x558871db88, mr: 6, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2107)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 256, output_channels: 64, input_stride: 256, output_stride: 64, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 93: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 94: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 95: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 96: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 97: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 98: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 99: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 100: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 101: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 102: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 103: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 104: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 105: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 106: Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 107: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 108: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 109: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 110: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 111: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 112: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 113: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 114: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 115: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 116: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 117: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 118: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 119: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 120: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [create_fully_connected_operator] Creating fully-connected operator for node 120 with 3 inputs and 1 outputs (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:247)
+Note (XNNPACK): Input tensor shape: num_dims=4 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:261)
+Note (XNNPACK):   dim[0] = 1 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[1] = 14 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[2] = 14 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[3] = 128 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK): Total input elements: 25088 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:271)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 128, output_channels: 512, input_stride: 128, output_stride: 512 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2060)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x558871db88, mr: 6, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2107)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 128, output_channels: 512, input_stride: 128, output_stride: 512, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 121: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 122: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [create_fully_connected_operator] Creating fully-connected operator for node 122 with 3 inputs and 1 outputs (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:247)
+Note (XNNPACK): Input tensor shape: num_dims=4 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:261)
+Note (XNNPACK):   dim[0] = 1 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[1] = 14 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[2] = 14 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[3] = 512 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK): Total input elements: 100352 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:271)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 512, output_channels: 128, input_stride: 512, output_stride: 128 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2060)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x558871db88, mr: 6, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2107)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 512, output_channels: 128, input_stride: 512, output_stride: 128, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 123: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 124: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 125: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 126: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 127: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 128: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 129: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 130: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 131: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 132: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 133: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 134: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 135: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 136: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 137: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [create_fully_connected_operator] Creating fully-connected operator for node 137 with 3 inputs and 1 outputs (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:247)
+Note (XNNPACK): Input tensor shape: num_dims=4 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:261)
+Note (XNNPACK):   dim[0] = 1 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[1] = 14 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[2] = 14 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[3] = 128 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK): Total input elements: 25088 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:271)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 128, output_channels: 512, input_stride: 128, output_stride: 512 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2060)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x558871db88, mr: 6, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2107)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 128, output_channels: 512, input_stride: 128, output_stride: 512, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 138: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 139: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [create_fully_connected_operator] Creating fully-connected operator for node 139 with 3 inputs and 1 outputs (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:247)
+Note (XNNPACK): Input tensor shape: num_dims=4 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:261)
+Note (XNNPACK):   dim[0] = 1 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[1] = 14 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[2] = 14 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[3] = 512 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK): Total input elements: 100352 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:271)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 512, output_channels: 128, input_stride: 512, output_stride: 128 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2060)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x558871db88, mr: 6, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2107)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 512, output_channels: 128, input_stride: 512, output_stride: 128, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 140: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 141: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 142: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 143: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 144: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 145: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 146: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 147: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 148: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 149: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 150: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 151: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 152: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 153: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 154: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [create_fully_connected_operator] Creating fully-connected operator for node 154 with 3 inputs and 1 outputs (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:247)
+Note (XNNPACK): Input tensor shape: num_dims=4 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:261)
+Note (XNNPACK):   dim[0] = 1 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[1] = 14 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[2] = 14 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[3] = 128 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK): Total input elements: 25088 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:271)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 128, output_channels: 512, input_stride: 128, output_stride: 512 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2060)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x558871db88, mr: 6, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2107)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 128, output_channels: 512, input_stride: 128, output_stride: 512, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 155: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 156: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [create_fully_connected_operator] Creating fully-connected operator for node 156 with 3 inputs and 1 outputs (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:247)
+Note (XNNPACK): Input tensor shape: num_dims=4 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:261)
+Note (XNNPACK):   dim[0] = 1 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[1] = 14 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[2] = 14 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[3] = 512 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK): Total input elements: 100352 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:271)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 512, output_channels: 128, input_stride: 512, output_stride: 128 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2060)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x558871db88, mr: 6, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2107)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 512, output_channels: 128, input_stride: 512, output_stride: 128, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 157: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 158: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 159: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 160: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 161: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 162: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 163: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 164: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 165: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 166: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 167: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 168: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 169: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 170: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 171: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [create_fully_connected_operator] Creating fully-connected operator for node 171 with 3 inputs and 1 outputs (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:247)
+Note (XNNPACK): Input tensor shape: num_dims=4 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:261)
+Note (XNNPACK):   dim[0] = 1 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[1] = 14 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[2] = 14 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[3] = 128 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK): Total input elements: 25088 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:271)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 128, output_channels: 512, input_stride: 128, output_stride: 512 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2060)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x558871db88, mr: 6, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2107)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 128, output_channels: 512, input_stride: 128, output_stride: 512, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 172: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 173: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [create_fully_connected_operator] Creating fully-connected operator for node 173 with 3 inputs and 1 outputs (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:247)
+Note (XNNPACK): Input tensor shape: num_dims=4 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:261)
+Note (XNNPACK):   dim[0] = 1 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[1] = 14 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[2] = 14 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[3] = 512 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK): Total input elements: 100352 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:271)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 512, output_channels: 128, input_stride: 512, output_stride: 128 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2060)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x558871db88, mr: 6, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2107)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 512, output_channels: 128, input_stride: 512, output_stride: 128, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 174: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 175: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 176: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 177: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 178: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 179: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 180: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 181: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 182: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 183: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 184: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 185: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 186: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 187: Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 188: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 189: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 190: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 191: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 192: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 193: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 194: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 195: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 196: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 197: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 198: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 199: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 200: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 201: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [create_fully_connected_operator] Creating fully-connected operator for node 201 with 3 inputs and 1 outputs (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:247)
+Note (XNNPACK): Input tensor shape: num_dims=4 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:261)
+Note (XNNPACK):   dim[0] = 1 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[1] = 7 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[2] = 7 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[3] = 256 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK): Total input elements: 12544 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:271)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 256, output_channels: 1024, input_stride: 256, output_stride: 1024 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2060)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x558871db88, mr: 6, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2107)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 256, output_channels: 1024, input_stride: 256, output_stride: 1024, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 202: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 203: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [create_fully_connected_operator] Creating fully-connected operator for node 203 with 3 inputs and 1 outputs (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:247)
+Note (XNNPACK): Input tensor shape: num_dims=4 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:261)
+Note (XNNPACK):   dim[0] = 1 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[1] = 7 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[2] = 7 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[3] = 1024 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK): Total input elements: 50176 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:271)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 1024, output_channels: 256, input_stride: 1024, output_stride: 256 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2060)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x558871db88, mr: 6, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2107)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 1024, output_channels: 256, input_stride: 1024, output_stride: 256, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 204: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 205: Depthwise Convolution 2D (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 206: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 207: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 208: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 209: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 210: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 211: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 212: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 213: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 214: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 215: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 216: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 217: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 218: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [create_fully_connected_operator] Creating fully-connected operator for node 218 with 3 inputs and 1 outputs (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:247)
+Note (XNNPACK): Input tensor shape: num_dims=4 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:261)
+Note (XNNPACK):   dim[0] = 1 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[1] = 7 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[2] = 7 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[3] = 256 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK): Total input elements: 12544 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:271)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 256, output_channels: 1024, input_stride: 256, output_stride: 1024 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2060)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x558871db88, mr: 6, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2107)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 256, output_channels: 1024, input_stride: 256, output_stride: 1024, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 219: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 220: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [create_fully_connected_operator] Creating fully-connected operator for node 220 with 3 inputs and 1 outputs (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:247)
+Note (XNNPACK): Input tensor shape: num_dims=4 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:261)
+Note (XNNPACK):   dim[0] = 1 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[1] = 7 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[2] = 7 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[3] = 1024 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK): Total input elements: 50176 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:271)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 1024, output_channels: 256, input_stride: 1024, output_stride: 256 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2060)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x558871db88, mr: 6, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2107)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 1024, output_channels: 256, input_stride: 1024, output_stride: 256, flags: 0x0 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 221: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 222: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 223: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 224: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 225: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 226: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 227: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 228: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 229: Static Sum (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 230: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 231: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 232: Unary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 233: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 234: Binary Elementwise (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 235: Static Reshape (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [creatre_runtime_impl]: creating node 236: Fully Connected (create_runtime_impl, external/XNNPACK/src/runtime.c:688)
+Note (XNNPACK): [create_fully_connected_operator] Creating fully-connected operator for node 236 with 3 inputs and 1 outputs (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:247)
+Note (XNNPACK): Input tensor shape: num_dims=2 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:261)
+Note (XNNPACK):   dim[0] = 0 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK):   dim[1] = 256 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:263)
+Note (XNNPACK): Total input elements: 0 (create_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:271)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32] input_channels: 256, output_channels: 1000, input_stride: 256, output_stride: 1000 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2060)
+Note (XNNPACK): [xnn_create_fully_connected_nc_f32]  selected gemm_config: 0x558871db88, mr: 6, nr: 8 (xnn_create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:2107)
+Note (XNNPACK): [create_fully_connected_nc_f32] input_channels: 256, output_channels: 1000, input_stride: 256, output_stride: 1000, flags: 0x10 (create_fully_connected_nc_f32, external/XNNPACK/src/operators/fully-connected-nc.c:1548)
+Note (XNNPACK): [create_fully_connected_nc]: call (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:58)
+Note (XNNPACK): [create_fully_connected_nc] created Fully Connected (NC, F32) operator (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:334)
+Note (XNNPACK): 
+
+ (create_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:337)
+Note (XNNPACK): [create_runtime_impl]:  created runtime 0x55901f8940 with 237 nodes and 671 values (create_runtime_impl, external/XNNPACK/src/runtime.c:739)
+VERBOSE: SubgraphCreate: created XNNPACK runtime 
+[INFO] XNNPACK delegate applied successfully (threads: 4)
+Note (XNNPACK): reshaping operator 0 (Convolution (NHWC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 1 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 2 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 3 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 4 (Subtract (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 5 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 6 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 7 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 8 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 9 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 10 (Reciprocal Square Root (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 11 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 12 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 13 (Convolution (NHWC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 14 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 15 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 16 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 17 (Subtract (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 18 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 19 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 20 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 21 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 22 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 23 (Reciprocal Square Root (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 24 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 25 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 26 (Fully Connected (NC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): [reshape_fully_connected_operator] Reshaping fully-connected operator for node 26 with batch size 3136, input channels 32, output channels 128 (reshape_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:817)
+Note (XNNPACK): [reshape_fully_connected_nc]: started (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2666)
+Note (XNNPACK): [reshape-fully_connected_nc]: Applied plan op=Fully Connected (NC, F32), batch=3136, IC=32, OC=128
+ | mr=6, mr_packed=6, nr=8, kr=1, sr=1, kc=32
+ | nc_tile=64, range=[128,3136], tile=[64,6], threads=4
+ | inline_lhs_packing=false, packed_lh=false, dynamic_quantization=false, hmp=false
+ | strides: a=128, w=132, cm=512, cn=32, k_scaled=128
+ | log2: input=2, filter=2, output=2, filter_is_nibble=false
+ | workspace=0
+ (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2977)
+Note (XNNPACK): reshaping operator 27 (GELU (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 28 (Fully Connected (NC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): [reshape_fully_connected_operator] Reshaping fully-connected operator for node 28 with batch size 3136, input channels 128, output channels 32 (reshape_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:817)
+Note (XNNPACK): [reshape_fully_connected_nc]: started (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2666)
+Note (XNNPACK): [reshape-fully_connected_nc]: Applied plan op=Fully Connected (NC, F32), batch=3136, IC=128, OC=32
+ | mr=6, mr_packed=6, nr=8, kr=1, sr=1, kc=128
+ | nc_tile=16, range=[32,3136], tile=[16,6], threads=4
+ | inline_lhs_packing=false, packed_lh=false, dynamic_quantization=false, hmp=false
+ | strides: a=512, w=516, cm=128, cn=32, k_scaled=512
+ | log2: input=2, filter=2, output=2, filter_is_nibble=false
+ | workspace=0
+ (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2977)
+Note (XNNPACK): reshaping operator 29 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 30 (Convolution (NHWC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 31 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 32 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 33 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 34 (Subtract (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 35 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 36 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 37 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 38 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 39 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 40 (Reciprocal Square Root (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 41 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 42 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 43 (Fully Connected (NC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): [reshape_fully_connected_operator] Reshaping fully-connected operator for node 43 with batch size 3136, input channels 32, output channels 128 (reshape_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:817)
+Note (XNNPACK): [reshape_fully_connected_nc]: started (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2666)
+Note (XNNPACK): [reshape-fully_connected_nc]: Applied plan op=Fully Connected (NC, F32), batch=3136, IC=32, OC=128
+ | mr=6, mr_packed=6, nr=8, kr=1, sr=1, kc=32
+ | nc_tile=64, range=[128,3136], tile=[64,6], threads=4
+ | inline_lhs_packing=false, packed_lh=false, dynamic_quantization=false, hmp=false
+ | strides: a=128, w=132, cm=512, cn=32, k_scaled=128
+ | log2: input=2, filter=2, output=2, filter_is_nibble=false
+ | workspace=0
+ (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2977)
+Note (XNNPACK): reshaping operator 44 (GELU (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 45 (Fully Connected (NC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): [reshape_fully_connected_operator] Reshaping fully-connected operator for node 45 with batch size 3136, input channels 128, output channels 32 (reshape_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:817)
+Note (XNNPACK): [reshape_fully_connected_nc]: started (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2666)
+Note (XNNPACK): [reshape-fully_connected_nc]: Applied plan op=Fully Connected (NC, F32), batch=3136, IC=128, OC=32
+ | mr=6, mr_packed=6, nr=8, kr=1, sr=1, kc=128
+ | nc_tile=16, range=[32,3136], tile=[16,6], threads=4
+ | inline_lhs_packing=false, packed_lh=false, dynamic_quantization=false, hmp=false
+ | strides: a=512, w=516, cm=128, cn=32, k_scaled=512
+ | log2: input=2, filter=2, output=2, filter_is_nibble=false
+ | workspace=0
+ (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2977)
+Note (XNNPACK): reshaping operator 46 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 47 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 48 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 49 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 50 (Subtract (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 51 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 52 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 53 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 54 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 55 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 56 (Reciprocal Square Root (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 57 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 58 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 59 (Convolution (NHWC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 60 (Convolution (NHWC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 61 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 62 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 63 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 64 (Subtract (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 65 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 66 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 67 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 68 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 69 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 70 (Reciprocal Square Root (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 71 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 72 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 73 (Fully Connected (NC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): [reshape_fully_connected_operator] Reshaping fully-connected operator for node 73 with batch size 784, input channels 64, output channels 256 (reshape_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:817)
+Note (XNNPACK): [reshape_fully_connected_nc]: started (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2666)
+Note (XNNPACK): [reshape-fully_connected_nc]: Applied plan op=Fully Connected (NC, F32), batch=784, IC=64, OC=256
+ | mr=6, mr_packed=6, nr=8, kr=1, sr=1, kc=64
+ | nc_tile=48, range=[256,784], tile=[48,6], threads=4
+ | inline_lhs_packing=false, packed_lh=false, dynamic_quantization=false, hmp=false
+ | strides: a=256, w=260, cm=1024, cn=32, k_scaled=256
+ | log2: input=2, filter=2, output=2, filter_is_nibble=false
+ | workspace=0
+ (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2977)
+Note (XNNPACK): reshaping operator 74 (GELU (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 75 (Fully Connected (NC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): [reshape_fully_connected_operator] Reshaping fully-connected operator for node 75 with batch size 784, input channels 256, output channels 64 (reshape_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:817)
+Note (XNNPACK): [reshape_fully_connected_nc]: started (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2666)
+Note (XNNPACK): [reshape-fully_connected_nc]: Applied plan op=Fully Connected (NC, F32), batch=784, IC=256, OC=64
+ | mr=6, mr_packed=6, nr=8, kr=1, sr=1, kc=256
+ | nc_tile=8, range=[64,784], tile=[8,6], threads=4
+ | inline_lhs_packing=false, packed_lh=false, dynamic_quantization=false, hmp=false
+ | strides: a=1024, w=1028, cm=256, cn=32, k_scaled=1024
+ | log2: input=2, filter=2, output=2, filter_is_nibble=false
+ | workspace=0
+ (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2977)
+Note (XNNPACK): reshaping operator 76 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 77 (Convolution (NHWC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 78 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 79 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 80 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 81 (Subtract (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 82 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 83 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 84 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 85 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 86 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 87 (Reciprocal Square Root (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 88 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 89 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 90 (Fully Connected (NC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): [reshape_fully_connected_operator] Reshaping fully-connected operator for node 90 with batch size 784, input channels 64, output channels 256 (reshape_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:817)
+Note (XNNPACK): [reshape_fully_connected_nc]: started (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2666)
+Note (XNNPACK): [reshape-fully_connected_nc]: Applied plan op=Fully Connected (NC, F32), batch=784, IC=64, OC=256
+ | mr=6, mr_packed=6, nr=8, kr=1, sr=1, kc=64
+ | nc_tile=48, range=[256,784], tile=[48,6], threads=4
+ | inline_lhs_packing=false, packed_lh=false, dynamic_quantization=false, hmp=false
+ | strides: a=256, w=260, cm=1024, cn=32, k_scaled=256
+ | log2: input=2, filter=2, output=2, filter_is_nibble=false
+ | workspace=0
+ (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2977)
+Note (XNNPACK): reshaping operator 91 (GELU (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 92 (Fully Connected (NC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): [reshape_fully_connected_operator] Reshaping fully-connected operator for node 92 with batch size 784, input channels 256, output channels 64 (reshape_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:817)
+Note (XNNPACK): [reshape_fully_connected_nc]: started (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2666)
+Note (XNNPACK): [reshape-fully_connected_nc]: Applied plan op=Fully Connected (NC, F32), batch=784, IC=256, OC=64
+ | mr=6, mr_packed=6, nr=8, kr=1, sr=1, kc=256
+ | nc_tile=8, range=[64,784], tile=[8,6], threads=4
+ | inline_lhs_packing=false, packed_lh=false, dynamic_quantization=false, hmp=false
+ | strides: a=1024, w=1028, cm=256, cn=32, k_scaled=1024
+ | log2: input=2, filter=2, output=2, filter_is_nibble=false
+ | workspace=0
+ (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2977)
+Note (XNNPACK): reshaping operator 93 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 94 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 95 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 96 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 97 (Subtract (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 98 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 99 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 100 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 101 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 102 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 103 (Reciprocal Square Root (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 104 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 105 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 106 (Convolution (NHWC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 107 (Convolution (NHWC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 108 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 109 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 110 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 111 (Subtract (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 112 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 113 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 114 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 115 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 116 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 117 (Reciprocal Square Root (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 118 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 119 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 120 (Fully Connected (NC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): [reshape_fully_connected_operator] Reshaping fully-connected operator for node 120 with batch size 196, input channels 128, output channels 512 (reshape_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:817)
+Note (XNNPACK): [reshape_fully_connected_nc]: started (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2666)
+Note (XNNPACK): [reshape-fully_connected_nc]: Applied plan op=Fully Connected (NC, F32), batch=196, IC=128, OC=512
+ | mr=6, mr_packed=6, nr=8, kr=1, sr=1, kc=128
+ | nc_tile=24, range=[512,196], tile=[24,6], threads=4
+ | inline_lhs_packing=false, packed_lh=false, dynamic_quantization=false, hmp=false
+ | strides: a=512, w=516, cm=2048, cn=32, k_scaled=512
+ | log2: input=2, filter=2, output=2, filter_is_nibble=false
+ | workspace=0
+ (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2977)
+Note (XNNPACK): reshaping operator 121 (GELU (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 122 (Fully Connected (NC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): [reshape_fully_connected_operator] Reshaping fully-connected operator for node 122 with batch size 196, input channels 512, output channels 128 (reshape_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:817)
+Note (XNNPACK): [reshape_fully_connected_nc]: started (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2666)
+Note (XNNPACK): [reshape-fully_connected_nc]: Applied plan op=Fully Connected (NC, F32), batch=196, IC=512, OC=128
+ | mr=6, mr_packed=6, nr=8, kr=1, sr=1, kc=512
+ | nc_tile=64, range=[128,196], tile=[64,6], threads=4
+ | inline_lhs_packing=false, packed_lh=false, dynamic_quantization=false, hmp=false
+ | strides: a=2048, w=2052, cm=512, cn=32, k_scaled=2048
+ | log2: input=2, filter=2, output=2, filter_is_nibble=false
+ | workspace=0
+ (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2977)
+Note (XNNPACK): reshaping operator 123 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 124 (Convolution (NHWC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 125 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 126 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 127 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 128 (Subtract (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 129 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 130 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 131 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 132 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 133 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 134 (Reciprocal Square Root (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 135 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 136 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 137 (Fully Connected (NC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): [reshape_fully_connected_operator] Reshaping fully-connected operator for node 137 with batch size 196, input channels 128, output channels 512 (reshape_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:817)
+Note (XNNPACK): [reshape_fully_connected_nc]: started (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2666)
+Note (XNNPACK): [reshape-fully_connected_nc]: Applied plan op=Fully Connected (NC, F32), batch=196, IC=128, OC=512
+ | mr=6, mr_packed=6, nr=8, kr=1, sr=1, kc=128
+ | nc_tile=24, range=[512,196], tile=[24,6], threads=4
+ | inline_lhs_packing=false, packed_lh=false, dynamic_quantization=false, hmp=false
+ | strides: a=512, w=516, cm=2048, cn=32, k_scaled=512
+ | log2: input=2, filter=2, output=2, filter_is_nibble=false
+ | workspace=0
+ (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2977)
+Note (XNNPACK): reshaping operator 138 (GELU (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 139 (Fully Connected (NC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): [reshape_fully_connected_operator] Reshaping fully-connected operator for node 139 with batch size 196, input channels 512, output channels 128 (reshape_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:817)
+Note (XNNPACK): [reshape_fully_connected_nc]: started (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2666)
+Note (XNNPACK): [reshape-fully_connected_nc]: Applied plan op=Fully Connected (NC, F32), batch=196, IC=512, OC=128
+ | mr=6, mr_packed=6, nr=8, kr=1, sr=1, kc=512
+ | nc_tile=64, range=[128,196], tile=[64,6], threads=4
+ | inline_lhs_packing=false, packed_lh=false, dynamic_quantization=false, hmp=false
+ | strides: a=2048, w=2052, cm=512, cn=32, k_scaled=2048
+ | log2: input=2, filter=2, output=2, filter_is_nibble=false
+ | workspace=0
+ (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2977)
+Note (XNNPACK): reshaping operator 140 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 141 (Convolution (NHWC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 142 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 143 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 144 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 145 (Subtract (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 146 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 147 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 148 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 149 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 150 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 151 (Reciprocal Square Root (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 152 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 153 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 154 (Fully Connected (NC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): [reshape_fully_connected_operator] Reshaping fully-connected operator for node 154 with batch size 196, input channels 128, output channels 512 (reshape_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:817)
+Note (XNNPACK): [reshape_fully_connected_nc]: started (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2666)
+Note (XNNPACK): [reshape-fully_connected_nc]: Applied plan op=Fully Connected (NC, F32), batch=196, IC=128, OC=512
+ | mr=6, mr_packed=6, nr=8, kr=1, sr=1, kc=128
+ | nc_tile=24, range=[512,196], tile=[24,6], threads=4
+ | inline_lhs_packing=false, packed_lh=false, dynamic_quantization=false, hmp=false
+ | strides: a=512, w=516, cm=2048, cn=32, k_scaled=512
+ | log2: input=2, filter=2, output=2, filter_is_nibble=false
+ | workspace=0
+ (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2977)
+Note (XNNPACK): reshaping operator 155 (GELU (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 156 (Fully Connected (NC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): [reshape_fully_connected_operator] Reshaping fully-connected operator for node 156 with batch size 196, input channels 512, output channels 128 (reshape_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:817)
+Note (XNNPACK): [reshape_fully_connected_nc]: started (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2666)
+Note (XNNPACK): [reshape-fully_connected_nc]: Applied plan op=Fully Connected (NC, F32), batch=196, IC=512, OC=128
+ | mr=6, mr_packed=6, nr=8, kr=1, sr=1, kc=512
+ | nc_tile=64, range=[128,196], tile=[64,6], threads=4
+ | inline_lhs_packing=false, packed_lh=false, dynamic_quantization=false, hmp=false
+ | strides: a=2048, w=2052, cm=512, cn=32, k_scaled=2048
+ | log2: input=2, filter=2, output=2, filter_is_nibble=false
+ | workspace=0
+ (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2977)
+Note (XNNPACK): reshaping operator 157 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 158 (Convolution (NHWC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 159 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 160 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 161 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 162 (Subtract (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 163 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 164 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 165 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 166 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 167 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 168 (Reciprocal Square Root (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 169 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 170 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 171 (Fully Connected (NC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): [reshape_fully_connected_operator] Reshaping fully-connected operator for node 171 with batch size 196, input channels 128, output channels 512 (reshape_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:817)
+Note (XNNPACK): [reshape_fully_connected_nc]: started (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2666)
+Note (XNNPACK): [reshape-fully_connected_nc]: Applied plan op=Fully Connected (NC, F32), batch=196, IC=128, OC=512
+ | mr=6, mr_packed=6, nr=8, kr=1, sr=1, kc=128
+ | nc_tile=24, range=[512,196], tile=[24,6], threads=4
+ | inline_lhs_packing=false, packed_lh=false, dynamic_quantization=false, hmp=false
+ | strides: a=512, w=516, cm=2048, cn=32, k_scaled=512
+ | log2: input=2, filter=2, output=2, filter_is_nibble=false
+ | workspace=0
+ (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2977)
+Note (XNNPACK): reshaping operator 172 (GELU (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 173 (Fully Connected (NC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): [reshape_fully_connected_operator] Reshaping fully-connected operator for node 173 with batch size 196, input channels 512, output channels 128 (reshape_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:817)
+Note (XNNPACK): [reshape_fully_connected_nc]: started (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2666)
+Note (XNNPACK): [reshape-fully_connected_nc]: Applied plan op=Fully Connected (NC, F32), batch=196, IC=512, OC=128
+ | mr=6, mr_packed=6, nr=8, kr=1, sr=1, kc=512
+ | nc_tile=64, range=[128,196], tile=[64,6], threads=4
+ | inline_lhs_packing=false, packed_lh=false, dynamic_quantization=false, hmp=false
+ | strides: a=2048, w=2052, cm=512, cn=32, k_scaled=2048
+ | log2: input=2, filter=2, output=2, filter_is_nibble=false
+ | workspace=0
+ (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2977)
+Note (XNNPACK): reshaping operator 174 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 175 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 176 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 177 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 178 (Subtract (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 179 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 180 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 181 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 182 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 183 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 184 (Reciprocal Square Root (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 185 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 186 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 187 (Convolution (NHWC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 188 (Convolution (NHWC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 189 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 190 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 191 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 192 (Subtract (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 193 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 194 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 195 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 196 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 197 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 198 (Reciprocal Square Root (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 199 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 200 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 201 (Fully Connected (NC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): [reshape_fully_connected_operator] Reshaping fully-connected operator for node 201 with batch size 49, input channels 256, output channels 1024 (reshape_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:817)
+Note (XNNPACK): [reshape_fully_connected_nc]: started (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2666)
+Note (XNNPACK): [reshape-fully_connected_nc]: Applied plan op=Fully Connected (NC, F32), batch=49, IC=256, OC=1024
+ | mr=6, mr_packed=6, nr=8, kr=1, sr=1, kc=256
+ | nc_tile=8, range=[1024,49], tile=[8,6], threads=4
+ | inline_lhs_packing=false, packed_lh=false, dynamic_quantization=false, hmp=false
+ | strides: a=1024, w=1028, cm=4096, cn=32, k_scaled=1024
+ | log2: input=2, filter=2, output=2, filter_is_nibble=false
+ | workspace=0
+ (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2977)
+Note (XNNPACK): reshaping operator 202 (GELU (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 203 (Fully Connected (NC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): [reshape_fully_connected_operator] Reshaping fully-connected operator for node 203 with batch size 49, input channels 1024, output channels 256 (reshape_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:817)
+Note (XNNPACK): [reshape_fully_connected_nc]: started (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2666)
+Note (XNNPACK): [reshape-fully_connected_nc]: Applied plan op=Fully Connected (NC, F32), batch=49, IC=1024, OC=256
+ | mr=6, mr_packed=6, nr=8, kr=1, sr=1, kc=1024
+ | nc_tile=56, range=[256,49], tile=[56,6], threads=4
+ | inline_lhs_packing=false, packed_lh=false, dynamic_quantization=false, hmp=false
+ | strides: a=4096, w=4100, cm=1024, cn=32, k_scaled=4096
+ | log2: input=2, filter=2, output=2, filter_is_nibble=false
+ | workspace=0
+ (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2977)
+Note (XNNPACK): reshaping operator 204 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 205 (Convolution (NHWC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 206 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 207 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 208 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 209 (Subtract (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 210 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 211 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 212 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 213 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 214 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 215 (Reciprocal Square Root (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 216 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 217 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 218 (Fully Connected (NC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): [reshape_fully_connected_operator] Reshaping fully-connected operator for node 218 with batch size 49, input channels 256, output channels 1024 (reshape_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:817)
+Note (XNNPACK): [reshape_fully_connected_nc]: started (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2666)
+Note (XNNPACK): [reshape-fully_connected_nc]: Applied plan op=Fully Connected (NC, F32), batch=49, IC=256, OC=1024
+ | mr=6, mr_packed=6, nr=8, kr=1, sr=1, kc=256
+ | nc_tile=8, range=[1024,49], tile=[8,6], threads=4
+ | inline_lhs_packing=false, packed_lh=false, dynamic_quantization=false, hmp=false
+ | strides: a=1024, w=1028, cm=4096, cn=32, k_scaled=1024
+ | log2: input=2, filter=2, output=2, filter_is_nibble=false
+ | workspace=0
+ (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2977)
+Note (XNNPACK): reshaping operator 219 (GELU (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 220 (Fully Connected (NC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): [reshape_fully_connected_operator] Reshaping fully-connected operator for node 220 with batch size 49, input channels 1024, output channels 256 (reshape_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:817)
+Note (XNNPACK): [reshape_fully_connected_nc]: started (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2666)
+Note (XNNPACK): [reshape-fully_connected_nc]: Applied plan op=Fully Connected (NC, F32), batch=49, IC=1024, OC=256
+ | mr=6, mr_packed=6, nr=8, kr=1, sr=1, kc=1024
+ | nc_tile=56, range=[256,49], tile=[56,6], threads=4
+ | inline_lhs_packing=false, packed_lh=false, dynamic_quantization=false, hmp=false
+ | strides: a=4096, w=4100, cm=1024, cn=32, k_scaled=4096
+ | log2: input=2, filter=2, output=2, filter_is_nibble=false
+ | workspace=0
+ (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2977)
+Note (XNNPACK): reshaping operator 221 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 222 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 223 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 224 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 225 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 226 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 227 (Subtract (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 228 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 229 (Sum (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 230 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 231 (Add (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 232 (Reciprocal Square Root (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 233 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 234 (Multiply (ND)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 235 (Static Reshape (NC)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): reshaping operator 236 (Fully Connected (NC, F32)) (xnn_reshape_runtime, external/XNNPACK/src/runtime.c:846)
+Note (XNNPACK): [reshape_fully_connected_operator] Reshaping fully-connected operator for node 236 with batch size 1, input channels 256, output channels 1000 (reshape_fully_connected_operator, external/XNNPACK/src/subgraph/fully-connected.c:817)
+Note (XNNPACK): [reshape_fully_connected_nc]: started (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2666)
+Note (XNNPACK): [reshape-fully_connected_nc]: Applied plan op=Fully Connected (NC, F32), batch=1, IC=256, OC=1000
+ | mr=1, mr_packed=1, nr=8, kr=1, sr=1, kc=256
+ | nc_tile=48, range=[1000,1], tile=[48,1], threads=4
+ | inline_lhs_packing=false, packed_lh=false, dynamic_quantization=false, hmp=false
+ | strides: a=1024, w=1028, cm=4000, cn=32, k_scaled=1024
+ | log2: input=2, filter=2, output=2, filter_is_nibble=false
+ | workspace=0
+ (reshape_fully_connected_nc, external/XNNPACK/src/operators/fully-connected-nc.c:2977)
+
+[INFO] Model Summary 
+📥 Input tensor count  : 1
+📤 Output tensor count : 1
+📦 Total tensor count  : 342
+🔧 Node (op) count     : 237
+🧩 Delegate applied    : Yes ✅
+
+[INFO] Shape of input_tensor: [1, 224, 224, 3]
+[INFO] Processing FP32 input path
+
+[INFO] Running 10 warm-up iterations...
+Note (XNNPACK): setup_runtime: Setting up runtime with 237 operators (setup_runtime, external/XNNPACK/src/runtime.c:902)
+[INFO] warm-up completed
+
+[INFO] Running 50 run and profile iterations...
+INFO: Warning: Doubling internal profiling buffer.
+[INFO] run and profile completed
+
+[INFO] Shape of output_tensor: [1, 1000]
+[INFO] Processing FP32 output path
+
+[INFO] Top 5 predictions:
+- Class 207 (golden_retriever): 0.729069
+- Class 208 (Labrador_retriever): 0.0855712
+- Class 257 (Great_Pyrenees): 0.0509603
+- Class 222 (kuvasz): 0.0149906
+- Class 244 (Tibetan_mastiff): 0.00670864
+
+[INFO] Elapsed time summary
+- Load Model took 0.208 ms (208 us)
+- Build Interpreter took 4.585 ms (4585 us)
+- Apply Delegate took 49.749 ms (49749 us)
+- Allocate Tensor took 24.873 ms (24873 us)
+- Load Input Image took 43.883 ms (43883 us)
+- Preprocessing took 11.282 ms (11282 us)
+- Inference_0 took 93.616 ms (93616 us)
+- Inference_1 took 94.019 ms (94019 us)
+- Inference_2 took 95.261 ms (95261 us)
+- Inference_3 took 94.722 ms (94722 us)
+- Inference_4 took 93.788 ms (93788 us)
+- Inference_5 took 93.878 ms (93878 us)
+- Inference_6 took 94.132 ms (94132 us)
+- Inference_7 took 95.616 ms (95616 us)
+- Inference_8 took 94.775 ms (94775 us)
+- Inference_9 took 97.195 ms (97195 us)
+- Inference_10 took 95.604 ms (95604 us)
+- Inference_11 took 94.688 ms (94688 us)
+- Inference_12 took 95.063 ms (95063 us)
+- Inference_13 took 94.251 ms (94251 us)
+- Inference_14 took 93.653 ms (93653 us)
+- Inference_15 took 93.265 ms (93265 us)
+- Inference_16 took 94.826 ms (94826 us)
+- Inference_17 took 98.126 ms (98126 us)
+- Inference_18 took 98.773 ms (98773 us)
+- Inference_19 took 112.306 ms (112306 us)
+- Inference_20 took 97.994 ms (97994 us)
+- Inference_21 took 96.518 ms (96518 us)
+- Inference_22 took 104.436 ms (104436 us)
+- Inference_23 took 96.77 ms (96770 us)
+- Inference_24 took 98.94 ms (98940 us)
+- Inference_25 took 100.58 ms (100580 us)
+- Inference_26 took 100.978 ms (100978 us)
+- Inference_27 took 100.191 ms (100191 us)
+- Inference_28 took 99.551 ms (99551 us)
+- Inference_29 took 96.797 ms (96797 us)
+- Inference_30 took 98.694 ms (98694 us)
+- Inference_31 took 100.721 ms (100721 us)
+- Inference_32 took 97.628 ms (97628 us)
+- Inference_33 took 96.717 ms (96717 us)
+- Inference_34 took 99.049 ms (99049 us)
+- Inference_35 took 118.423 ms (118423 us)
+- Inference_36 took 104.65 ms (104650 us)
+- Inference_37 took 98.031 ms (98031 us)
+- Inference_38 took 100.014 ms (100014 us)
+- Inference_39 took 98.147 ms (98147 us)
+- Inference_40 took 100.938 ms (100938 us)
+- Inference_41 took 104.773 ms (104773 us)
+- Inference_42 took 106.181 ms (106181 us)
+- Inference_43 took 101.413 ms (101413 us)
+- Inference_44 took 99.156 ms (99156 us)
+- Inference_45 took 97.595 ms (97595 us)
+- Inference_46 took 96.105 ms (96105 us)
+- Inference_47 took 94.284 ms (94284 us)
+- Inference_48 took 95.236 ms (95236 us)
+- Inference_49 took 94.911 ms (94911 us)
+- Postprocessing took 0.115 ms (115 us)
+
+
+[INFO] Generating Ops-level profiling (log)
+
+INFO: Profiling Info for Benchmark Initialization:
+============================== Run Order ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	                 ModifyGraphWithDelegate	   49.140	   49.140	 66.427%	 66.427%	 17708.000	        1	ModifyGraphWithDelegate/0
+	                         AllocateTensors	   24.836	   24.836	 33.573%	100.000%	  7100.000	        1	AllocateTensors/0
+
+============================== Top by Computation Time ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	                 ModifyGraphWithDelegate	   49.140	   49.140	 66.427%	 66.427%	 17708.000	        1	ModifyGraphWithDelegate/0
+	                         AllocateTensors	   24.836	   24.836	 33.573%	100.000%	  7100.000	        1	AllocateTensors/0
+
+Number of nodes executed: 2
+============================== Summary by node type ==============================
+	                             [Node type]	  [count]	  [avg ms]	    [avg %]	    [cdf %]	  [mem KB]	[times called]
+	                 ModifyGraphWithDelegate	        1	    49.140	    66.427%	    66.427%	 17708.000	        1
+	                         AllocateTensors	        1	    24.836	    33.573%	   100.000%	  7100.000	        1
+
+Timings (microseconds): count=2 curr=73976(all same)
+Memory (bytes): count=0
+2 nodes observed
+
+
+
+INFO: Operator-wise Profiling Info for Regular Benchmark Runs:
+============================== Run Order ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	           Convolution (NHWC, F32) IGEMM	    1.008	    1.229	  1.260%	  1.260%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:0
+	                         Sum (ND) Reduce	    0.140	    0.158	  0.162%	  1.422%	     0.000	        1	Delegate/Sum (ND) Reduce:1
+	                           Multiply (ND)	    0.007	    0.010	  0.011%	  1.432%	     0.000	        1	Delegate/Multiply (ND):2
+	                     Static Reshape (NC)	    0.001	    0.001	  0.001%	  1.433%	     0.000	        1	Delegate/Static Reshape (NC):3
+	                           Subtract (ND)	    0.101	    0.105	  0.107%	  1.540%	     0.000	        1	Delegate/Subtract (ND):4
+	                           Multiply (ND)	    0.077	    0.083	  0.085%	  1.625%	     0.000	        1	Delegate/Multiply (ND):5
+	                         Sum (ND) Reduce	    0.120	    0.118	  0.121%	  1.747%	     0.000	        1	Delegate/Sum (ND) Reduce:6
+	                           Multiply (ND)	    0.005	    0.008	  0.008%	  1.755%	     0.000	        1	Delegate/Multiply (ND):7
+	                                Add (ND)	    0.005	    0.007	  0.007%	  1.762%	     0.000	        1	Delegate/Add (ND):8
+	                     Static Reshape (NC)	    0.001	    0.001	  0.001%	  1.762%	     0.000	        1	Delegate/Static Reshape (NC):9
+	             Reciprocal Square Root (NC)	    0.020	    0.021	  0.022%	  1.784%	     0.000	        1	Delegate/Reciprocal Square Root (NC):10
+	                           Multiply (ND)	    0.068	    0.079	  0.081%	  1.865%	     0.000	        1	Delegate/Multiply (ND):11
+	                           Multiply (ND)	    0.095	    0.110	  0.113%	  1.978%	     0.000	        1	Delegate/Multiply (ND):12
+	           Convolution (NHWC, F32) IGEMM	   14.817	   15.511	 15.899%	 17.876%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:13
+	                         Sum (ND) Reduce	    0.146	    0.176	  0.181%	 18.057%	     0.000	        1	Delegate/Sum (ND) Reduce:14
+	                           Multiply (ND)	    0.008	    0.016	  0.017%	 18.074%	     0.000	        1	Delegate/Multiply (ND):15
+	                     Static Reshape (NC)	    0.001	    0.001	  0.001%	 18.075%	     0.000	        1	Delegate/Static Reshape (NC):16
+	                           Subtract (ND)	    0.103	    0.140	  0.144%	 18.219%	     0.000	        1	Delegate/Subtract (ND):17
+	                           Multiply (ND)	    0.093	    0.090	  0.092%	 18.311%	     0.000	        1	Delegate/Multiply (ND):18
+	                         Sum (ND) Reduce	    0.125	    0.122	  0.125%	 18.436%	     0.000	        1	Delegate/Sum (ND) Reduce:19
+	                           Multiply (ND)	    0.005	    0.007	  0.007%	 18.443%	     0.000	        1	Delegate/Multiply (ND):20
+	                                Add (ND)	    0.005	    0.006	  0.006%	 18.449%	     0.000	        1	Delegate/Add (ND):21
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	 18.449%	     0.000	        1	Delegate/Static Reshape (NC):22
+	             Reciprocal Square Root (NC)	    0.020	    0.021	  0.022%	 18.471%	     0.000	        1	Delegate/Reciprocal Square Root (NC):23
+	                           Multiply (ND)	    0.074	    0.086	  0.088%	 18.560%	     0.000	        1	Delegate/Multiply (ND):24
+	                           Multiply (ND)	    0.073	    0.092	  0.095%	 18.654%	     0.000	        1	Delegate/Multiply (ND):25
+	          Fully Connected (NC, F32) GEMM	    1.186	    1.238	  1.269%	 19.924%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:26
+	                               GELU (NC)	    2.025	    2.010	  2.060%	 21.984%	     0.000	        1	Delegate/GELU (NC):27
+	          Fully Connected (NC, F32) GEMM	    1.265	    1.341	  1.374%	 23.358%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:28
+	                                Add (ND)	    0.277	    0.336	  0.344%	 23.702%	     0.000	        1	Delegate/Add (ND):29
+	           Convolution (NHWC, F32) IGEMM	   14.301	   15.460	 15.847%	 39.549%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:30
+	                         Sum (ND) Reduce	    0.169	    0.171	  0.175%	 39.724%	     0.000	        1	Delegate/Sum (ND) Reduce:31
+	                           Multiply (ND)	    0.009	    0.012	  0.012%	 39.736%	     0.000	        1	Delegate/Multiply (ND):32
+	                     Static Reshape (NC)	    0.001	    0.001	  0.001%	 39.737%	     0.000	        1	Delegate/Static Reshape (NC):33
+	                           Subtract (ND)	    0.106	    0.112	  0.115%	 39.851%	     0.000	        1	Delegate/Subtract (ND):34
+	                           Multiply (ND)	    0.073	    0.076	  0.078%	 39.929%	     0.000	        1	Delegate/Multiply (ND):35
+	                         Sum (ND) Reduce	    0.133	    0.118	  0.121%	 40.050%	     0.000	        1	Delegate/Sum (ND) Reduce:36
+	                           Multiply (ND)	    0.006	    0.005	  0.006%	 40.056%	     0.000	        1	Delegate/Multiply (ND):37
+	                                Add (ND)	    0.004	    0.004	  0.004%	 40.060%	     0.000	        1	Delegate/Add (ND):38
+	                     Static Reshape (NC)	    0.001	    0.000	  0.000%	 40.060%	     0.000	        1	Delegate/Static Reshape (NC):39
+	             Reciprocal Square Root (NC)	    0.020	    0.020	  0.021%	 40.081%	     0.000	        1	Delegate/Reciprocal Square Root (NC):40
+	                           Multiply (ND)	    0.127	    0.140	  0.143%	 40.224%	     0.000	        1	Delegate/Multiply (ND):41
+	                           Multiply (ND)	    0.087	    0.100	  0.102%	 40.326%	     0.000	        1	Delegate/Multiply (ND):42
+	          Fully Connected (NC, F32) GEMM	    1.174	    1.219	  1.249%	 41.576%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:43
+	                               GELU (NC)	    1.949	    1.957	  2.006%	 43.581%	     0.000	        1	Delegate/GELU (NC):44
+	          Fully Connected (NC, F32) GEMM	    1.274	    1.347	  1.381%	 44.962%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:45
+	                                Add (ND)	    0.276	    0.302	  0.309%	 45.271%	     0.000	        1	Delegate/Add (ND):46
+	                         Sum (ND) Reduce	    0.140	    0.150	  0.154%	 45.426%	     0.000	        1	Delegate/Sum (ND) Reduce:47
+	                           Multiply (ND)	    0.007	    0.011	  0.011%	 45.437%	     0.000	        1	Delegate/Multiply (ND):48
+	                     Static Reshape (NC)	    0.001	    0.001	  0.001%	 45.438%	     0.000	        1	Delegate/Static Reshape (NC):49
+	                           Subtract (ND)	    0.081	    0.087	  0.089%	 45.527%	     0.000	        1	Delegate/Subtract (ND):50
+	                           Multiply (ND)	    0.073	    0.083	  0.085%	 45.612%	     0.000	        1	Delegate/Multiply (ND):51
+	                         Sum (ND) Reduce	    0.113	    0.116	  0.119%	 45.731%	     0.000	        1	Delegate/Sum (ND) Reduce:52
+	                           Multiply (ND)	    0.005	    0.007	  0.007%	 45.738%	     0.000	        1	Delegate/Multiply (ND):53
+	                                Add (ND)	    0.005	    0.005	  0.005%	 45.743%	     0.000	        1	Delegate/Add (ND):54
+	                     Static Reshape (NC)	    0.001	    0.001	  0.001%	 45.744%	     0.000	        1	Delegate/Static Reshape (NC):55
+	             Reciprocal Square Root (NC)	    0.020	    0.021	  0.021%	 45.765%	     0.000	        1	Delegate/Reciprocal Square Root (NC):56
+	                           Multiply (ND)	    0.106	    0.083	  0.085%	 45.850%	     0.000	        1	Delegate/Multiply (ND):57
+	                           Multiply (ND)	    0.082	    0.077	  0.079%	 45.929%	     0.000	        1	Delegate/Multiply (ND):58
+	           Convolution (NHWC, F32) IGEMM	    0.563	    0.590	  0.605%	 46.534%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:59
+	           Convolution (NHWC, F32) IGEMM	    5.173	    5.276	  5.408%	 51.943%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:60
+	                         Sum (ND) Reduce	    0.061	    0.066	  0.068%	 52.010%	     0.000	        1	Delegate/Sum (ND) Reduce:61
+	                           Multiply (ND)	    0.006	    0.007	  0.007%	 52.017%	     0.000	        1	Delegate/Multiply (ND):62
+	                     Static Reshape (NC)	    0.001	    0.001	  0.001%	 52.018%	     0.000	        1	Delegate/Static Reshape (NC):63
+	                           Subtract (ND)	    0.053	    0.055	  0.056%	 52.075%	     0.000	        1	Delegate/Subtract (ND):64
+	                           Multiply (ND)	    0.042	    0.042	  0.043%	 52.118%	     0.000	        1	Delegate/Multiply (ND):65
+	                         Sum (ND) Reduce	    0.038	    0.039	  0.040%	 52.158%	     0.000	        1	Delegate/Sum (ND) Reduce:66
+	                           Multiply (ND)	    0.004	    0.004	  0.005%	 52.162%	     0.000	        1	Delegate/Multiply (ND):67
+	                                Add (ND)	    0.004	    0.004	  0.004%	 52.167%	     0.000	        1	Delegate/Add (ND):68
+	                     Static Reshape (NC)	    0.000	    0.001	  0.001%	 52.168%	     0.000	        1	Delegate/Static Reshape (NC):69
+	             Reciprocal Square Root (NC)	    0.015	    0.015	  0.016%	 52.183%	     0.000	        1	Delegate/Reciprocal Square Root (NC):70
+	                           Multiply (ND)	    0.047	    0.130	  0.133%	 52.317%	     0.000	        1	Delegate/Multiply (ND):71
+	                           Multiply (ND)	    0.036	    0.114	  0.116%	 52.433%	     0.000	        1	Delegate/Multiply (ND):72
+	          Fully Connected (NC, F32) GEMM	    1.057	    1.146	  1.175%	 53.608%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:73
+	                               GELU (NC)	    0.928	    0.983	  1.008%	 54.616%	     0.000	        1	Delegate/GELU (NC):74
+	          Fully Connected (NC, F32) GEMM	    1.278	    1.291	  1.323%	 55.938%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:75
+	                                Add (ND)	    0.176	    0.183	  0.187%	 56.126%	     0.000	        1	Delegate/Add (ND):76
+	           Convolution (NHWC, F32) IGEMM	    5.130	    5.340	  5.474%	 61.600%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:77
+	                         Sum (ND) Reduce	    0.056	    0.145	  0.149%	 61.748%	     0.000	        1	Delegate/Sum (ND) Reduce:78
+	                           Multiply (ND)	    0.005	    0.009	  0.009%	 61.757%	     0.000	        1	Delegate/Multiply (ND):79
+	                     Static Reshape (NC)	    0.001	    0.001	  0.001%	 61.758%	     0.000	        1	Delegate/Static Reshape (NC):80
+	                           Subtract (ND)	    0.050	    0.055	  0.056%	 61.814%	     0.000	        1	Delegate/Subtract (ND):81
+	                           Multiply (ND)	    0.039	    0.043	  0.044%	 61.858%	     0.000	        1	Delegate/Multiply (ND):82
+	                         Sum (ND) Reduce	    0.035	    0.039	  0.040%	 61.898%	     0.000	        1	Delegate/Sum (ND) Reduce:83
+	                           Multiply (ND)	    0.004	    0.005	  0.005%	 61.903%	     0.000	        1	Delegate/Multiply (ND):84
+	                                Add (ND)	    0.004	    0.005	  0.005%	 61.907%	     0.000	        1	Delegate/Add (ND):85
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	 61.908%	     0.000	        1	Delegate/Static Reshape (NC):86
+	             Reciprocal Square Root (NC)	    0.015	    0.015	  0.016%	 61.923%	     0.000	        1	Delegate/Reciprocal Square Root (NC):87
+	                           Multiply (ND)	    0.061	    0.064	  0.066%	 61.989%	     0.000	        1	Delegate/Multiply (ND):88
+	                           Multiply (ND)	    0.042	    0.045	  0.046%	 62.035%	     0.000	        1	Delegate/Multiply (ND):89
+	          Fully Connected (NC, F32) GEMM	    1.096	    1.165	  1.194%	 63.229%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:90
+	                               GELU (NC)	    0.993	    1.053	  1.079%	 64.308%	     0.000	        1	Delegate/GELU (NC):91
+	          Fully Connected (NC, F32) GEMM	    1.196	    1.342	  1.375%	 65.683%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:92
+	                                Add (ND)	    0.124	    0.164	  0.168%	 65.851%	     0.000	        1	Delegate/Add (ND):93
+	                         Sum (ND) Reduce	    0.094	    0.084	  0.086%	 65.937%	     0.000	        1	Delegate/Sum (ND) Reduce:94
+	                           Multiply (ND)	    0.006	    0.009	  0.009%	 65.946%	     0.000	        1	Delegate/Multiply (ND):95
+	                     Static Reshape (NC)	    0.001	    0.001	  0.001%	 65.947%	     0.000	        1	Delegate/Static Reshape (NC):96
+	                           Subtract (ND)	    0.039	    0.040	  0.041%	 65.989%	     0.000	        1	Delegate/Subtract (ND):97
+	                           Multiply (ND)	    0.030	    0.033	  0.034%	 66.022%	     0.000	        1	Delegate/Multiply (ND):98
+	                         Sum (ND) Reduce	    0.035	    0.036	  0.037%	 66.060%	     0.000	        1	Delegate/Sum (ND) Reduce:99
+	                           Multiply (ND)	    0.004	    0.005	  0.005%	 66.064%	     0.000	        1	Delegate/Multiply (ND):100
+	                                Add (ND)	    0.004	    0.004	  0.004%	 66.069%	     0.000	        1	Delegate/Add (ND):101
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	 66.069%	     0.000	        1	Delegate/Static Reshape (NC):102
+	             Reciprocal Square Root (NC)	    0.014	    0.015	  0.015%	 66.084%	     0.000	        1	Delegate/Reciprocal Square Root (NC):103
+	                           Multiply (ND)	    0.042	    0.045	  0.046%	 66.131%	     0.000	        1	Delegate/Multiply (ND):104
+	                           Multiply (ND)	    0.033	    0.034	  0.034%	 66.165%	     0.000	        1	Delegate/Multiply (ND):105
+	           Convolution (NHWC, F32) IGEMM	    0.620	    0.641	  0.657%	 66.822%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:106
+	           Convolution (NHWC, F32) IGEMM	    2.535	    2.625	  2.691%	 69.513%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:107
+	                         Sum (ND) Reduce	    0.023	    0.024	  0.024%	 69.538%	     0.000	        1	Delegate/Sum (ND) Reduce:108
+	                           Multiply (ND)	    0.005	    0.006	  0.006%	 69.543%	     0.000	        1	Delegate/Multiply (ND):109
+	                     Static Reshape (NC)	    0.000	    0.001	  0.001%	 69.544%	     0.000	        1	Delegate/Static Reshape (NC):110
+	                           Subtract (ND)	    0.026	    0.034	  0.035%	 69.579%	     0.000	        1	Delegate/Subtract (ND):111
+	                           Multiply (ND)	    0.018	    0.034	  0.035%	 69.614%	     0.000	        1	Delegate/Multiply (ND):112
+	                         Sum (ND) Reduce	    0.015	    0.026	  0.027%	 69.641%	     0.000	        1	Delegate/Sum (ND) Reduce:113
+	                           Multiply (ND)	    0.003	    0.004	  0.004%	 69.645%	     0.000	        1	Delegate/Multiply (ND):114
+	                                Add (ND)	    0.003	    0.004	  0.004%	 69.649%	     0.000	        1	Delegate/Add (ND):115
+	                     Static Reshape (NC)	    0.001	    0.001	  0.001%	 69.650%	     0.000	        1	Delegate/Static Reshape (NC):116
+	             Reciprocal Square Root (NC)	    0.006	    0.006	  0.006%	 69.657%	     0.000	        1	Delegate/Reciprocal Square Root (NC):117
+	                           Multiply (ND)	    0.024	    0.026	  0.027%	 69.684%	     0.000	        1	Delegate/Multiply (ND):118
+	                           Multiply (ND)	    0.019	    0.019	  0.020%	 69.703%	     0.000	        1	Delegate/Multiply (ND):119
+	          Fully Connected (NC, F32) GEMM	    1.020	    1.053	  1.079%	 70.783%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:120
+	                               GELU (NC)	    0.499	    0.559	  0.573%	 71.356%	     0.000	        1	Delegate/GELU (NC):121
+	          Fully Connected (NC, F32) GEMM	    1.068	    1.104	  1.131%	 72.487%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:122
+	                                Add (ND)	    0.142	    0.068	  0.069%	 72.556%	     0.000	        1	Delegate/Add (ND):123
+	           Convolution (NHWC, F32) IGEMM	    2.510	    2.552	  2.616%	 75.172%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:124
+	                         Sum (ND) Reduce	    0.026	    0.036	  0.037%	 75.209%	     0.000	        1	Delegate/Sum (ND) Reduce:125
+	                           Multiply (ND)	    0.004	    0.008	  0.009%	 75.218%	     0.000	        1	Delegate/Multiply (ND):126
+	                     Static Reshape (NC)	    0.001	    0.001	  0.001%	 75.219%	     0.000	        1	Delegate/Static Reshape (NC):127
+	                           Subtract (ND)	    0.025	    0.028	  0.029%	 75.248%	     0.000	        1	Delegate/Subtract (ND):128
+	                           Multiply (ND)	    0.018	    0.019	  0.019%	 75.267%	     0.000	        1	Delegate/Multiply (ND):129
+	                         Sum (ND) Reduce	    0.014	    0.015	  0.015%	 75.282%	     0.000	        1	Delegate/Sum (ND) Reduce:130
+	                           Multiply (ND)	    0.003	    0.004	  0.004%	 75.286%	     0.000	        1	Delegate/Multiply (ND):131
+	                                Add (ND)	    0.003	    0.004	  0.004%	 75.290%	     0.000	        1	Delegate/Add (ND):132
+	                     Static Reshape (NC)	    0.001	    0.001	  0.001%	 75.291%	     0.000	        1	Delegate/Static Reshape (NC):133
+	             Reciprocal Square Root (NC)	    0.005	    0.005	  0.006%	 75.296%	     0.000	        1	Delegate/Reciprocal Square Root (NC):134
+	                           Multiply (ND)	    0.034	    0.034	  0.035%	 75.331%	     0.000	        1	Delegate/Multiply (ND):135
+	                           Multiply (ND)	    0.019	    0.020	  0.020%	 75.352%	     0.000	        1	Delegate/Multiply (ND):136
+	          Fully Connected (NC, F32) GEMM	    1.006	    1.036	  1.061%	 76.413%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:137
+	                               GELU (NC)	    0.505	    0.499	  0.511%	 76.924%	     0.000	        1	Delegate/GELU (NC):138
+	          Fully Connected (NC, F32) GEMM	    1.113	    1.118	  1.146%	 78.071%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:139
+	                                Add (ND)	    0.061	    0.066	  0.067%	 78.138%	     0.000	        1	Delegate/Add (ND):140
+	           Convolution (NHWC, F32) IGEMM	    2.493	    2.542	  2.606%	 80.743%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:141
+	                         Sum (ND) Reduce	    0.020	    0.033	  0.033%	 80.777%	     0.000	        1	Delegate/Sum (ND) Reduce:142
+	                           Multiply (ND)	    0.004	    0.008	  0.008%	 80.785%	     0.000	        1	Delegate/Multiply (ND):143
+	                     Static Reshape (NC)	    0.001	    0.001	  0.001%	 80.786%	     0.000	        1	Delegate/Static Reshape (NC):144
+	                           Subtract (ND)	    0.024	    0.027	  0.028%	 80.814%	     0.000	        1	Delegate/Subtract (ND):145
+	                           Multiply (ND)	    0.017	    0.019	  0.020%	 80.834%	     0.000	        1	Delegate/Multiply (ND):146
+	                         Sum (ND) Reduce	    0.014	    0.015	  0.015%	 80.849%	     0.000	        1	Delegate/Sum (ND) Reduce:147
+	                           Multiply (ND)	    0.034	    0.004	  0.005%	 80.854%	     0.000	        1	Delegate/Multiply (ND):148
+	                                Add (ND)	    0.005	    0.004	  0.004%	 80.858%	     0.000	        1	Delegate/Add (ND):149
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	 80.858%	     0.000	        1	Delegate/Static Reshape (NC):150
+	             Reciprocal Square Root (NC)	    0.005	    0.006	  0.006%	 80.864%	     0.000	        1	Delegate/Reciprocal Square Root (NC):151
+	                           Multiply (ND)	    0.029	    0.030	  0.030%	 80.894%	     0.000	        1	Delegate/Multiply (ND):152
+	                           Multiply (ND)	    0.019	    0.019	  0.019%	 80.914%	     0.000	        1	Delegate/Multiply (ND):153
+	          Fully Connected (NC, F32) GEMM	    1.001	    1.034	  1.060%	 81.973%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:154
+	                               GELU (NC)	    0.473	    0.494	  0.507%	 82.480%	     0.000	        1	Delegate/GELU (NC):155
+	          Fully Connected (NC, F32) GEMM	    1.121	    1.102	  1.130%	 83.609%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:156
+	                                Add (ND)	    0.064	    0.063	  0.064%	 83.674%	     0.000	        1	Delegate/Add (ND):157
+	           Convolution (NHWC, F32) IGEMM	    2.534	    2.569	  2.633%	 86.307%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:158
+	                         Sum (ND) Reduce	    0.037	    0.035	  0.036%	 86.342%	     0.000	        1	Delegate/Sum (ND) Reduce:159
+	                           Multiply (ND)	    0.005	    0.007	  0.007%	 86.350%	     0.000	        1	Delegate/Multiply (ND):160
+	                     Static Reshape (NC)	    0.001	    0.001	  0.001%	 86.351%	     0.000	        1	Delegate/Static Reshape (NC):161
+	                           Subtract (ND)	    0.025	    0.027	  0.028%	 86.379%	     0.000	        1	Delegate/Subtract (ND):162
+	                           Multiply (ND)	    0.017	    0.018	  0.019%	 86.398%	     0.000	        1	Delegate/Multiply (ND):163
+	                         Sum (ND) Reduce	    0.016	    0.015	  0.016%	 86.413%	     0.000	        1	Delegate/Sum (ND) Reduce:164
+	                           Multiply (ND)	    0.003	    0.003	  0.003%	 86.417%	     0.000	        1	Delegate/Multiply (ND):165
+	                                Add (ND)	    0.002	    0.003	  0.003%	 86.420%	     0.000	        1	Delegate/Add (ND):166
+	                     Static Reshape (NC)	    0.001	    0.001	  0.001%	 86.421%	     0.000	        1	Delegate/Static Reshape (NC):167
+	             Reciprocal Square Root (NC)	    0.006	    0.006	  0.006%	 86.427%	     0.000	        1	Delegate/Reciprocal Square Root (NC):168
+	                           Multiply (ND)	    0.028	    0.033	  0.033%	 86.460%	     0.000	        1	Delegate/Multiply (ND):169
+	                           Multiply (ND)	    0.018	    0.019	  0.019%	 86.479%	     0.000	        1	Delegate/Multiply (ND):170
+	          Fully Connected (NC, F32) GEMM	    1.007	    1.038	  1.064%	 87.543%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:171
+	                               GELU (NC)	    0.475	    0.499	  0.511%	 88.055%	     0.000	        1	Delegate/GELU (NC):172
+	          Fully Connected (NC, F32) GEMM	    1.110	    1.106	  1.134%	 89.189%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:173
+	                                Add (ND)	    0.066	    0.071	  0.073%	 89.262%	     0.000	        1	Delegate/Add (ND):174
+	                         Sum (ND) Reduce	    0.031	    0.039	  0.040%	 89.302%	     0.000	        1	Delegate/Sum (ND) Reduce:175
+	                           Multiply (ND)	    0.004	    0.024	  0.025%	 89.327%	     0.000	        1	Delegate/Multiply (ND):176
+	                     Static Reshape (NC)	    0.001	    0.001	  0.001%	 89.328%	     0.000	        1	Delegate/Static Reshape (NC):177
+	                           Subtract (ND)	    0.017	    0.037	  0.038%	 89.366%	     0.000	        1	Delegate/Subtract (ND):178
+	                           Multiply (ND)	    0.016	    0.020	  0.021%	 89.387%	     0.000	        1	Delegate/Multiply (ND):179
+	                         Sum (ND) Reduce	    0.014	    0.016	  0.016%	 89.403%	     0.000	        1	Delegate/Sum (ND) Reduce:180
+	                           Multiply (ND)	    0.003	    0.003	  0.003%	 89.406%	     0.000	        1	Delegate/Multiply (ND):181
+	                                Add (ND)	    0.003	    0.003	  0.003%	 89.409%	     0.000	        1	Delegate/Add (ND):182
+	                     Static Reshape (NC)	    0.001	    0.001	  0.001%	 89.410%	     0.000	        1	Delegate/Static Reshape (NC):183
+	             Reciprocal Square Root (NC)	    0.005	    0.005	  0.005%	 89.416%	     0.000	        1	Delegate/Reciprocal Square Root (NC):184
+	                           Multiply (ND)	    0.027	    0.026	  0.027%	 89.443%	     0.000	        1	Delegate/Multiply (ND):185
+	                           Multiply (ND)	    0.017	    0.018	  0.018%	 89.461%	     0.000	        1	Delegate/Multiply (ND):186
+	           Convolution (NHWC, F32) IGEMM	    0.721	    0.761	  0.780%	 90.241%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:187
+	           Convolution (NHWC, F32) IGEMM	    1.145	    1.165	  1.194%	 91.434%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:188
+	                         Sum (ND) Reduce	    0.017	    0.024	  0.025%	 91.459%	     0.000	        1	Delegate/Sum (ND) Reduce:189
+	                           Multiply (ND)	    0.005	    0.011	  0.012%	 91.471%	     0.000	        1	Delegate/Multiply (ND):190
+	                     Static Reshape (NC)	    0.001	    0.001	  0.001%	 91.472%	     0.000	        1	Delegate/Static Reshape (NC):191
+	                           Subtract (ND)	    0.014	    0.017	  0.017%	 91.489%	     0.000	        1	Delegate/Subtract (ND):192
+	                           Multiply (ND)	    0.009	    0.009	  0.010%	 91.499%	     0.000	        1	Delegate/Multiply (ND):193
+	                         Sum (ND) Reduce	    0.008	    0.008	  0.008%	 91.507%	     0.000	        1	Delegate/Sum (ND) Reduce:194
+	                           Multiply (ND)	    0.003	    0.003	  0.004%	 91.511%	     0.000	        1	Delegate/Multiply (ND):195
+	                                Add (ND)	    0.003	    0.004	  0.004%	 91.514%	     0.000	        1	Delegate/Add (ND):196
+	                     Static Reshape (NC)	    0.000	    0.001	  0.001%	 91.515%	     0.000	        1	Delegate/Static Reshape (NC):197
+	             Reciprocal Square Root (NC)	    0.003	    0.003	  0.003%	 91.518%	     0.000	        1	Delegate/Reciprocal Square Root (NC):198
+	                           Multiply (ND)	    0.018	    0.020	  0.021%	 91.539%	     0.000	        1	Delegate/Multiply (ND):199
+	                           Multiply (ND)	    0.012	    0.015	  0.016%	 91.555%	     0.000	        1	Delegate/Multiply (ND):200
+	          Fully Connected (NC, F32) GEMM	    1.188	    1.249	  1.280%	 92.835%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:201
+	                               GELU (NC)	    0.292	    0.282	  0.289%	 93.123%	     0.000	        1	Delegate/GELU (NC):202
+	          Fully Connected (NC, F32) GEMM	    1.563	    1.662	  1.703%	 94.827%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:203
+	                                Add (ND)	    0.066	    0.067	  0.069%	 94.896%	     0.000	        1	Delegate/Add (ND):204
+	           Convolution (NHWC, F32) IGEMM	    1.137	    1.170	  1.199%	 96.095%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:205
+	                         Sum (ND) Reduce	    0.027	    0.054	  0.055%	 96.150%	     0.000	        1	Delegate/Sum (ND) Reduce:206
+	                           Multiply (ND)	    0.036	    0.018	  0.018%	 96.169%	     0.000	        1	Delegate/Multiply (ND):207
+	                     Static Reshape (NC)	    0.001	    0.001	  0.001%	 96.170%	     0.000	        1	Delegate/Static Reshape (NC):208
+	                           Subtract (ND)	    0.023	    0.019	  0.019%	 96.189%	     0.000	        1	Delegate/Subtract (ND):209
+	                           Multiply (ND)	    0.010	    0.010	  0.010%	 96.199%	     0.000	        1	Delegate/Multiply (ND):210
+	                         Sum (ND) Reduce	    0.008	    0.010	  0.010%	 96.209%	     0.000	        1	Delegate/Sum (ND) Reduce:211
+	                           Multiply (ND)	    0.003	    0.004	  0.004%	 96.213%	     0.000	        1	Delegate/Multiply (ND):212
+	                                Add (ND)	    0.003	    0.003	  0.004%	 96.217%	     0.000	        1	Delegate/Add (ND):213
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	 96.217%	     0.000	        1	Delegate/Static Reshape (NC):214
+	             Reciprocal Square Root (NC)	    0.003	    0.003	  0.003%	 96.220%	     0.000	        1	Delegate/Reciprocal Square Root (NC):215
+	                           Multiply (ND)	    0.014	    0.051	  0.052%	 96.272%	     0.000	        1	Delegate/Multiply (ND):216
+	                           Multiply (ND)	    0.011	    0.012	  0.012%	 96.285%	     0.000	        1	Delegate/Multiply (ND):217
+	          Fully Connected (NC, F32) GEMM	    1.184	    1.241	  1.272%	 97.557%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:218
+	                               GELU (NC)	    0.329	    0.291	  0.298%	 97.855%	     0.000	        1	Delegate/GELU (NC):219
+	          Fully Connected (NC, F32) GEMM	    1.518	    1.664	  1.705%	 99.560%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:220
+	                                Add (ND)	    0.049	    0.055	  0.056%	 99.617%	     0.000	        1	Delegate/Add (ND):221
+	                         Sum (ND) Reduce	    0.036	    0.037	  0.038%	 99.654%	     0.000	        1	Delegate/Sum (ND) Reduce:222
+	                           Multiply (ND)	    0.018	    0.026	  0.026%	 99.681%	     0.000	        1	Delegate/Multiply (ND):223
+	                     Static Reshape (NC)	    0.002	    0.003	  0.003%	 99.684%	     0.000	        1	Delegate/Static Reshape (NC):224
+	                         Sum (ND) Reduce	    0.004	    0.004	  0.004%	 99.688%	     0.000	        1	Delegate/Sum (ND) Reduce:225
+	                           Multiply (ND)	    0.002	    0.002	  0.002%	 99.690%	     0.000	        1	Delegate/Multiply (ND):226
+	                           Subtract (ND)	    0.014	    0.014	  0.015%	 99.704%	     0.000	        1	Delegate/Subtract (ND):227
+	                           Multiply (ND)	    0.004	    0.006	  0.006%	 99.711%	     0.000	        1	Delegate/Multiply (ND):228
+	                         Sum (ND) Reduce	    0.003	    0.003	  0.003%	 99.714%	     0.000	        1	Delegate/Sum (ND) Reduce:229
+	                           Multiply (ND)	    0.001	    0.002	  0.002%	 99.715%	     0.000	        1	Delegate/Multiply (ND):230
+	                                Add (ND)	    0.002	    0.002	  0.002%	 99.718%	     0.000	        1	Delegate/Add (ND):231
+	             Reciprocal Square Root (NC)	    0.002	    0.002	  0.002%	 99.720%	     0.000	        1	Delegate/Reciprocal Square Root (NC):232
+	                           Multiply (ND)	    0.013	    0.015	  0.015%	 99.735%	     0.000	        1	Delegate/Multiply (ND):233
+	                           Multiply (ND)	    0.004	    0.006	  0.006%	 99.742%	     0.000	        1	Delegate/Multiply (ND):234
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	 99.742%	     0.000	        1	Delegate/Static Reshape (NC):235
+	          Fully Connected (NC, F32) GEMM	    0.227	    0.252	  0.258%	100.000%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:236
+
+============================== Top by Computation Time ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	           Convolution (NHWC, F32) IGEMM	   14.817	   15.511	 15.899%	 15.899%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:13
+	           Convolution (NHWC, F32) IGEMM	   14.301	   15.460	 15.847%	 31.745%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:30
+	           Convolution (NHWC, F32) IGEMM	    5.130	    5.340	  5.474%	 37.219%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:77
+	           Convolution (NHWC, F32) IGEMM	    5.173	    5.276	  5.408%	 42.628%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:60
+	           Convolution (NHWC, F32) IGEMM	    2.535	    2.625	  2.691%	 45.319%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:107
+	           Convolution (NHWC, F32) IGEMM	    2.534	    2.569	  2.633%	 47.952%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:158
+	           Convolution (NHWC, F32) IGEMM	    2.510	    2.552	  2.616%	 50.568%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:124
+	           Convolution (NHWC, F32) IGEMM	    2.493	    2.542	  2.606%	 53.174%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:141
+	                               GELU (NC)	    2.025	    2.010	  2.060%	 55.233%	     0.000	        1	Delegate/GELU (NC):27
+	                               GELU (NC)	    1.949	    1.957	  2.006%	 57.239%	     0.000	        1	Delegate/GELU (NC):44
+
+Number of nodes executed: 237
+============================== Summary by node type ==============================
+	                             [Node type]	  [count]	  [avg ms]	    [avg %]	    [cdf %]	  [mem KB]	[times called]
+	           Convolution (NHWC, F32) IGEMM	       14	    57.427	    58.931%	    58.931%	     0.000	       14
+	          Fully Connected (NC, F32) GEMM	       21	    24.736	    25.384%	    84.315%	     0.000	       21
+	                               GELU (NC)	       10	     8.620	     8.846%	    93.160%	     0.000	       10
+	                           Multiply (ND)	       76	     2.359	     2.421%	    95.581%	     0.000	       76
+	                         Sum (ND) Reduce	       31	     1.918	     1.968%	    97.549%	     0.000	       31
+	                                Add (ND)	       25	     1.423	     1.460%	    99.010%	     0.000	       25
+	                           Subtract (ND)	       15	     0.790	     0.811%	    99.820%	     0.000	       15
+	             Reciprocal Square Root (NC)	       15	     0.159	     0.163%	    99.984%	     0.000	       15
+	                     Static Reshape (NC)	       30	     0.016	     0.016%	   100.000%	     0.000	       30
+
+Timings (microseconds): count=50 first=92795 curr=94225 min=92610 max=117694 avg=97560.2 std=4738
+Memory (bytes): count=0
+237 nodes observed
+
+
+

@@ -1,0 +1,327 @@
+Running main profile with model ./models/efficientvit_b0.r224_in1k.tflite and image ./images/dog.jpg (threads: 4, delegate: xnnpack, warmup: 10, profiling: 50)
+
+====== main_cpu with profiling ====
+[INFO] Model path: ./models/efficientvit_b0.r224_in1k.tflite
+[INFO] Image path: ./images/dog.jpg
+[INFO] Label path: ./labels.json
+[INFO] Profiling result path: ./log/cortex-a53-autotuning/output_main_profile_efficientvit_b0.r224_in1k_xnnpack_4threads_auto_tuning.csv
+[INFO] Profiling enabled: YES
+[INFO] Number of threads: 4
+[INFO] Delegate type: xnnpack
+[INFO] Warmup runs: 10
+[INFO] Profiling runs: 50
+[INFO] Model type detected: FP32
+[INFO] Initializing profiler...
+[INFO] Loading model from: ./models/efficientvit_b0.r224_in1k.tflite
+INFO: Initialized TensorFlow Lite runtime.
+[INFO] Model signature keys:The Model contains 1 signature key(s).They are listed below: -> Signature Key: serving_default
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+VERBOSE: XNNPack weight cache not enabled.
+VERBOSE: Replacing 202 out of 206 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 9 partitions for subgraph 0.
+VERBOSE: SubgraphInit called with params: 0x557a384430, length: 0
+VERBOSE: SubgraphCreate: called
+VERBOSE: SubgraphCreate: created XNNPACK subgraph with 93 external values
+VERBOSE: SubgraphCreate: creating XNNPACK runtime with flags: 24
+VERBOSE: SubgraphCreate: created XNNPACK runtime 
+VERBOSE: SubgraphInit called with params: 0x557a3846b0, length: 0
+VERBOSE: SubgraphCreate: called
+VERBOSE: SubgraphCreate: created XNNPACK subgraph with 51 external values
+VERBOSE: SubgraphCreate: creating XNNPACK runtime with flags: 24
+VERBOSE: SubgraphCreate: created XNNPACK runtime 
+VERBOSE: SubgraphInit called with params: 0x557a385940, length: 0
+VERBOSE: SubgraphCreate: called
+VERBOSE: SubgraphCreate: created XNNPACK subgraph with 63 external values
+VERBOSE: SubgraphCreate: creating XNNPACK runtime with flags: 24
+VERBOSE: SubgraphCreate: created XNNPACK runtime 
+VERBOSE: SubgraphInit called with params: 0x557a3e3e20, length: 0
+VERBOSE: SubgraphCreate: called
+VERBOSE: SubgraphCreate: created XNNPACK subgraph with 51 external values
+VERBOSE: SubgraphCreate: creating XNNPACK runtime with flags: 24
+VERBOSE: SubgraphCreate: created XNNPACK runtime 
+VERBOSE: SubgraphInit called with params: 0x557a394880, length: 0
+VERBOSE: SubgraphCreate: called
+VERBOSE: SubgraphCreate: created XNNPACK subgraph with 65 external values
+VERBOSE: SubgraphCreate: creating XNNPACK runtime with flags: 24
+VERBOSE: SubgraphCreate: created XNNPACK runtime 
+[INFO] XNNPACK delegate applied successfully (threads: 4)
+INFO: Applying 1 TensorFlow Lite delegate(s) lazily.
+VERBOSE: XNNPack weight cache not enabled.
+INFO: Successfully applied the default TensorFlow Lite delegate indexed at 0.
+ *NOTE*: because a delegate has been applied, the precision of computations should be unchanged, but the exact output tensor values may have changed. If such output values are checked in your code, like in your tests etc., please consider increasing error tolerance for the check.
+
+[INFO] Model Summary 
+📥 Input tensor count  : 1
+📤 Output tensor count : 1
+📦 Total tensor count  : 336
+🔧 Node (op) count     : 211
+🧩 Delegate applied    : Yes ✅
+
+[INFO] Shape of input_tensor: [1, 224, 224, 3]
+[INFO] Processing FP32 input path
+
+[INFO] Running 10 warm-up iterations...
+[INFO] warm-up completed
+
+[INFO] Running 50 run and profile iterations...
+[INFO] run and profile completed
+
+[INFO] Shape of output_tensor: [1, 1000]
+[INFO] Processing FP32 output path
+
+[INFO] Top 5 predictions:
+- Class 207 (golden_retriever): 0.968206
+- Class 208 (Labrador_retriever): 0.0127045
+- Class 852 (tennis_ball): 0.000799562
+- Class 205 (flat-coated_retriever): 0.000570518
+- Class 257 (Great_Pyrenees): 0.000543626
+
+[INFO] Elapsed time summary
+- Load Model took 0.175 ms (175 us)
+- Build Interpreter took 4.211 ms (4211 us)
+- Apply Delegate took 45.603 ms (45603 us)
+- Allocate Tensor took 22.13 ms (22130 us)
+- Load Input Image took 42.191 ms (42191 us)
+- Preprocessing took 10.936 ms (10936 us)
+- Inference_0 took 25.722 ms (25722 us)
+- Inference_1 took 25.776 ms (25776 us)
+- Inference_2 took 26.959 ms (26959 us)
+- Inference_3 took 25.745 ms (25745 us)
+- Inference_4 took 25.841 ms (25841 us)
+- Inference_5 took 25.749 ms (25749 us)
+- Inference_6 took 28.385 ms (28385 us)
+- Inference_7 took 25.779 ms (25779 us)
+- Inference_8 took 25.701 ms (25701 us)
+- Inference_9 took 26.579 ms (26579 us)
+- Inference_10 took 25.776 ms (25776 us)
+- Inference_11 took 25.69 ms (25690 us)
+- Inference_12 took 25.719 ms (25719 us)
+- Inference_13 took 27.086 ms (27086 us)
+- Inference_14 took 25.616 ms (25616 us)
+- Inference_15 took 25.573 ms (25573 us)
+- Inference_16 took 25.651 ms (25651 us)
+- Inference_17 took 26.308 ms (26308 us)
+- Inference_18 took 25.832 ms (25832 us)
+- Inference_19 took 25.745 ms (25745 us)
+- Inference_20 took 25.832 ms (25832 us)
+- Inference_21 took 25.671 ms (25671 us)
+- Inference_22 took 25.675 ms (25675 us)
+- Inference_23 took 25.702 ms (25702 us)
+- Inference_24 took 26.51 ms (26510 us)
+- Inference_25 took 25.678 ms (25678 us)
+- Inference_26 took 25.689 ms (25689 us)
+- Inference_27 took 25.622 ms (25622 us)
+- Inference_28 took 26.507 ms (26507 us)
+- Inference_29 took 25.782 ms (25782 us)
+- Inference_30 took 25.69 ms (25690 us)
+- Inference_31 took 25.83 ms (25830 us)
+- Inference_32 took 25.705 ms (25705 us)
+- Inference_33 took 25.598 ms (25598 us)
+- Inference_34 took 25.637 ms (25637 us)
+- Inference_35 took 26.463 ms (26463 us)
+- Inference_36 took 25.627 ms (25627 us)
+- Inference_37 took 25.77 ms (25770 us)
+- Inference_38 took 25.713 ms (25713 us)
+- Inference_39 took 26.233 ms (26233 us)
+- Inference_40 took 25.741 ms (25741 us)
+- Inference_41 took 25.647 ms (25647 us)
+- Inference_42 took 25.687 ms (25687 us)
+- Inference_43 took 25.924 ms (25924 us)
+- Inference_44 took 25.755 ms (25755 us)
+- Inference_45 took 25.616 ms (25616 us)
+- Inference_46 took 26.271 ms (26271 us)
+- Inference_47 took 25.493 ms (25493 us)
+- Inference_48 took 25.616 ms (25616 us)
+- Inference_49 took 25.755 ms (25755 us)
+- Postprocessing took 0.137 ms (137 us)
+
+
+[INFO] Generating Ops-level profiling (log)
+
+INFO: Profiling Info for Benchmark Initialization:
+============================== Run Order ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	                 ModifyGraphWithDelegate	   45.068	   22.651	 67.585%	 67.585%	     0.000	        2	ModifyGraphWithDelegate/0
+	                         AllocateTensors	   21.728	   21.728	 32.415%	100.000%	  3996.000	        1	AllocateTensors/0
+
+============================== Top by Computation Time ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	                 ModifyGraphWithDelegate	   45.068	   22.651	 67.585%	 67.585%	     0.000	        2	ModifyGraphWithDelegate/0
+	                         AllocateTensors	   21.728	   21.728	 32.415%	100.000%	  3996.000	        1	AllocateTensors/0
+
+Number of nodes executed: 2
+============================== Summary by node type ==============================
+	                             [Node type]	  [count]	  [avg ms]	    [avg %]	    [cdf %]	  [mem KB]	[times called]
+	                 ModifyGraphWithDelegate	        1	    45.302	    67.585%	    67.585%	     0.000	        2
+	                         AllocateTensors	        1	    21.728	    32.415%	   100.000%	  3996.000	        1
+
+Timings (microseconds): count=2 curr=67030(all same)
+Memory (bytes): count=0
+2 nodes observed
+
+
+
+INFO: Operator-wise Profiling Info for Regular Benchmark Runs:
+============================== Run Order ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	           Convolution (NHWC, F32) IGEMM	    0.925	    0.895	  3.558%	  3.558%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:0
+	                          HardSwish (NC)	    0.154	    0.159	  0.630%	  4.188%	     0.000	        1	Delegate/HardSwish (NC):1
+	          Convolution (NHWC, F32) DWConv	    0.571	    0.562	  2.234%	  6.422%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:2
+	                          HardSwish (NC)	    0.084	    0.088	  0.348%	  6.770%	     0.000	        1	Delegate/HardSwish (NC):3
+	          Fully Connected (NC, F32) GEMM	    0.137	    0.140	  0.556%	  7.326%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:4
+	                                Add (ND)	    0.235	    0.192	  0.763%	  8.089%	     0.000	        1	Delegate/Add (ND):5
+	          Fully Connected (NC, F32) GEMM	    0.783	    0.780	  3.100%	 11.189%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:6
+	                          HardSwish (NC)	    0.670	    0.685	  2.722%	 13.911%	     0.000	        1	Delegate/HardSwish (NC):7
+	          Convolution (NHWC, F32) DWConv	    1.260	    1.287	  5.114%	 19.024%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:8
+	                          HardSwish (NC)	    0.131	    0.132	  0.524%	 19.548%	     0.000	        1	Delegate/HardSwish (NC):9
+	          Fully Connected (NC, F32) GEMM	    0.154	    0.161	  0.640%	 20.187%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:10
+	          Fully Connected (NC, F32) GEMM	    0.359	    0.197	  3.909%	 24.097%	     0.000	        5	Delegate/Fully Connected (NC, F32) GEMM:11
+	                          HardSwish (NC)	    0.232	    0.252	  1.002%	 25.099%	     0.000	        1	Delegate/HardSwish (NC):12
+	          Convolution (NHWC, F32) DWConv	    0.974	    0.909	  3.611%	 28.710%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:13
+	                          HardSwish (NC)	    0.237	    0.077	  1.520%	 30.230%	     0.000	        5	Delegate/HardSwish (NC):14
+	          Fully Connected (NC, F32) GEMM	    0.305	    0.318	  1.262%	 31.492%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:15
+	                                Add (ND)	    0.097	    0.110	  0.439%	 31.931%	     0.000	        1	Delegate/Add (ND):16
+	          Fully Connected (NC, F32) GEMM	    0.364	    0.324	  6.432%	 38.362%	     0.000	        5	Delegate/Fully Connected (NC, F32) GEMM:17
+	                          HardSwish (NC)	    0.224	    0.261	  1.036%	 39.399%	     0.000	        1	Delegate/HardSwish (NC):18
+	          Convolution (NHWC, F32) DWConv	    0.493	    0.454	  1.803%	 41.202%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:19
+	                          HardSwish (NC)	    0.055	    0.044	  0.524%	 41.726%	     0.000	        3	Delegate/HardSwish (NC):20
+	          Fully Connected (NC, F32) GEMM	    0.137	    0.144	  0.573%	 42.299%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:21
+	          Fully Connected (NC, F32) GEMM	    0.275	    0.279	  1.107%	 43.406%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:22
+	                          HardSwish (NC)	    0.064	    0.065	  0.259%	 43.665%	     0.000	        1	Delegate/HardSwish (NC):23
+	          Convolution (NHWC, F32) DWConv	    0.328	    0.343	  1.364%	 45.029%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:24
+	                          HardSwish (NC)	    0.081	    0.088	  0.349%	 45.378%	     0.000	        1	Delegate/HardSwish (NC):25
+	          Fully Connected (NC, F32) GEMM	    0.268	    0.274	  1.087%	 46.465%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:26
+	                                Add (ND)	    0.022	    0.034	  0.133%	 46.598%	     0.000	        1	Delegate/Add (ND):27
+	          Fully Connected (NC, F32) GEMM	    0.273	    0.281	  1.118%	 47.716%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:28
+	                          HardSwish (NC)	    0.063	    0.069	  0.274%	 47.990%	     0.000	        1	Delegate/HardSwish (NC):29
+	          Convolution (NHWC, F32) DWConv	    0.204	    0.163	  0.648%	 48.638%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:30
+	                          HardSwish (NC)	    0.030	    0.029	  0.116%	 48.754%	     0.000	        1	Delegate/HardSwish (NC):31
+	          Fully Connected (NC, F32) GEMM	    0.145	    0.148	  0.588%	 49.342%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:32
+	          Fully Connected (NC, F32) GEMM	    0.202	    0.210	  0.836%	 50.178%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:33
+	          Convolution (NHWC, F32) DWConv	    0.531	    0.538	  2.136%	 52.314%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:34
+	           Convolution (NHWC, F32) IGEMM	    0.122	    0.127	  0.506%	 52.821%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:35
+	                          Copy (NC, X32)	    0.067	    0.071	  0.283%	 53.104%	     0.000	        1	Delegate/Copy (NC, X32):36
+	           Transpose (ND, X32) Transpose	    0.140	    0.143	  0.567%	 53.671%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:37
+	                     Static Reshape (NC)	    0.001	    0.009	  0.073%	 53.744%	     0.000	        2	Delegate/Static Reshape (NC):38
+	           Transpose (ND, X32) Transpose	    0.132	    0.152	  0.604%	 54.348%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:39
+	                         Slice (ND, X32)	    0.068	    0.073	  0.291%	 54.639%	     0.000	        1	Delegate/Slice (ND, X32):40
+	                         Slice (ND, X32)	    0.053	    0.053	  0.209%	 54.848%	     0.000	        1	Delegate/Slice (ND, X32):41
+	                         Slice (ND, X32)	    0.035	    0.035	  0.139%	 54.987%	     0.000	        1	Delegate/Slice (ND, X32):42
+	                              Clamp (NC)	    0.016	    0.018	  0.073%	 55.060%	     0.000	        1	Delegate/Clamp (NC):43
+	                              Clamp (NC)	    0.013	    0.015	  0.059%	 55.119%	     0.000	        1	Delegate/Clamp (NC):44
+	           Transpose (ND, X32) Transpose	    0.054	    0.054	  0.214%	 55.333%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:45
+	                     Static Reshape (NC)	    0.028	    0.039	  0.153%	 55.486%	     0.000	        1	Delegate/Static Reshape (NC):46
+	                     Static Reshape (NC)	    0.030	    0.034	  0.134%	 55.620%	     0.000	        1	Delegate/Static Reshape (NC):47
+	                                   PADV2	    0.203	    0.206	  0.820%	 56.440%	     0.000	        1	[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_mit.EfficientVit_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_mit.EfficientVitStage_2/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_mit.EfficientVitBlock_1/timm.models.efficientvit_mit.ResidualBlock_context_module/timm.models.efficientvit_mit.LiteMLA_main;7]:49
+	                     Static Reshape (NC)	    0.097	    0.065	  1.032%	 57.472%	     0.000	        4	Delegate/Static Reshape (NC):0
+	    Batch Matrix Multiply (NC, F32) GEMM	    0.141	    0.110	  1.753%	 59.225%	     0.000	        4	Delegate/Batch Matrix Multiply (NC, F32) GEMM:1
+	    Batch Matrix Multiply (NC, F32) GEMM	    0.073	    0.063	  1.003%	 60.228%	     0.000	        4	Delegate/Batch Matrix Multiply (NC, F32) GEMM:2
+	                     Static Reshape (NC)	    0.015	    0.012	  0.187%	 60.415%	     0.000	        4	Delegate/Static Reshape (NC):3
+	                         Slice (ND, X32)	    0.038	    0.027	  0.429%	 60.844%	     0.000	        4	Delegate/Slice (ND, X32):4
+	                         Slice (ND, X32)	    0.030	    0.021	  0.334%	 61.178%	     0.000	        4	Delegate/Slice (ND, X32):5
+	                                Add (ND)	    0.004	    0.004	  0.063%	 61.241%	     0.000	        4	Delegate/Add (ND):6
+	                             Divide (ND)	    0.031	    0.024	  0.381%	 61.622%	     0.000	        4	Delegate/Divide (ND):7
+	           Transpose (ND, X32) Transpose	    0.043	    0.029	  0.463%	 62.085%	     0.000	        4	Delegate/Transpose (ND, X32) Transpose:8
+	                     Static Reshape (NC)	    0.001	    0.001	  0.015%	 62.100%	     0.000	        4	Delegate/Static Reshape (NC):9
+	           Transpose (ND, X32) Transpose	    0.064	    0.046	  0.735%	 62.835%	     0.000	        4	Delegate/Transpose (ND, X32) Transpose:10
+	                                Add (ND)	    0.029	    0.022	  0.344%	 63.179%	     0.000	        4	Delegate/Add (ND):12
+	          Fully Connected (NC, F32) GEMM	    0.260	    0.288	  4.573%	 67.752%	     0.000	        4	Delegate/Fully Connected (NC, F32) GEMM:13
+	          Convolution (NHWC, F32) DWConv	    0.207	    0.187	  2.978%	 70.730%	     0.000	        4	Delegate/Convolution (NHWC, F32) DWConv:15
+	                          HardSwish (NC)	    0.035	    0.031	  0.501%	 71.231%	     0.000	        4	Delegate/HardSwish (NC):16
+	                                Add (ND)	    0.019	    0.017	  0.274%	 71.504%	     0.000	        4	Delegate/Add (ND):18
+	          Fully Connected (NC, F32) GEMM	    0.193	    0.320	  5.085%	 76.589%	     0.000	        4	Delegate/Fully Connected (NC, F32) GEMM:19
+	          Convolution (NHWC, F32) DWConv	    0.569	    0.416	  3.303%	 79.893%	     0.000	        2	Delegate/Convolution (NHWC, F32) DWConv:20
+	           Convolution (NHWC, F32) IGEMM	    0.124	    0.094	  0.746%	 80.639%	     0.000	        2	Delegate/Convolution (NHWC, F32) IGEMM:21
+	                          Copy (NC, X32)	    0.066	    0.055	  0.433%	 81.072%	     0.000	        2	Delegate/Copy (NC, X32):22
+	           Transpose (ND, X32) Transpose	    0.150	    0.111	  0.879%	 81.951%	     0.000	        2	Delegate/Transpose (ND, X32) Transpose:23
+	                     Static Reshape (NC)	    0.001	    0.001	  0.008%	 81.960%	     0.000	        2	Delegate/Static Reshape (NC):24
+	           Transpose (ND, X32) Transpose	    0.150	    0.116	  0.919%	 82.878%	     0.000	        2	Delegate/Transpose (ND, X32) Transpose:25
+	                         Slice (ND, X32)	    0.073	    0.053	  0.423%	 83.301%	     0.000	        2	Delegate/Slice (ND, X32):26
+	                         Slice (ND, X32)	    0.061	    0.045	  0.356%	 83.657%	     0.000	        2	Delegate/Slice (ND, X32):27
+	                         Slice (ND, X32)	    0.034	    0.026	  0.206%	 83.863%	     0.000	        2	Delegate/Slice (ND, X32):28
+	                              Clamp (NC)	    0.022	    0.015	  0.122%	 83.985%	     0.000	        2	Delegate/Clamp (NC):29
+	                              Clamp (NC)	    0.014	    0.013	  0.103%	 84.088%	     0.000	        2	Delegate/Clamp (NC):30
+	           Transpose (ND, X32) Transpose	    0.054	    0.038	  0.299%	 84.387%	     0.000	        2	Delegate/Transpose (ND, X32) Transpose:31
+	                     Static Reshape (NC)	    0.030	    0.022	  0.177%	 84.564%	     0.000	        2	Delegate/Static Reshape (NC):32
+	                     Static Reshape (NC)	    0.033	    0.016	  0.190%	 84.753%	     0.000	        3	Delegate/Static Reshape (NC):33
+	                                   PADV2	    0.267	    0.201	  0.800%	 85.554%	     0.000	        1	[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_mit.EfficientVit_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_mit.EfficientVitStage_2/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_mit.EfficientVitBlock_2/timm.models.efficientvit_mit.ResidualBlock_context_module/timm.models.efficientvit_mit.LiteMLA_main;7]:84
+	          Convolution (NHWC, F32) DWConv	    0.112	    0.089	  0.355%	 85.909%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:21
+	                          HardSwish (NC)	    0.022	    0.019	  0.077%	 85.985%	     0.000	        1	Delegate/HardSwish (NC):22
+	          Fully Connected (NC, F32) GEMM	    0.156	    0.167	  0.665%	 86.650%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:23
+	          Fully Connected (NC, F32) GEMM	    0.227	    0.686	  5.448%	 92.099%	     0.000	        2	Delegate/Fully Connected (NC, F32) GEMM:24
+	          Convolution (NHWC, F32) DWConv	    0.313	    0.294	  1.170%	 93.268%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:25
+	           Convolution (NHWC, F32) IGEMM	    0.065	    0.064	  0.254%	 93.522%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:26
+	                          Copy (NC, X32)	    0.035	    0.035	  0.138%	 93.660%	     0.000	        1	Delegate/Copy (NC, X32):27
+	           Transpose (ND, X32) Transpose	    0.065	    0.065	  0.259%	 93.919%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:28
+	                     Static Reshape (NC)	    0.001	    0.001	  0.004%	 93.923%	     0.000	        1	Delegate/Static Reshape (NC):29
+	           Transpose (ND, X32) Transpose	    0.048	    0.050	  0.197%	 94.120%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:30
+	                         Slice (ND, X32)	    0.038	    0.027	  0.108%	 94.228%	     0.000	        1	Delegate/Slice (ND, X32):31
+	                         Slice (ND, X32)	    0.023	    0.025	  0.099%	 94.327%	     0.000	        1	Delegate/Slice (ND, X32):32
+	                         Slice (ND, X32)	    0.016	    0.016	  0.063%	 94.390%	     0.000	        1	Delegate/Slice (ND, X32):33
+	                              Clamp (NC)	    0.008	    0.009	  0.034%	 94.424%	     0.000	        1	Delegate/Clamp (NC):34
+	                              Clamp (NC)	    0.009	    0.008	  0.033%	 94.457%	     0.000	        1	Delegate/Clamp (NC):35
+	           Transpose (ND, X32) Transpose	    0.018	    0.018	  0.073%	 94.530%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:36
+	                     Static Reshape (NC)	    0.013	    0.012	  0.046%	 94.576%	     0.000	        1	Delegate/Static Reshape (NC):37
+	                                   PADV2	    0.107	    0.110	  0.437%	 95.013%	     0.000	        1	[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_mit.EfficientVit_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_mit.EfficientVitStage_3/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_mit.EfficientVitBlock_1/timm.models.efficientvit_mit.ResidualBlock_context_module/timm.models.efficientvit_mit.LiteMLA_main;7]:125
+	                                   PADV2	    0.108	    0.107	  0.427%	 95.440%	     0.000	        1	[ai_edge_torch._convert.to_channel_last_io.ChannelLastIOWrapper/timm.models.efficientvit_mit.EfficientVit_wrapped/torch.nn.modules.container.Sequential_stages/timm.models.efficientvit_mit.EfficientVitStage_3/torch.nn.modules.container.Sequential_blocks/timm.models.efficientvit_mit.EfficientVitBlock_2/timm.models.efficientvit_mit.ResidualBlock_context_module/timm.models.efficientvit_mit.LiteMLA_main;7]:160
+	                         Sum (ND) Reduce	    0.120	    0.118	  0.467%	 95.907%	     0.000	        1	Delegate/Sum (ND) Reduce:21
+	                           Multiply (ND)	    0.014	    0.020	  0.081%	 95.988%	     0.000	        1	Delegate/Multiply (ND):22
+	                     Static Reshape (NC)	    0.001	    0.001	  0.003%	 95.992%	     0.000	        1	Delegate/Static Reshape (NC):23
+	                        Mean (ND) Reduce	    0.008	    0.009	  0.036%	 96.027%	     0.000	        1	Delegate/Mean (ND) Reduce:25
+	                     Static Reshape (NC)	    0.003	    0.003	  0.012%	 96.039%	     0.000	        1	Delegate/Static Reshape (NC):26
+	                 Squared Difference (ND)	    0.069	    0.047	  0.186%	 96.226%	     0.000	        1	Delegate/Squared Difference (ND):27
+	                        Mean (ND) Reduce	    0.005	    0.004	  0.016%	 96.242%	     0.000	        1	Delegate/Mean (ND) Reduce:28
+	                                Add (ND)	    0.003	    0.002	  0.009%	 96.250%	     0.000	        1	Delegate/Add (ND):29
+	             Reciprocal Square Root (NC)	    0.002	    0.003	  0.010%	 96.260%	     0.000	        1	Delegate/Reciprocal Square Root (NC):30
+	                           Multiply (ND)	    0.002	    0.002	  0.008%	 96.268%	     0.000	        1	Delegate/Multiply (ND):31
+	                           Subtract (ND)	    0.002	    0.002	  0.008%	 96.276%	     0.000	        1	Delegate/Subtract (ND):32
+	                           Multiply (ND)	    0.015	    0.015	  0.060%	 96.335%	     0.000	        1	Delegate/Multiply (ND):34
+	                     Static Reshape (NC)	    0.001	    0.001	  0.003%	 96.338%	     0.000	        1	Delegate/Static Reshape (NC):35
+	                                Add (ND)	    0.004	    0.008	  0.034%	 96.372%	     0.000	        1	Delegate/Add (ND):36
+	                           Multiply (ND)	    0.005	    0.009	  0.036%	 96.408%	     0.000	        1	Delegate/Multiply (ND):37
+	                                Add (ND)	    0.004	    0.006	  0.023%	 96.431%	     0.000	        1	Delegate/Add (ND):38
+	                     Static Reshape (NC)	    0.000	    0.000	  0.001%	 96.432%	     0.000	        1	Delegate/Static Reshape (NC):39
+	                          HardSwish (NC)	    0.005	    0.006	  0.023%	 96.455%	     0.000	        1	Delegate/HardSwish (NC):40
+	          Fully Connected (NC, F32) GEMM	    0.884	    0.892	  3.545%	100.000%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:41
+
+============================== Top by Computation Time ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	          Convolution (NHWC, F32) DWConv	    1.260	    1.287	  5.114%	  5.114%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:8
+	          Convolution (NHWC, F32) DWConv	    0.974	    0.909	  3.611%	  8.725%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:13
+	           Convolution (NHWC, F32) IGEMM	    0.925	    0.895	  3.558%	 12.282%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:0
+	          Fully Connected (NC, F32) GEMM	    0.884	    0.892	  3.545%	 15.827%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:41
+	          Fully Connected (NC, F32) GEMM	    0.783	    0.780	  3.100%	 18.927%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:6
+	          Fully Connected (NC, F32) GEMM	    0.227	    0.686	  5.448%	 24.376%	     0.000	        2	Delegate/Fully Connected (NC, F32) GEMM:24
+	                          HardSwish (NC)	    0.670	    0.685	  2.722%	 27.097%	     0.000	        1	Delegate/HardSwish (NC):7
+	          Convolution (NHWC, F32) DWConv	    0.571	    0.562	  2.234%	 29.331%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:2
+	          Convolution (NHWC, F32) DWConv	    0.531	    0.538	  2.136%	 31.467%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:34
+	          Convolution (NHWC, F32) DWConv	    0.493	    0.454	  1.803%	 33.271%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:19
+
+Number of nodes executed: 119
+============================== Summary by node type ==============================
+	                             [Node type]	  [count]	  [avg ms]	    [avg %]	    [cdf %]	  [mem KB]	[times called]
+	          Fully Connected (NC, F32) GEMM	       17	    10.192	    40.594%	    40.594%	     0.000	       32
+	          Convolution (NHWC, F32) DWConv	       11	     6.216	    24.758%	    65.352%	     0.000	       15
+	                          HardSwish (NC)	       15	     2.484	     9.894%	    75.246%	     0.000	       24
+	           Transpose (ND, X32) Transpose	       11	     1.307	     5.206%	    80.452%	     0.000	       20
+	           Convolution (NHWC, F32) IGEMM	        4	     1.272	     5.066%	    85.518%	     0.000	        5
+	    Batch Matrix Multiply (NC, F32) GEMM	        2	     0.693	     2.760%	    88.278%	     0.000	        8
+	                         Slice (ND, X32)	       11	     0.662	     2.637%	    90.915%	     0.000	       20
+	                                   PADV2	        4	     0.623	     2.481%	    93.396%	     0.000	        4
+	                                Add (ND)	        9	     0.518	     2.063%	    95.459%	     0.000	       18
+	                     Static Reshape (NC)	       15	     0.506	     2.015%	    97.475%	     0.000	       29
+	                          Copy (NC, X32)	        3	     0.214	     0.852%	    98.327%	     0.000	        4
+	                         Sum (ND) Reduce	        1	     0.117	     0.466%	    98.793%	     0.000	        1
+	                              Clamp (NC)	        6	     0.103	     0.410%	    99.203%	     0.000	        8
+	                             Divide (ND)	        1	     0.095	     0.378%	    99.582%	     0.000	        4
+	                 Squared Difference (ND)	        1	     0.046	     0.183%	    99.765%	     0.000	        1
+	                           Multiply (ND)	        4	     0.045	     0.179%	    99.944%	     0.000	        4
+	                        Mean (ND) Reduce	        2	     0.011	     0.044%	    99.988%	     0.000	        2
+	             Reciprocal Square Root (NC)	        1	     0.002	     0.008%	    99.996%	     0.000	        1
+	                           Subtract (ND)	        1	     0.001	     0.004%	   100.000%	     0.000	        1
+
+Timings (microseconds): count=50 first=24897 curr=25023 min=24721 max=27635 avg=25168.9 std=497
+Memory (bytes): count=0
+119 nodes observed
+
+
+

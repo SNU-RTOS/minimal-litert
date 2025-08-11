@@ -1,0 +1,839 @@
+Running main profile with model ./models/vit_small_patch16_224.augreg_in21k_ft_in1k.tflite and image ./images/dog.jpg (threads: 4, delegate: xnnpack, warmup: 10, profiling: 50)
+
+====== main_cpu with profiling ====
+[INFO] Model path: ./models/vit_small_patch16_224.augreg_in21k_ft_in1k.tflite
+[INFO] Image path: ./images/dog.jpg
+[INFO] Label path: ./labels.json
+[INFO] Profiling result path: ./log/cortex-a53-autotuning/output_main_profile_vit_small_patch16_224.augreg_in21k_ft_in1k_xnnpack_4threads_auto_tuning.csv
+[INFO] Profiling enabled: YES
+[INFO] Number of threads: 4
+[INFO] Delegate type: xnnpack
+[INFO] Warmup runs: 10
+[INFO] Profiling runs: 50
+[INFO] Model type detected: FP32
+[INFO] Initializing profiler...
+[INFO] Loading model from: ./models/vit_small_patch16_224.augreg_in21k_ft_in1k.tflite
+INFO: Initialized TensorFlow Lite runtime.
+[INFO] Model signature keys:The Model contains 1 signature key(s).They are listed below: -> Signature Key: serving_default
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+VERBOSE: XNNPack weight cache not enabled.
+VERBOSE: Replacing 646 out of 646 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 1 partitions for subgraph 0.
+VERBOSE: SubgraphInit called with params: 0x55967171a0, length: 0
+VERBOSE: SubgraphCreate: called
+VERBOSE: SubgraphCreate: created XNNPACK subgraph with 754 external values
+VERBOSE: SubgraphCreate: creating XNNPACK runtime with flags: 24
+VERBOSE: SubgraphCreate: created XNNPACK runtime 
+[INFO] XNNPACK delegate applied successfully (threads: 4)
+
+[INFO] Model Summary 
+📥 Input tensor count  : 1
+📤 Output tensor count : 1
+📦 Total tensor count  : 775
+🔧 Node (op) count     : 647
+🧩 Delegate applied    : Yes ✅
+
+[INFO] Shape of input_tensor: [1, 224, 224, 3]
+[INFO] Processing FP32 input path
+
+[INFO] Running 10 warm-up iterations...
+[INFO] warm-up completed
+
+[INFO] Running 50 run and profile iterations...
+[INFO] run and profile completed
+
+[INFO] Shape of output_tensor: [1, 1000]
+[INFO] Processing FP32 output path
+
+[INFO] Top 5 predictions:
+- Class 207 (golden_retriever): 0.969781
+- Class 208 (Labrador_retriever): 0.0104147
+- Class 175 (otterhound): 0.00392181
+- Class 216 (clumber): 0.00250965
+- Class 222 (kuvasz): 0.00225066
+
+[INFO] Elapsed time summary
+- Load Model took 0.17 ms (170 us)
+- Build Interpreter took 7.175 ms (7175 us)
+- Apply Delegate took 266.726 ms (266726 us)
+- Allocate Tensor took 73.876 ms (73876 us)
+- Load Input Image took 42.141 ms (42141 us)
+- Preprocessing took 10.589 ms (10589 us)
+- Inference_0 took 493.327 ms (493327 us)
+- Inference_1 took 492.7 ms (492700 us)
+- Inference_2 took 492.468 ms (492468 us)
+- Inference_3 took 491.999 ms (491999 us)
+- Inference_4 took 492.057 ms (492057 us)
+- Inference_5 took 491.858 ms (491858 us)
+- Inference_6 took 492.858 ms (492858 us)
+- Inference_7 took 492.954 ms (492954 us)
+- Inference_8 took 492.646 ms (492646 us)
+- Inference_9 took 492.008 ms (492008 us)
+- Inference_10 took 492.238 ms (492238 us)
+- Inference_11 took 491.977 ms (491977 us)
+- Inference_12 took 492.623 ms (492623 us)
+- Inference_13 took 493.013 ms (493013 us)
+- Inference_14 took 492.119 ms (492119 us)
+- Inference_15 took 492.255 ms (492255 us)
+- Inference_16 took 492.126 ms (492126 us)
+- Inference_17 took 492.095 ms (492095 us)
+- Inference_18 took 492.747 ms (492747 us)
+- Inference_19 took 491.989 ms (491989 us)
+- Inference_20 took 492.479 ms (492479 us)
+- Inference_21 took 492.279 ms (492279 us)
+- Inference_22 took 491.848 ms (491848 us)
+- Inference_23 took 493.669 ms (493669 us)
+- Inference_24 took 492.553 ms (492553 us)
+- Inference_25 took 492.678 ms (492678 us)
+- Inference_26 took 492.264 ms (492264 us)
+- Inference_27 took 492.401 ms (492401 us)
+- Inference_28 took 492.583 ms (492583 us)
+- Inference_29 took 492.494 ms (492494 us)
+- Inference_30 took 492.762 ms (492762 us)
+- Inference_31 took 492.885 ms (492885 us)
+- Inference_32 took 492.927 ms (492927 us)
+- Inference_33 took 493.344 ms (493344 us)
+- Inference_34 took 492.495 ms (492495 us)
+- Inference_35 took 494.799 ms (494799 us)
+- Inference_36 took 493.687 ms (493687 us)
+- Inference_37 took 492.388 ms (492388 us)
+- Inference_38 took 492.336 ms (492336 us)
+- Inference_39 took 492.765 ms (492765 us)
+- Inference_40 took 492.851 ms (492851 us)
+- Inference_41 took 492.181 ms (492181 us)
+- Inference_42 took 491.312 ms (491312 us)
+- Inference_43 took 494.124 ms (494124 us)
+- Inference_44 took 494.159 ms (494159 us)
+- Inference_45 took 495.089 ms (495089 us)
+- Inference_46 took 495.174 ms (495174 us)
+- Inference_47 took 494.982 ms (494982 us)
+- Inference_48 took 492.817 ms (492817 us)
+- Inference_49 took 492.716 ms (492716 us)
+- Postprocessing took 0.107 ms (107 us)
+
+
+[INFO] Generating Ops-level profiling (log)
+
+INFO: Profiling Info for Benchmark Initialization:
+============================== Run Order ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	                 ModifyGraphWithDelegate	  266.169	  266.169	 78.282%	 78.282%	170628.000	        1	ModifyGraphWithDelegate/0
+	                         AllocateTensors	   73.844	   73.844	 21.718%	100.000%	  2984.000	        1	AllocateTensors/0
+
+============================== Top by Computation Time ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	                 ModifyGraphWithDelegate	  266.169	  266.169	 78.282%	 78.282%	170628.000	        1	ModifyGraphWithDelegate/0
+	                         AllocateTensors	   73.844	   73.844	 21.718%	100.000%	  2984.000	        1	AllocateTensors/0
+
+Number of nodes executed: 2
+============================== Summary by node type ==============================
+	                             [Node type]	  [count]	  [avg ms]	    [avg %]	    [cdf %]	  [mem KB]	[times called]
+	                 ModifyGraphWithDelegate	        1	   266.169	    78.282%	    78.282%	170628.000	        1
+	                         AllocateTensors	        1	    73.844	    21.718%	   100.000%	  2984.000	        1
+
+Timings (microseconds): count=2 curr=340013(all same)
+Memory (bytes): count=0
+2 nodes observed
+
+
+
+INFO: Operator-wise Profiling Info for Regular Benchmark Runs:
+============================== Run Order ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	           Convolution (NHWC, F32) IGEMM	   13.344	   13.364	  2.721%	  2.721%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:0
+	           Transpose (ND, X32) Transpose	    0.386	    0.384	  0.078%	  2.799%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:1
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	  2.799%	     0.000	        1	Delegate/Static Reshape (NC):2
+	           Transpose (ND, X32) Transpose	    0.239	    0.252	  0.051%	  2.851%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:3
+	                          Copy (NC, X32)	    0.062	    0.064	  0.013%	  2.864%	     0.000	        1	Delegate/Copy (NC, X32):4
+	                                Add (ND)	    0.157	    0.157	  0.032%	  2.896%	     0.000	        1	Delegate/Add (ND):5
+	                        Mean (ND) Reduce	    0.065	    0.071	  0.014%	  2.910%	     0.000	        1	Delegate/Mean (ND) Reduce:6
+	                     Static Reshape (NC)	    0.002	    0.003	  0.001%	  2.911%	     0.000	        1	Delegate/Static Reshape (NC):7
+	                 Squared Difference (ND)	    0.086	    0.089	  0.018%	  2.929%	     0.000	        1	Delegate/Squared Difference (ND):8
+	                        Mean (ND) Reduce	    0.069	    0.072	  0.015%	  2.943%	     0.000	        1	Delegate/Mean (ND) Reduce:9
+	                                Add (ND)	    0.003	    0.006	  0.001%	  2.945%	     0.000	        1	Delegate/Add (ND):10
+	             Reciprocal Square Root (NC)	    0.005	    0.005	  0.001%	  2.946%	     0.000	        1	Delegate/Reciprocal Square Root (NC):11
+	                           Multiply (ND)	    0.022	    0.035	  0.007%	  2.953%	     0.000	        1	Delegate/Multiply (ND):12
+	                           Subtract (ND)	    0.003	    0.018	  0.004%	  2.957%	     0.000	        1	Delegate/Subtract (ND):13
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	  2.957%	     0.000	        1	Delegate/Static Reshape (NC):14
+	                           Multiply (ND)	    0.074	    0.076	  0.015%	  2.972%	     0.000	        1	Delegate/Multiply (ND):15
+	                     Static Reshape (NC)	    0.003	    0.001	  0.000%	  2.973%	     0.000	        1	Delegate/Static Reshape (NC):16
+	                                Add (ND)	    0.077	    0.071	  0.015%	  2.987%	     0.000	        1	Delegate/Add (ND):17
+	          Fully Connected (NC, F32) GEMM	    7.831	    7.832	  1.595%	  4.582%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:18
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	  4.582%	     0.000	        1	Delegate/Static Reshape (NC):19
+	           Transpose (ND, X32) Transpose	    0.542	    0.559	  0.114%	  4.696%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:20
+	                         Slice (ND, X32)	    0.167	    0.175	  0.036%	  4.732%	     0.000	        1	Delegate/Slice (ND, X32):21
+	                         Slice (ND, X32)	    0.145	    0.150	  0.031%	  4.762%	     0.000	        1	Delegate/Slice (ND, X32):22
+	                         Slice (ND, X32)	    0.151	    0.155	  0.032%	  4.794%	     0.000	        1	Delegate/Slice (ND, X32):23
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	  4.794%	     0.000	        1	Delegate/Static Reshape (NC):24
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	  4.794%	     0.000	        1	Delegate/Static Reshape (NC):25
+	                           Multiply (ND)	    0.103	    0.121	  0.025%	  4.819%	     0.000	        1	Delegate/Multiply (ND):26
+	                           Multiply (ND)	    0.101	    0.106	  0.022%	  4.841%	     0.000	        1	Delegate/Multiply (ND):27
+	           Transpose (ND, X32) Transpose	    0.133	    0.132	  0.027%	  4.868%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:28
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	  4.868%	     0.000	        1	Delegate/Static Reshape (NC):29
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	  4.868%	     0.000	        1	Delegate/Static Reshape (NC):30
+	    Batch Matrix Multiply (NC, F32) GEMM	    1.521	    1.522	  0.310%	  5.178%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:31
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	  5.179%	     0.000	        1	Delegate/Static Reshape (NC):32
+	                       Softmax (NC, F32)	    0.679	    0.693	  0.141%	  5.320%	     0.000	        1	Delegate/Softmax (NC, F32):33
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	  5.320%	     0.000	        1	Delegate/Static Reshape (NC):34
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	  5.320%	     0.000	        1	Delegate/Static Reshape (NC):35
+	    Batch Matrix Multiply (NC, F32) GEMM	    2.077	    2.132	  0.434%	  5.754%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:36
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	  5.755%	     0.000	        1	Delegate/Static Reshape (NC):37
+	           Transpose (ND, X32) Transpose	    0.242	    0.208	  0.042%	  5.797%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:38
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	  5.797%	     0.000	        1	Delegate/Static Reshape (NC):39
+	          Fully Connected (NC, F32) GEMM	    2.370	    2.385	  0.486%	  6.283%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:40
+	                                Add (ND)	    0.179	    0.181	  0.037%	  6.320%	     0.000	        1	Delegate/Add (ND):41
+	                        Mean (ND) Reduce	    0.045	    0.049	  0.010%	  6.329%	     0.000	        1	Delegate/Mean (ND) Reduce:42
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	  6.330%	     0.000	        1	Delegate/Static Reshape (NC):43
+	                 Squared Difference (ND)	    0.058	    0.061	  0.013%	  6.343%	     0.000	        1	Delegate/Squared Difference (ND):44
+	                        Mean (ND) Reduce	    0.032	    0.032	  0.007%	  6.349%	     0.000	        1	Delegate/Mean (ND) Reduce:45
+	                                Add (ND)	    0.003	    0.003	  0.001%	  6.350%	     0.000	        1	Delegate/Add (ND):46
+	             Reciprocal Square Root (NC)	    0.005	    0.005	  0.001%	  6.351%	     0.000	        1	Delegate/Reciprocal Square Root (NC):47
+	                           Multiply (ND)	    0.032	    0.032	  0.006%	  6.357%	     0.000	        1	Delegate/Multiply (ND):48
+	                           Subtract (ND)	    0.024	    0.029	  0.006%	  6.363%	     0.000	        1	Delegate/Subtract (ND):49
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	  6.363%	     0.000	        1	Delegate/Static Reshape (NC):50
+	                           Multiply (ND)	    0.074	    0.070	  0.014%	  6.378%	     0.000	        1	Delegate/Multiply (ND):51
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	  6.378%	     0.000	        1	Delegate/Static Reshape (NC):52
+	                                Add (ND)	    0.043	    0.052	  0.011%	  6.388%	     0.000	        1	Delegate/Add (ND):53
+	          Fully Connected (NC, F32) GEMM	   10.675	   10.714	  2.182%	  8.570%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:54
+	                               GELU (NC)	    0.838	    0.856	  0.174%	  8.744%	     0.000	        1	Delegate/GELU (NC):55
+	                     Static Reshape (NC)	    0.003	    0.002	  0.000%	  8.745%	     0.000	        1	Delegate/Static Reshape (NC):56
+	          Fully Connected (NC, F32) GEMM	   13.975	   14.036	  2.858%	 11.602%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:57
+	                                Add (ND)	    0.199	    0.200	  0.041%	 11.643%	     0.000	        1	Delegate/Add (ND):58
+	                        Mean (ND) Reduce	    0.061	    0.054	  0.011%	 11.654%	     0.000	        1	Delegate/Mean (ND) Reduce:59
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	 11.655%	     0.000	        1	Delegate/Static Reshape (NC):60
+	                 Squared Difference (ND)	    0.057	    0.061	  0.012%	 11.667%	     0.000	        1	Delegate/Squared Difference (ND):61
+	                        Mean (ND) Reduce	    0.035	    0.033	  0.007%	 11.674%	     0.000	        1	Delegate/Mean (ND) Reduce:62
+	                                Add (ND)	    0.004	    0.004	  0.001%	 11.675%	     0.000	        1	Delegate/Add (ND):63
+	             Reciprocal Square Root (NC)	    0.005	    0.005	  0.001%	 11.676%	     0.000	        1	Delegate/Reciprocal Square Root (NC):64
+	                           Multiply (ND)	    0.015	    0.037	  0.008%	 11.683%	     0.000	        1	Delegate/Multiply (ND):65
+	                           Subtract (ND)	    0.044	    0.018	  0.004%	 11.687%	     0.000	        1	Delegate/Subtract (ND):66
+	                     Static Reshape (NC)	    0.003	    0.002	  0.000%	 11.688%	     0.000	        1	Delegate/Static Reshape (NC):67
+	                           Multiply (ND)	    0.068	    0.064	  0.013%	 11.700%	     0.000	        1	Delegate/Multiply (ND):68
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 11.701%	     0.000	        1	Delegate/Static Reshape (NC):69
+	                                Add (ND)	    0.044	    0.041	  0.008%	 11.709%	     0.000	        1	Delegate/Add (ND):70
+	          Fully Connected (NC, F32) GEMM	    8.262	    8.257	  1.681%	 13.390%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:71
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	 13.391%	     0.000	        1	Delegate/Static Reshape (NC):72
+	           Transpose (ND, X32) Transpose	    0.580	    0.582	  0.119%	 13.509%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:73
+	                         Slice (ND, X32)	    0.174	    0.176	  0.036%	 13.545%	     0.000	        1	Delegate/Slice (ND, X32):74
+	                         Slice (ND, X32)	    0.148	    0.151	  0.031%	 13.576%	     0.000	        1	Delegate/Slice (ND, X32):75
+	                         Slice (ND, X32)	    0.158	    0.155	  0.032%	 13.607%	     0.000	        1	Delegate/Slice (ND, X32):76
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 13.608%	     0.000	        1	Delegate/Static Reshape (NC):77
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 13.608%	     0.000	        1	Delegate/Static Reshape (NC):78
+	                           Multiply (ND)	    0.097	    0.100	  0.020%	 13.628%	     0.000	        1	Delegate/Multiply (ND):79
+	                           Multiply (ND)	    0.096	    0.103	  0.021%	 13.649%	     0.000	        1	Delegate/Multiply (ND):80
+	           Transpose (ND, X32) Transpose	    0.136	    0.135	  0.027%	 13.676%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:81
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 13.677%	     0.000	        1	Delegate/Static Reshape (NC):82
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	 13.677%	     0.000	        1	Delegate/Static Reshape (NC):83
+	    Batch Matrix Multiply (NC, F32) GEMM	    1.516	    1.492	  0.304%	 13.981%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:84
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	 13.981%	     0.000	        1	Delegate/Static Reshape (NC):85
+	                       Softmax (NC, F32)	    0.687	    0.695	  0.141%	 14.123%	     0.000	        1	Delegate/Softmax (NC, F32):86
+	                     Static Reshape (NC)	    0.004	    0.001	  0.000%	 14.123%	     0.000	        1	Delegate/Static Reshape (NC):87
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 14.123%	     0.000	        1	Delegate/Static Reshape (NC):88
+	    Batch Matrix Multiply (NC, F32) GEMM	    1.981	    2.029	  0.413%	 14.536%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:89
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 14.536%	     0.000	        1	Delegate/Static Reshape (NC):90
+	           Transpose (ND, X32) Transpose	    0.190	    0.206	  0.042%	 14.578%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:91
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 14.579%	     0.000	        1	Delegate/Static Reshape (NC):92
+	          Fully Connected (NC, F32) GEMM	    2.322	    2.314	  0.471%	 15.050%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:93
+	                                Add (ND)	    0.179	    0.194	  0.039%	 15.089%	     0.000	        1	Delegate/Add (ND):94
+	                        Mean (ND) Reduce	    0.047	    0.050	  0.010%	 15.099%	     0.000	        1	Delegate/Mean (ND) Reduce:95
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	 15.100%	     0.000	        1	Delegate/Static Reshape (NC):96
+	                 Squared Difference (ND)	    0.056	    0.056	  0.011%	 15.111%	     0.000	        1	Delegate/Squared Difference (ND):97
+	                        Mean (ND) Reduce	    0.030	    0.032	  0.006%	 15.118%	     0.000	        1	Delegate/Mean (ND) Reduce:98
+	                                Add (ND)	    0.003	    0.003	  0.001%	 15.118%	     0.000	        1	Delegate/Add (ND):99
+	             Reciprocal Square Root (NC)	    0.005	    0.005	  0.001%	 15.120%	     0.000	        1	Delegate/Reciprocal Square Root (NC):100
+	                           Multiply (ND)	    0.031	    0.033	  0.007%	 15.126%	     0.000	        1	Delegate/Multiply (ND):101
+	                           Subtract (ND)	    0.023	    0.019	  0.004%	 15.130%	     0.000	        1	Delegate/Subtract (ND):102
+	                     Static Reshape (NC)	    0.002	    0.001	  0.000%	 15.130%	     0.000	        1	Delegate/Static Reshape (NC):103
+	                           Multiply (ND)	    0.072	    0.071	  0.015%	 15.145%	     0.000	        1	Delegate/Multiply (ND):104
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 15.145%	     0.000	        1	Delegate/Static Reshape (NC):105
+	                                Add (ND)	    0.050	    0.049	  0.010%	 15.155%	     0.000	        1	Delegate/Add (ND):106
+	          Fully Connected (NC, F32) GEMM	   11.092	   11.148	  2.270%	 17.425%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:107
+	                               GELU (NC)	    0.838	    0.860	  0.175%	 17.600%	     0.000	        1	Delegate/GELU (NC):108
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 17.600%	     0.000	        1	Delegate/Static Reshape (NC):109
+	          Fully Connected (NC, F32) GEMM	   13.103	   12.988	  2.644%	 20.245%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:110
+	                                Add (ND)	    0.197	    0.227	  0.046%	 20.291%	     0.000	        1	Delegate/Add (ND):111
+	                        Mean (ND) Reduce	    0.051	    0.055	  0.011%	 20.302%	     0.000	        1	Delegate/Mean (ND) Reduce:112
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	 20.303%	     0.000	        1	Delegate/Static Reshape (NC):113
+	                 Squared Difference (ND)	    0.062	    0.059	  0.012%	 20.315%	     0.000	        1	Delegate/Squared Difference (ND):114
+	                        Mean (ND) Reduce	    0.036	    0.035	  0.007%	 20.322%	     0.000	        1	Delegate/Mean (ND) Reduce:115
+	                                Add (ND)	    0.003	    0.004	  0.001%	 20.323%	     0.000	        1	Delegate/Add (ND):116
+	             Reciprocal Square Root (NC)	    0.005	    0.005	  0.001%	 20.324%	     0.000	        1	Delegate/Reciprocal Square Root (NC):117
+	                           Multiply (ND)	    0.014	    0.034	  0.007%	 20.331%	     0.000	        1	Delegate/Multiply (ND):118
+	                           Subtract (ND)	    0.003	    0.016	  0.003%	 20.334%	     0.000	        1	Delegate/Subtract (ND):119
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 20.334%	     0.000	        1	Delegate/Static Reshape (NC):120
+	                           Multiply (ND)	    0.062	    0.065	  0.013%	 20.348%	     0.000	        1	Delegate/Multiply (ND):121
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	 20.348%	     0.000	        1	Delegate/Static Reshape (NC):122
+	                                Add (ND)	    0.041	    0.043	  0.009%	 20.356%	     0.000	        1	Delegate/Add (ND):123
+	          Fully Connected (NC, F32) GEMM	    7.557	    7.583	  1.544%	 21.900%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:124
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 21.901%	     0.000	        1	Delegate/Static Reshape (NC):125
+	           Transpose (ND, X32) Transpose	    0.569	    0.569	  0.116%	 22.017%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:126
+	                         Slice (ND, X32)	    0.162	    0.171	  0.035%	 22.051%	     0.000	        1	Delegate/Slice (ND, X32):127
+	                         Slice (ND, X32)	    0.150	    0.149	  0.030%	 22.082%	     0.000	        1	Delegate/Slice (ND, X32):128
+	                         Slice (ND, X32)	    0.157	    0.157	  0.032%	 22.114%	     0.000	        1	Delegate/Slice (ND, X32):129
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 22.114%	     0.000	        1	Delegate/Static Reshape (NC):130
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 22.114%	     0.000	        1	Delegate/Static Reshape (NC):131
+	                           Multiply (ND)	    0.118	    0.106	  0.022%	 22.135%	     0.000	        1	Delegate/Multiply (ND):132
+	                           Multiply (ND)	    0.112	    0.104	  0.021%	 22.157%	     0.000	        1	Delegate/Multiply (ND):133
+	           Transpose (ND, X32) Transpose	    0.137	    0.131	  0.027%	 22.183%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:134
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 22.184%	     0.000	        1	Delegate/Static Reshape (NC):135
+	                     Static Reshape (NC)	    0.002	    0.001	  0.000%	 22.184%	     0.000	        1	Delegate/Static Reshape (NC):136
+	    Batch Matrix Multiply (NC, F32) GEMM	    1.459	    1.496	  0.305%	 22.488%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:137
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 22.489%	     0.000	        1	Delegate/Static Reshape (NC):138
+	                       Softmax (NC, F32)	    0.712	    0.703	  0.143%	 22.632%	     0.000	        1	Delegate/Softmax (NC, F32):139
+	                     Static Reshape (NC)	    0.001	    0.002	  0.000%	 22.632%	     0.000	        1	Delegate/Static Reshape (NC):140
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 22.633%	     0.000	        1	Delegate/Static Reshape (NC):141
+	    Batch Matrix Multiply (NC, F32) GEMM	    2.045	    2.029	  0.413%	 23.046%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:142
+	                     Static Reshape (NC)	    0.001	    0.002	  0.000%	 23.046%	     0.000	        1	Delegate/Static Reshape (NC):143
+	           Transpose (ND, X32) Transpose	    0.204	    0.217	  0.044%	 23.090%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:144
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 23.091%	     0.000	        1	Delegate/Static Reshape (NC):145
+	          Fully Connected (NC, F32) GEMM	    3.199	    3.243	  0.660%	 23.751%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:146
+	                                Add (ND)	    0.166	    0.142	  0.029%	 23.780%	     0.000	        1	Delegate/Add (ND):147
+	                        Mean (ND) Reduce	    0.035	    0.041	  0.008%	 23.788%	     0.000	        1	Delegate/Mean (ND) Reduce:148
+	                     Static Reshape (NC)	    0.002	    0.003	  0.001%	 23.789%	     0.000	        1	Delegate/Static Reshape (NC):149
+	                 Squared Difference (ND)	    0.050	    0.049	  0.010%	 23.799%	     0.000	        1	Delegate/Squared Difference (ND):150
+	                        Mean (ND) Reduce	    0.030	    0.030	  0.006%	 23.805%	     0.000	        1	Delegate/Mean (ND) Reduce:151
+	                                Add (ND)	    0.003	    0.003	  0.001%	 23.806%	     0.000	        1	Delegate/Add (ND):152
+	             Reciprocal Square Root (NC)	    0.006	    0.005	  0.001%	 23.807%	     0.000	        1	Delegate/Reciprocal Square Root (NC):153
+	                           Multiply (ND)	    0.031	    0.028	  0.006%	 23.812%	     0.000	        1	Delegate/Multiply (ND):154
+	                           Subtract (ND)	    0.014	    0.015	  0.003%	 23.815%	     0.000	        1	Delegate/Subtract (ND):155
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 23.816%	     0.000	        1	Delegate/Static Reshape (NC):156
+	                           Multiply (ND)	    0.066	    0.068	  0.014%	 23.830%	     0.000	        1	Delegate/Multiply (ND):157
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	 23.830%	     0.000	        1	Delegate/Static Reshape (NC):158
+	                                Add (ND)	    0.045	    0.048	  0.010%	 23.839%	     0.000	        1	Delegate/Add (ND):159
+	          Fully Connected (NC, F32) GEMM	   12.440	   12.552	  2.556%	 26.395%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:160
+	                               GELU (NC)	    0.862	    0.860	  0.175%	 26.570%	     0.000	        1	Delegate/GELU (NC):161
+	                     Static Reshape (NC)	    0.001	    0.002	  0.000%	 26.571%	     0.000	        1	Delegate/Static Reshape (NC):162
+	          Fully Connected (NC, F32) GEMM	   12.023	   12.074	  2.458%	 29.029%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:163
+	                                Add (ND)	    0.187	    0.199	  0.041%	 29.070%	     0.000	        1	Delegate/Add (ND):164
+	                        Mean (ND) Reduce	    0.046	    0.056	  0.011%	 29.081%	     0.000	        1	Delegate/Mean (ND) Reduce:165
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	 29.082%	     0.000	        1	Delegate/Static Reshape (NC):166
+	                 Squared Difference (ND)	    0.057	    0.058	  0.012%	 29.093%	     0.000	        1	Delegate/Squared Difference (ND):167
+	                        Mean (ND) Reduce	    0.032	    0.032	  0.007%	 29.100%	     0.000	        1	Delegate/Mean (ND) Reduce:168
+	                                Add (ND)	    0.003	    0.003	  0.001%	 29.101%	     0.000	        1	Delegate/Add (ND):169
+	             Reciprocal Square Root (NC)	    0.006	    0.005	  0.001%	 29.102%	     0.000	        1	Delegate/Reciprocal Square Root (NC):170
+	                           Multiply (ND)	    0.035	    0.039	  0.008%	 29.110%	     0.000	        1	Delegate/Multiply (ND):171
+	                           Subtract (ND)	    0.024	    0.019	  0.004%	 29.113%	     0.000	        1	Delegate/Subtract (ND):172
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 29.114%	     0.000	        1	Delegate/Static Reshape (NC):173
+	                           Multiply (ND)	    0.071	    0.068	  0.014%	 29.128%	     0.000	        1	Delegate/Multiply (ND):174
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 29.128%	     0.000	        1	Delegate/Static Reshape (NC):175
+	                                Add (ND)	    0.049	    0.046	  0.009%	 29.137%	     0.000	        1	Delegate/Add (ND):176
+	          Fully Connected (NC, F32) GEMM	    7.792	    7.779	  1.584%	 30.721%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:177
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	 30.721%	     0.000	        1	Delegate/Static Reshape (NC):178
+	           Transpose (ND, X32) Transpose	    0.586	    0.556	  0.113%	 30.835%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:179
+	                         Slice (ND, X32)	    0.172	    0.174	  0.035%	 30.870%	     0.000	        1	Delegate/Slice (ND, X32):180
+	                         Slice (ND, X32)	    0.141	    0.142	  0.029%	 30.899%	     0.000	        1	Delegate/Slice (ND, X32):181
+	                         Slice (ND, X32)	    0.154	    0.155	  0.032%	 30.931%	     0.000	        1	Delegate/Slice (ND, X32):182
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 30.931%	     0.000	        1	Delegate/Static Reshape (NC):183
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 30.931%	     0.000	        1	Delegate/Static Reshape (NC):184
+	                           Multiply (ND)	    0.092	    0.098	  0.020%	 30.951%	     0.000	        1	Delegate/Multiply (ND):185
+	                           Multiply (ND)	    0.096	    0.104	  0.021%	 30.972%	     0.000	        1	Delegate/Multiply (ND):186
+	           Transpose (ND, X32) Transpose	    0.131	    0.132	  0.027%	 30.999%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:187
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 30.999%	     0.000	        1	Delegate/Static Reshape (NC):188
+	                     Static Reshape (NC)	    0.001	    0.000	  0.000%	 30.999%	     0.000	        1	Delegate/Static Reshape (NC):189
+	    Batch Matrix Multiply (NC, F32) GEMM	    1.528	    1.483	  0.302%	 31.301%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:190
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	 31.302%	     0.000	        1	Delegate/Static Reshape (NC):191
+	                       Softmax (NC, F32)	    0.685	    0.698	  0.142%	 31.444%	     0.000	        1	Delegate/Softmax (NC, F32):192
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 31.444%	     0.000	        1	Delegate/Static Reshape (NC):193
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 31.444%	     0.000	        1	Delegate/Static Reshape (NC):194
+	    Batch Matrix Multiply (NC, F32) GEMM	    1.980	    2.026	  0.412%	 31.857%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:195
+	                     Static Reshape (NC)	    0.001	    0.002	  0.000%	 31.857%	     0.000	        1	Delegate/Static Reshape (NC):196
+	           Transpose (ND, X32) Transpose	    0.189	    0.205	  0.042%	 31.899%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:197
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 31.899%	     0.000	        1	Delegate/Static Reshape (NC):198
+	          Fully Connected (NC, F32) GEMM	    2.321	    2.310	  0.470%	 32.370%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:199
+	                                Add (ND)	    0.192	    0.192	  0.039%	 32.409%	     0.000	        1	Delegate/Add (ND):200
+	                        Mean (ND) Reduce	    0.053	    0.049	  0.010%	 32.419%	     0.000	        1	Delegate/Mean (ND) Reduce:201
+	                     Static Reshape (NC)	    0.002	    0.003	  0.001%	 32.419%	     0.000	        1	Delegate/Static Reshape (NC):202
+	                 Squared Difference (ND)	    0.049	    0.053	  0.011%	 32.430%	     0.000	        1	Delegate/Squared Difference (ND):203
+	                        Mean (ND) Reduce	    0.030	    0.032	  0.006%	 32.436%	     0.000	        1	Delegate/Mean (ND) Reduce:204
+	                                Add (ND)	    0.003	    0.003	  0.001%	 32.437%	     0.000	        1	Delegate/Add (ND):205
+	             Reciprocal Square Root (NC)	    0.005	    0.005	  0.001%	 32.438%	     0.000	        1	Delegate/Reciprocal Square Root (NC):206
+	                           Multiply (ND)	    0.035	    0.035	  0.007%	 32.445%	     0.000	        1	Delegate/Multiply (ND):207
+	                           Subtract (ND)	    0.025	    0.016	  0.003%	 32.449%	     0.000	        1	Delegate/Subtract (ND):208
+	                     Static Reshape (NC)	    0.001	    0.002	  0.000%	 32.449%	     0.000	        1	Delegate/Static Reshape (NC):209
+	                           Multiply (ND)	    0.074	    0.071	  0.014%	 32.463%	     0.000	        1	Delegate/Multiply (ND):210
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 32.464%	     0.000	        1	Delegate/Static Reshape (NC):211
+	                                Add (ND)	    0.053	    0.049	  0.010%	 32.473%	     0.000	        1	Delegate/Add (ND):212
+	          Fully Connected (NC, F32) GEMM	   10.461	   10.496	  2.137%	 34.610%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:213
+	                               GELU (NC)	    0.819	    0.849	  0.173%	 34.783%	     0.000	        1	Delegate/GELU (NC):214
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 34.784%	     0.000	        1	Delegate/Static Reshape (NC):215
+	          Fully Connected (NC, F32) GEMM	   12.036	   12.072	  2.458%	 37.242%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:216
+	                                Add (ND)	    0.202	    0.204	  0.042%	 37.283%	     0.000	        1	Delegate/Add (ND):217
+	                        Mean (ND) Reduce	    0.056	    0.055	  0.011%	 37.294%	     0.000	        1	Delegate/Mean (ND) Reduce:218
+	                     Static Reshape (NC)	    0.004	    0.003	  0.001%	 37.295%	     0.000	        1	Delegate/Static Reshape (NC):219
+	                 Squared Difference (ND)	    0.067	    0.058	  0.012%	 37.307%	     0.000	        1	Delegate/Squared Difference (ND):220
+	                        Mean (ND) Reduce	    0.031	    0.033	  0.007%	 37.313%	     0.000	        1	Delegate/Mean (ND) Reduce:221
+	                                Add (ND)	    0.003	    0.003	  0.001%	 37.314%	     0.000	        1	Delegate/Add (ND):222
+	             Reciprocal Square Root (NC)	    0.005	    0.005	  0.001%	 37.315%	     0.000	        1	Delegate/Reciprocal Square Root (NC):223
+	                           Multiply (ND)	    0.016	    0.034	  0.007%	 37.322%	     0.000	        1	Delegate/Multiply (ND):224
+	                           Subtract (ND)	    0.003	    0.017	  0.004%	 37.326%	     0.000	        1	Delegate/Subtract (ND):225
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 37.326%	     0.000	        1	Delegate/Static Reshape (NC):226
+	                           Multiply (ND)	    0.063	    0.067	  0.014%	 37.340%	     0.000	        1	Delegate/Multiply (ND):227
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 37.340%	     0.000	        1	Delegate/Static Reshape (NC):228
+	                                Add (ND)	    0.047	    0.047	  0.010%	 37.349%	     0.000	        1	Delegate/Add (ND):229
+	          Fully Connected (NC, F32) GEMM	    7.218	    7.211	  1.468%	 38.818%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:230
+	                     Static Reshape (NC)	    0.002	    0.003	  0.001%	 38.818%	     0.000	        1	Delegate/Static Reshape (NC):231
+	           Transpose (ND, X32) Transpose	    0.564	    0.560	  0.114%	 38.932%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:232
+	                         Slice (ND, X32)	    0.174	    0.173	  0.035%	 38.967%	     0.000	        1	Delegate/Slice (ND, X32):233
+	                         Slice (ND, X32)	    0.145	    0.141	  0.029%	 38.996%	     0.000	        1	Delegate/Slice (ND, X32):234
+	                         Slice (ND, X32)	    0.166	    0.155	  0.032%	 39.028%	     0.000	        1	Delegate/Slice (ND, X32):235
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 39.028%	     0.000	        1	Delegate/Static Reshape (NC):236
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 39.028%	     0.000	        1	Delegate/Static Reshape (NC):237
+	                           Multiply (ND)	    0.171	    0.106	  0.022%	 39.050%	     0.000	        1	Delegate/Multiply (ND):238
+	                           Multiply (ND)	    0.121	    0.110	  0.022%	 39.072%	     0.000	        1	Delegate/Multiply (ND):239
+	           Transpose (ND, X32) Transpose	    0.139	    0.132	  0.027%	 39.099%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:240
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 39.099%	     0.000	        1	Delegate/Static Reshape (NC):241
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	 39.099%	     0.000	        1	Delegate/Static Reshape (NC):242
+	    Batch Matrix Multiply (NC, F32) GEMM	    1.813	    1.506	  0.307%	 39.406%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:243
+	                     Static Reshape (NC)	    0.003	    0.002	  0.000%	 39.406%	     0.000	        1	Delegate/Static Reshape (NC):244
+	                       Softmax (NC, F32)	    0.683	    0.696	  0.142%	 39.548%	     0.000	        1	Delegate/Softmax (NC, F32):245
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 39.548%	     0.000	        1	Delegate/Static Reshape (NC):246
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 39.548%	     0.000	        1	Delegate/Static Reshape (NC):247
+	    Batch Matrix Multiply (NC, F32) GEMM	    2.028	    2.043	  0.416%	 39.964%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:248
+	                     Static Reshape (NC)	    0.002	    0.001	  0.000%	 39.965%	     0.000	        1	Delegate/Static Reshape (NC):249
+	           Transpose (ND, X32) Transpose	    0.200	    0.205	  0.042%	 40.007%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:250
+	                     Static Reshape (NC)	    0.002	    0.002	  0.001%	 40.007%	     0.000	        1	Delegate/Static Reshape (NC):251
+	          Fully Connected (NC, F32) GEMM	    2.309	    2.360	  0.480%	 40.487%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:252
+	                                Add (ND)	    0.190	    0.195	  0.040%	 40.527%	     0.000	        1	Delegate/Add (ND):253
+	                        Mean (ND) Reduce	    0.044	    0.049	  0.010%	 40.537%	     0.000	        1	Delegate/Mean (ND) Reduce:254
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	 40.538%	     0.000	        1	Delegate/Static Reshape (NC):255
+	                 Squared Difference (ND)	    0.059	    0.059	  0.012%	 40.550%	     0.000	        1	Delegate/Squared Difference (ND):256
+	                        Mean (ND) Reduce	    0.031	    0.032	  0.006%	 40.556%	     0.000	        1	Delegate/Mean (ND) Reduce:257
+	                                Add (ND)	    0.003	    0.003	  0.001%	 40.557%	     0.000	        1	Delegate/Add (ND):258
+	             Reciprocal Square Root (NC)	    0.005	    0.005	  0.001%	 40.558%	     0.000	        1	Delegate/Reciprocal Square Root (NC):259
+	                           Multiply (ND)	    0.040	    0.030	  0.006%	 40.564%	     0.000	        1	Delegate/Multiply (ND):260
+	                           Subtract (ND)	    0.015	    0.015	  0.003%	 40.567%	     0.000	        1	Delegate/Subtract (ND):261
+	                     Static Reshape (NC)	    0.001	    0.002	  0.000%	 40.567%	     0.000	        1	Delegate/Static Reshape (NC):262
+	                           Multiply (ND)	    0.069	    0.070	  0.014%	 40.582%	     0.000	        1	Delegate/Multiply (ND):263
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 40.582%	     0.000	        1	Delegate/Static Reshape (NC):264
+	                                Add (ND)	    0.046	    0.048	  0.010%	 40.592%	     0.000	        1	Delegate/Add (ND):265
+	          Fully Connected (NC, F32) GEMM	    9.649	    9.647	  1.964%	 42.556%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:266
+	                               GELU (NC)	    0.870	    0.862	  0.176%	 42.732%	     0.000	        1	Delegate/GELU (NC):267
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 42.732%	     0.000	        1	Delegate/Static Reshape (NC):268
+	          Fully Connected (NC, F32) GEMM	   11.744	   11.631	  2.368%	 45.100%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:269
+	                                Add (ND)	    0.191	    0.195	  0.040%	 45.140%	     0.000	        1	Delegate/Add (ND):270
+	                        Mean (ND) Reduce	    0.050	    0.067	  0.014%	 45.154%	     0.000	        1	Delegate/Mean (ND) Reduce:271
+	                     Static Reshape (NC)	    0.004	    0.004	  0.001%	 45.154%	     0.000	        1	Delegate/Static Reshape (NC):272
+	                 Squared Difference (ND)	    0.063	    0.059	  0.012%	 45.166%	     0.000	        1	Delegate/Squared Difference (ND):273
+	                        Mean (ND) Reduce	    0.035	    0.032	  0.007%	 45.173%	     0.000	        1	Delegate/Mean (ND) Reduce:274
+	                                Add (ND)	    0.004	    0.004	  0.001%	 45.174%	     0.000	        1	Delegate/Add (ND):275
+	             Reciprocal Square Root (NC)	    0.006	    0.005	  0.001%	 45.175%	     0.000	        1	Delegate/Reciprocal Square Root (NC):276
+	                           Multiply (ND)	    0.038	    0.036	  0.007%	 45.182%	     0.000	        1	Delegate/Multiply (ND):277
+	                           Subtract (ND)	    0.015	    0.019	  0.004%	 45.186%	     0.000	        1	Delegate/Subtract (ND):278
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 45.186%	     0.000	        1	Delegate/Static Reshape (NC):279
+	                           Multiply (ND)	    0.063	    0.068	  0.014%	 45.200%	     0.000	        1	Delegate/Multiply (ND):280
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 45.200%	     0.000	        1	Delegate/Static Reshape (NC):281
+	                                Add (ND)	    0.045	    0.046	  0.009%	 45.210%	     0.000	        1	Delegate/Add (ND):282
+	          Fully Connected (NC, F32) GEMM	    6.970	    6.985	  1.422%	 46.632%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:283
+	                     Static Reshape (NC)	    0.003	    0.005	  0.001%	 46.633%	     0.000	        1	Delegate/Static Reshape (NC):284
+	           Transpose (ND, X32) Transpose	    0.530	    0.559	  0.114%	 46.747%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:285
+	                         Slice (ND, X32)	    0.169	    0.170	  0.035%	 46.781%	     0.000	        1	Delegate/Slice (ND, X32):286
+	                         Slice (ND, X32)	    0.149	    0.148	  0.030%	 46.812%	     0.000	        1	Delegate/Slice (ND, X32):287
+	                         Slice (ND, X32)	    0.155	    0.155	  0.032%	 46.843%	     0.000	        1	Delegate/Slice (ND, X32):288
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 46.843%	     0.000	        1	Delegate/Static Reshape (NC):289
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 46.844%	     0.000	        1	Delegate/Static Reshape (NC):290
+	                           Multiply (ND)	    0.098	    0.102	  0.021%	 46.864%	     0.000	        1	Delegate/Multiply (ND):291
+	                           Multiply (ND)	    0.096	    0.102	  0.021%	 46.885%	     0.000	        1	Delegate/Multiply (ND):292
+	           Transpose (ND, X32) Transpose	    0.167	    0.137	  0.028%	 46.913%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:293
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 46.913%	     0.000	        1	Delegate/Static Reshape (NC):294
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 46.913%	     0.000	        1	Delegate/Static Reshape (NC):295
+	    Batch Matrix Multiply (NC, F32) GEMM	    1.483	    1.500	  0.305%	 47.219%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:296
+	                     Static Reshape (NC)	    0.002	    0.003	  0.001%	 47.219%	     0.000	        1	Delegate/Static Reshape (NC):297
+	                       Softmax (NC, F32)	    0.718	    0.700	  0.142%	 47.362%	     0.000	        1	Delegate/Softmax (NC, F32):298
+	                     Static Reshape (NC)	    0.002	    0.001	  0.000%	 47.362%	     0.000	        1	Delegate/Static Reshape (NC):299
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 47.362%	     0.000	        1	Delegate/Static Reshape (NC):300
+	    Batch Matrix Multiply (NC, F32) GEMM	    1.994	    2.025	  0.412%	 47.775%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:301
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 47.775%	     0.000	        1	Delegate/Static Reshape (NC):302
+	           Transpose (ND, X32) Transpose	    0.194	    0.209	  0.043%	 47.817%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:303
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 47.818%	     0.000	        1	Delegate/Static Reshape (NC):304
+	          Fully Connected (NC, F32) GEMM	    2.328	    2.318	  0.472%	 48.290%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:305
+	                                Add (ND)	    0.195	    0.195	  0.040%	 48.329%	     0.000	        1	Delegate/Add (ND):306
+	                        Mean (ND) Reduce	    0.045	    0.050	  0.010%	 48.340%	     0.000	        1	Delegate/Mean (ND) Reduce:307
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	 48.340%	     0.000	        1	Delegate/Static Reshape (NC):308
+	                 Squared Difference (ND)	    0.055	    0.057	  0.012%	 48.352%	     0.000	        1	Delegate/Squared Difference (ND):309
+	                        Mean (ND) Reduce	    0.033	    0.033	  0.007%	 48.358%	     0.000	        1	Delegate/Mean (ND) Reduce:310
+	                                Add (ND)	    0.003	    0.004	  0.001%	 48.359%	     0.000	        1	Delegate/Add (ND):311
+	             Reciprocal Square Root (NC)	    0.005	    0.005	  0.001%	 48.360%	     0.000	        1	Delegate/Reciprocal Square Root (NC):312
+	                           Multiply (ND)	    0.033	    0.034	  0.007%	 48.367%	     0.000	        1	Delegate/Multiply (ND):313
+	                           Subtract (ND)	    0.023	    0.020	  0.004%	 48.371%	     0.000	        1	Delegate/Subtract (ND):314
+	                     Static Reshape (NC)	    0.002	    0.001	  0.000%	 48.371%	     0.000	        1	Delegate/Static Reshape (NC):315
+	                           Multiply (ND)	    0.074	    0.072	  0.015%	 48.386%	     0.000	        1	Delegate/Multiply (ND):316
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 48.386%	     0.000	        1	Delegate/Static Reshape (NC):317
+	                                Add (ND)	    0.054	    0.061	  0.012%	 48.399%	     0.000	        1	Delegate/Add (ND):318
+	          Fully Connected (NC, F32) GEMM	   10.023	   10.037	  2.044%	 50.442%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:319
+	                               GELU (NC)	    0.884	    0.858	  0.175%	 50.617%	     0.000	        1	Delegate/GELU (NC):320
+	                     Static Reshape (NC)	    0.001	    0.002	  0.000%	 50.617%	     0.000	        1	Delegate/Static Reshape (NC):321
+	          Fully Connected (NC, F32) GEMM	   13.888	   13.899	  2.830%	 53.447%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:322
+	                                Add (ND)	    0.197	    0.198	  0.040%	 53.487%	     0.000	        1	Delegate/Add (ND):323
+	                        Mean (ND) Reduce	    0.053	    0.055	  0.011%	 53.499%	     0.000	        1	Delegate/Mean (ND) Reduce:324
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	 53.499%	     0.000	        1	Delegate/Static Reshape (NC):325
+	                 Squared Difference (ND)	    0.062	    0.061	  0.012%	 53.512%	     0.000	        1	Delegate/Squared Difference (ND):326
+	                        Mean (ND) Reduce	    0.034	    0.035	  0.007%	 53.519%	     0.000	        1	Delegate/Mean (ND) Reduce:327
+	                                Add (ND)	    0.003	    0.004	  0.001%	 53.520%	     0.000	        1	Delegate/Add (ND):328
+	             Reciprocal Square Root (NC)	    0.005	    0.005	  0.001%	 53.521%	     0.000	        1	Delegate/Reciprocal Square Root (NC):329
+	                           Multiply (ND)	    0.014	    0.035	  0.007%	 53.528%	     0.000	        1	Delegate/Multiply (ND):330
+	                           Subtract (ND)	    0.041	    0.017	  0.004%	 53.531%	     0.000	        1	Delegate/Subtract (ND):331
+	                     Static Reshape (NC)	    0.003	    0.002	  0.000%	 53.532%	     0.000	        1	Delegate/Static Reshape (NC):332
+	                           Multiply (ND)	    0.064	    0.062	  0.013%	 53.544%	     0.000	        1	Delegate/Multiply (ND):333
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	 53.544%	     0.000	        1	Delegate/Static Reshape (NC):334
+	                                Add (ND)	    0.039	    0.043	  0.009%	 53.553%	     0.000	        1	Delegate/Add (ND):335
+	          Fully Connected (NC, F32) GEMM	    6.876	    6.901	  1.405%	 54.958%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:336
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 54.959%	     0.000	        1	Delegate/Static Reshape (NC):337
+	           Transpose (ND, X32) Transpose	    0.527	    0.550	  0.112%	 55.070%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:338
+	                         Slice (ND, X32)	    0.160	    0.170	  0.035%	 55.105%	     0.000	        1	Delegate/Slice (ND, X32):339
+	                         Slice (ND, X32)	    0.144	    0.149	  0.030%	 55.136%	     0.000	        1	Delegate/Slice (ND, X32):340
+	                         Slice (ND, X32)	    0.153	    0.155	  0.032%	 55.167%	     0.000	        1	Delegate/Slice (ND, X32):341
+	                     Static Reshape (NC)	    0.000	    0.001	  0.000%	 55.167%	     0.000	        1	Delegate/Static Reshape (NC):342
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 55.167%	     0.000	        1	Delegate/Static Reshape (NC):343
+	                           Multiply (ND)	    0.101	    0.099	  0.020%	 55.188%	     0.000	        1	Delegate/Multiply (ND):344
+	                           Multiply (ND)	    0.110	    0.104	  0.021%	 55.209%	     0.000	        1	Delegate/Multiply (ND):345
+	           Transpose (ND, X32) Transpose	    0.131	    0.135	  0.027%	 55.236%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:346
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 55.236%	     0.000	        1	Delegate/Static Reshape (NC):347
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 55.237%	     0.000	        1	Delegate/Static Reshape (NC):348
+	    Batch Matrix Multiply (NC, F32) GEMM	    1.514	    1.493	  0.304%	 55.541%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:349
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 55.541%	     0.000	        1	Delegate/Static Reshape (NC):350
+	                       Softmax (NC, F32)	    0.679	    0.698	  0.142%	 55.683%	     0.000	        1	Delegate/Softmax (NC, F32):351
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 55.683%	     0.000	        1	Delegate/Static Reshape (NC):352
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 55.684%	     0.000	        1	Delegate/Static Reshape (NC):353
+	    Batch Matrix Multiply (NC, F32) GEMM	    1.981	    2.020	  0.411%	 56.095%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:354
+	                     Static Reshape (NC)	    0.001	    0.002	  0.000%	 56.095%	     0.000	        1	Delegate/Static Reshape (NC):355
+	           Transpose (ND, X32) Transpose	    0.203	    0.208	  0.042%	 56.138%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:356
+	                     Static Reshape (NC)	    0.001	    0.002	  0.000%	 56.138%	     0.000	        1	Delegate/Static Reshape (NC):357
+	          Fully Connected (NC, F32) GEMM	    2.330	    2.332	  0.475%	 56.613%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:358
+	                                Add (ND)	    0.204	    0.204	  0.042%	 56.654%	     0.000	        1	Delegate/Add (ND):359
+	                        Mean (ND) Reduce	    0.052	    0.052	  0.011%	 56.665%	     0.000	        1	Delegate/Mean (ND) Reduce:360
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	 56.666%	     0.000	        1	Delegate/Static Reshape (NC):361
+	                 Squared Difference (ND)	    0.055	    0.055	  0.011%	 56.677%	     0.000	        1	Delegate/Squared Difference (ND):362
+	                        Mean (ND) Reduce	    0.033	    0.033	  0.007%	 56.683%	     0.000	        1	Delegate/Mean (ND) Reduce:363
+	                                Add (ND)	    0.004	    0.004	  0.001%	 56.684%	     0.000	        1	Delegate/Add (ND):364
+	             Reciprocal Square Root (NC)	    0.005	    0.005	  0.001%	 56.685%	     0.000	        1	Delegate/Reciprocal Square Root (NC):365
+	                           Multiply (ND)	    0.040	    0.036	  0.007%	 56.692%	     0.000	        1	Delegate/Multiply (ND):366
+	                           Subtract (ND)	    0.016	    0.018	  0.004%	 56.696%	     0.000	        1	Delegate/Subtract (ND):367
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 56.697%	     0.000	        1	Delegate/Static Reshape (NC):368
+	                           Multiply (ND)	    0.070	    0.072	  0.015%	 56.711%	     0.000	        1	Delegate/Multiply (ND):369
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	 56.711%	     0.000	        1	Delegate/Static Reshape (NC):370
+	                                Add (ND)	    0.047	    0.048	  0.010%	 56.721%	     0.000	        1	Delegate/Add (ND):371
+	          Fully Connected (NC, F32) GEMM	    9.530	    9.457	  1.926%	 58.647%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:372
+	                               GELU (NC)	    0.870	    0.863	  0.176%	 58.822%	     0.000	        1	Delegate/GELU (NC):373
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 58.823%	     0.000	        1	Delegate/Static Reshape (NC):374
+	          Fully Connected (NC, F32) GEMM	   12.090	   11.533	  2.348%	 61.171%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:375
+	                                Add (ND)	    0.202	    0.203	  0.041%	 61.212%	     0.000	        1	Delegate/Add (ND):376
+	                        Mean (ND) Reduce	    0.056	    0.056	  0.011%	 61.224%	     0.000	        1	Delegate/Mean (ND) Reduce:377
+	                     Static Reshape (NC)	    0.002	    0.003	  0.001%	 61.224%	     0.000	        1	Delegate/Static Reshape (NC):378
+	                 Squared Difference (ND)	    0.059	    0.063	  0.013%	 61.237%	     0.000	        1	Delegate/Squared Difference (ND):379
+	                        Mean (ND) Reduce	    0.041	    0.034	  0.007%	 61.244%	     0.000	        1	Delegate/Mean (ND) Reduce:380
+	                                Add (ND)	    0.003	    0.003	  0.001%	 61.245%	     0.000	        1	Delegate/Add (ND):381
+	             Reciprocal Square Root (NC)	    0.005	    0.005	  0.001%	 61.246%	     0.000	        1	Delegate/Reciprocal Square Root (NC):382
+	                           Multiply (ND)	    0.047	    0.038	  0.008%	 61.253%	     0.000	        1	Delegate/Multiply (ND):383
+	                           Subtract (ND)	    0.024	    0.022	  0.004%	 61.258%	     0.000	        1	Delegate/Subtract (ND):384
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 61.258%	     0.000	        1	Delegate/Static Reshape (NC):385
+	                           Multiply (ND)	    0.065	    0.071	  0.014%	 61.273%	     0.000	        1	Delegate/Multiply (ND):386
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 61.273%	     0.000	        1	Delegate/Static Reshape (NC):387
+	                                Add (ND)	    0.047	    0.048	  0.010%	 61.282%	     0.000	        1	Delegate/Add (ND):388
+	          Fully Connected (NC, F32) GEMM	    6.745	    6.826	  1.390%	 62.672%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:389
+	                     Static Reshape (NC)	    0.002	    0.003	  0.001%	 62.673%	     0.000	        1	Delegate/Static Reshape (NC):390
+	           Transpose (ND, X32) Transpose	    0.595	    0.548	  0.112%	 62.784%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:391
+	                         Slice (ND, X32)	    0.177	    0.168	  0.034%	 62.818%	     0.000	        1	Delegate/Slice (ND, X32):392
+	                         Slice (ND, X32)	    0.155	    0.149	  0.030%	 62.849%	     0.000	        1	Delegate/Slice (ND, X32):393
+	                         Slice (ND, X32)	    0.156	    0.157	  0.032%	 62.881%	     0.000	        1	Delegate/Slice (ND, X32):394
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 62.881%	     0.000	        1	Delegate/Static Reshape (NC):395
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 62.881%	     0.000	        1	Delegate/Static Reshape (NC):396
+	                           Multiply (ND)	    0.087	    0.101	  0.021%	 62.902%	     0.000	        1	Delegate/Multiply (ND):397
+	                           Multiply (ND)	    0.102	    0.103	  0.021%	 62.923%	     0.000	        1	Delegate/Multiply (ND):398
+	           Transpose (ND, X32) Transpose	    0.139	    0.133	  0.027%	 62.950%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:399
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 62.950%	     0.000	        1	Delegate/Static Reshape (NC):400
+	                     Static Reshape (NC)	    0.001	    0.000	  0.000%	 62.950%	     0.000	        1	Delegate/Static Reshape (NC):401
+	    Batch Matrix Multiply (NC, F32) GEMM	    1.526	    1.501	  0.306%	 63.256%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:402
+	                     Static Reshape (NC)	    0.001	    0.002	  0.000%	 63.256%	     0.000	        1	Delegate/Static Reshape (NC):403
+	                       Softmax (NC, F32)	    0.680	    0.700	  0.143%	 63.399%	     0.000	        1	Delegate/Softmax (NC, F32):404
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 63.399%	     0.000	        1	Delegate/Static Reshape (NC):405
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 63.399%	     0.000	        1	Delegate/Static Reshape (NC):406
+	    Batch Matrix Multiply (NC, F32) GEMM	    2.037	    2.027	  0.413%	 63.812%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:407
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 63.812%	     0.000	        1	Delegate/Static Reshape (NC):408
+	           Transpose (ND, X32) Transpose	    0.196	    0.208	  0.042%	 63.855%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:409
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 63.855%	     0.000	        1	Delegate/Static Reshape (NC):410
+	          Fully Connected (NC, F32) GEMM	    2.294	    2.314	  0.471%	 64.326%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:411
+	                                Add (ND)	    0.237	    0.205	  0.042%	 64.368%	     0.000	        1	Delegate/Add (ND):412
+	                        Mean (ND) Reduce	    0.051	    0.053	  0.011%	 64.379%	     0.000	        1	Delegate/Mean (ND) Reduce:413
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	 64.379%	     0.000	        1	Delegate/Static Reshape (NC):414
+	                 Squared Difference (ND)	    0.056	    0.055	  0.011%	 64.390%	     0.000	        1	Delegate/Squared Difference (ND):415
+	                        Mean (ND) Reduce	    0.032	    0.033	  0.007%	 64.397%	     0.000	        1	Delegate/Mean (ND) Reduce:416
+	                                Add (ND)	    0.003	    0.003	  0.001%	 64.398%	     0.000	        1	Delegate/Add (ND):417
+	             Reciprocal Square Root (NC)	    0.005	    0.005	  0.001%	 64.399%	     0.000	        1	Delegate/Reciprocal Square Root (NC):418
+	                           Multiply (ND)	    0.037	    0.035	  0.007%	 64.406%	     0.000	        1	Delegate/Multiply (ND):419
+	                           Subtract (ND)	    0.014	    0.016	  0.003%	 64.409%	     0.000	        1	Delegate/Subtract (ND):420
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 64.409%	     0.000	        1	Delegate/Static Reshape (NC):421
+	                           Multiply (ND)	    0.069	    0.081	  0.016%	 64.426%	     0.000	        1	Delegate/Multiply (ND):422
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 64.426%	     0.000	        1	Delegate/Static Reshape (NC):423
+	                                Add (ND)	    0.053	    0.050	  0.010%	 64.436%	     0.000	        1	Delegate/Add (ND):424
+	          Fully Connected (NC, F32) GEMM	    9.366	    9.473	  1.929%	 66.365%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:425
+	                               GELU (NC)	    0.838	    0.909	  0.185%	 66.550%	     0.000	        1	Delegate/GELU (NC):426
+	                     Static Reshape (NC)	    0.004	    0.002	  0.000%	 66.550%	     0.000	        1	Delegate/Static Reshape (NC):427
+	          Fully Connected (NC, F32) GEMM	   11.507	   11.534	  2.348%	 68.899%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:428
+	                                Add (ND)	    0.213	    0.207	  0.042%	 68.941%	     0.000	        1	Delegate/Add (ND):429
+	                        Mean (ND) Reduce	    0.052	    0.055	  0.011%	 68.952%	     0.000	        1	Delegate/Mean (ND) Reduce:430
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	 68.953%	     0.000	        1	Delegate/Static Reshape (NC):431
+	                 Squared Difference (ND)	    0.061	    0.059	  0.012%	 68.965%	     0.000	        1	Delegate/Squared Difference (ND):432
+	                        Mean (ND) Reduce	    0.031	    0.032	  0.006%	 68.971%	     0.000	        1	Delegate/Mean (ND) Reduce:433
+	                                Add (ND)	    0.003	    0.003	  0.001%	 68.972%	     0.000	        1	Delegate/Add (ND):434
+	             Reciprocal Square Root (NC)	    0.005	    0.005	  0.001%	 68.973%	     0.000	        1	Delegate/Reciprocal Square Root (NC):435
+	                           Multiply (ND)	    0.037	    0.038	  0.008%	 68.981%	     0.000	        1	Delegate/Multiply (ND):436
+	                           Subtract (ND)	    0.024	    0.018	  0.004%	 68.984%	     0.000	        1	Delegate/Subtract (ND):437
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 68.985%	     0.000	        1	Delegate/Static Reshape (NC):438
+	                           Multiply (ND)	    0.073	    0.070	  0.014%	 68.999%	     0.000	        1	Delegate/Multiply (ND):439
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 68.999%	     0.000	        1	Delegate/Static Reshape (NC):440
+	                                Add (ND)	    0.046	    0.048	  0.010%	 69.009%	     0.000	        1	Delegate/Add (ND):441
+	          Fully Connected (NC, F32) GEMM	    6.810	    6.831	  1.391%	 70.400%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:442
+	                     Static Reshape (NC)	    0.002	    0.003	  0.001%	 70.400%	     0.000	        1	Delegate/Static Reshape (NC):443
+	           Transpose (ND, X32) Transpose	    0.543	    0.553	  0.113%	 70.513%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:444
+	                         Slice (ND, X32)	    0.165	    0.164	  0.033%	 70.546%	     0.000	        1	Delegate/Slice (ND, X32):445
+	                         Slice (ND, X32)	    0.147	    0.149	  0.030%	 70.577%	     0.000	        1	Delegate/Slice (ND, X32):446
+	                         Slice (ND, X32)	    0.159	    0.160	  0.033%	 70.609%	     0.000	        1	Delegate/Slice (ND, X32):447
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 70.609%	     0.000	        1	Delegate/Static Reshape (NC):448
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 70.610%	     0.000	        1	Delegate/Static Reshape (NC):449
+	                           Multiply (ND)	    0.102	    0.097	  0.020%	 70.629%	     0.000	        1	Delegate/Multiply (ND):450
+	                           Multiply (ND)	    0.099	    0.105	  0.021%	 70.651%	     0.000	        1	Delegate/Multiply (ND):451
+	           Transpose (ND, X32) Transpose	    0.135	    0.137	  0.028%	 70.678%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:452
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 70.679%	     0.000	        1	Delegate/Static Reshape (NC):453
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	 70.679%	     0.000	        1	Delegate/Static Reshape (NC):454
+	    Batch Matrix Multiply (NC, F32) GEMM	    1.516	    1.506	  0.307%	 70.985%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:455
+	                     Static Reshape (NC)	    0.003	    0.002	  0.000%	 70.986%	     0.000	        1	Delegate/Static Reshape (NC):456
+	                       Softmax (NC, F32)	    0.692	    0.695	  0.141%	 71.127%	     0.000	        1	Delegate/Softmax (NC, F32):457
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 71.128%	     0.000	        1	Delegate/Static Reshape (NC):458
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 71.128%	     0.000	        1	Delegate/Static Reshape (NC):459
+	    Batch Matrix Multiply (NC, F32) GEMM	    1.987	    2.022	  0.412%	 71.539%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:460
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 71.540%	     0.000	        1	Delegate/Static Reshape (NC):461
+	           Transpose (ND, X32) Transpose	    0.217	    0.206	  0.042%	 71.582%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:462
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 71.582%	     0.000	        1	Delegate/Static Reshape (NC):463
+	          Fully Connected (NC, F32) GEMM	    2.326	    2.307	  0.470%	 72.052%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:464
+	                                Add (ND)	    0.205	    0.210	  0.043%	 72.094%	     0.000	        1	Delegate/Add (ND):465
+	                        Mean (ND) Reduce	    0.054	    0.051	  0.010%	 72.105%	     0.000	        1	Delegate/Mean (ND) Reduce:466
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	 72.106%	     0.000	        1	Delegate/Static Reshape (NC):467
+	                 Squared Difference (ND)	    0.058	    0.058	  0.012%	 72.117%	     0.000	        1	Delegate/Squared Difference (ND):468
+	                        Mean (ND) Reduce	    0.031	    0.033	  0.007%	 72.124%	     0.000	        1	Delegate/Mean (ND) Reduce:469
+	                                Add (ND)	    0.003	    0.003	  0.001%	 72.125%	     0.000	        1	Delegate/Add (ND):470
+	             Reciprocal Square Root (NC)	    0.005	    0.005	  0.001%	 72.126%	     0.000	        1	Delegate/Reciprocal Square Root (NC):471
+	                           Multiply (ND)	    0.041	    0.040	  0.008%	 72.134%	     0.000	        1	Delegate/Multiply (ND):472
+	                           Subtract (ND)	    0.016	    0.018	  0.004%	 72.137%	     0.000	        1	Delegate/Subtract (ND):473
+	                     Static Reshape (NC)	    0.002	    0.001	  0.000%	 72.138%	     0.000	        1	Delegate/Static Reshape (NC):474
+	                           Multiply (ND)	    0.074	    0.071	  0.014%	 72.152%	     0.000	        1	Delegate/Multiply (ND):475
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 72.152%	     0.000	        1	Delegate/Static Reshape (NC):476
+	                                Add (ND)	    0.053	    0.050	  0.010%	 72.162%	     0.000	        1	Delegate/Add (ND):477
+	          Fully Connected (NC, F32) GEMM	    9.709	    9.688	  1.973%	 74.135%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:478
+	                               GELU (NC)	    0.871	    0.855	  0.174%	 74.309%	     0.000	        1	Delegate/GELU (NC):479
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 74.309%	     0.000	        1	Delegate/Static Reshape (NC):480
+	          Fully Connected (NC, F32) GEMM	   11.413	   11.452	  2.332%	 76.641%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:481
+	                                Add (ND)	    0.202	    0.207	  0.042%	 76.683%	     0.000	        1	Delegate/Add (ND):482
+	                        Mean (ND) Reduce	    0.068	    0.058	  0.012%	 76.695%	     0.000	        1	Delegate/Mean (ND) Reduce:483
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	 76.696%	     0.000	        1	Delegate/Static Reshape (NC):484
+	                 Squared Difference (ND)	    0.054	    0.058	  0.012%	 76.707%	     0.000	        1	Delegate/Squared Difference (ND):485
+	                        Mean (ND) Reduce	    0.032	    0.032	  0.007%	 76.714%	     0.000	        1	Delegate/Mean (ND) Reduce:486
+	                                Add (ND)	    0.004	    0.004	  0.001%	 76.715%	     0.000	        1	Delegate/Add (ND):487
+	             Reciprocal Square Root (NC)	    0.005	    0.005	  0.001%	 76.716%	     0.000	        1	Delegate/Reciprocal Square Root (NC):488
+	                           Multiply (ND)	    0.036	    0.037	  0.008%	 76.723%	     0.000	        1	Delegate/Multiply (ND):489
+	                           Subtract (ND)	    0.017	    0.018	  0.004%	 76.727%	     0.000	        1	Delegate/Subtract (ND):490
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 76.727%	     0.000	        1	Delegate/Static Reshape (NC):491
+	                           Multiply (ND)	    0.070	    0.074	  0.015%	 76.743%	     0.000	        1	Delegate/Multiply (ND):492
+	                     Static Reshape (NC)	    0.000	    0.001	  0.000%	 76.743%	     0.000	        1	Delegate/Static Reshape (NC):493
+	                                Add (ND)	    0.046	    0.046	  0.009%	 76.752%	     0.000	        1	Delegate/Add (ND):494
+	          Fully Connected (NC, F32) GEMM	    6.752	    6.814	  1.387%	 78.139%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:495
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	 78.140%	     0.000	        1	Delegate/Static Reshape (NC):496
+	           Transpose (ND, X32) Transpose	    0.630	    0.567	  0.116%	 78.256%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:497
+	                         Slice (ND, X32)	    0.170	    0.168	  0.034%	 78.290%	     0.000	        1	Delegate/Slice (ND, X32):498
+	                         Slice (ND, X32)	    0.161	    0.150	  0.031%	 78.320%	     0.000	        1	Delegate/Slice (ND, X32):499
+	                         Slice (ND, X32)	    0.163	    0.157	  0.032%	 78.352%	     0.000	        1	Delegate/Slice (ND, X32):500
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 78.353%	     0.000	        1	Delegate/Static Reshape (NC):501
+	                     Static Reshape (NC)	    0.000	    0.001	  0.000%	 78.353%	     0.000	        1	Delegate/Static Reshape (NC):502
+	                           Multiply (ND)	    0.085	    0.098	  0.020%	 78.373%	     0.000	        1	Delegate/Multiply (ND):503
+	                           Multiply (ND)	    0.096	    0.102	  0.021%	 78.393%	     0.000	        1	Delegate/Multiply (ND):504
+	           Transpose (ND, X32) Transpose	    0.156	    0.136	  0.028%	 78.421%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:505
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 78.421%	     0.000	        1	Delegate/Static Reshape (NC):506
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 78.421%	     0.000	        1	Delegate/Static Reshape (NC):507
+	    Batch Matrix Multiply (NC, F32) GEMM	    1.472	    1.483	  0.302%	 78.723%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:508
+	                     Static Reshape (NC)	    0.002	    0.003	  0.001%	 78.724%	     0.000	        1	Delegate/Static Reshape (NC):509
+	                       Softmax (NC, F32)	    0.679	    0.703	  0.143%	 78.867%	     0.000	        1	Delegate/Softmax (NC, F32):510
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 78.867%	     0.000	        1	Delegate/Static Reshape (NC):511
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 78.868%	     0.000	        1	Delegate/Static Reshape (NC):512
+	    Batch Matrix Multiply (NC, F32) GEMM	    2.038	    2.019	  0.411%	 79.279%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:513
+	                     Static Reshape (NC)	    0.002	    0.001	  0.000%	 79.279%	     0.000	        1	Delegate/Static Reshape (NC):514
+	           Transpose (ND, X32) Transpose	    0.198	    0.207	  0.042%	 79.321%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:515
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 79.322%	     0.000	        1	Delegate/Static Reshape (NC):516
+	          Fully Connected (NC, F32) GEMM	    2.925	    2.334	  0.475%	 79.797%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:517
+	                                Add (ND)	    0.189	    0.208	  0.042%	 79.839%	     0.000	        1	Delegate/Add (ND):518
+	                        Mean (ND) Reduce	    0.049	    0.052	  0.011%	 79.850%	     0.000	        1	Delegate/Mean (ND) Reduce:519
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	 79.850%	     0.000	        1	Delegate/Static Reshape (NC):520
+	                 Squared Difference (ND)	    0.057	    0.057	  0.012%	 79.862%	     0.000	        1	Delegate/Squared Difference (ND):521
+	                        Mean (ND) Reduce	    0.033	    0.032	  0.007%	 79.868%	     0.000	        1	Delegate/Mean (ND) Reduce:522
+	                                Add (ND)	    0.003	    0.003	  0.001%	 79.869%	     0.000	        1	Delegate/Add (ND):523
+	             Reciprocal Square Root (NC)	    0.005	    0.005	  0.001%	 79.870%	     0.000	        1	Delegate/Reciprocal Square Root (NC):524
+	                           Multiply (ND)	    0.015	    0.034	  0.007%	 79.877%	     0.000	        1	Delegate/Multiply (ND):525
+	                           Subtract (ND)	    0.029	    0.018	  0.004%	 79.881%	     0.000	        1	Delegate/Subtract (ND):526
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 79.881%	     0.000	        1	Delegate/Static Reshape (NC):527
+	                           Multiply (ND)	    0.076	    0.083	  0.017%	 79.898%	     0.000	        1	Delegate/Multiply (ND):528
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 79.898%	     0.000	        1	Delegate/Static Reshape (NC):529
+	                                Add (ND)	    0.050	    0.049	  0.010%	 79.908%	     0.000	        1	Delegate/Add (ND):530
+	          Fully Connected (NC, F32) GEMM	    9.420	    9.491	  1.932%	 81.840%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:531
+	                               GELU (NC)	    0.841	    0.859	  0.175%	 82.015%	     0.000	        1	Delegate/GELU (NC):532
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 82.016%	     0.000	        1	Delegate/Static Reshape (NC):533
+	          Fully Connected (NC, F32) GEMM	   11.459	   11.580	  2.358%	 84.373%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:534
+	                                Add (ND)	    0.263	    0.205	  0.042%	 84.415%	     0.000	        1	Delegate/Add (ND):535
+	                        Mean (ND) Reduce	    0.054	    0.062	  0.013%	 84.428%	     0.000	        1	Delegate/Mean (ND) Reduce:536
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	 84.428%	     0.000	        1	Delegate/Static Reshape (NC):537
+	                 Squared Difference (ND)	    0.051	    0.057	  0.012%	 84.440%	     0.000	        1	Delegate/Squared Difference (ND):538
+	                        Mean (ND) Reduce	    0.032	    0.033	  0.007%	 84.447%	     0.000	        1	Delegate/Mean (ND) Reduce:539
+	                                Add (ND)	    0.003	    0.004	  0.001%	 84.447%	     0.000	        1	Delegate/Add (ND):540
+	             Reciprocal Square Root (NC)	    0.005	    0.005	  0.001%	 84.449%	     0.000	        1	Delegate/Reciprocal Square Root (NC):541
+	                           Multiply (ND)	    0.024	    0.035	  0.007%	 84.456%	     0.000	        1	Delegate/Multiply (ND):542
+	                           Subtract (ND)	    0.013	    0.018	  0.004%	 84.459%	     0.000	        1	Delegate/Subtract (ND):543
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 84.460%	     0.000	        1	Delegate/Static Reshape (NC):544
+	                           Multiply (ND)	    0.066	    0.067	  0.014%	 84.473%	     0.000	        1	Delegate/Multiply (ND):545
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 84.474%	     0.000	        1	Delegate/Static Reshape (NC):546
+	                                Add (ND)	    0.045	    0.046	  0.009%	 84.483%	     0.000	        1	Delegate/Add (ND):547
+	          Fully Connected (NC, F32) GEMM	    6.892	    6.909	  1.407%	 85.890%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:548
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 85.890%	     0.000	        1	Delegate/Static Reshape (NC):549
+	           Transpose (ND, X32) Transpose	    0.601	    0.559	  0.114%	 86.004%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:550
+	                         Slice (ND, X32)	    0.174	    0.168	  0.034%	 86.038%	     0.000	        1	Delegate/Slice (ND, X32):551
+	                         Slice (ND, X32)	    0.154	    0.151	  0.031%	 86.069%	     0.000	        1	Delegate/Slice (ND, X32):552
+	                         Slice (ND, X32)	    0.158	    0.158	  0.032%	 86.101%	     0.000	        1	Delegate/Slice (ND, X32):553
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 86.101%	     0.000	        1	Delegate/Static Reshape (NC):554
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 86.101%	     0.000	        1	Delegate/Static Reshape (NC):555
+	                           Multiply (ND)	    0.094	    0.125	  0.025%	 86.127%	     0.000	        1	Delegate/Multiply (ND):556
+	                           Multiply (ND)	    0.106	    0.105	  0.021%	 86.148%	     0.000	        1	Delegate/Multiply (ND):557
+	           Transpose (ND, X32) Transpose	    0.128	    0.137	  0.028%	 86.176%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:558
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 86.176%	     0.000	        1	Delegate/Static Reshape (NC):559
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 86.177%	     0.000	        1	Delegate/Static Reshape (NC):560
+	    Batch Matrix Multiply (NC, F32) GEMM	    1.518	    1.523	  0.310%	 86.487%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:561
+	                     Static Reshape (NC)	    0.003	    0.002	  0.000%	 86.487%	     0.000	        1	Delegate/Static Reshape (NC):562
+	                       Softmax (NC, F32)	    0.678	    0.730	  0.149%	 86.636%	     0.000	        1	Delegate/Softmax (NC, F32):563
+	                     Static Reshape (NC)	    0.001	    0.002	  0.000%	 86.636%	     0.000	        1	Delegate/Static Reshape (NC):564
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 86.636%	     0.000	        1	Delegate/Static Reshape (NC):565
+	    Batch Matrix Multiply (NC, F32) GEMM	    2.043	    2.075	  0.423%	 87.059%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:566
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 87.059%	     0.000	        1	Delegate/Static Reshape (NC):567
+	           Transpose (ND, X32) Transpose	    0.327	    0.210	  0.043%	 87.102%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:568
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 87.102%	     0.000	        1	Delegate/Static Reshape (NC):569
+	          Fully Connected (NC, F32) GEMM	    2.298	    2.320	  0.472%	 87.575%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:570
+	                                Add (ND)	    0.205	    0.210	  0.043%	 87.617%	     0.000	        1	Delegate/Add (ND):571
+	                        Mean (ND) Reduce	    0.057	    0.052	  0.011%	 87.628%	     0.000	        1	Delegate/Mean (ND) Reduce:572
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	 87.628%	     0.000	        1	Delegate/Static Reshape (NC):573
+	                 Squared Difference (ND)	    0.051	    0.055	  0.011%	 87.640%	     0.000	        1	Delegate/Squared Difference (ND):574
+	                        Mean (ND) Reduce	    0.034	    0.033	  0.007%	 87.646%	     0.000	        1	Delegate/Mean (ND) Reduce:575
+	                                Add (ND)	    0.003	    0.004	  0.001%	 87.647%	     0.000	        1	Delegate/Add (ND):576
+	             Reciprocal Square Root (NC)	    0.005	    0.005	  0.001%	 87.648%	     0.000	        1	Delegate/Reciprocal Square Root (NC):577
+	                           Multiply (ND)	    0.034	    0.035	  0.007%	 87.655%	     0.000	        1	Delegate/Multiply (ND):578
+	                           Subtract (ND)	    0.033	    0.018	  0.004%	 87.659%	     0.000	        1	Delegate/Subtract (ND):579
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 87.659%	     0.000	        1	Delegate/Static Reshape (NC):580
+	                           Multiply (ND)	    0.076	    0.073	  0.015%	 87.674%	     0.000	        1	Delegate/Multiply (ND):581
+	                     Static Reshape (NC)	    0.000	    0.000	  0.000%	 87.674%	     0.000	        1	Delegate/Static Reshape (NC):582
+	                                Add (ND)	    0.050	    0.049	  0.010%	 87.684%	     0.000	        1	Delegate/Add (ND):583
+	          Fully Connected (NC, F32) GEMM	    9.389	    9.451	  1.924%	 89.608%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:584
+	                               GELU (NC)	    0.844	    0.855	  0.174%	 89.783%	     0.000	        1	Delegate/GELU (NC):585
+	                     Static Reshape (NC)	    0.003	    0.002	  0.000%	 89.783%	     0.000	        1	Delegate/Static Reshape (NC):586
+	          Fully Connected (NC, F32) GEMM	   11.419	   11.463	  2.334%	 92.117%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:587
+	                                Add (ND)	    0.208	    0.207	  0.042%	 92.159%	     0.000	        1	Delegate/Add (ND):588
+	                        Mean (ND) Reduce	    0.058	    0.057	  0.012%	 92.171%	     0.000	        1	Delegate/Mean (ND) Reduce:589
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	 92.171%	     0.000	        1	Delegate/Static Reshape (NC):590
+	                 Squared Difference (ND)	    0.052	    0.056	  0.011%	 92.183%	     0.000	        1	Delegate/Squared Difference (ND):591
+	                        Mean (ND) Reduce	    0.031	    0.033	  0.007%	 92.189%	     0.000	        1	Delegate/Mean (ND) Reduce:592
+	                                Add (ND)	    0.004	    0.004	  0.001%	 92.190%	     0.000	        1	Delegate/Add (ND):593
+	             Reciprocal Square Root (NC)	    0.006	    0.005	  0.001%	 92.191%	     0.000	        1	Delegate/Reciprocal Square Root (NC):594
+	                           Multiply (ND)	    0.049	    0.040	  0.008%	 92.199%	     0.000	        1	Delegate/Multiply (ND):595
+	                           Subtract (ND)	    0.017	    0.019	  0.004%	 92.203%	     0.000	        1	Delegate/Subtract (ND):596
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 92.203%	     0.000	        1	Delegate/Static Reshape (NC):597
+	                           Multiply (ND)	    0.071	    0.068	  0.014%	 92.217%	     0.000	        1	Delegate/Multiply (ND):598
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 92.217%	     0.000	        1	Delegate/Static Reshape (NC):599
+	                                Add (ND)	    0.044	    0.047	  0.010%	 92.227%	     0.000	        1	Delegate/Add (ND):600
+	          Fully Connected (NC, F32) GEMM	    6.752	    6.802	  1.385%	 93.612%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:601
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	 93.612%	     0.000	        1	Delegate/Static Reshape (NC):602
+	           Transpose (ND, X32) Transpose	    0.571	    0.548	  0.112%	 93.724%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:603
+	                         Slice (ND, X32)	    0.165	    0.166	  0.034%	 93.758%	     0.000	        1	Delegate/Slice (ND, X32):604
+	                         Slice (ND, X32)	    0.158	    0.153	  0.031%	 93.789%	     0.000	        1	Delegate/Slice (ND, X32):605
+	                         Slice (ND, X32)	    0.161	    0.155	  0.032%	 93.820%	     0.000	        1	Delegate/Slice (ND, X32):606
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 93.820%	     0.000	        1	Delegate/Static Reshape (NC):607
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 93.821%	     0.000	        1	Delegate/Static Reshape (NC):608
+	                           Multiply (ND)	    0.095	    0.099	  0.020%	 93.841%	     0.000	        1	Delegate/Multiply (ND):609
+	                           Multiply (ND)	    0.101	    0.102	  0.021%	 93.861%	     0.000	        1	Delegate/Multiply (ND):610
+	           Transpose (ND, X32) Transpose	    0.165	    0.133	  0.027%	 93.889%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:611
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 93.889%	     0.000	        1	Delegate/Static Reshape (NC):612
+	                     Static Reshape (NC)	    0.000	    0.001	  0.000%	 93.889%	     0.000	        1	Delegate/Static Reshape (NC):613
+	    Batch Matrix Multiply (NC, F32) GEMM	    1.479	    1.490	  0.303%	 94.192%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:614
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 94.193%	     0.000	        1	Delegate/Static Reshape (NC):615
+	                       Softmax (NC, F32)	    0.696	    0.708	  0.144%	 94.337%	     0.000	        1	Delegate/Softmax (NC, F32):616
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 94.337%	     0.000	        1	Delegate/Static Reshape (NC):617
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 94.337%	     0.000	        1	Delegate/Static Reshape (NC):618
+	    Batch Matrix Multiply (NC, F32) GEMM	    2.047	    2.023	  0.412%	 94.749%	     0.000	        1	Delegate/Batch Matrix Multiply (NC, F32) GEMM:619
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 94.750%	     0.000	        1	Delegate/Static Reshape (NC):620
+	           Transpose (ND, X32) Transpose	    0.220	    0.208	  0.042%	 94.792%	     0.000	        1	Delegate/Transpose (ND, X32) Transpose:621
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 94.792%	     0.000	        1	Delegate/Static Reshape (NC):622
+	          Fully Connected (NC, F32) GEMM	    2.314	    2.305	  0.469%	 95.262%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:623
+	                                Add (ND)	    0.206	    0.221	  0.045%	 95.307%	     0.000	        1	Delegate/Add (ND):624
+	                        Mean (ND) Reduce	    0.053	    0.051	  0.010%	 95.317%	     0.000	        1	Delegate/Mean (ND) Reduce:625
+	                     Static Reshape (NC)	    0.002	    0.003	  0.001%	 95.318%	     0.000	        1	Delegate/Static Reshape (NC):626
+	                 Squared Difference (ND)	    0.050	    0.054	  0.011%	 95.329%	     0.000	        1	Delegate/Squared Difference (ND):627
+	                        Mean (ND) Reduce	    0.032	    0.033	  0.007%	 95.335%	     0.000	        1	Delegate/Mean (ND) Reduce:628
+	                                Add (ND)	    0.003	    0.003	  0.001%	 95.336%	     0.000	        1	Delegate/Add (ND):629
+	             Reciprocal Square Root (NC)	    0.005	    0.005	  0.001%	 95.337%	     0.000	        1	Delegate/Reciprocal Square Root (NC):630
+	                           Multiply (ND)	    0.034	    0.034	  0.007%	 95.344%	     0.000	        1	Delegate/Multiply (ND):631
+	                           Subtract (ND)	    0.024	    0.016	  0.003%	 95.347%	     0.000	        1	Delegate/Subtract (ND):632
+	                     Static Reshape (NC)	    0.002	    0.002	  0.000%	 95.348%	     0.000	        1	Delegate/Static Reshape (NC):633
+	                           Multiply (ND)	    0.075	    0.070	  0.014%	 95.362%	     0.000	        1	Delegate/Multiply (ND):634
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 95.362%	     0.000	        1	Delegate/Static Reshape (NC):635
+	                                Add (ND)	    0.051	    0.049	  0.010%	 95.372%	     0.000	        1	Delegate/Add (ND):636
+	          Fully Connected (NC, F32) GEMM	    9.364	    9.435	  1.921%	 97.293%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:637
+	                               GELU (NC)	    0.843	    0.861	  0.175%	 97.468%	     0.000	        1	Delegate/GELU (NC):638
+	                     Static Reshape (NC)	    0.001	    0.002	  0.000%	 97.468%	     0.000	        1	Delegate/Static Reshape (NC):639
+	          Fully Connected (NC, F32) GEMM	   11.379	   11.436	  2.329%	 99.797%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:640
+	                                Add (ND)	    0.207	    0.201	  0.041%	 99.838%	     0.000	        1	Delegate/Add (ND):641
+	                        Mean (ND) Reduce	    0.051	    0.057	  0.012%	 99.850%	     0.000	        1	Delegate/Mean (ND) Reduce:642
+	                     Static Reshape (NC)	    0.003	    0.003	  0.001%	 99.850%	     0.000	        1	Delegate/Static Reshape (NC):643
+	                 Squared Difference (ND)	    0.087	    0.078	  0.016%	 99.866%	     0.000	        1	Delegate/Squared Difference (ND):644
+	                        Mean (ND) Reduce	    0.047	    0.045	  0.009%	 99.875%	     0.000	        1	Delegate/Mean (ND) Reduce:645
+	                                Add (ND)	    0.003	    0.003	  0.001%	 99.876%	     0.000	        1	Delegate/Add (ND):646
+	             Reciprocal Square Root (NC)	    0.005	    0.005	  0.001%	 99.877%	     0.000	        1	Delegate/Reciprocal Square Root (NC):647
+	                           Multiply (ND)	    0.047	    0.040	  0.008%	 99.885%	     0.000	        1	Delegate/Multiply (ND):648
+	                           Subtract (ND)	    0.023	    0.023	  0.005%	 99.890%	     0.000	        1	Delegate/Subtract (ND):649
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 99.890%	     0.000	        1	Delegate/Static Reshape (NC):650
+	                           Multiply (ND)	    0.053	    0.049	  0.010%	 99.900%	     0.000	        1	Delegate/Multiply (ND):651
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 99.901%	     0.000	        1	Delegate/Static Reshape (NC):652
+	                                Add (ND)	    0.029	    0.030	  0.006%	 99.907%	     0.000	        1	Delegate/Add (ND):653
+	                           Multiply (ND)	    0.041	    0.041	  0.008%	 99.915%	     0.000	        1	Delegate/Multiply (ND):654
+	                                Add (ND)	    0.298	    0.043	  0.009%	 99.924%	     0.000	        1	Delegate/Add (ND):655
+	                         Slice (ND, X32)	    0.003	    0.002	  0.000%	 99.924%	     0.000	        1	Delegate/Slice (ND, X32):656
+	                     Static Reshape (NC)	    0.001	    0.001	  0.000%	 99.924%	     0.000	        1	Delegate/Static Reshape (NC):657
+	          Fully Connected (NC, F32) GEMM	    0.407	    0.371	  0.076%	100.000%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:658
+
+============================== Top by Computation Time ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	          Fully Connected (NC, F32) GEMM	   13.975	   14.036	  2.858%	  2.858%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:57
+	          Fully Connected (NC, F32) GEMM	   13.888	   13.899	  2.830%	  5.688%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:322
+	           Convolution (NHWC, F32) IGEMM	   13.344	   13.364	  2.721%	  8.409%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:0
+	          Fully Connected (NC, F32) GEMM	   13.103	   12.988	  2.644%	 11.053%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:110
+	          Fully Connected (NC, F32) GEMM	   12.440	   12.552	  2.556%	 13.609%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:160
+	          Fully Connected (NC, F32) GEMM	   12.023	   12.074	  2.458%	 16.067%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:163
+	          Fully Connected (NC, F32) GEMM	   12.036	   12.072	  2.458%	 18.525%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:216
+	          Fully Connected (NC, F32) GEMM	   11.744	   11.631	  2.368%	 20.893%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:269
+	          Fully Connected (NC, F32) GEMM	   11.459	   11.580	  2.358%	 23.251%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:534
+	          Fully Connected (NC, F32) GEMM	   11.507	   11.534	  2.348%	 25.600%	     0.000	        1	Delegate/Fully Connected (NC, F32) GEMM:428
+
+Number of nodes executed: 659
+============================== Summary by node type ==============================
+	                             [Node type]	  [count]	  [avg ms]	    [avg %]	    [cdf %]	  [mem KB]	[times called]
+	          Fully Connected (NC, F32) GEMM	       49	   383.203	    78.072%	    78.072%	     0.000	       49
+	    Batch Matrix Multiply (NC, F32) GEMM	       24	    42.457	     8.650%	    86.722%	     0.000	       24
+	           Convolution (NHWC, F32) IGEMM	        1	    13.364	     2.723%	    89.444%	     0.000	        1
+	           Transpose (ND, X32) Transpose	       38	    11.431	     2.329%	    91.773%	     0.000	       38
+	                               GELU (NC)	       12	    10.341	     2.107%	    93.880%	     0.000	       12
+	                       Softmax (NC, F32)	       12	     8.409	     1.713%	    95.593%	     0.000	       12
+	                                Add (ND)	       76	     6.267	     1.277%	    96.870%	     0.000	       76
+	                         Slice (ND, X32)	       37	     5.685	     1.158%	    98.028%	     0.000	       37
+	                           Multiply (ND)	       75	     5.127	     1.045%	    99.073%	     0.000	       75
+	                        Mean (ND) Reduce	       50	     2.197	     0.448%	    99.520%	     0.000	       50
+	                 Squared Difference (ND)	       25	     1.471	     0.300%	    99.820%	     0.000	       25
+	                           Subtract (ND)	       25	     0.450	     0.092%	    99.912%	     0.000	       25
+	                     Static Reshape (NC)	      209	     0.247	     0.050%	    99.962%	     0.000	      209
+	             Reciprocal Square Root (NC)	       25	     0.122	     0.025%	    99.987%	     0.000	       25
+	                          Copy (NC, X32)	        1	     0.064	     0.013%	   100.000%	     0.000	        1
+
+Timings (microseconds): count=50 first=491501 curr=491056 min=489667 max=493552 avg=491142 std=857
+Memory (bytes): count=0
+659 nodes observed
+
+
+
