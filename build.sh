@@ -144,7 +144,9 @@ build_target() {
         ;;
         "main")
             echo "[INFO] Building main targets..."
-            $bin $build_flags //minimal-litert/main/...
+            $bin $build_flags //minimal-litert/main/... 
+            # bazel build  $build_flags @XNNPACK//bench/...
+            # bazel build $build_flags @XNNPACK//bench:f32_gemm_minmax_bench
         ;;
         "verify")
             echo "[INFO] Building verify targets..."
