@@ -7,7 +7,7 @@ package(
 )
 
 cc_binary(
-    name = "dump_model_cpu",
+    name = "dump_model",
     srcs = [
         "dump_model_cpu.cc",
     ],
