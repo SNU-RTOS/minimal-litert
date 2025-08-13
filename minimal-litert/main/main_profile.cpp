@@ -393,6 +393,8 @@ int main(int argc, char *argv[])
 
     util::print_model_signature(interpreter.get());
 
+    /* [PROFILE] Setup Profilers */
+
     // Setup Profiler
     constexpr int kProfilingBufferHeadrooms = 512;
     int total_nodes = util::count_total_nodes(interpreter.get());
@@ -424,9 +426,10 @@ int main(int argc, char *argv[])
         pf_out_csv.output_path = config.profiling_result_path;
         profiler_outputs.push_back(pf_out_csv);
     }
+    
 
     /* 3. Apply delegate */
-    // Start Initialization Profiling
+    // [PROFILER] Start Initialization Profiling
     profiler->Reset();
     profiler->StartProfiling();
 
@@ -440,17 +443,6 @@ int main(int argc, char *argv[])
     }
     util::timer_stop("Apply Delegate");
 
-    /* [PROFILE] Setup Profilers */
-
-    // Default formatter/summarizer for log output
-    auto log_formatter = std::make_shared<tflite::profiling::ProfileSummaryDefaultFormatter>();
-    auto init_log_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(log_formatter);
-    auto run_log_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(log_formatter);
-
-    // CSV formatter/summarizer for CSV output
-    auto csv_formatter = std::make_shared<tflite::profiling::ProfileSummaryCSVFormatter>();
-    auto init_csv_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(csv_formatter);
-    auto run_csv_summarizer = std::make_shared<tflite::profiling::ProfileSummarizer>(csv_formatter);
 
     /* 4. Allocate Tensor */
     util::timer_start("Allocate Tensor");
@@ -463,7 +455,7 @@ int main(int argc, char *argv[])
 
     util::print_model_summary(interpreter.get(), delegate_applied);
 
-    // Finish Init Profiling
+    // [PROFILER] Finish Init Profiling
     profiler->StopProfiling();
     for (auto &out : profiler_outputs)
     {
@@ -483,7 +475,7 @@ int main(int argc, char *argv[])
     /* 6. Preprocessing */
     util::timer_start("Preprocessing");
 
-    init_log_summarizer->ProcessProfiles(profiler->GetProfileEvents(), *interpreter);
+    
     TfLiteTensor *input_tensor = interpreter->input_tensor(0);
     util::print_tensor_shape(input_tensor, "input_tensor");
 
