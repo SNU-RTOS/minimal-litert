@@ -1,8 +1,11 @@
 #!/bin/bash
-# This script parses a TFLite model and generates a schema if necessary.
-# This script parses a TFLite model and generates a schema if necessary.
+
+# Simple Offline Model parser
+
+## bazel build @flatbuffers//:flatc   
+## bazel-minimal-litert/external/org_tensorflow/tensorflow/compiler/mlir/lite/schema/schema.fbs
 if [ ! -d tflite ]; then
-    echo "tflite directory does not exist."
+    echo "tflite directory does not exist."   
     echo "Generating tflite schema..."
     if arch=$(uname -m); then
         if [ "$arch" = "x86_64" ]; then
@@ -16,15 +19,14 @@ if [ ! -d tflite ]; then
 fi
 
 
-
 # python3 parser.py -m ../../models/mobileone_s0.tflite
 # python3 parser.py -m ../../models/mobilenetv3_small.tflite
 # python3 parser.py -m ../../models/mobilenetv3_large_100.ra4_e3600_r224_in1k.tflite
 # echo 1 | python3 parser.py -m ../../models/tf_mobilenetv3_large_100.in1k.tflite
 
 
-
-# Define the source and destination directories
+# Online Parser : Can parse XNNPACK Delegate
+## Define the source and destination directories
 exported_dir="../../models/exported/"
 destination_dir="../../models"
 
@@ -40,7 +42,7 @@ for tflite_file in "$destination_dir"/*.tflite; do
     echo "Processing $tflite_file with parser"
     model_name=$(echo "$tflite_file" | grep -oP '[^/]+(?=\.tflite)')
     log="${destination_dir}/${model_name}_dump.log"
-    # echo "Running dump_model_cpu_x64 for $tflite_file at $log"
+    echo "Running dump_model_cpu_x64 for $tflite_file at $log"
     # echo 1 | python3 parser.py -m "$tflite_file"
     echo 1 | ./dump_model_cpu_x64 "$tflite_file" "$log"
 done
