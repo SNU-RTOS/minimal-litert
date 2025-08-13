@@ -235,3 +235,4 @@ backup
 exported
 *.tflite
 xnn_microkernel_cache.json
+MODULE.bazel

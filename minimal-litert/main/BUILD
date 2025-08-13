@@ -11,14 +11,14 @@ cc_library(
     name = "util",
     srcs = ["util.cpp"],
     hdrs = ["util.hpp"],
-    copts = [
-        "-I/usr/include/opencv4",
-        "-I/usr/include/jsoncpp",
-    ],
     # copts = [
-    #     "-I/opt/fsl-goldvip-no-hv/1.12.0_Auto_Linux_BSP_41.0/sysroots/cortexa53-crypto-fsl-linux/usr/include/opencv4",
-    #     "-I/opt/fsl-goldvip-no-hv/1.12.0_Auto_Linux_BSP_41.0/sysroots/cortexa53-crypto-fsl-linux/usr/include/jsoncpp",
+    #     "-I/usr/include/opencv4",
+    #     "-I/usr/include/jsoncpp",
     # ],
+    copts = [
+        "-I/opt/fsl-goldvip-no-hv/1.12.0_Auto_Linux_BSP_41.0/sysroots/cortexa53-crypto-fsl-linux/usr/include/opencv4",
+        "-I/opt/fsl-goldvip-no-hv/1.12.0_Auto_Linux_BSP_41.0/sysroots/cortexa53-crypto-fsl-linux/usr/include/jsoncpp",
+    ],
     linkopts = [
         "-ljsoncpp",
         "-lopencv_core",
@@ -35,46 +35,46 @@ cc_library(
 )
 
 # Main CPU inference binary
-cc_binary(
-    name = "main_cpu",
-    srcs = ["main_cpu.cpp"],
-    copts = [
-        "-I/usr/include/opencv4",
-        "-I/usr/include/jsoncpp",
-    ],
-    # copts = [
-    #     "-I/opt/fsl-goldvip-no-hv/1.12.0_Auto_Linux_BSP_41.0/sysroots/cortexa53-crypto-fsl-linux/usr/include/opencv4",
-    #     "-I/opt/fsl-goldvip-no-hv/1.12.0_Auto_Linux_BSP_41.0/sysroots/cortexa53-crypto-fsl-linux/usr/include/jsoncpp",
-    # ],
-    linkopts = tflite_linkopts() + [
-        "-lm",  # math library
-        "-ljsoncpp",
-        "-lopencv_core",
-        "-lopencv_imgproc",
-        "-lopencv_imgcodecs",
-        "-lopencv_highgui",
-    ],
-    deps = [
-        ":util",
-        "@litert//tflite:framework",
-        "@litert//tflite/core:cc_api_stable",
-        "@litert//tflite/delegates/xnnpack:xnnpack_delegate",
-        "@litert//tflite/kernels:builtin_ops",
-    ],
-)
+# cc_binary(
+#     name = "main_cpu",
+#     srcs = ["main_cpu.cpp"],
+#     copts = [
+#         "-I/usr/include/opencv4",
+#         "-I/usr/include/jsoncpp",
+#     ],
+#     # copts = [
+#     #     "-I/opt/fsl-goldvip-no-hv/1.12.0_Auto_Linux_BSP_41.0/sysroots/cortexa53-crypto-fsl-linux/usr/include/opencv4",
+#     #     "-I/opt/fsl-goldvip-no-hv/1.12.0_Auto_Linux_BSP_41.0/sysroots/cortexa53-crypto-fsl-linux/usr/include/jsoncpp",
+#     # ],
+#     linkopts = tflite_linkopts() + [
+#         "-lm",  # math library
+#         "-ljsoncpp",
+#         "-lopencv_core",
+#         "-lopencv_imgproc",
+#         "-lopencv_imgcodecs",
+#         "-lopencv_highgui",
+#     ],
+#     deps = [
+#         ":util",
+#         "@litert//tflite:framework",
+#         "@litert//tflite/core:cc_api_stable",
+#         "@litert//tflite/delegates/xnnpack:xnnpack_delegate",
+#         "@litert//tflite/kernels:builtin_ops",
+#     ],
+# )
 
 # Main CPU inference with profiling binary
 cc_binary(
     name = "main_profile_cpu_only",
     srcs = ["main_profile_cpu_only.cpp"],
-    copts = [
-        "-I/usr/include/opencv4",
-        "-I/usr/include/jsoncpp",
-    ],
     # copts = [
-    #     "-I/opt/fsl-goldvip-no-hv/1.12.0_Auto_Linux_BSP_41.0/sysroots/cortexa53-crypto-fsl-linux/usr/include/opencv4",
-    #     "-I/opt/fsl-goldvip-no-hv/1.12.0_Auto_Linux_BSP_41.0/sysroots/cortexa53-crypto-fsl-linux/usr/include/jsoncpp",
+    #     "-I/usr/include/opencv4",
+    #     "-I/usr/include/jsoncpp",
     # ],
+    copts = [
+        "-I/opt/fsl-goldvip-no-hv/1.12.0_Auto_Linux_BSP_41.0/sysroots/cortexa53-crypto-fsl-linux/usr/include/opencv4",
+        "-I/opt/fsl-goldvip-no-hv/1.12.0_Auto_Linux_BSP_41.0/sysroots/cortexa53-crypto-fsl-linux/usr/include/jsoncpp",
+    ],
     linkopts = tflite_linkopts() + [
         "-lm",  # math library
         "-ljsoncpp",
